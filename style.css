@@ -41,6 +41,7 @@ body {
     line-height: 1.6;
     color: #333;
     background-color: #fff;
+    scrollbar-gutter: stable;
 }
 
 /* Typography */
@@ -80,7 +81,7 @@ a:hover {
     padding: 0 1rem;
 }
 
-header {
+body > header {
     position: sticky;
     top: 0;
     z-index: 1100;
@@ -125,8 +126,19 @@ header {
     width: 44px;
     height: 44px;
     border-radius: 12px;
-    background: linear-gradient(135deg, #ffb347, #d96b11);
+    background: #fff;
     box-shadow: 0 10px 20px rgba(217, 107, 17, 0.22);
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-mark img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .logo-copy {
@@ -212,16 +224,35 @@ header {
 
 .hamburger {
     display: none;
-    flex-direction: column;
     cursor: pointer;
+    width: 30px;
+    height: 24px;
+    position: relative;
+    justify-content: center;
 }
 
 .hamburger span {
     width: 25px;
     height: 3px;
     background-color: #333;
-    margin: 3px 0;
-    transition: 0.3s;
+    position: absolute;
+    left: 50%;
+    border-radius: 999px;
+    transform-origin: center;
+    transition: transform 0.3s ease, opacity 0.2s ease;
+    margin: 0;
+}
+
+.hamburger span:nth-child(1) {
+    transform: translateX(-50%) translateY(-8px);
+}
+
+.hamburger span:nth-child(2) {
+    transform: translateX(-50%);
+}
+
+.hamburger span:nth-child(3) {
+    transform: translateX(-50%) translateY(8px);
 }
 
 /* Breaking News */
@@ -780,6 +811,7 @@ footer {
 
 .article-header {
     margin-bottom: 2rem;
+    position: static;
 }
 
 .article-category {
@@ -825,9 +857,11 @@ footer {
 .featured-image img {
     width: 100%;
     height: auto;
-    min-height: 350px;
-    object-fit: cover;
+    max-height: none;
+    object-fit: contain;
     border-radius: 8px;
+    display: block;
+    background: #fff8ef;
 }
 
 .featured-image figcaption {
@@ -1239,20 +1273,23 @@ footer {
     text-align: center;
     margin-bottom: 4rem;
     position: relative;
+    padding-top: 1.5rem;
 }
 
 .board-header .section-number {
+    display: block;
     font-size: 5rem;
     font-weight: 900;
     color: rgba(217, 107, 17, 0.24);
     line-height: 1;
     text-shadow: 0 10px 22px rgba(217, 107, 17, 0.16);
+    margin-bottom: 0.5rem;
 }
 
 .board-header h2 {
     color: #1a1a1a;
     font-size: 2.5rem;
-    margin-top: -2rem;
+    margin-top: 0;
     margin-bottom: 0.5rem;
 }
 
@@ -1285,7 +1322,21 @@ footer {
     transition: transform 0.3s ease;
 }
 
+.board-photo {
+    width: 100%;
+    height: auto;
+    max-height: none;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.3s ease;
+    background: #fff8ef;
+}
+
 .board-member:hover div[style*="background-color: orange"] {
+    transform: scale(1.05);
+}
+
+.board-member:hover .board-photo {
     transform: scale(1.05);
 }
 
@@ -1573,12 +1624,11 @@ footer {
         margin-left: auto;
         position: relative;
         z-index: 1001;
+        flex: 0 0 30px;
     }
 
     .hamburger.active {
-        position: fixed;
-        top: 1.35rem;
-        right: 1rem;
+        position: relative;
     }
 
     .feature-box {
@@ -1824,11 +1874,13 @@ footer {
 
 .featured-image img {
     width: 100%;
-    height: 400px;
-    object-fit: cover;
+    height: auto;
+    max-height: none;
+    object-fit: contain;
     border-radius: 12px;
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease;
+    background: #fff8ef;
 }
 
 .featured-image img:hover {

@@ -266,7 +266,7 @@ style.textContent = `
     }
 
     .hamburger.active span:nth-child(1) {
-        transform: rotate(-45deg) translate(-5px, 6px);
+        transform: translateX(-50%) rotate(45deg);
     }
 
     .hamburger.active span:nth-child(2) {
@@ -274,7 +274,7 @@ style.textContent = `
     }
 
     .hamburger.active span:nth-child(3) {
-        transform: rotate(45deg) translate(-5px, -6px);
+        transform: translateX(-50%) rotate(-45deg);
     }
 `;
 document.head.appendChild(style);
