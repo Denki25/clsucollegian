@@ -42,9 +42,7 @@
             </div>
         </nav>
         <div class="breaking-news">
-            <div class="ticker">
-                <span>BREAKING:</span> CLSU Hosts International Conference on Sustainable Agriculture • Student Council Elections Begin Next Week • New Research Center Opens
-            </div>
+            <div class="ticker" id="breakingTicker"></div>
         </div>
     </header>
 
@@ -52,13 +50,13 @@
         <section class="hero">
             <div class="hero-content">
                 <div class="hero-text">
-                    <span class="hero-category">Featured</span>
-                    <h2>Stars Shaped in Shared Space</h2>
-                    <p>ExDRAGvaganza became a shared space where identity was not only performed on stage, but recognized, affirmed, and reflected back through every movement, silence, and applause.</p>
-                    <a href="article.html" class="read-more">Read Story</a>
+                    <span class="hero-category" id="heroCategory">Featured</span>
+                    <h2 id="heroTitle">CLSU Collegian</h2>
+                    <p id="heroSummary">Campus stories, features, and multimedia from the official student publication.</p>
+                    <a href="article.html" class="read-more" id="heroLink">Read Story</a>
                 </div>
-                <div class="hero-image">
-                    <img src="feature.jpg.jpg" alt="Stars Shaped in Shared Space feature artwork">
+                <div class="hero-image" id="heroImageWrapper">
+                    <div class="hero-placeholder"></div>
                 </div>
             </div>
         </section>
@@ -66,80 +64,7 @@
         <section class="latest-articles" id="news">
             <div class="container">
                 <h2>Latest Articles</h2>
-                <div class="articles-grid">
-                    <article class="article-card">
-                        <div style="width: 100%; height: 200px; background-color: orange;"></div>
-                        <div class="card-content">
-                            <span class="category">News</span>
-                            <h3>Campus Life Returns to Normal</h3>
-                            <p>Students share their experiences as university activities resume with new safety protocols in place.</p>
-                            <div class="card-meta">
-                                <span>By Maria Santos</span>
-                                <span>2 hours ago</span>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="article-card" id="sports">
-                        <div style="width: 100%; height: 200px; background-color: orange;"></div>
-                        <div class="card-content">
-                            <span class="category">Sports</span>
-                            <h3>Bulldogs Dominate Regional Championship</h3>
-                            <p>CLSU's basketball team secures victory in the regional inter-university tournament.</p>
-                            <div class="card-meta">
-                                <span>By Juan dela Cruz</span>
-                                <span>5 hours ago</span>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="article-card" id="opinion">
-                        <div style="width: 100%; height: 200px; background-color: orange;"></div>
-                        <div class="card-content">
-                            <span class="category">Opinion</span>
-                            <h3>The Future of Online Learning</h3>
-                            <p>An analysis of how digital education will shape the next generation of students.</p>
-                            <div class="card-meta">
-                                <span>By Ana Reyes</span>
-                                <span>1 day ago</span>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="article-card" id="features">
-                        <div style="width: 100%; height: 200px; background-color: orange;"></div>
-                        <div class="card-content">
-                            <span class="category">Features</span>
-                            <h3>Behind the Scenes: CLSU Library</h3>
-                            <p>A look at the university's extensive collection and the dedicated staff preserving knowledge.</p>
-                            <div class="card-meta">
-                                <span>By Carlos Mendoza</span>
-                                <span>2 days ago</span>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="article-card" id="literary">
-                        <div style="width: 100%; height: 200px; background-color: orange;"></div>
-                        <div class="card-content">
-                            <span class="category">Literary</span>
-                            <h3>Voices of the Youth</h3>
-                            <p>Poems and stories from CLSU's talented student writers exploring themes of identity and growth.</p>
-                            <div class="card-meta">
-                                <span>By Literary Staff</span>
-                                <span>3 days ago</span>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="article-card">
-                        <div style="width: 100%; height: 200px; background-color: orange;"></div>
-                        <div class="card-content">
-                            <span class="category">Multimedia</span>
-                            <h3>Campus Through the Lens</h3>
-                            <p>A visual journey through CLSU's beautiful campus captured by student photographers.</p>
-                            <div class="card-meta">
-                                <span>By Multimedia Team</span>
-                                <span>4 days ago</span>
-                            </div>
-                        </div>
-                    </article>
-                </div>
+                <div class="articles-grid" id="articlesGrid"></div>
             </div>
         </section>
 
@@ -150,33 +75,7 @@
                         <h3>Trending</h3>
                         <p>Campus stories</p>
                     </div>
-                    <div class="trending-table">
-                        <div class="trending-row">
-                            <span class="trending-rank">01</span>
-                            <span class="trending-topic">Eljohn take step as CLSU Collegian's Editor-in-Chief</span>
-                            <span class="trending-tag">News</span>
-                        </div>
-                        <div class="trending-row">
-                            <span class="trending-rank">02</span>
-                            <span class="trending-topic">Vince resigned as EIC; EJ takes over hahahha</span>
-                            <span class="trending-tag">Campus</span>
-                        </div>
-                        <div class="trending-row">
-                            <span class="trending-rank">03</span>
-                            <span class="trending-topic">Secret i2</span>
-                            <span class="trending-tag">Feature</span>
-                        </div>
-                        <div class="trending-row">
-                            <span class="trending-rank">04</span>
-                            <span class="trending-topic">Saks lang...</span>
-                            <span class="trending-tag">People</span>
-                        </div>
-                        <div class="trending-row">
-                            <span class="trending-rank">05</span>
-                            <span class="trending-topic">hmmmmmm proceed</span>
-                            <span class="trending-tag">Events</span>
-                        </div>
-                    </div>
+                    <div class="trending-table" id="trendingTable"></div>
                 </div>
             </div>
         </section>
@@ -210,16 +109,16 @@
                     <h4>Follow Us</h4>
                     <div class="social-links">
                         <a href="https://www.facebook.com/CLSUCollegian.Official" target="_blank" aria-label="Facebook" title="Facebook">f</a>
-                        <a href="https://twitter.com/clsukule" target="_blank" aria-label="Twitter" title="Twitter">𝕏</a>
-                        <a href="https://www.instagram.com/clsukule" target="_blank" aria-label="Instagram" title="Instagram">📷</a>
-                        <a href="https://www.youtube.com/@clsukule" target="_blank" aria-label="YouTube" title="YouTube">▶</a>
+                        <a href="https://twitter.com/clsukule" target="_blank" aria-label="Twitter" title="Twitter">&#120143;</a>
+                        <a href="https://www.instagram.com/clsukule" target="_blank" aria-label="Instagram" title="Instagram">&#128247;</a>
+                        <a href="https://www.youtube.com/@clsukule" target="_blank" aria-label="YouTube" title="YouTube">&#9654;</a>
                     </div>
                 </div>
                 <div class="footer-section">
                     <h4>Contact</h4>
                     <div class="contact-info">
-                        <p><span class="contact-icon">📧</span> <a href="mailto:clsucollegian@clsu.edu.ph">clsucollegian@clsu.edu.ph</a></p>
-                        <p><span class="contact-icon">📍</span> Student Union Building, Central Luzon State University, Science City of Muñoz, Nueva Ecija</p>
+                        <p><span class="contact-icon">&#128231;</span> <a href="mailto:clsucollegian@clsu.edu.ph">clsucollegian@clsu.edu.ph</a></p>
+                        <p><span class="contact-icon">&#128205;</span> Student Union Building, Central Luzon State University, Science City of Munoz, Nueva Ecija</p>
                     </div>
                 </div>
             </div>
@@ -229,13 +128,7 @@
         </div>
     </footer>
 
+    <script src="articles.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
