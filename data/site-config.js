@@ -3,6 +3,7 @@ window.CLSU_SITE_CONFIG = {
         "Proklamado na ng University Electoral Board (UEB) ang mga susunod na manunungkulan sa University Supreme Student Council (USSC) sa pamamagitan ng pag-endorso ng resulta ng halalan sa Office of the University President kahapon, Abril 21."
     ],
     featuredSlug: "katapusan-ng-lahat-lahat",
+
     trending: [
         {
             title: "Katapusan ng lahat-lahat",

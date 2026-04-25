@@ -484,7 +484,7 @@ body > header {
 
 .ticker {
     white-space: nowrap;
-    animation: scroll 30s linear infinite;
+    animation: scroll 15s linear infinite;
     font-weight: 500;
 }
 
