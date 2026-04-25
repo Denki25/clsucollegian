@@ -1,29 +1,72 @@
 # Daily Update Guide
 
-The site now pulls homepage and article content from one file: [articles.js](./articles.js).
+The site now uses data files for both articles and multimedia, so most updates do not require editing `index.html` or `multimedia.html` directly.
 
-## Daily workflow
+## Where content lives now
 
-1. Open `articles.js`.
-2. Copy one article object inside `articles: [ ... ]`.
-3. Paste the copy at the top of the list if it is your newest story.
-4. Update:
-   - `slug`: short unique URL name, like `student-council-debate-night`
+- `data/site-config.js`
+  - homepage ticker
+  - featured story slug
+  - trending list
+- `data/articles/literary.js`
+- `data/articles/features.js`
+- `data/articles/infographics.js`
+- `data/articles/news.js`
+- `data/articles/opinion.js`
+- `data/articles/devcom.js`
+- `data/multimedia.js`
+  - homepage latest multimedia
+  - full multimedia page
+
+## How to add a new article
+
+1. Open the matching category file inside `data/articles/`.
+2. Copy one existing article object.
+3. Paste the new article object into that same file.
+4. Fill in:
+   - `slug`
    - `category`
    - `title`
    - `summary`
    - `author`
    - `authorLine`
    - `date` in `YYYY-MM-DD`
-   - `image` if you have one
+   - `readTime` like `3 min read`
+   - `image`
    - `imageAlt`
-   - `body` with the full article HTML
-5. If the story should be the homepage lead, set `featuredSlug` to that article's slug.
-6. If it should appear in the ticker or trending area, update `tickerItems` or `trending`.
+   - `body`
+5. If the story should be the homepage lead, update `featuredSlug` in `data/site-config.js`.
+6. If it should appear in the ticker or trending area, update `tickerItems` or `trending` in `data/site-config.js`.
 
-## Important note
+## How to update multimedia
 
-`body` uses HTML. That means paragraphs should look like:
+1. Open `data/multimedia.js`.
+2. Keep the newest multimedia entry at the top of the array.
+3. Copy an existing item and paste it at the top when adding a new one.
+4. Update:
+   - `title`
+   - `summary`
+   - `platform`
+   - `embedUrl`
+   - `sourceUrl`
+   - `aspectRatio` as `"portrait"` or `"landscape"`
+5. Save the file.
+
+The homepage automatically shows the first 3 multimedia entries. The `multimedia.html` page automatically shows the full list.
+
+## Image paths
+
+Use paths relative to the project root, for example:
+
+```js
+image: "PHOTOS/FEATURES/feature3.jpg"
+image: "PHOTOS/LITERARY/lit1.jpg"
+image: "PHOTOS/NEWS/news1.jpg"
+```
+
+## Article body format
+
+`body` uses HTML. Example:
 
 ```html
 <p>Your paragraph here.</p>
@@ -31,21 +74,9 @@ The site now pulls homepage and article content from one file: [articles.js](./a
 <blockquote><p>Your quoted line here.</p></blockquote>
 ```
 
-## Best structure going forward
+## Suggested organization
 
-- Keep all new article images in the project folder, or move them into a future `images/` folder.
-- Use one slug per story and never reuse it.
-- Use exact publish dates instead of "2 hours ago" so old articles stay correct automatically.
-- Keep homepage sections driven from `articles.js` instead of editing `index.html` for every post.
-
-## Recommendation
-
-This is a good setup if one person updates the site manually.
-
-If you expect many writers or daily publishing by a team, the next upgrade should be one of these:
-
-- A headless CMS like Sanity or Contentful
-- A static site generator like Astro, Eleventy, or Next.js
-- A Google Sheet or Airtable feeding the site through a script
-
-For now, this code-only setup is the simplest clean option.
+- Keep article files grouped by category.
+- Keep multimedia entries in `data/multimedia.js` ordered from newest to oldest.
+- Keep slugs unique across all article files.
+- Use exact publish dates for articles so sorting stays correct.

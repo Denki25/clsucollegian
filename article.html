@@ -26,12 +26,13 @@
                 </div>
                 <ul class="nav-menu">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#news">News</a></li>
-                    <li><a href="index.html#opinion">Opinion</a></li>
-                    <li><a href="index.html#features">Features</a></li>
-                    <li><a href="index.html#sports">Sports</a></li>
-                    <li><a href="index.html#literary">Literary</a></li>
-                    <li><a href="index.html#multimedia">Multimedia</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="opinion.html">Opinion</a></li>
+                    <li><a href="devcom.html">DevCom</a></li>
+                    <li><a href="infographics.html">Infographics</a></li>
+                    <li><a href="literary.html">Literary</a></li>
+                    <li><a href="multimedia.html">Multimedia</a></li>
                     <li><a href="about.html">About</a></li>
                 </ul>
                 <div class="hamburger" aria-label="Toggle navigation" aria-expanded="false" role="button" tabindex="0">
@@ -41,6 +42,9 @@
                 </div>
             </div>
         </nav>
+        <div class="breaking-news">
+            <div class="ticker" id="breakingTicker"></div>
+        </div>
     </header>
 
     <main class="article-main">
@@ -51,6 +55,7 @@
                 <div class="article-meta">
                     <span class="author" id="articleAuthor">CLSU Collegian</span>
                     <span class="date" id="articleDate"></span>
+                    <span class="read-time" id="articleReadTime">10 min read</span>
                 </div>
             </header>
 
@@ -76,7 +81,7 @@
 
         <aside class="article-sidebar">
             <section class="related-articles">
-                <h3>Related Articles</h3>
+                <h3>Other Articles</h3>
                 <div class="related-list" id="relatedList"></div>
             </section>
         </aside>
@@ -95,7 +100,6 @@
                         <a href="https://www.facebook.com/CLSUCollegian.Official" target="_blank" aria-label="Facebook" title="Facebook">f</a>
                         <a href="https://twitter.com/clsukule" target="_blank" aria-label="Twitter" title="Twitter">&#120143;</a>
                         <a href="https://www.instagram.com/clsukule" target="_blank" aria-label="Instagram" title="Instagram">&#128247;</a>
-                        <a href="https://www.youtube.com/@clsukule" target="_blank" aria-label="YouTube" title="YouTube">&#9654;</a>
                     </div>
                 </div>
                 <div class="footer-section">
@@ -112,7 +116,13 @@
         </div>
     </footer>
 
-    <script src="articles.js"></script>
+    <script src="data/site-config.js"></script>
+    <script src="data/articles/literary.js"></script>
+    <script src="data/articles/features.js"></script>
+    <script src="data/articles/opinion.js"></script>
+    <script src="data/articles/devcom.js"></script>
+    <script src="data/articles/infographics.js"></script>
+    <script src="data/articles/news.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

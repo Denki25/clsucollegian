@@ -26,12 +26,13 @@
                 </div>
                 <ul class="nav-menu">
                     <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="#news">News</a></li>
-                    <li><a href="#opinion">Opinion</a></li>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#sports">Sports</a></li>
-                    <li><a href="#literary">Literary</a></li>
-                    <li><a href="#multimedia">Multimedia</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="opinion.html">Opinion</a></li>
+                    <li><a href="devcom.html">DevCom</a></li>
+                    <li><a href="infographics.html">Infographics</a></li>
+                    <li><a href="literary.html">Literary</a></li>
+                    <li><a href="multimedia.html">Multimedia</a></li>
                     <li><a href="about.html">About</a></li>
                 </ul>
                 <div class="hamburger" aria-label="Toggle navigation" aria-expanded="false" role="button" tabindex="0">
@@ -82,18 +83,11 @@
 
         <section class="multimedia" id="multimedia">
             <div class="container">
-                <h2>Multimedia</h2>
-                <div class="videos-grid">
-                    <div class="video-container">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/Yo4vsIFSM3g" title="CLSU Collegian Video 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div class="video-container">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/YRqz58yOCLc" title="CLSU Collegian Video 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div class="video-container">
-                        <iframe width="560" height="315" src="https://www.facebook.com/share/v/18gHQS8mq6/" title="CLSU Collegian Video 3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
+                <div class="section-heading">
+                    <h2>Latest Multimedia</h2>
+                    <a href="multimedia.html" class="section-link">View all multimedia</a>
                 </div>
+                <div class="videos-grid" id="homeMultimediaGrid"></div>
             </div>
         </section>
     </main>
@@ -111,7 +105,6 @@
                         <a href="https://www.facebook.com/CLSUCollegian.Official" target="_blank" aria-label="Facebook" title="Facebook">f</a>
                         <a href="https://twitter.com/clsukule" target="_blank" aria-label="Twitter" title="Twitter">&#120143;</a>
                         <a href="https://www.instagram.com/clsukule" target="_blank" aria-label="Instagram" title="Instagram">&#128247;</a>
-                        <a href="https://www.youtube.com/@clsukule" target="_blank" aria-label="YouTube" title="YouTube">&#9654;</a>
                     </div>
                 </div>
                 <div class="footer-section">
@@ -128,7 +121,14 @@
         </div>
     </footer>
 
-    <script src="articles.js"></script>
+    <script src="data/site-config.js"></script>
+    <script src="data/articles/literary.js"></script>
+    <script src="data/articles/features.js"></script>
+    <script src="data/articles/opinion.js"></script>
+    <script src="data/articles/devcom.js"></script>
+    <script src="data/articles/infographics.js"></script>
+    <script src="data/articles/news.js"></script>
+    <script src="data/multimedia.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

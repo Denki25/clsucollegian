@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News | CLSU Collegian</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-section-category="News" data-section-label="News">
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="index.html" class="logo-link" aria-label="CLSU Collegian home">
+                        <span class="logo-mark" aria-hidden="true">
+                            <img src="logo.png" alt="">
+                        </span>
+                        <span class="logo-copy">
+                            <span class="logo-kicker">Campus Publication</span>
+                            <span class="logo-name">CLSU Collegian</span>
+                        </span>
+                    </a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="news.html" class="active">News</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="opinion.html">Opinion</a></li>
+                    <li><a href="devcom.html">DevCom</a></li>
+                    <li><a href="infographics.html">Infographics</a></li>
+                    <li><a href="literary.html">Literary</a></li>
+                    <li><a href="multimedia.html">Multimedia</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+                <div class="hamburger" aria-label="Toggle navigation" aria-expanded="false" role="button" tabindex="0">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+        <div class="breaking-news">
+            <div class="ticker" id="breakingTicker"></div>
+        </div>
+    </header>
+
+    <main class="section-page">
+        <section class="container">
+            <div class="page-intro">
+                <span class="page-eyebrow">Campus Desk</span>
+                <h1>News</h1>
+                <p>Latest campus and student-interest news from CLSU Collegian.</p>
+            </div>
+
+            <div class="news-filters">
+                <select id="section-year-filter">
+                    <option value="all">All years</option>
+                </select>
+                <select id="section-sort-filter">
+                    <option value="latest">Latest</option>
+                    <option value="oldest">Oldest</option>
+                </select>
+            </div>
+            <div id="section-list"></div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>CLSU Collegian</h4>
+                    <p>The official student publication of Central Luzon State University, committed to delivering quality journalism and fostering campus discourse.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/CLSUCollegian.Official" target="_blank" aria-label="Facebook" title="Facebook">f</a>
+                        <a href="https://twitter.com/clsukule" target="_blank" aria-label="Twitter" title="Twitter">&#120143;</a>
+                        <a href="https://www.instagram.com/clsukule" target="_blank" aria-label="Instagram" title="Instagram">&#128247;</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <div class="contact-info">
+                        <p><span class="contact-icon">&#128231;</span> <a href="mailto:clsucollegian@clsu.edu.ph">clsucollegian@clsu.edu.ph</a></p>
+                        <p><span class="contact-icon">&#128205;</span> Student Union Building, Central Luzon State University, Science City of Munoz, Nueva Ecija</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 CLSU Collegian. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="data/site-config.js"></script>
+    <script src="data/articles/literary.js"></script>
+    <script src="data/articles/features.js"></script>
+    <script src="data/articles/opinion.js"></script>
+    <script src="data/articles/devcom.js"></script>
+    <script src="data/articles/infographics.js"></script>
+    <script src="data/articles/news.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,4 +1,19 @@
-const siteData = window.CLSU_COLLEGIAN_DATA || { articles: [], trending: [], tickerItems: [] };
+const siteConfig = window.CLSU_SITE_CONFIG || {};
+const siteArticles = Array.isArray(window.CLSU_ARTICLES) ? [...window.CLSU_ARTICLES] : [];
+const siteMultimedia = Array.isArray(window.CLSU_MULTIMEDIA) ? [...window.CLSU_MULTIMEDIA] : [];
+
+siteArticles.sort((left, right) => {
+    const leftTime = left.date ? new Date(`${left.date}T00:00:00`).getTime() : 0;
+    const rightTime = right.date ? new Date(`${right.date}T00:00:00`).getTime() : 0;
+    return rightTime - leftTime;
+});
+
+const siteData = {
+    articles: siteArticles,
+    trending: Array.isArray(siteConfig.trending) ? siteConfig.trending : [],
+    tickerItems: Array.isArray(siteConfig.tickerItems) ? siteConfig.tickerItems : [],
+    featuredSlug: siteConfig.featuredSlug || ""
+};
 
 function formatDate(dateString) {
     if (!dateString) {
@@ -21,6 +36,23 @@ function getArticleBySlug(slug) {
     return siteData.articles.find((article) => article.slug === slug) || null;
 }
 
+function getAuthorLine(article) {
+    const fallbackAuthorLine = `By ${article.author}, CLSU Collegian`;
+
+    if (!article.authorLine) {
+        return fallbackAuthorLine;
+    }
+
+    const normalizedAuthor = (article.author || "").trim().toLowerCase();
+    const normalizedAuthorLine = article.authorLine.trim().toLowerCase();
+
+    if (normalizedAuthor && !normalizedAuthorLine.includes(normalizedAuthor)) {
+        return fallbackAuthorLine;
+    }
+
+    return article.authorLine;
+}
+
 function getFeaturedArticle() {
     return getArticleBySlug(siteData.featuredSlug) || siteData.articles[0] || null;
 }
@@ -34,6 +66,10 @@ function getRelatedArticles(currentArticle) {
             return rightScore - leftScore;
         })
         .slice(0, 3);
+}
+
+function getArticlesByCategory(category) {
+    return siteData.articles.filter((article) => article.category === category);
 }
 
 function renderTicker() {
@@ -54,6 +90,107 @@ function createCardImage(article) {
     return `<div class="article-thumb-placeholder">${article.category}</div>`;
 }
 
+function createSectionCard(article) {
+    const imageMarkup = article.image
+        ? `<img src="${article.image}" alt="${article.imageAlt || article.title}" class="news-thumb">`
+        : `<div class="news-thumb-placeholder">${article.category}</div>`;
+    const readTime = article.readTime || "10 min read";
+
+    return `
+        <article class="news-card">
+            <a class="news-card-link" href="${getArticleUrl(article.slug)}" aria-label="Read ${article.title}">
+                ${imageMarkup}
+                <div class="news-content">
+                    <span class="category">${article.category}</span>
+                    <h2>${article.title}</h2>
+                    <p>${article.summary}</p>
+                    <div class="news-meta">
+                        <span>By ${article.author}</span>
+                        <span>•</span>
+                        <span>${formatDate(article.date)}</span>
+                        <span>&bull;</span>
+                        <span>${readTime}</span>
+                    </div>
+                </div>
+            </a>
+        </article>
+    `;
+}
+
+function renderTrendingTable(targetId, items) {
+    const target = document.getElementById(targetId);
+    if (!target) {
+        return;
+    }
+
+    const fallbackItems = siteData.articles.slice(0, 5).map((article) => ({
+        title: article.title,
+        tag: article.category,
+        slug: article.slug
+    }));
+
+    const sourceItems = Array.isArray(items) && items.length > 0
+        ? items
+        : (siteData.trending.length > 0 ? siteData.trending : fallbackItems);
+
+    target.innerHTML = sourceItems
+        .filter((item) => item.slug)
+        .map((item, index) => `
+            <a class="trending-row" href="${getArticleUrl(item.slug)}" aria-label="Read ${item.title}">
+                <span class="trending-rank">${String(index + 1).padStart(2, "0")}</span>
+                <span class="trending-topic">${item.title}</span>
+                <span class="trending-tag">${item.tag}</span>
+            </a>
+        `)
+        .join("");
+}
+
+function createMultimediaCard(item) {
+    const aspectRatioClass = item.aspectRatio === "landscape"
+        ? "video-container landscape"
+        : "video-container portrait";
+
+    const sourceLink = item.sourceUrl
+        ? `<a class="multimedia-link" href="${item.sourceUrl}" target="_blank" rel="noopener noreferrer">Open on ${item.platform || "source"}</a>`
+        : "";
+
+    return `
+        <article class="multimedia-card">
+            <div class="${aspectRatioClass}">
+                <iframe
+                    src="${item.embedUrl}"
+                    title="${item.title}"
+                    scrolling="no"
+                    allowfullscreen="true"
+                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+                </iframe>
+            </div>
+            <div class="multimedia-card-content">
+                <h3>${item.title}</h3>
+                <p class="multimedia-caption">${item.caption || ""}</p>
+                <p class="multimedia-meta"><strong>Host</strong> ${item.host || "CLSU Collegian"}</p>
+                <p class="multimedia-meta"><strong>Editor</strong> ${item.editor || "Multimedia Desk"}</p>
+                ${sourceLink}
+            </div>
+        </article>
+    `;
+}
+
+function renderMultimedia() {
+    const homeGrid = document.getElementById("homeMultimediaGrid");
+    const multimediaPageGrid = document.getElementById("multimediaPageGrid");
+
+    if (homeGrid) {
+        homeGrid.innerHTML = siteMultimedia.slice(0, 3).map((item) => createMultimediaCard(item)).join("");
+    }
+
+    if (multimediaPageGrid) {
+        multimediaPageGrid.innerHTML = siteMultimedia.length > 0
+            ? siteMultimedia.map((item) => createMultimediaCard(item)).join("")
+            : `<div class="news-empty">No multimedia entries are available yet.</div>`;
+    }
+}
+
 function renderHomePage() {
     const grid = document.getElementById("articlesGrid");
     if (!grid) {
@@ -67,12 +204,11 @@ function renderHomePage() {
     const heroLink = document.getElementById("heroLink");
     const heroImageWrapper = document.getElementById("heroImageWrapper");
 
-    if (featured) {
+    if (featured && heroCategory && heroTitle && heroSummary && heroLink && heroImageWrapper) {
         heroCategory.textContent = featured.category;
         heroTitle.textContent = featured.title;
         heroSummary.textContent = featured.summary;
         heroLink.href = getArticleUrl(featured.slug);
-
         heroImageWrapper.innerHTML = featured.image
             ? `<img src="${featured.image}" alt="${featured.imageAlt || featured.title}">`
             : `<div class="hero-placeholder"></div>`;
@@ -80,9 +216,10 @@ function renderHomePage() {
 
     const seenCategories = new Set();
 
-    grid.innerHTML = siteData.articles.map((article) => {
+    grid.innerHTML = siteData.articles.slice(0, 6).map((article) => {
         const categoryId = article.category.toLowerCase();
         const articleId = seenCategories.has(categoryId) ? article.slug : categoryId;
+        const readTime = article.readTime || "10 min read";
         seenCategories.add(categoryId);
 
         return `
@@ -95,7 +232,10 @@ function renderHomePage() {
                         <p>${article.summary}</p>
                         <div class="card-meta">
                             <span>By ${article.author}</span>
+                            <span>&bull;</span>
                             <span>${formatDate(article.date)}</span>
+                            <span>&bull;</span>
+                            <span>${readTime}</span>
                         </div>
                     </div>
                 </a>
@@ -103,22 +243,73 @@ function renderHomePage() {
         `;
     }).join("");
 
-    const trendingTable = document.getElementById("trendingTable");
-    if (trendingTable) {
-        const trendingItems = siteData.trending.length > 0 ? siteData.trending : siteData.articles.slice(0, 5).map((article) => ({
-            title: article.title,
-            tag: article.category,
-            slug: article.slug
-        }));
+    renderTrendingTable("trendingTable");
+}
 
-        trendingTable.innerHTML = trendingItems.map((item, index) => `
-            <a class="trending-row" href="${getArticleUrl(item.slug)}" aria-label="Read ${item.title}">
-                <span class="trending-rank">${String(index + 1).padStart(2, "0")}</span>
-                <span class="trending-topic">${item.title}</span>
-                <span class="trending-tag">${item.tag}</span>
-            </a>
-        `).join("");
+function renderSectionPage() {
+    const sectionRoot = document.querySelector("[data-section-category]");
+    const list = document.getElementById("section-list");
+
+    if (!sectionRoot || !list) {
+        return;
     }
+
+    const category = sectionRoot.dataset.sectionCategory || "";
+    const emptyLabel = sectionRoot.dataset.sectionLabel || category || "section";
+    const yearFilter = document.getElementById("section-year-filter");
+    const sortFilter = document.getElementById("section-sort-filter");
+    const sectionArticles = getArticlesByCategory(category);
+    const years = [...new Set(sectionArticles
+        .map((article) => article.date ? new Date(`${article.date}T00:00:00`).getFullYear() : null)
+        .filter(Boolean))]
+        .sort((left, right) => right - left);
+
+    if (yearFilter && !yearFilter.dataset.initialized) {
+        yearFilter.innerHTML = [`<option value="all">All years</option>`]
+            .concat(years.map((year) => `<option value="${year}">${year}</option>`))
+            .join("");
+        yearFilter.dataset.initialized = "true";
+    }
+
+    if (sortFilter && !sortFilter.dataset.initialized) {
+        sortFilter.dataset.initialized = "true";
+    }
+
+    const renderList = () => {
+        const selectedYear = yearFilter ? yearFilter.value : "all";
+        const selectedSort = sortFilter ? sortFilter.value : "latest";
+
+        const filteredArticles = sectionArticles
+            .filter((article) => {
+                if (selectedYear === "all") {
+                    return true;
+                }
+
+                return String(new Date(`${article.date}T00:00:00`).getFullYear()) === selectedYear;
+            })
+            .sort((left, right) => {
+                const leftTime = left.date ? new Date(`${left.date}T00:00:00`).getTime() : 0;
+                const rightTime = right.date ? new Date(`${right.date}T00:00:00`).getTime() : 0;
+                return selectedSort === "oldest" ? leftTime - rightTime : rightTime - leftTime;
+            });
+
+        list.classList.add("news-feed");
+        list.innerHTML = filteredArticles.length > 0
+            ? filteredArticles.map((article) => createSectionCard(article)).join("")
+            : `<div class="news-empty">No ${emptyLabel.toLowerCase()} articles are available yet.</div>`;
+    };
+
+    if (yearFilter && !yearFilter.dataset.bound) {
+        yearFilter.addEventListener("change", renderList);
+        yearFilter.dataset.bound = "true";
+    }
+
+    if (sortFilter && !sortFilter.dataset.bound) {
+        sortFilter.addEventListener("change", renderList);
+        sortFilter.dataset.bound = "true";
+    }
+
+    renderList();
 }
 
 function renderArticlePage() {
@@ -139,8 +330,9 @@ function renderArticlePage() {
     document.title = `${article.title} | CLSU Collegian`;
     document.getElementById("articleCategory").textContent = article.category;
     document.getElementById("articleTitle").textContent = article.title;
-    document.getElementById("articleAuthor").textContent = article.authorLine || `By ${article.author}`;
+    document.getElementById("articleAuthor").textContent = getAuthorLine(article);
     document.getElementById("articleDate").textContent = formatDate(article.date);
+    document.getElementById("articleReadTime").textContent = article.readTime || "10 min read";
     articleBody.innerHTML = article.body;
 
     const articleFigure = document.getElementById("articleFigure");
@@ -161,7 +353,7 @@ function renderArticlePage() {
 }
 
 function observeAnimatedElements() {
-    const animatedElements = document.querySelectorAll(".article-card, .board-member, .position-card, .value-card");
+    const animatedElements = document.querySelectorAll(".article-card, .board-member, .position-card, .value-card, .news-card, .multimedia-card");
     if (animatedElements.length === 0 || !("IntersectionObserver" in window)) {
         return;
     }
@@ -184,9 +376,10 @@ function observeAnimatedElements() {
 
 renderTicker();
 renderHomePage();
+renderSectionPage();
 renderArticlePage();
+renderMultimedia();
 
-// Mobile menu toggle
 const hamburger = document.querySelector(".hamburger");
 const navMenu = document.querySelector(".nav-menu");
 
@@ -229,7 +422,6 @@ if (hamburger && navMenu) {
     });
 }
 
-// Close mobile menu when clicking on a link
 const navLinks = document.querySelectorAll(".nav-menu a");
 navLinks.forEach((link) => {
     link.addEventListener("click", () => {
@@ -242,7 +434,6 @@ navLinks.forEach((link) => {
     });
 });
 
-// Sticky navbar functionality
 const navbar = document.querySelector(".navbar");
 const sticky = navbar ? navbar.offsetTop : 0;
 
@@ -260,7 +451,6 @@ function stickyNavbar() {
 
 window.addEventListener("scroll", stickyNavbar);
 
-// Form submission handler (frontend only)
 const joinForm = document.getElementById("joinForm");
 if (joinForm) {
     joinForm.addEventListener("submit", function(e) {
@@ -346,7 +536,6 @@ function showSuccess(message) {
     }, 5000);
 }
 
-// Share button functionality (UI only)
 const shareButtons = document.querySelectorAll(".share-btn");
 shareButtons.forEach((button) => {
     button.addEventListener("click", function() {
@@ -381,7 +570,6 @@ shareButtons.forEach((button) => {
     });
 });
 
-// Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", function(e) {
         const targetSelector = this.getAttribute("href");
@@ -411,13 +599,13 @@ observeAnimatedElements();
 
 const style = document.createElement("style");
 style.textContent = `
-    .article-card, .board-member, .position-card, .value-card {
+    .article-card, .board-member, .position-card, .value-card, .news-card, .multimedia-card {
         opacity: 0;
         transform: translateY(20px);
         transition: opacity 0.6s ease, transform 0.6s ease;
     }
 
-    .article-card.animate-in, .board-member.animate-in, .position-card.animate-in, .value-card.animate-in {
+    .article-card.animate-in, .board-member.animate-in, .position-card.animate-in, .value-card.animate-in, .news-card.animate-in, .multimedia-card.animate-in {
         opacity: 1;
         transform: translateY(0);
     }
