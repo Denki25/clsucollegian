@@ -353,7 +353,7 @@ function renderArticlePage() {
 }
 
 function observeAnimatedElements() {
-    const animatedElements = document.querySelectorAll(".article-card, .board-member, .position-card, .value-card, .news-card, .multimedia-card");
+    const animatedElements = document.querySelectorAll(".article-card, .board-member, .value-card, .news-card, .multimedia-card");
     if (animatedElements.length === 0 || !("IntersectionObserver" in window)) {
         return;
     }
@@ -451,91 +451,6 @@ function stickyNavbar() {
 
 window.addEventListener("scroll", stickyNavbar);
 
-const joinForm = document.getElementById("joinForm");
-if (joinForm) {
-    joinForm.addEventListener("submit", function(e) {
-        e.preventDefault();
-
-        const formData = new FormData(this);
-        const data = Object.fromEntries(formData);
-        let isValid = true;
-        const requiredFields = ["name", "email", "studentId", "course", "year", "position", "motivation"];
-
-        requiredFields.forEach((field) => {
-            if (!data[field] || data[field].trim() === "") {
-                isValid = false;
-                showError(field, "This field is required");
-            } else {
-                clearError(field);
-            }
-        });
-
-        if (data.email && !isValidEmail(data.email)) {
-            isValid = false;
-            showError("email", "Please enter a valid email address");
-        }
-
-        if (isValid) {
-            showSuccess("Thank you for your application! We will review your submission and get back to you within 2-3 weeks.");
-            this.reset();
-        }
-    });
-}
-
-function isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-}
-
-function showError(field, message) {
-    const fieldElement = document.getElementById(field);
-    const existingError = fieldElement.parentNode.querySelector(".error-message");
-
-    if (existingError) {
-        existingError.textContent = message;
-    } else {
-        const errorElement = document.createElement("div");
-        errorElement.className = "error-message";
-        errorElement.textContent = message;
-        errorElement.style.color = "#d32f2f";
-        errorElement.style.fontSize = "0.875rem";
-        errorElement.style.marginTop = "0.25rem";
-        fieldElement.parentNode.appendChild(errorElement);
-    }
-
-    fieldElement.style.borderColor = "#d32f2f";
-}
-
-function clearError(field) {
-    const fieldElement = document.getElementById(field);
-    const errorElement = fieldElement.parentNode.querySelector(".error-message");
-
-    if (errorElement) {
-        errorElement.remove();
-    }
-
-    fieldElement.style.borderColor = "#ddd";
-}
-
-function showSuccess(message) {
-    const successElement = document.createElement("div");
-    successElement.className = "success-message";
-    successElement.textContent = message;
-    successElement.style.backgroundColor = "#e8f5e8";
-    successElement.style.color = "#2e7d32";
-    successElement.style.padding = "1rem";
-    successElement.style.borderRadius = "4px";
-    successElement.style.marginTop = "1rem";
-    successElement.style.border = "1px solid #4caf50";
-
-    const form = document.getElementById("joinForm");
-    form.appendChild(successElement);
-
-    setTimeout(() => {
-        successElement.remove();
-    }, 5000);
-}
-
 const shareButtons = document.querySelectorAll(".share-btn");
 shareButtons.forEach((button) => {
     button.addEventListener("click", function() {
@@ -599,13 +514,13 @@ observeAnimatedElements();
 
 const style = document.createElement("style");
 style.textContent = `
-    .article-card, .board-member, .position-card, .value-card, .news-card, .multimedia-card {
+    .article-card, .board-member, .value-card, .news-card, .multimedia-card {
         opacity: 0;
         transform: translateY(20px);
         transition: opacity 0.6s ease, transform 0.6s ease;
     }
 
-    .article-card.animate-in, .board-member.animate-in, .position-card.animate-in, .value-card.animate-in, .news-card.animate-in, .multimedia-card.animate-in {
+    .article-card.animate-in, .board-member.animate-in, .value-card.animate-in, .news-card.animate-in, .multimedia-card.animate-in {
         opacity: 1;
         transform: translateY(0);
     }

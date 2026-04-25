@@ -107,20 +107,46 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
         imageAlt: "Sealed, Sent, then Reopened feature image",
         body: `
             <p><strong>FEATURES | Sealed, Sent, then Reopened</strong></p>
-            <p>Like water, the flow of time never stops. It moves forward, constant and unyielding. So in the midst of the digital age where our attention spans seek instant gratification, one institution refuses to be rushed. The post office remains a sanctuary where words are felt by both the hearts and the hand.</p>
-            <p>This endurance is evident in the recent reopening of the Central Luzon State University Post Office branch, through a collaboration with the Philippine Postal Corporation. Honing through the waves of time, the office stands once more to serve a new generation of CLSUans.</p>
-            <h2>Sentinel of the Past</h2>
-            <p>If you walk along the sidewalks of University Avenue, the Post Office will meet your eye. It sits directly in front of the university tennis court, where its wooden walls stand as a silent witness to over a century of academic and national history.</p>
-            <p>Eventually, the structure became a dedicated postal hub and served for decades as the primary artery for student life. It was the place where students' allowances arrived in thin envelopes and love letters crossed provinces.</p>
-            <h2>Stories Woven by Letters</h2>
-            <p>Letters once carried stories across time and distance, moving slowly but enduring deeply. The post office preserves these traces of human connection, where each letter holds a piece of someone's life, sealed and waiting to be felt.</p>
-            <blockquote>
-                <p>"Nagtetelegram kami noon, kami ng mga kaibigan ko. Limited pa yung mga salita doon. Palitan kami. May mga love letters rin."</p>
-            </blockquote>
-            <p>These stories show how the post office became part of everyday life, shaping both simple and meaningful moments. It was not just about sending and receiving, but about the emotions carried in each envelope.</p>
-            <h2>Renewed Service</h2>
-            <p>After years of silence, the post office comes back to life once again. The quiet that once filled its halls is now replaced with movement and renewed purpose.</p>
-            <p>As it moves forward with renewed purpose, the post office stands guided by its commitment to efficiency and reliability, showing that even in a fast-moving digital age, some services still value timing, care, and consistency.</p>
+            <p>
+            Like water, the flow of time never stops. It moves forward, constant and unyielding. So in the midst of the digital age where our attention spans seek instant gratification, one institution refuses to be rushed. The post office remains a sanctuary where words are felt by both the hearts and the hand.<br><br>
+            This endurance is evident in the recent reopening of the Central Luzon State University (CLSU) Post Office branch,  through a collaboration with the Philippine Postal Corporation (PHLPost). Honing through the waves of time, the office stands once more to serve a new generation of CLSUans.<br>
+            
+            <h2>𝗦𝗲𝗻𝘁𝗶𝗻𝗲𝗹 𝗼𝗳 𝘁𝗵𝗲 𝗣𝗮𝘀𝘁</h2>
+            <p>
+            If you walk along the sidewalks of University Avenue, the Post Office will meet your eye. It sits directly in front of the university tennis court, where its wooden walls stand as a silent witness to over a century of academic and national history. The building wore many roles before it settled as a courier of dreams. <br><br>
+            Established in 1907 during the early years of the institution, it first served to connect a remote campus to the rest of the archipelago. By 1925, it transitioned into the Students’ Trust Bank, a secure vault for the community’s wealth before the fires of Philippine-American war reached the fields. During the pre-war and post-war eras, the building functioned as the Administration Building.<br><br>
+            Eventually, the structure became a dedicated postal hub and served for decades as the primary artery for student life. It was the place where student’s allowances arrived in thin envelopes and love letters crossed provinces. However, when the COVID-19 virus hit the country, borders tightened and operations paused. The creaking sound of the mailbox fell silent as the building sat in a forced, quiet quarantine. After years of stillness, the university finally pulled back the curtains this week.<br>
+            </p>
+            <h2>𝗦𝘁𝗼𝗿𝗶𝗲𝘀 𝗪𝗼𝘃𝗲𝗻 𝗯𝘆 𝗟𝗲𝘁𝘁𝗲𝗿𝘀</h2>
+            
+            <p>
+            Letters once carried stories across time and distance, moving slowly but enduring deeply. The post office preserves these traces of human connection, where each letter holds a piece of someone’s life, sealed and waiting to be felt.<br><br>
+            For Magdalena Galang, new to the university by the early 1990s, the post office served as a bridge not only for the CLSU community but also for nearby towns. <br>
+            <blockquote><p>“Nagtetelegram kami noon, kami ng mga kaibigan ko. Limited pa yung mga salita doon. Palitan kami. May mga love letters rin,” she fondly remembered receiving a love letter, sharing the memory with a soft laugh, still touched by the feeling it brought.</blockquote></p>
+            <p>Not all letters carried soft memories, as some brought news that could change a life in an instant. Many of these envelopes held decisions that shaped a person’s future before they even had the chance to respond.<br><br>
+            Alexis G. Ramirez recalls a time when important university documents were sent directly to homes. Letters such as grades and acceptance notices arrived without warning, often carrying life changing news. <br>
+            </p>
+            <blockquote><p>“Noong college nga ako ay may dumating sa bahay na letter. Hindi alam ng pamilya ko na nag-apply ako. Ayon nabasa nila, wala na akong maitatago”, he recalled.</blockquote></p>
+            
+            <p>The moment the envelope was opened, his parents were caught in surprise as they tried to process the news. From that point, the conversation that followed marked the beginning of a journey he could no longer keep to himself.<br><br>
+            These stories show how the post office became part of everyday life, shaping both simple and meaningful moments. It was not just about sending and receiving, but about the emotions carried in each envelope.
+            </p>
+            </p>
+            <h2>𝗧𝗮𝗿𝗴𝗲𝘁 𝗭𝗲𝗿𝗼 𝗕𝗮𝗹𝗮𝗻𝗰𝗲 𝗗𝗶𝘀𝗽𝗮𝘁𝗰𝗵 𝗮𝘁 𝗦𝘂𝗻𝗿𝗶𝘀𝗲, 𝗧𝗮𝗿𝗴𝗲𝘁 𝗭𝗲𝗿𝗼 𝗕𝗮𝗹𝗮𝗻𝗰𝗲 𝗗𝗲𝗹𝗶𝘃𝗲𝗿𝘆 𝗮𝘁 𝗦𝘂𝗻𝘀𝗲𝘁</h2>
+           
+            <p>
+            After years of silence, the post office comes back to life once again. The quiet that once filled its halls is now replaced with movement and renewed purpose.<br><br>
+            Operating from Monday to Friday, 8 AM to 5 PM, the post office is now ready to bring back familiar services for the community. It processes Postal ID applications and continues to handle the delivery of letters and parcels, reaching destinations both within the country and across international routes.<br><br>
+            This reopening can help the CLSU community by restoring a reliable hub for official documents, personal correspondence, and parcel services that many still depend on. It can provide immediate and easier access for students and staff who need postal services within the campus. <br><br>
+            Alongside these familiar services, a new offering also adds a fresh feature to its renewed operations.<br>
+            </p>
+            <blockquote><p>“Yung mga philately na yan, kagaya ng mga produkto naming pinopromote [ngayon] yung mga pictu-picture na yan,” said by Sir Frederick Erick Ong, one of the staff. This philately service features framed souvenir displays of buildings and commemorative visuals, turning them into keepsakes that reflect identity and place.</p></blockquote>
+           
+            <p>As it moves forward with renewed purpose, the post office stands guided by its commitment to efficiency and reliability, showing that even in a fast-moving digital age, some services still value timing, care, and consistency. Sealed in the past, sent through time, and now reopened as a space for service and connection once more. <br></p>
+            </p>
+            </p>
+
+
             <p><strong>Photos by Kherby Tabilang and Sheryn Joy Lacar, CLSU Collegian</strong></p>
             <p><strong>#ForStudentryEQUALITY #CLSUCollegian</strong></p>
         `
@@ -138,17 +164,59 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
         imageAlt: "Crossed Out feature artwork",
         body: `
             <p><strong>FEATURE | Crossed Out</strong></p>
-            <p>A day after April 8. Exams are finally over.</p>
-            <p>The room falls into a deafening silence, broken only by the faint rustling of pages I no longer need to read. My calculator sits untouched. My notes, once desperately flipped through, now remain still.</p>
-            <p>On my phone, a gentle reminder still lingers in my notifications: "World Health Day: Don't forget to take care of yourself."</p>
-            <blockquote>
-                <p>"Kapag exam week, mas focus sa school responsibilities. Hindi na napaprioritize 'yong self-care."</p>
-            </blockquote>
-            <p>Skipping meals and losing sleep become ordinary when deadlines pile up. That pressure shapes how students survive finals week, even when they know the cost.</p>
-            <blockquote>
-                <p>"Wala akong tulog, sabog ako. Masakit ulo ko. Hindi ko ma-process 'yong information."</p>
-            </blockquote>
-            <p>Taking care of oneself during exam season is not just a suggestion; it is necessary to actually perform well and maintain long-term health. And yet, it is always the first thing to be crossed out.</p>
+            
+            <p>A day after April 8.<br>
+            Exams are finally over.<br><br>
+            The room falls into a deafening silence, broken only by the faint rustling of pages I no longer need to read. My calculator sits untouched. My notes, once desperately flipped through, now remain still. My eyes still sting from nights that didn’t end when they should have. The tears in my eyes have long started to dry, perhaps at the same time my pen’s ink did.<br><br>
+            On my phone, a gentle reminder still lingers in my notifications.<br>
+            
+            <blockquote><p>“World Health Day: Don’t forget to take care of yourself.”</p></blockquote>
+            <p>
+            I take a long glance and laugh bitterly… take care of myself, it says. Sure, a student could do that. I could do that. But during those nights, it was just another thing I had to set aside— maybe after the two missing activities, four due projects, and the long list of exams and quizzes that once filled my day. <br><br>
+            So, I guess, sleep wasn’t getting crossed out then. Not until school was done. <br><br>
+            Studies from the National Heart, Lung, and Blood Institute (NHLBI) in the United States (US) show that students who sleep less than six hours a night have significantly lower memory retention, increased stress, and slower reaction times. Chronic sleep deprivation can even increase the risk of heart disease and weaken the immune system. Yet there I was, ignoring all that while trying to memorize the book in my hand.<br><br>
+            And it wasn’t just me—I wasn’t alone. Many students from Central Luzon State University (CLSU) also didn’t feel World’s Health Day, as exams, deadlines, and academic survival came first.<br>
+            </p>
+
+            <blockquote><p>“Kapag exam week, mas focus sa school responsibilities. Hindi na napaprioritize ‘yong self-care,” shared Yuki, not her real name, a first year accountancy student.</p></blockquote>
+            <blockquote><p>“Pagkagutom, kakain. ‘Pag inaantok, matutulog ng mga nap, power nap. ‘Pag exam week, mas focus ang school responsibilities, hindi napaprioritize yung self-care. Lalo na finals na ngayon eh,” she confessed.</p></blockquote>
+            <p>
+            The effects come almost immediately.<br><br>
+            “Kapag kulang ka sa tulog, hindi mo napo-process nang maayos ‘yong ni-review mo. Tapos kapag wala kang kain, nadidistract ka,” said Yuki as she is aware of the impact of lack of sleep.<br><br>
+            Skipping meals is also common during exam week. Research suggests that poor nutrition can lead to fatigue, irritability, and decreased cognitive function. Missing breakfast alone can reduce short-term memory and attention span. And at one point, my only meal was just a half-eaten baruya shoved between my reviewers.<br><br>
+            I can’t help but wonder: is this why I seem to flunk my exams? My stomach wouldn’t stop growling during that entire time, as if reminding me that I had been running on too little for too long.<br><br>
+            For some, even awareness of the event is already missing.
+            </p>
+            
+            <blockquote><p>“Hindi po,” Mirah, not her real name, a first year accountancy student admitted when asked if she knew it was World Health Day.</p></blockquote>
+            <p>
+            So when asked if it helps students remember  self-care, “Hindi… kasi hindi ko alam.”<br><br>
+            She laughs, but the exhaustion from her endless exam is still there.<br><br>
+            “Wala akong tulog, sabog ako. Masakit ulo ko. Hindi ko ma-process ‘yong information. Parang minadali ‘yong calendar; ang daming kailangan aralin in a short period of time,” her last sentiments before taking another do-or-die exam. Mirah is only one of the many students who felt the cramped academic calendar as the institution transitions to a June start to avoid intense heat during summer months.<br><br>
+            Stress, as Mirah experienced, is part of the package of surviving college days. Surveys show that over half of college students feel overwhelmed or anxious during exams. You'll also have to battle with headaches, back pain, loss of concentration— you name it.<br><br>
+            My body was giving me a full report, but did my exams care? No. <br><br>
+            Deadlines never pause for our health, piled up school works would build a mountain if you dared to rest. <br>
+            </p>
+            
+            <blockquote><p>“Yung university, sa tingin ko, tinatry naman yung best para suportahan yung mga estudyante during exams, like ‘yong pakape sa university library,” shared Daphne Joy Padilla, a first year education student.</p></blockquote>
+            <p>
+            “Pero personally, I think hindi yun sapat kasi kailangan i-prioritize din talaga yung mental health ng mga estudyante dahil minsan yung mga prof ay nagtatambak ng mga gawain and performance tasks kasabay ng mga exams sa finals. Hindi lang sa finals, kundi maging doon sa prelims, midterms. So, I think dapat hindi siya sabay-sabay,” her plea. 
+            Beyond academics, there are things unseen by the naked eye.<br><br>
+            “Hindi naman kasi lahat ng estudyante ay mayroong magkakaparehas na pinagdadaanan,” Daphne added.<br><br>
+            Rest has always been in theory, but not a lived reality for students buried in exams. For students like me, World Health Day feels ironic, but somewhat necessary.<br><br>
+            Out of the seven students interviewed, only two were aware that April 7 was World Health Day. Five were not.<br><br>
+            Not because they didn’t care, but because they simply didn’t have the time to notice it.<br><br>
+            Taking care of oneself during exam season isn’t just a suggestion; it’s something crucial to actually perform well and maintain long term health.<br><br>
+            And yet, it is always the first thing to be crossed out.<br><br>
+            Now that everything is over, now that exams are over, and we bask in the festivity of the University Week, the answers come a little bit easier.<br>
+            </p>
+            
+            <blockquote><p>“Matutulog, babawiin ko talaga yung tulog,” Mirah said. “Kakain ako, kanina pa ako nagugutom,” Yuki adds.</p></blockquote>
+            <p>
+            If we think about it, these are just simple things—things that had to wait.<br><br>
+            So, one day, just maybe, we will stop crossing out our well-being for the sake of our studies. And maybe next time, we won’t wait until everything is over to be able to actually take care of ourselves.<br>
+            </p>
+            </p>
             <p><strong>Illustrated by Ysabella Belen Francisco, CLSU Collegian</strong></p>
             <p><strong>#ForStudentryEQUALITY #CLSUCollegian</strong></p>
         `
