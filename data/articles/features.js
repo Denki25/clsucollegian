@@ -5,19 +5,27 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
         title: "Stars Shaped in Shared Space",
         summary: "ExDRAGvaganza became a shared space where identity was not only performed on stage, but recognized, affirmed, and reflected back through every movement, silence, and applause.",
         author: "Kryztelle Ashley Herrera",
-        authorLine: "Via Kryztelle Ashley Herrera, CLSU Collegian",
+        authorLine: "By Kryztelle Ashley Herrera, CLSU Collegian",
+        credits: {
+            by: "Kryztelle Ashley Herrera, CLSU Collegian",
+            photosBy: "Jexzy Reign De Lara and Sheryn Joy Lacar",
+            layoutBy: "Asher Terby Esquivel"
+        },
         date: "2026-04-22",
         readTime: "10 min read",
         image: "PHOTOS/FEATURES/feature.jpg.jpg",
         imageAlt: "Stars Shaped in Shared Space feature artwork",
         body: `
-            <p><strong>FEATURES | Stars Shaped in Shared Space</strong></p>
+        
+            <p><strong>Stars Shaped in Shared Space</strong></p>
             <p>
             Under the lights that revealed more than performance, ExDRAGvaganza became a shared space where identity was not just exhibited on stage but recognized in the eyes of those who watched, responded, and saw themselves reflected back through every movement, silence, and applause.<br><br>
             What made the moment powerful was not only the spectacle of performance but the quiet agreement between the stage and the audience that allowed people to exist in the room without shrinking any part of themselves.<br>
+            
             <h2>
             𝗖𝘂𝗿𝗶𝗼𝘀𝗶𝘁𝘆 𝗶𝗻𝘁𝗼 𝗜𝗱𝗲𝗻𝘁𝗶𝘁𝘆
             </h2>
+
             <p>
             For Carl Joshua Kier Coloma, a Bachelor of Science in Textile and Fashion Technology (BSTFT) student, stepping into ExDRAGvaganza as Lava Saugn meant stepping into a version of themselves that only fully exists when they become the persona they carry on stage: a fearless embodiment of expression that they bring to life through their drag identity.<br><br>
             “Nagsimula siya nang curiosity lang. Hanggang sa naging passion na siya through time, practice, at support ng mga tao sa paligid ko,” Carl shared.<br><br>
@@ -57,9 +65,11 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
             That journey culminated in recognition, as Eklipse was ultimately hailed as ExDRAGvaganza 2026 Drag Superstar. <br><br>
             Cedrick’s experience highlights how drag challenges imposed labels and opens space for self-definition through performance and expression. It shows how identity can be actively shaped through confidence, creativity, and the refusal to be limited by others’ expectations.<br>
             </p>
+
             <h2>
             𝗙𝘂𝗹𝗳𝗶𝗹𝗹𝗲𝗱 𝗧𝗵𝗿𝗼𝘂𝗴𝗵 𝗪𝗶𝗽𝗶𝗻𝗴
             </h2>
+
             <p>
             Before the stage ever met the audience, Bryan Kenneth Cruz, a Bachelor of Arts in Literature student, already existed in quiet creativity until he stepped into full transformation as his drag identity, Xy.Chosis.<br><br>
             For him, drag begins at the moment the self is shed, expressed in his statement, “lahat ng bakas ni Bryan ay burado na,” as if the persona wipes away restriction and replaces it with freedom.<br><br>
@@ -71,11 +81,13 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
             </p>
 
             <h2>𝗕𝗲𝗹𝗼𝗻𝗴𝗶𝗻𝗴 𝗧𝗵𝗿𝗼𝘂𝗴𝗵 𝗪𝗶𝘁𝗻𝗲𝘀𝘀𝗶𝗻𝗴</h2>
+
             <p>
             For the audiences, ExDRAGvaganza was not something simply watched but something lived alongside the performers.
             Lord Vhincent Concepcion, a Bachelor of Physical Education student, shared that ExDRAGvaganza sparked inspiration beyond the stage, saying, “Naiisip ko na sumali ako next year,” as witnessing the performances turned into motivation. He also carried the message, “Kapag may gusto may paraan,” noting how the event reshaped his view of courage when he realized, “Nakita ko na hindi hadlang yung kaba para mag-perform,” after watching the performances.<br><br>
             He observed that repetition builds comfort and confidence, saying, “Kailangan mo lang talaga subukan paulit-ulit hanggang maging comfortable ka,” while also reflecting that the event went beyond entertainment.<br>
             <blockquote><p>“Hindi lang pala siya entertainment, may purpose din pala siya sa pagbuo ng sarili mong tiwala,” he answered when asked how the experience shifted his mindset and understanding of expression.</p></blockquote>
+            <p>
             Meanwhile, Lorenzo, a Bachelor of Science in Development Communication (BSDC) student, shared how ExDRAGvaganza planted a sense of belonging in him.<br><br>
             While describing the space as being surrounded by queer peers, he realized that “We [LGBTQ individuals] deserve more than tolerance.”<br><br>
             He added that the event allowed him to feel seen in a way that everyday environments often fail to provide., “Dito ko naramdaman na valid ako kahit hindi ako loud about who I am,” as the experience redefined for him what acceptance looks like beyond mere tolerance.<br><br>
@@ -83,14 +95,15 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
             He also noted the emotional impact of the performances, sharing that there were moments he could not help  but cry. The pieces resonated with him. “Parang kinakausap din ako nung performances,” as he described.<br><br>
             Through these views, ExDRAGvaganza extends beyond performance when the audience becomes part of its meaning, engaging not just as viewers but as co-experiencers of expression and identity. In witnessing, they internalize the messages on stage and carrying reflections that reshape how they see self-expression.<br>
            </p>
+           </p>
 
             <h2>𝗔𝗳𝘁𝗲𝗿 𝘁𝗵𝗲 𝗙𝗶𝗻𝗮𝗹 𝗟𝗶𝗴𝗵𝘁</h2>
+
             <p>
             When the stage lights dimmed, the purpose ExDRAGvaganza delivered stuck with the audience. Each transformation; from the moment Carl stepped as Lava Saugn, CJ became Zesty Bite, Cedrick challenged limits through Eklipse and as Bryan emerged as Xy.Chosis; left behind something larger than performance. What made the moment powerful was not only the spectacle but also the quiet agreement between stage and audience that expression is valid, and their identities are worthy of being seen, accepted, and understood without apology.<br><br>
             In that shared space, stars were shaped through presence and the collective act of witnessing.
             </p>
-            <p><strong>Photos by Jexzy Reign De Lara and Sheryn Joy Lacar, CLSU Collegian</strong></p>
-            <p><strong>Layout by Asher Terby Esquivel, CLSU Collegian</strong></p>
+
             <p><strong>#ForStudentryEQUALITY #CLSUCollegian</strong></p>
         `
     },
@@ -101,12 +114,16 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
         summary: "Like water, the flow of time never stops. It moves forward, constant and unyielding. So in the midst of the digital age where our attention spans seek instant gratification, one institution refuses to be rushed.",
         author: "REYMARC ABAYA & REGINA SUPENA",
         authorLine: "By REYMARC ABAYA & REGINA SUPENA, CLSU Collegian",
+        credits: {
+            by: "REYMARC ABAYA & REGINA SUPENA, CLSU Collegian",
+            photosBy: "Kherby Tabilang and Sheryn Joy Lacar, CLSU Collegian"
+        },
         date: "2026-04-22",
         readTime: "5 min read",
         image: "PHOTOS/FEATURES/feature2.jpg",
         imageAlt: "Sealed, Sent, then Reopened feature image",
         body: `
-            <p><strong>FEATURES | Sealed, Sent, then Reopened</strong></p>
+            <p><strong>Sealed, Sent, then Reopened</strong></p>
             <p>
             Like water, the flow of time never stops. It moves forward, constant and unyielding. So in the midst of the digital age where our attention spans seek instant gratification, one institution refuses to be rushed. The post office remains a sanctuary where words are felt by both the hearts and the hand.<br><br>
             This endurance is evident in the recent reopening of the Central Luzon State University (CLSU) Post Office branch,  through a collaboration with the Philippine Postal Corporation (PHLPost). Honing through the waves of time, the office stands once more to serve a new generation of CLSUans.<br>
@@ -147,7 +164,6 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
             </p>
 
 
-            <p><strong>Photos by Kherby Tabilang and Sheryn Joy Lacar, CLSU Collegian</strong></p>
             <p><strong>#ForStudentryEQUALITY #CLSUCollegian</strong></p>
         `
     },
@@ -158,12 +174,16 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
         summary: "A day after April 8. Exams are finally over.",
         author: "Jasmine Tianco",
         authorLine: "By Jasmine Tianco, CLSU Collegian",
+        credits: {
+            by: "Jasmine Tianco, CLSU Collegian",
+            illustratedBy: "Ysabella Belen Francisco, CLSU Collegian"
+        },
         date: "2026-04-21",
         readTime: "3 min read",
         image: "PHOTOS/FEATURES/feature3.jpg",
         imageAlt: "Crossed Out feature artwork",
         body: `
-            <p><strong>FEATURE | Crossed Out</strong></p>
+            <p><strong>Crossed Out</strong></p>
             
             <p>A day after April 8.<br>
             Exams are finally over.<br><br>
@@ -217,7 +237,6 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
             So, one day, just maybe, we will stop crossing out our well-being for the sake of our studies. And maybe next time, we won’t wait until everything is over to be able to actually take care of ourselves.<br>
             </p>
             </p>
-            <p><strong>Illustrated by Ysabella Belen Francisco, CLSU Collegian</strong></p>
             <p><strong>#ForStudentryEQUALITY #CLSUCollegian</strong></p>
         `
     }

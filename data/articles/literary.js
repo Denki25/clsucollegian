@@ -6,12 +6,17 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
         summary: "Dumating na ang dapithapon, Nariyan na ang huni ng pangwakas na musika",
         author: "Vince Macadangdang",
         authorLine: "Vince Macadangdang, CLSU Collegian",
+        credits: {
+            by: "Vince Macadangdang, CLSU Collegian",
+            illustratedBy: "REYAN DEHL MORENO, CLSU Collegian",
+            layoutBy: "MERWIN LAD VELASCO, CLSU Collegian"
+        },
         date: "2026-04-22",
         readTime: "4 min read",
         image: "PHOTOS/LITERARY/lit1.jpg",
         imageAlt: "Katapusan ng lahat-lahat feature artwork",
         body: `
-            <p><strong>LITERARY | Katapusan ng lahat-lahat</strong></p>
+            <p><strong>Katapusan ng lahat-lahat</strong></p>
             <p>Dumating na ang dapithapon,<br>
             Nariyan na ang huni ng pangwakas na musika<br><br>
             
@@ -73,9 +78,6 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
             Patapos na ang saglit na pagdaong.<br>
             (2:39 a.m. | sa isang boarding house sa Licaong)
             </p>
-            <p><strong>Panulat ni VINCE MACADANGDANG, CLSU Collegian</strong></p>
-            <p><strong>Dibuho ni REYAN DEHL MORENO, CLSU Collegian</strong></p>
-            <p><strong>Inilapat ni MERWIN LAD VELASCO, CLSU Collegian</strong></p>
             <p><strong>#ForStudentryEQUALITY #CLSUCollegian</strong></p>
         `
     }

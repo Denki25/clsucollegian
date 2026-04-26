@@ -53,6 +53,106 @@ function getAuthorLine(article) {
     return article.authorLine;
 }
 
+function normalizeCreditValue(value) {
+    if (typeof value !== "string") {
+        return "";
+    }
+
+    return value.trim().replace(/^(by|via)\s+/i, "");
+}
+
+function pushCredit(items, label, value) {
+    const normalizedValue = normalizeCreditValue(value);
+    if (!normalizedValue) {
+        return;
+    }
+
+    items.push({ label, value: normalizedValue });
+}
+
+function getPhotoCreditLabel(value) {
+    const normalizedValue = normalizeCreditValue(value).toLowerCase();
+    const hasMultipleNames = normalizedValue.includes(" and ")
+        || normalizedValue.includes("&")
+        || normalizedValue.includes(",");
+
+    return hasMultipleNames ? "Photos by:" : "Photo by:";
+}
+
+function getArticleCredits(article) {
+    const credits = article && typeof article.credits === "object" && article.credits !== null
+        ? article.credits
+        : {};
+    const items = [];
+
+    pushCredit(items, "Report by:", credits.by || getAuthorLine(article));
+
+    const photoCredit = credits.photosBy || article.photosBy;
+    if (normalizeCreditValue(photoCredit)) {
+        pushCredit(items, getPhotoCreditLabel(photoCredit), photoCredit);
+    }
+
+    pushCredit(items, "Layout by:", credits.layoutBy || article.layoutBy);
+    pushCredit(items, "Illustrated by:", credits.illustratedBy || article.illustratedBy);
+
+    const extraCredits = Array.isArray(credits.extra)
+        ? credits.extra
+        : (Array.isArray(article.extraCredits) ? article.extraCredits : []);
+
+    extraCredits.forEach((credit) => {
+        if (!credit || typeof credit !== "object") {
+            return;
+        }
+
+        pushCredit(items, credit.label || "", credit.value || "");
+    });
+
+    return items;
+}
+
+function renderArticleCredits(article) {
+    const creditsRoot = document.getElementById("articleCredits");
+    if (!creditsRoot) {
+        return;
+    }
+
+    const creditItems = getArticleCredits(article);
+
+    creditsRoot.innerHTML = creditItems
+        .map((credit) => `
+            <p class="article-credit-line">
+                ${credit.label ? `<span class="article-credit-label">${credit.label}</span>` : ""}
+                <span class="article-credit-value">${credit.value}</span>
+            </p>
+        `)
+        .join("");
+}
+
+let animationObserver = null;
+let heroCarouselIntervalId = null;
+
+function setupAnimationObserver() {
+    if (!("IntersectionObserver" in window)) {
+        return null;
+    }
+
+    if (!animationObserver) {
+        animationObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("animate-in");
+                    animationObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        });
+    }
+
+    return animationObserver;
+}
+
 function getFeaturedArticle() {
     return getArticleBySlug(siteData.featuredSlug) || siteData.articles[0] || null;
 }
@@ -189,6 +289,8 @@ function renderMultimedia() {
             ? siteMultimedia.map((item) => createMultimediaCard(item)).join("")
             : `<div class="news-empty">No multimedia entries are available yet.</div>`;
     }
+
+    observeAnimatedElements();
 }
 
 function renderHomePage() {
@@ -203,15 +305,84 @@ function renderHomePage() {
     const heroSummary = document.getElementById("heroSummary");
     const heroLink = document.getElementById("heroLink");
     const heroImageWrapper = document.getElementById("heroImageWrapper");
+    const heroCarouselDots = document.getElementById("heroCarouselDots");
 
     if (featured && heroCategory && heroTitle && heroSummary && heroLink && heroImageWrapper) {
         heroCategory.textContent = featured.category;
         heroTitle.textContent = featured.title;
         heroSummary.textContent = featured.summary;
         heroLink.href = getArticleUrl(featured.slug);
-        heroImageWrapper.innerHTML = featured.image
-            ? `<img src="${featured.image}" alt="${featured.imageAlt || featured.title}">`
-            : `<div class="hero-placeholder"></div>`;
+
+        const heroArticles = siteData.articles
+            .filter((article) => article.image)
+            .slice(0, 5);
+        const carouselItems = heroArticles.length > 0 ? heroArticles : [featured];
+        let activeIndex = 0;
+
+        const applyHeroSlide = (index) => {
+            const nextArticle = carouselItems[index];
+            if (!nextArticle) {
+                return;
+            }
+
+            activeIndex = index;
+            heroImageWrapper.classList.add("is-transitioning");
+
+            window.setTimeout(() => {
+                heroImageWrapper.innerHTML = nextArticle.image
+                    ? `<img src="${nextArticle.image}" alt="${nextArticle.imageAlt || nextArticle.title}">`
+                    : `<div class="hero-placeholder"></div>`;
+
+                if (heroCarouselDots) {
+                    heroCarouselDots.querySelectorAll(".hero-carousel-dot").forEach((dot, dotIndex) => {
+                        dot.classList.toggle("active", dotIndex === activeIndex);
+                        dot.setAttribute("aria-pressed", dotIndex === activeIndex ? "true" : "false");
+                    });
+                }
+
+                window.requestAnimationFrame(() => {
+                    heroImageWrapper.classList.remove("is-transitioning");
+                });
+            }, 180);
+        };
+
+        if (heroCarouselIntervalId) {
+            window.clearInterval(heroCarouselIntervalId);
+            heroCarouselIntervalId = null;
+        }
+
+        if (heroCarouselDots) {
+            heroCarouselDots.innerHTML = carouselItems.length > 1
+                ? carouselItems.map((article, index) => `
+                    <button
+                        type="button"
+                        class="hero-carousel-dot${index === 0 ? " active" : ""}"
+                        data-hero-index="${index}"
+                        aria-label="Show ${article.title}">
+                    </button>
+                `).join("")
+                : "";
+
+            heroCarouselDots.querySelectorAll(".hero-carousel-dot").forEach((dot) => {
+                dot.addEventListener("click", () => {
+                    const nextIndex = Number(dot.dataset.heroIndex);
+                    if (Number.isNaN(nextIndex) || nextIndex === activeIndex) {
+                        return;
+                    }
+
+                    applyHeroSlide(nextIndex);
+                });
+            });
+        }
+
+        applyHeroSlide(0);
+
+        if (carouselItems.length > 1) {
+            heroCarouselIntervalId = window.setInterval(() => {
+                const nextIndex = (activeIndex + 1) % carouselItems.length;
+                applyHeroSlide(nextIndex);
+            }, 4500);
+        }
     }
 
     const seenCategories = new Set();
@@ -244,6 +415,7 @@ function renderHomePage() {
     }).join("");
 
     renderTrendingTable("trendingTable");
+    observeAnimatedElements();
 }
 
 function renderSectionPage() {
@@ -297,6 +469,7 @@ function renderSectionPage() {
         list.innerHTML = filteredArticles.length > 0
             ? filteredArticles.map((article) => createSectionCard(article)).join("")
             : `<div class="news-empty">No ${emptyLabel.toLowerCase()} articles are available yet.</div>`;
+        observeAnimatedElements();
     };
 
     if (yearFilter && !yearFilter.dataset.bound) {
@@ -330,9 +503,9 @@ function renderArticlePage() {
     document.title = `${article.title} | CLSU Collegian`;
     document.getElementById("articleCategory").textContent = article.category;
     document.getElementById("articleTitle").textContent = article.title;
-    document.getElementById("articleAuthor").textContent = getAuthorLine(article);
     document.getElementById("articleDate").textContent = formatDate(article.date);
     document.getElementById("articleReadTime").textContent = article.readTime || "10 min read";
+    renderArticleCredits(article);
     articleBody.innerHTML = article.body;
 
     const articleFigure = document.getElementById("articleFigure");
@@ -354,24 +527,24 @@ function renderArticlePage() {
 
 function observeAnimatedElements() {
     const animatedElements = document.querySelectorAll(".article-card, .board-member, .value-card, .news-card, .multimedia-card");
-    if (animatedElements.length === 0 || !("IntersectionObserver" in window)) {
+    if (animatedElements.length === 0) {
         return;
     }
 
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px"
-    };
+    const observer = setupAnimationObserver();
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("animate-in");
-            }
-        });
-    }, observerOptions);
+    animatedElements.forEach((element) => {
+        if (!observer) {
+            element.classList.add("animate-in");
+            return;
+        }
 
-    animatedElements.forEach((element) => observer.observe(element));
+        if (element.classList.contains("animate-in")) {
+            return;
+        }
+
+        observer.observe(element);
+    });
 }
 
 renderTicker();

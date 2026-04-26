@@ -35,3 +35,22 @@ Minimum article object shape:
     `
 }
 ```
+
+Optional structured credits:
+
+```js
+{
+    credits: {
+        by: "Author Name, CLSU Collegian",
+        photosBy: "Photographer Name, CLSU Collegian",
+        layoutBy: "Layout Artist Name, CLSU Collegian",
+        illustratedBy: "Illustrator Name, CLSU Collegian",
+        extra: [
+            { label: "Edited By", value: "Editor Name, CLSU Collegian" }
+        ]
+    }
+}
+```
+
+Rendered labels are standardized as `Report by:`, `Photo by:` or `Photos by:`, `Layout by:`, and `Illustrated by:`.
+Only include the credit fields you actually need. Missing ones are skipped automatically on the article page.

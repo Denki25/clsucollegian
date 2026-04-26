@@ -538,6 +538,10 @@ body > header {
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+.hero-text > *:last-child {
+    margin-bottom: 0;
+}
+
 .hero-category {
     display: inline-block;
     background: linear-gradient(135deg, #fe5d13, #d94b0d);
@@ -621,7 +625,7 @@ body > header {
     object-fit: cover;
     border-radius: 16px;
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s ease;
+    transition: opacity 0.45s ease, transform 0.45s ease;
     position: relative;
 }
 
@@ -633,11 +637,18 @@ body > header {
     position: relative;
 }
 
+.hero-image.is-transitioning img,
+.hero-image.is-transitioning .hero-placeholder {
+    opacity: 0.72;
+    transform: scale(0.985);
+}
+
 .hero-placeholder {
     min-height: 350px;
     border-radius: 16px;
     background: linear-gradient(135deg, #ffcc8a, #fe5d13);
     box-shadow: 0 12px 40px rgba(254, 93, 19, 0.24);
+    transition: opacity 0.45s ease, transform 0.45s ease;
 }
 
 .hero-image::before {
@@ -650,6 +661,33 @@ body > header {
     background: linear-gradient(135deg, rgba(254, 93, 19, 0.1), rgba(217, 75, 13, 0.1));
     border-radius: 20px;
     z-index: -1;
+}
+
+.hero-carousel-dots {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin-top: 1.5rem;
+}
+
+.hero-carousel-dot {
+    width: 0.8rem;
+    height: 0.8rem;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(254, 93, 19, 0.24);
+    cursor: pointer;
+    transition: width 0.25s ease, background-color 0.25s ease, transform 0.25s ease;
+}
+
+.hero-carousel-dot:hover {
+    background: rgba(254, 93, 19, 0.5);
+    transform: translateY(-1px);
+}
+
+.hero-carousel-dot.active {
+    width: 2.4rem;
+    background: linear-gradient(135deg, #fe5d13, #d94b0d);
 }
 
 /* Featured Feature Section */
@@ -1182,7 +1220,30 @@ footer {
     gap: 0.75rem;
     font-size: 0.9rem;
     color: #666;
+    margin-bottom: 1rem;
+}
+
+.article-credits {
+    display: grid;
+    gap: 0.45rem;
     margin-bottom: 2rem;
+}
+
+.article-credit-line {
+    margin-bottom: 0;
+    font-size: 0.96rem;
+    line-height: 1.5;
+}
+
+.article-credit-label {
+    display: inline-block;
+    margin-right: 0.35rem;
+    font-weight: 800;
+    color: #1a1a1a;
+}
+
+.article-credit-value {
+    color: #454545;
 }
 
 .featured-image {
@@ -1881,6 +1942,10 @@ footer {
     .hero-text {
         padding: 1rem;
         text-align: center;
+    }
+
+    .hero-carousel-dots {
+        justify-content: center;
     }
 
     .hero h2 {

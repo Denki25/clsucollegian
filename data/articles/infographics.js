@@ -6,12 +6,16 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
         summary: "Proklamado na ng University Electoral Board ang mga susunod na manunungkulan sa University Supreme Student Council matapos ang halalan.",
         author: "Justine Ace Sandoval",
         authorLine: "By Justine Ace Sandoval, CLSU Collegian",
+        credits: {
+            by: "Justine Ace Sandoval, CLSU Collegian",
+            layoutBy: "Asher Terby Esquivel, CLSU Collegian"
+        },
         date: "2026-04-22",
         readTime: "1 min read",
         image: "PHOTOS/INFOGRAPHICS/infographics1.jpg",
         imageAlt: "USSC officers infographic",
         body: `
-            <p><strong>INFOGRAPHICS | Bagong USSC Officers, pormal nang kinilala ng UEB; Ballesteros, uupo bilang Chairperson</strong></p>
+            <p><strong>Bagong USSC Officers, pormal nang kinilala ng UEB; Ballesteros, uupo bilang Chairperson</strong></p>
             <p>
             Proklamado na ng University Electoral Board (UEB) ang mga susunod na manunungkulan sa University Supreme Student Council (USSC) sa pamamagitan ng pag-endorso ng resulta ng halalan sa Office of the University President kahapon, Abril 21.<br><br>
             Pamumunuan ni Rashela Ballesteros, incoming senior mula sa College of Engineering (CEn) at dating gobernador nito, ang pinakamataas na konseho bilang Chairperson matapos makakuha ng 2,707 na boto at 1,165 na abstain. <br><br>
@@ -26,7 +30,6 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
 
             </p>
             
-            <p><strong>Layout by Asher Terby Esquivel, CLSU Collegian</strong></p>
             <p><strong>#ForStudentryEQUALITY #CLSUCollegian</strong></p>
         `
     }

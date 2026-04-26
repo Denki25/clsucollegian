@@ -6,12 +6,15 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
         summary: "During the height of the 119th Founding Anniversary of CLSU, the University Infirmary recorded around 50 student performers who sought medical assistance.",
         author: "Eljohn Tolentino",
         authorLine: "By Eljohn Tolentino, CLSU Collegian",
+        credits: {
+            by: "Eljohn Tolentino, CLSU Collegian"
+        },
         date: "2026-04-22",
         readTime: "3 min read",
         image: "PHOTOS/NEWS/news1.jpg",
         imageAlt: "CLSU Infirmary response during UWeek activities",
         body: `
-            <p><strong>NEWS | CLSU Infirmary tallies 50 UWeek-related med emergencies</strong></p>
+            <p><strong>CLSU Infirmary tallies 50 UWeek-related med emergencies</strong></p>
             <p>
             During the height of the 119th Founding Anniversary of Central Luzon State University (CLSU), the University Infirmary recorded approximately 50 student performers who sought medical assistance for fatigue, injuries, and panic attacks.<br><br>
             This number was accumulated on the night of the Festival Dance performances last April 15. <br>
