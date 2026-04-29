@@ -1,6 +1,7 @@
 const siteConfig = window.CLSU_SITE_CONFIG || {};
 const siteArticles = Array.isArray(window.CLSU_ARTICLES) ? [...window.CLSU_ARTICLES] : [];
 const siteMultimedia = Array.isArray(window.CLSU_MULTIMEDIA) ? [...window.CLSU_MULTIMEDIA] : [];
+const siteIssues = Array.isArray(window.CLSU_ISSUES) ? [...window.CLSU_ISSUES] : [];
 
 siteArticles.sort((left, right) => {
     const leftTime = left.date ? new Date(`${left.date}T00:00:00`).getTime() : 0;
@@ -34,6 +35,56 @@ function getArticleUrl(slug) {
 
 function getArticleBySlug(slug) {
     return siteData.articles.find((article) => article.slug === slug) || null;
+}
+
+function toAbsoluteUrl(value) {
+    if (!value) {
+        return "";
+    }
+
+    try {
+        return new URL(value, window.location.origin).toString();
+    } catch (error) {
+        return value;
+    }
+}
+
+function setMetaContent(id, content, attribute = "content") {
+    const element = document.getElementById(id);
+    if (!element) {
+        return;
+    }
+
+    element.setAttribute(attribute, content || "");
+}
+
+function updateArticleSocialMeta(article) {
+    if (!article) {
+        return;
+    }
+
+    const articleUrl = toAbsoluteUrl(getArticleUrl(article.slug));
+    const articleImage = article.image ? toAbsoluteUrl(article.image) : toAbsoluteUrl("logo.png");
+    const articleTitle = `${article.title} | CLSU Collegian`;
+    const articleDescription = (article.summary || "Campus stories from CLSU Collegian.").trim();
+    const articleImageAlt = (article.imageAlt || article.title || "CLSU Collegian article image").trim();
+
+    document.title = articleTitle;
+
+    const descriptionMeta = document.querySelector('meta[name="description"]');
+    if (descriptionMeta) {
+        descriptionMeta.setAttribute("content", articleDescription);
+    }
+
+    setMetaContent("canonicalUrl", articleUrl, "href");
+    setMetaContent("ogTitle", articleTitle);
+    setMetaContent("ogDescription", articleDescription);
+    setMetaContent("ogUrl", articleUrl);
+    setMetaContent("ogImage", articleImage);
+    setMetaContent("ogImageAlt", articleImageAlt);
+    setMetaContent("twitterTitle", articleTitle);
+    setMetaContent("twitterDescription", articleDescription);
+    setMetaContent("twitterImage", articleImage);
 }
 
 function getAuthorLine(article) {
@@ -249,6 +300,7 @@ function createMultimediaCard(item) {
     const aspectRatioClass = item.aspectRatio === "landscape"
         ? "video-container landscape"
         : "video-container portrait";
+    const platformLabel = item.platform || "Multimedia";
 
     const sourceLink = item.sourceUrl
         ? `<a class="multimedia-link" href="${item.sourceUrl}" target="_blank" rel="noopener noreferrer">Open on ${item.platform || "source"}</a>`
@@ -256,20 +308,25 @@ function createMultimediaCard(item) {
 
     return `
         <article class="multimedia-card">
-            <div class="${aspectRatioClass}">
-                <iframe
-                    src="${item.embedUrl}"
-                    title="${item.title}"
-                    scrolling="no"
-                    allowfullscreen="true"
-                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-                </iframe>
+            <div class="multimedia-frame">
+                <div class="${aspectRatioClass}">
+                    <iframe
+                        src="${item.embedUrl}"
+                        title="${item.title}"
+                        scrolling="no"
+                        allowfullscreen="true"
+                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+                    </iframe>
+                </div>
             </div>
             <div class="multimedia-card-content">
+                <p class="multimedia-eyebrow">${platformLabel}</p>
                 <h3>${item.title}</h3>
                 <p class="multimedia-caption">${item.caption || ""}</p>
-                <p class="multimedia-meta"><strong>Host</strong> ${item.host || "CLSU Collegian"}</p>
-                <p class="multimedia-meta"><strong>Editor</strong> ${item.editor || "Multimedia Desk"}</p>
+                <div class="multimedia-meta-grid">
+                    <p class="multimedia-meta"><strong>Host</strong> ${item.host || "CLSU Collegian"}</p>
+                    <p class="multimedia-meta"><strong>Editor</strong> ${item.editor || "Multimedia Desk"}</p>
+                </div>
                 ${sourceLink}
             </div>
         </article>
@@ -293,6 +350,85 @@ function renderMultimedia() {
     observeAnimatedElements();
 }
 
+function createIssueCard(issue) {
+    const issueLinks = Array.isArray(issue.links)
+        ? issue.links.map((link) => `
+            <a class="issue-link-pill" href="${link.url}" target="_blank" rel="noopener noreferrer">
+                ${link.label}
+            </a>
+        `).join("")
+        : "";
+
+    const fullTitle = (issue.title || "").trim();
+    let headingLineOne = fullTitle;
+    let headingLineTwo = (issue.titleLineTwo || "").trim();
+
+    if (!headingLineTwo && fullTitle) {
+        const volumeMatch = fullTitle.match(/\s+(VOL\.?\s+.+)$/i);
+        if (volumeMatch) {
+            headingLineOne = fullTitle.slice(0, volumeMatch.index).trim();
+            headingLineTwo = volumeMatch[1].trim();
+        } else {
+            const titleParts = fullTitle.split(/\s+/);
+            if (titleParts.length > 1) {
+                headingLineOne = titleParts[0];
+                headingLineTwo = titleParts.slice(1).join(" ");
+            }
+        }
+    }
+    const issueSummary = issue.summary || "Read the latest digital issue of the CLSU Collegian.";
+    const issueSubtitle = issue.subtitle ? `<p class="issue-subtitle">${issue.subtitle}</p>` : "";
+    const issueLabel = issue.label ? `<p class="issue-eyebrow">${issue.label}</p>` : "";
+    const issueHeading = headingLineTwo
+        ? `
+            <div class="issue-heading">
+                <h3>${headingLineOne}</h3>
+                <p class="issue-title-line-two">${headingLineTwo}</p>
+            </div>
+        `
+        : `<h3>${headingLineOne}</h3>`;
+
+    return `
+        <article class="issue-card">
+            <div class="issue-visual-shell">
+                <div class="issue-visual-glow" aria-hidden="true"></div>
+                <div class="issue-cover-frame">
+                    <img src="${issue.image}" alt="${issue.imageAlt || issue.title}" class="issue-cover-image">
+                </div>
+            </div>
+            <div class="issue-content">
+                ${issueLabel}
+                ${issueHeading}
+                ${issueSubtitle}
+                <p class="issue-summary">${issueSummary}</p>
+                <div class="issue-actions">
+                    ${issueLinks}
+                </div>
+            </div>
+        </article>
+    `;
+}
+
+function renderIssues() {
+    const homeIssuesGrid = document.getElementById("homeIssuesGrid");
+    const issuesPageGrid = document.getElementById("issuesPageGrid");
+    const emptyMarkup = `<div class="news-empty">No issues are available yet.</div>`;
+
+    if (homeIssuesGrid) {
+        homeIssuesGrid.innerHTML = siteIssues.length > 0
+            ? siteIssues.slice(0, 1).map((issue) => createIssueCard(issue)).join("")
+            : emptyMarkup;
+    }
+
+    if (issuesPageGrid) {
+        issuesPageGrid.innerHTML = siteIssues.length > 0
+            ? siteIssues.map((issue) => createIssueCard(issue)).join("")
+            : emptyMarkup;
+    }
+
+    observeAnimatedElements();
+}
+
 function renderHomePage() {
     const grid = document.getElementById("articlesGrid");
     if (!grid) {
@@ -305,9 +441,12 @@ function renderHomePage() {
     const heroSummary = document.getElementById("heroSummary");
     const heroLink = document.getElementById("heroLink");
     const heroImageWrapper = document.getElementById("heroImageWrapper");
+    const heroSlideMedia = document.getElementById("heroSlideMedia");
     const heroCarouselDots = document.getElementById("heroCarouselDots");
+    const heroPrevButton = document.getElementById("heroPrevButton");
+    const heroNextButton = document.getElementById("heroNextButton");
 
-    if (featured && heroCategory && heroTitle && heroSummary && heroLink && heroImageWrapper) {
+    if (featured && heroCategory && heroTitle && heroSummary && heroLink && heroImageWrapper && heroSlideMedia) {
         heroCategory.textContent = featured.category;
         heroTitle.textContent = featured.title;
         heroSummary.textContent = featured.summary;
@@ -319,6 +458,25 @@ function renderHomePage() {
         const carouselItems = heroArticles.length > 0 ? heroArticles : [featured];
         let activeIndex = 0;
 
+        const startCarouselAutoplay = () => {
+            if (heroCarouselIntervalId) {
+                window.clearInterval(heroCarouselIntervalId);
+            }
+
+            if (carouselItems.length > 1) {
+                heroCarouselIntervalId = window.setInterval(() => {
+                    const nextIndex = (activeIndex + 1) % carouselItems.length;
+                    applyHeroSlide(nextIndex);
+                }, 4500);
+            } else {
+                heroCarouselIntervalId = null;
+            }
+        };
+
+        const resetCarouselAutoplay = () => {
+            startCarouselAutoplay();
+        };
+
         const applyHeroSlide = (index) => {
             const nextArticle = carouselItems[index];
             if (!nextArticle) {
@@ -329,7 +487,7 @@ function renderHomePage() {
             heroImageWrapper.classList.add("is-transitioning");
 
             window.setTimeout(() => {
-                heroImageWrapper.innerHTML = nextArticle.image
+                heroSlideMedia.innerHTML = nextArticle.image
                     ? `<img src="${nextArticle.image}" alt="${nextArticle.imageAlt || nextArticle.title}">`
                     : `<div class="hero-placeholder"></div>`;
 
@@ -371,18 +529,31 @@ function renderHomePage() {
                     }
 
                     applyHeroSlide(nextIndex);
+                    resetCarouselAutoplay();
                 });
             });
         }
 
-        applyHeroSlide(0);
+        if (heroPrevButton) {
+            heroPrevButton.hidden = carouselItems.length <= 1;
+            heroPrevButton.addEventListener("click", () => {
+                const nextIndex = (activeIndex - 1 + carouselItems.length) % carouselItems.length;
+                applyHeroSlide(nextIndex);
+                resetCarouselAutoplay();
+            });
+        }
 
-        if (carouselItems.length > 1) {
-            heroCarouselIntervalId = window.setInterval(() => {
+        if (heroNextButton) {
+            heroNextButton.hidden = carouselItems.length <= 1;
+            heroNextButton.addEventListener("click", () => {
                 const nextIndex = (activeIndex + 1) % carouselItems.length;
                 applyHeroSlide(nextIndex);
-            }, 4500);
+                resetCarouselAutoplay();
+            });
         }
+
+        applyHeroSlide(0);
+        startCarouselAutoplay();
     }
 
     const seenCategories = new Set();
@@ -500,7 +671,7 @@ function renderArticlePage() {
         return;
     }
 
-    document.title = `${article.title} | CLSU Collegian`;
+    updateArticleSocialMeta(article);
     document.getElementById("articleCategory").textContent = article.category;
     document.getElementById("articleTitle").textContent = article.title;
     document.getElementById("articleDate").textContent = formatDate(article.date);
@@ -526,7 +697,7 @@ function renderArticlePage() {
 }
 
 function observeAnimatedElements() {
-    const animatedElements = document.querySelectorAll(".article-card, .board-member, .value-card, .news-card, .multimedia-card");
+    const animatedElements = document.querySelectorAll(".article-card, .board-member, .value-card, .news-card, .multimedia-card, .issue-card");
     if (animatedElements.length === 0) {
         return;
     }
@@ -552,6 +723,7 @@ renderHomePage();
 renderSectionPage();
 renderArticlePage();
 renderMultimedia();
+renderIssues();
 
 const hamburger = document.querySelector(".hamburger");
 const navMenu = document.querySelector(".nav-menu");
@@ -625,35 +797,68 @@ function stickyNavbar() {
 window.addEventListener("scroll", stickyNavbar);
 
 const shareButtons = document.querySelectorAll(".share-btn");
+const shareFeedback = document.getElementById("shareFeedback");
+
+function setShareFeedback(message) {
+    if (shareFeedback) {
+        shareFeedback.textContent = message;
+    }
+}
+
+async function copyTextToClipboard(value) {
+    if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(value);
+        return true;
+    }
+
+    const helperInput = document.createElement("textarea");
+    helperInput.value = value;
+    helperInput.setAttribute("readonly", "");
+    helperInput.style.position = "absolute";
+    helperInput.style.left = "-9999px";
+    document.body.appendChild(helperInput);
+    helperInput.select();
+
+    try {
+        return document.execCommand("copy");
+    } finally {
+        document.body.removeChild(helperInput);
+    }
+}
+
 shareButtons.forEach((button) => {
-    button.addEventListener("click", function() {
+    button.addEventListener("click", async function() {
         const platform = this.getAttribute("data-platform");
         const url = window.location.href;
         const title = document.title;
 
-        let shareUrl = "";
+        setShareFeedback("");
 
-        switch (platform) {
-            case "facebook":
-                shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
-                break;
-            case "twitter":
-                shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`;
-                break;
-            case "linkedin":
-                shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
-                break;
-            case "email":
-                shareUrl = `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(url)}`;
-                break;
+        if (platform === "facebook") {
+            const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+            window.open(shareUrl, "_blank", "width=600,height=500");
+            return;
         }
 
-        if (shareUrl) {
-            if (platform === "email") {
-                window.location.href = shareUrl;
-            } else {
-                window.open(shareUrl, "_blank", "width=600,height=400");
+        if (platform === "twitter") {
+            const shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`;
+            window.open(shareUrl, "_blank", "width=600,height=500");
+            return;
+        }
+
+        if (platform === "instagram") {
+            try {
+                const copied = await copyTextToClipboard(url);
+                if (copied) {
+                    setShareFeedback("Article link copied. You can now paste it on Instagram.");
+                } else {
+                    setShareFeedback("Copy the article link from the address bar, then paste it on Instagram.");
+                }
+            } catch (error) {
+                setShareFeedback("Copy the article link from the address bar, then paste it on Instagram.");
             }
+
+            window.open("https://www.instagram.com/", "_blank");
         }
     });
 });
@@ -687,13 +892,13 @@ observeAnimatedElements();
 
 const style = document.createElement("style");
 style.textContent = `
-    .article-card, .board-member, .value-card, .news-card, .multimedia-card {
+    .article-card, .board-member, .value-card, .news-card, .multimedia-card, .issue-card {
         opacity: 0;
         transform: translateY(20px);
         transition: opacity 0.6s ease, transform 0.6s ease;
     }
 
-    .article-card.animate-in, .board-member.animate-in, .value-card.animate-in, .news-card.animate-in, .multimedia-card.animate-in {
+    .article-card.animate-in, .board-member.animate-in, .value-card.animate-in, .news-card.animate-in, .multimedia-card.animate-in, .issue-card.animate-in {
         opacity: 1;
         transform: translateY(0);
     }

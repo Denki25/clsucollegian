@@ -20,7 +20,7 @@
                         </span>
                         <span class="logo-copy">
                             <span class="logo-kicker">Campus Publication</span>
-                            <span class="logo-name">CLSU Collegian</span>
+                            <span class="logo-name"><span class="logo-name-primary">CLSU</span> <span class="logo-name-accent">Collegian</span></span>
                         </span>
                     </a>
                 </div>
@@ -30,15 +30,28 @@
                     <li><a href="features.html">Features</a></li>
                     <li><a href="opinion.html">Opinion</a></li>
                     <li><a href="devcom.html">DevCom</a></li>
-                    <li><a href="infographics.html">Infographics</a></li>
+                    <li><a href="infographics.html">Komiks</a></li>
                     <li><a href="literary.html">Literary</a></li>
+                    <li><a href="editorial.html">Editorial</a></li>
                     <li><a href="multimedia.html">Multimedia</a></li>
+                    <li><a href="issues.html">Issues</a></li>
                     <li><a href="about.html" class="active">About</a></li>
                 </ul>
-                <div class="hamburger" aria-label="Toggle navigation" aria-expanded="false" role="button" tabindex="0">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <div class="nav-tools">
+                    <form class="header-search" role="search" action="#" aria-label="Site search" onsubmit="return false;">
+                        <label class="sr-only" for="site-search-about">Search site</label>
+                        <span class="header-search-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" focusable="false">
+                                <path d="M10.5 4a6.5 6.5 0 1 0 4.03 11.6l4.44 4.44 1.06-1.06-4.44-4.44A6.5 6.5 0 0 0 10.5 4Zm0 1.5a5 5 0 1 1 0 10 5 5 0 0 1 0-10Z"/>
+                            </svg>
+                        </span>
+                        <input id="site-search-about" class="header-search-input" type="search" placeholder="Search articles" aria-label="Search articles">
+                    </form>
+                    <div class="hamburger" aria-label="Toggle navigation" aria-expanded="false" role="button" tabindex="0">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -63,7 +76,7 @@
                 <div class="about-description">
                     <div class="story-card">
                         <span class="section-number">01</span>
-                        <h2>History of CLSU Collegian</h2>
+                        <h2>HISTORY</h2>
                         <div class="story-text">
                             <p>The CLSU Collegian traces its roots to January 1918, when it began as Student Farmer during the era of the then Central Luzon Agricultural School. Founded by the school’s male farm students, it became one of the earliest student publications in the institution’s history. In the 1930s, Student Farmer ceased operations and was succeeded by The Plowman, which served as the official publication of the student body. As the institution evolved into Central Luzon Agricultural College, the publication was later renamed CLAC Collegian.</p>
                             <p>In 1964, the publication officially became the CLSU Collegian. Its first Editor-in-Chief was Eliseo Ruiz, who would later become university president. Like many campus publications, it faced periods of interruption, including a nearly two-year halt during the height of Martial Law. The paper eventually resumed operations with the guidance of Dr. Fulgencio Soriano from 1975 to 1980. Following the enactment of the Campus Journalism Act of 1991, the publication gained greater independence and continued its mission of serving the CLSU community.</p>  
@@ -74,7 +87,7 @@
                 <div class="values">
                     <div class="values-header">
                         <span class="section-number">02</span>
-                        <h2>Our Objectives</h2>
+                        <h2>OUR OBJECTIVES</h2>
                     </div>
                     <div class="values-grid">
                         <div class="value-card">
@@ -98,23 +111,22 @@
             <div class="container">
                 <div class="board-header">
                     <span class="section-number">03</span>
-                    <h2>Editorial Board</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <h2>EDITORIAL BOARD</h2>
                 </div>
                 <div class="board-group">
                     <h3 class="board-group-title">EXECUTIVES</h3>
                     <div class="board-grid executives-grid">
                         <div class="board-member">
-                            <img src="PHOTOS/EB PHOTOS/julius.jpg" alt="Executive 1" class="board-photo">
+                            <img src="PHOTOS/EB PHOTOS/alianah.jpg" alt="Executive 1" class="board-photo">
                             <div class="member-info">
-                                <h3>JULIUS CEAZAR GUMARANG</h3>
+                                <h3>ALIANAH MARIE PANGILINAN</h3>
                                 <p class = "member-title">Editor-in-chief</p>
                             </div>
                         </div>
                         <div class="board-member">
-                            <img src="PHOTOS/EB PHOTOS/alianah.jpg" alt="Executive 2" class="board-photo">
+                            <img src="PHOTOS/EB PHOTOS/jawi.jpg" alt="Executive 2" class="board-photo">
                             <div class="member-info">
-                                <h3>ALIANAH MARIE PANGILINAN</h3>
+                                <h3>JAMES WILLIAM SORIANO</h3>
                                 <p class = "member-title">Associate Editor</p>
                             </div>
                         </div>
@@ -211,9 +223,11 @@
                     </div>
                 </div>
             </div>
+            <h2 class="tagline">For Studentry: EQUALITY</h2>
         </section>
     </main>
 
+    
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -226,14 +240,18 @@
                     <div class="social-links">
                         <a href="https://www.facebook.com/CLSUCollegian.Official" target="_blank" aria-label="Facebook" title="Facebook">f</a>
                         <a href="https://twitter.com/clsukule" target="_blank" aria-label="Twitter" title="Twitter">&#120143;</a>
-                        <a href="https://www.instagram.com/clsukule" target="_blank" aria-label="Instagram" title="Instagram">&#128247;</a>
+                        <a href="https://www.instagram.com/clsukule" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
+                            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.8A3.95 3.95 0 0 0 3.8 7.75v8.5a3.95 3.95 0 0 0 3.95 3.95h8.5a3.95 3.95 0 0 0 3.95-3.95v-8.5a3.95 3.95 0 0 0-3.95-3.95Zm8.95 1.35a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.8A3.2 3.2 0 1 0 12 15.2 3.2 3.2 0 0 0 12 8.8Z"/>
+                            </svg>
+                        </a>
                     </div>
                 </div>
                 <div class="footer-section">
                     <h4>Contact</h4>
                     <div class="contact-info">
                         <p><span class="contact-icon">&#128231;</span> <a href="mailto:clsucollegian@clsu.edu.ph">clsucollegian@clsu.edu.ph</a></p>
-                        <p><span class="contact-icon">&#128205;</span> Student Union Building, Central Luzon State University, Science City of Munoz, Nueva Ecija</p>
+                        <p><span class="contact-icon">&#128205;</span> <a href="https://www.google.com/maps/place/PWJH%2B9H6+Student+Union+Building,+Mu%C3%B1oz,+Nueva+Ecija/@15.7316543,120.9254867,17.44z/data=!4m6!3m5!1s0x3390d6455e11bd1d:0x64d1cf6a7b9d6ec7!8m2!3d15.730918!4d120.9288929!16s%2Fg%2F11v100bym8?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D" target="_blank">Student Union Building, Central Luzon State University, Science City of Munoz, Nueva Ecija</a></p>
                     </div>
                 </div>
             </div>
@@ -244,7 +262,7 @@
     </footer>
 
     <script src="data/site-config.js"></script>
+    <script src="data/articles/editorial.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
-

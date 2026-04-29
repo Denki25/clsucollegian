@@ -17,7 +17,7 @@ window.CLSU_SITE_CONFIG = {
         },
         {
             title: "Bagong USSC Officers, pormal nang kinilala ng UEB; Ballesteros, uupo bilang Chairperson",
-            tag: "Infographics",
+            tag: "News",
             slug: "bagong-ussc-officers-pormal-nang-kinilala-ng-ueb-ballesteros-uupo-bilang-chairperson"
         },
         {

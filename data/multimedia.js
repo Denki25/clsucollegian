@@ -1,7 +1,7 @@
 window.CLSU_MULTIMEDIA = [
     {
         title: "KULEASKS",
-        platform: "Facebook",
+        platform: "Facebook Reel",
         host: "JUDY LOYS GALAPON",
         editor: "RENZ JUSTINE AQUINO",
         embedUrl: "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2FCLSUCollegian.Official%2Fvideos%2F4403745609904215%2F&show_text=false&width=267&t=0",

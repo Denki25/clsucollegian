@@ -4,7 +4,7 @@ Article setup per section:
 - `features.js` uses `category: "Features"`
 - `opinion.js` uses `category: "Opinion"`
 - `devcom.js` uses `category: "DevCom"`
-- `infographics.js` uses `category: "Infographics"`
+- `infographics.js` uses `category: "Komiks"`
 - `literary.js` uses `category: "Literary"`
 
 Rules when adding an article:
