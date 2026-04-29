@@ -657,7 +657,7 @@ body > header {
         margin-top: 0;
         margin-left: 0;
         display: flex;
-        padding: 5.5rem 5.25rem 2rem 1.35rem;
+        padding: 1rem 5.25rem 2rem 1.35rem;
         border-top: none;
         background: linear-gradient(180deg, #fff8f2 0%, #ffffff 30%, #fffdfb 100%);
         box-shadow: -18px 0 42px rgba(0, 0, 0, 0.12);
@@ -670,15 +670,12 @@ body > header {
         right: 0;
     }
 
-    .nav-menu.active + .nav-tools .header-search {
+    .nav-menu .header-search {
         display: flex;
-        position: fixed;
-        top: 1rem;
-        right: 4.95rem;
-        width: calc(min(320px, 84vw) - 8.15rem);
+        width: 100%;
         min-width: 0;
+        margin-bottom: 0.9rem;
         padding: 0.65rem 0.9rem;
-        z-index: 1002;
         border: 1px solid transparent;
         border-bottom: 1px solid #f2ece7;
         border-radius: 16px;
@@ -686,12 +683,21 @@ body > header {
         box-shadow: none;
     }
 
-    .nav-menu.active + .nav-tools .header-search:hover,
-    .nav-menu.active + .nav-tools .header-search:focus-within {
+    .nav-menu .header-search:hover,
+    .nav-menu .header-search:focus-within {
         background: rgba(254, 93, 19, 0.08);
         border-color: rgba(254, 93, 19, 0.14);
         box-shadow: none;
         transform: translateY(0);
+    }
+
+    .nav-menu .header-search-input {
+        font-size: 0.92rem;
+    }
+
+    .nav-menu.active + .nav-tools .header-search {
+        display: flex;
+        position: static;
     }
 
     .nav-menu li {
@@ -2458,7 +2464,7 @@ footer {
         margin-top: 0;
         margin-left: 0;
         display: flex;
-        padding: 5.5rem 5.25rem 2rem 1.5rem;
+        padding: 1rem 5.25rem 2rem 1.5rem;
         border-top: none;
         background: linear-gradient(180deg, #fff8f2 0%, #ffffff 30%, #fffdfb 100%);
         box-shadow: -18px 0 42px rgba(0, 0, 0, 0.12);
@@ -2702,13 +2708,11 @@ footer {
         gap: 0;
     }
 
-    .nav-menu.active + .nav-tools .header-search {
-        right: 4.45rem;
-        width: calc(min(100vw, 320px) - 6.95rem);
+    .nav-menu .header-search {
         padding: 0.58rem 0.75rem;
     }
 
-    .nav-menu.active + .nav-tools .header-search-input {
+    .nav-menu .header-search-input {
         font-size: 0.84rem;
     }
 
@@ -2719,7 +2723,7 @@ footer {
 
     .nav-menu {
         width: min(100vw, 320px);
-        padding: 5.25rem 4.75rem 1.75rem 1.1rem;
+        padding: 1rem 4.75rem 1.75rem 1.1rem;
     }
 
     .trending-table-card {

@@ -727,6 +727,27 @@ renderIssues();
 
 const hamburger = document.querySelector(".hamburger");
 const navMenu = document.querySelector(".nav-menu");
+const navTools = document.querySelector(".nav-tools");
+const headerSearch = document.querySelector(".header-search");
+
+function syncMobileSearchPlacement() {
+    if (!navMenu || !headerSearch || !navTools) {
+        return;
+    }
+
+    if (window.innerWidth <= 1100) {
+        if (headerSearch.parentElement !== navMenu) {
+            navMenu.insertBefore(headerSearch, navMenu.firstChild);
+        }
+        return;
+    }
+
+    if (headerSearch.parentElement !== navTools) {
+        navTools.insertBefore(headerSearch, navTools.firstChild);
+    }
+}
+
+syncMobileSearchPlacement();
 
 if (hamburger && navMenu) {
     const closeMenu = () => {
@@ -880,6 +901,8 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 });
 
 window.addEventListener("resize", () => {
+    syncMobileSearchPlacement();
+
     if (window.innerWidth > 768 && navMenu && hamburger) {
         navMenu.classList.remove("active");
         hamburger.classList.remove("active");
