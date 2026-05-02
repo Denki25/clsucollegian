@@ -293,6 +293,241 @@ function createEmbeddedVideoMarkup(embedUrl, title, containerClass = "video-cont
     `;
 }
 
+function stripHtmlTags(value) {
+    if (typeof value !== "string") {
+        return "";
+    }
+
+    return value
+        .replace(/<style[\s\S]*?<\/style>/gi, " ")
+        .replace(/<script[\s\S]*?<\/script>/gi, " ")
+        .replace(/<br\s*\/?>/gi, " ")
+        .replace(/<\/p>/gi, " ")
+        .replace(/<[^>]+>/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+}
+
+function getTextExcerpt(value, limit = 180) {
+    const cleaned = stripHtmlTags(value);
+    if (cleaned.length <= limit) {
+        return cleaned;
+    }
+
+    return `${cleaned.slice(0, limit).trimEnd()}...`;
+}
+
+function createMultimediaSearchSummary(item) {
+    if (item.caption) {
+        return item.caption;
+    }
+
+    if (item.platform) {
+        return `Watch this ${item.platform.toLowerCase()} feature from the CLSU Collegian multimedia desk.`;
+    }
+
+    return "Watch this multimedia feature from the CLSU Collegian multimedia desk.";
+}
+
+function buildSearchIndex() {
+    const articleItems = siteData.articles.map((article, index) => ({
+        resultType: "article",
+        key: `article-${article.slug || index}`,
+        title: article.title || "",
+        summary: article.summary || getTextExcerpt(article.body || "", 220),
+        author: article.author || "",
+        category: article.category || "Article",
+        date: article.date || "",
+        readTime: article.readTime || "",
+        image: article.image || "",
+        imageAlt: article.imageAlt || article.title || "",
+        slug: article.slug || "",
+        url: getArticleUrl(article.slug),
+        bodyText: stripHtmlTags(article.body || ""),
+        literaryMedia: article.literaryMedia || null
+    }));
+
+    const multimediaItems = siteMultimedia.map((item, index) => ({
+        resultType: "multimedia",
+        key: `multimedia-${index}`,
+        title: item.title || "",
+        summary: item.caption || createMultimediaSearchSummary(item),
+        author: item.host || "",
+        category: item.platform || "Multimedia",
+        date: "",
+        readTime: "",
+        image: "",
+        imageAlt: item.title || "Multimedia entry",
+        slug: "",
+        url: item.sourceUrl || "multimedia.html",
+        embedUrl: item.embedUrl || "",
+        platform: item.platform || "Multimedia",
+        host: item.host || "",
+        editor: item.editor || "",
+        caption: item.caption || "",
+        external: Boolean(item.sourceUrl)
+    }));
+
+    return articleItems.concat(multimediaItems).map((item, index) => {
+        const searchableText = [
+            item.title,
+            item.summary,
+            item.author,
+            item.category,
+            item.bodyText,
+            item.platform,
+            item.host,
+            item.editor,
+            item.caption
+        ].filter(Boolean).join(" ").toLowerCase();
+
+        return {
+            ...item,
+            searchableText,
+            index
+        };
+    });
+}
+
+let cachedSearchIndex = null;
+
+function getSearchIndex() {
+    if (!cachedSearchIndex) {
+        cachedSearchIndex = buildSearchIndex();
+    }
+
+    return cachedSearchIndex;
+}
+
+function scoreSearchResult(item, normalizedQuery, queryTokens) {
+    if (!normalizedQuery || queryTokens.length === 0) {
+        return 0;
+    }
+
+    if (!queryTokens.every((token) => item.searchableText.includes(token))) {
+        return 0;
+    }
+
+    const title = (item.title || "").toLowerCase();
+    const summary = (item.summary || "").toLowerCase();
+    const author = (item.author || "").toLowerCase();
+    const category = (item.category || "").toLowerCase();
+    const body = (item.bodyText || "").toLowerCase();
+    const extra = [item.platform, item.host, item.editor, item.caption]
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase();
+
+    let score = 0;
+
+    if (title.includes(normalizedQuery)) {
+        score += 120;
+    }
+    if (summary.includes(normalizedQuery)) {
+        score += 60;
+    }
+    if (author.includes(normalizedQuery) || category.includes(normalizedQuery) || extra.includes(normalizedQuery)) {
+        score += 40;
+    }
+    if (body.includes(normalizedQuery)) {
+        score += 24;
+    }
+
+    queryTokens.forEach((token) => {
+        if (title.includes(token)) {
+            score += 24;
+        }
+        if (summary.includes(token)) {
+            score += 12;
+        }
+        if (author.includes(token) || category.includes(token) || extra.includes(token)) {
+            score += 8;
+        }
+        if (body.includes(token)) {
+            score += 4;
+        }
+    });
+
+    return score;
+}
+
+function searchSite(query) {
+    const normalizedQuery = query.trim().toLowerCase();
+    const queryTokens = normalizedQuery.split(/\s+/).filter(Boolean);
+
+    if (queryTokens.length === 0) {
+        return [];
+    }
+
+    return getSearchIndex()
+        .map((item) => ({
+            ...item,
+            relevanceScore: scoreSearchResult(item, normalizedQuery, queryTokens)
+        }))
+        .filter((item) => item.relevanceScore > 0)
+        .sort((left, right) => {
+            if (right.relevanceScore !== left.relevanceScore) {
+                return right.relevanceScore - left.relevanceScore;
+            }
+
+            const leftTime = left.date ? new Date(`${left.date}T00:00:00`).getTime() : 0;
+            const rightTime = right.date ? new Date(`${right.date}T00:00:00`).getTime() : 0;
+            if (rightTime !== leftTime) {
+                return rightTime - leftTime;
+            }
+
+            return left.index - right.index;
+        });
+}
+
+function createSearchResultMedia(item) {
+    if (item.image) {
+        return `<img src="${item.image}" alt="${item.imageAlt || item.title}" class="search-result-image">`;
+    }
+
+    const placeholderLabel = item.resultType === "multimedia"
+        ? "Multimedia"
+        : (getLiteraryMedia(item, "card") ? "Literary Video" : (item.category || "Article"));
+    return `<div class="search-result-placeholder">${placeholderLabel}</div>`;
+}
+
+function createSearchResultMeta(item) {
+    if (item.resultType === "multimedia") {
+        return [
+            item.platform || "Multimedia",
+            item.host ? `Host: ${item.host}` : "",
+            item.editor ? `Editor: ${item.editor}` : ""
+        ].filter(Boolean).join(" • ");
+    }
+
+    return [
+        item.author ? `By ${item.author}` : "",
+        item.date ? formatDate(item.date) : "",
+        item.readTime || ""
+    ].filter(Boolean).join(" • ");
+}
+
+function createSearchResultCard(item) {
+    const categoryLabel = item.resultType === "multimedia" ? "Multimedia" : (item.category || "Article");
+    const actionLabel = item.resultType === "multimedia" ? "Watch now" : "Read article";
+    const targetAttr = item.external ? ` target="_blank" rel="noopener noreferrer"` : "";
+
+    return `
+        <a class="search-result-card" href="${item.url}"${targetAttr} aria-label="${actionLabel}: ${item.title}">
+            <div class="search-result-media">
+                ${createSearchResultMedia(item)}
+            </div>
+            <div class="search-result-content">
+                <span class="search-result-category">${categoryLabel}</span>
+                <h3>${item.title}</h3>
+                <p class="search-result-summary">${item.summary || getTextExcerpt(item.bodyText || "", 180)}</p>
+                <div class="search-result-meta">${createSearchResultMeta(item)}</div>
+                <span class="search-result-action">${actionLabel}</span>
+            </div>
+        </a>
+    `;
+}
+
 function createCardImage(article) {
     const literaryCardMedia = getLiteraryMedia(article, "card");
     if (literaryCardMedia) {
@@ -777,7 +1012,7 @@ function renderArticlePage() {
 }
 
 function observeAnimatedElements() {
-    const animatedElements = document.querySelectorAll(".article-card, .board-member, .value-card, .news-card, .multimedia-card, .issue-card");
+    const animatedElements = document.querySelectorAll(".article-card, .board-member, .value-card, .news-card, .multimedia-card, .issue-card, .search-result-card");
     if (animatedElements.length === 0) {
         return;
     }
@@ -798,6 +1033,97 @@ function observeAnimatedElements() {
     });
 }
 
+function ensureSearchResultsSection() {
+    let searchSection = document.getElementById("siteSearchResults");
+    if (searchSection) {
+        return searchSection;
+    }
+
+    const pageHeader = document.querySelector("body > header");
+    if (!pageHeader) {
+        return null;
+    }
+
+    searchSection = document.createElement("section");
+    searchSection.id = "siteSearchResults";
+    searchSection.className = "search-results-shell";
+    searchSection.hidden = true;
+    searchSection.innerHTML = `
+        <div class="container">
+            <div class="search-results-header">
+                <div>
+                    <p class="search-results-kicker">Search Results</p>
+                    <h2 id="siteSearchHeading">Search Results</h2>
+                    <p class="search-results-summary-text" id="siteSearchSummary"></p>
+                </div>
+                <button type="button" class="search-results-close" id="siteSearchClose" aria-label="Close search results">Close</button>
+            </div>
+            <div class="search-results-list" id="siteSearchList"></div>
+        </div>
+    `;
+
+    pageHeader.insertAdjacentElement("afterend", searchSection);
+
+    const closeButton = document.getElementById("siteSearchClose");
+    if (closeButton) {
+        closeButton.addEventListener("click", () => {
+            searchSection.hidden = true;
+            document.body.classList.remove("search-results-visible");
+        });
+    }
+
+    return searchSection;
+}
+
+function hideSearchResults() {
+    const searchSection = document.getElementById("siteSearchResults");
+    if (!searchSection) {
+        document.body.classList.remove("search-results-visible");
+        return;
+    }
+
+    searchSection.hidden = true;
+    document.body.classList.remove("search-results-visible");
+}
+
+function renderSearchResults(query, options = {}) {
+    const trimmedQuery = query.trim();
+    if (trimmedQuery.length < 2) {
+        hideSearchResults();
+        return;
+    }
+
+    const searchSection = ensureSearchResultsSection();
+    const searchHeading = document.getElementById("siteSearchHeading");
+    const searchSummary = document.getElementById("siteSearchSummary");
+    const searchList = document.getElementById("siteSearchList");
+
+    if (!searchSection || !searchHeading || !searchSummary || !searchList) {
+        return;
+    }
+
+    const results = searchSite(trimmedQuery);
+    searchHeading.textContent = `Results for "${trimmedQuery}"`;
+    searchSummary.textContent = results.length > 0
+        ? `${results.length} matching result${results.length === 1 ? "" : "s"} found across articles and multimedia.`
+        : `No matching results found for "${trimmedQuery}".`;
+
+    searchList.innerHTML = results.length > 0
+        ? results.map((item) => createSearchResultCard(item)).join("")
+        : `<div class="news-empty">No related articles or multimedia entries matched your search.</div>`;
+
+    searchSection.hidden = false;
+    document.body.classList.add("search-results-visible");
+    observeAnimatedElements();
+
+    if (options.scrollIntoView) {
+        searchSection.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    }
+}
+
 renderTicker();
 renderHomePage();
 renderSectionPage();
@@ -809,6 +1135,8 @@ const hamburger = document.querySelector(".hamburger");
 const navMenu = document.querySelector(".nav-menu");
 const navTools = document.querySelector(".nav-tools");
 const headerSearch = document.querySelector(".header-search");
+const headerSearchForms = document.querySelectorAll(".header-search");
+const headerSearchInputs = document.querySelectorAll(".header-search-input");
 
 function syncMobileSearchPlacement() {
     if (!navMenu || !headerSearch || !navTools) {
@@ -828,6 +1156,42 @@ function syncMobileSearchPlacement() {
 }
 
 syncMobileSearchPlacement();
+
+function syncSearchInputValues(sourceInput) {
+    headerSearchInputs.forEach((input) => {
+        if (input !== sourceInput) {
+            input.value = sourceInput.value;
+        }
+    });
+}
+
+headerSearchForms.forEach((form) => {
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const input = form.querySelector(".header-search-input");
+        if (!input) {
+            return;
+        }
+
+        syncSearchInputValues(input);
+        renderSearchResults(input.value, { scrollIntoView: true });
+    });
+});
+
+headerSearchInputs.forEach((input) => {
+    input.addEventListener("input", () => {
+        syncSearchInputValues(input);
+        renderSearchResults(input.value);
+    });
+
+    input.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+            input.value = "";
+            syncSearchInputValues(input);
+            hideSearchResults();
+        }
+    });
+});
 
 if (hamburger && navMenu) {
     const closeMenu = () => {
