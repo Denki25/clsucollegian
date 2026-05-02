@@ -1,10 +1,15 @@
 window.CLSU_SITE_CONFIG = {
     tickerItems: [
-        "Proklamado na ng University Electoral Board (UEB) ang mga susunod na manunungkulan sa University Supreme Student Council (USSC) sa pamamagitan ng pag-endorso ng resulta ng halalan sa Office of the University President kahapon, Abril 21."
+        "Planong ilunsad ng Central Luzon State University (CLSU) ang Artificial Intelligence(AI)-powered chatbot na “SielAI” sa Comprehensive Academic Information System (CAIS) pagsapit ng unang semestre ng panuruang taon 2026-2027, ayon kay Robert Hernandez, Project Coordinator ng proyekto, sa isang panayam kahapon, Abril 29."
     ],
-    featuredSlug: "katapusan-ng-lahat-lahat",
+    featuredSlug: "fare-fear-future",
 
     trending: [
+        {
+            title: "Fear, Fare, Future",
+            tag: "Literary",
+            slug: "fare-fear-future"
+        },
         {
             title: "Katapusan ng lahat-lahat",
             tag: "Literary",

@@ -17,13 +17,14 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
         imageAlt: "Stars Shaped in Shared Space feature artwork",
         body: `
         
-            <p><strong>Stars Shaped in Shared Space</strong></p>
+            <h2>Stars Shaped in Shared Space</h2>
             <p>
             Under the lights that revealed more than performance, ExDRAGvaganza became a shared space where identity was not just exhibited on stage but recognized in the eyes of those who watched, responded, and saw themselves reflected back through every movement, silence, and applause.<br><br>
             What made the moment powerful was not only the spectacle of performance but the quiet agreement between the stage and the audience that allowed people to exist in the room without shrinking any part of themselves.<br>
             
-            <h2>
+            <strong>
             𝗖𝘂𝗿𝗶𝗼𝘀𝗶𝘁𝘆 𝗶𝗻𝘁𝗼 𝗜𝗱𝗲𝗻𝘁𝗶𝘁𝘆
+            </strong>
             </h2>
 
             <p>
@@ -34,8 +35,9 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
             “Maging totoo kayo sa sarili niyo kapag authentic ka, mas nagiging meaningful lahat ng ginagawa mo,” they shared.<br><br>
             Carl’s journey in ExDRAGvaganza reflects how drag can serve both as performance and as self-discovery, where identity is not concealed but rather fully embraced. In becoming their stage persona, they find a space where authenticity and expression meet beyond everyday limitations.<br>
             </p>
-            <h2>
+            <strong>
             𝗖𝗼𝗻𝗰𝗲𝗮𝗹𝗺𝗲𝗻𝘁 𝘁𝗼 𝗕𝗼𝗹𝗱 𝗔𝗿𝗿𝗶𝘃𝗮𝗹
+            </strong>
             </h2>
             <p>
 
@@ -51,9 +53,10 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
 
             <p>Joshua’s journey, which earned him the position of ExDRAGvaganza 2026 First Runner-Up, highlights how drag exists both as escape and celebration, shaped by the tension between personal truth and external expectations. Through this experience, he transforms struggle into an act of courage.</p>
             
-            <h2>
+            <strong>
             𝗙𝗿𝗼𝗺 𝗗𝗼𝘂𝗯𝘁 𝘁𝗼 𝗗𝗿𝗮𝗴 𝗦𝘂𝗽𝗲𝗿𝘀𝘁𝗮𝗿
-            </h2>
+            </strong>
+
             <p>
             Eklipse transforms into a self-defined person who refuses to submit to limitations. Cedrick Garcia, a Bachelor of Secondary Education (BSEd) major in Social Studies freshie, entered ExDRAGvaganza after being told she was not meant for drag. <br><br>
             After hearing those words before ExDRAGvaganza, she began preparing in silence—joining rehearsals, learning choreography, refining her presence on stage, and steadily putting herself in spaces she was once told she did not belong in. <br><br>
@@ -66,9 +69,9 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
             Cedrick’s experience highlights how drag challenges imposed labels and opens space for self-definition through performance and expression. It shows how identity can be actively shaped through confidence, creativity, and the refusal to be limited by others’ expectations.<br>
             </p>
 
-            <h2>
+            <strong>
             𝗙𝘂𝗹𝗳𝗶𝗹𝗹𝗲𝗱 𝗧𝗵𝗿𝗼𝘂𝗴𝗵 𝗪𝗶𝗽𝗶𝗻𝗴
-            </h2>
+            </strong>
 
             <p>
             Before the stage ever met the audience, Bryan Kenneth Cruz, a Bachelor of Arts in Literature student, already existed in quiet creativity until he stepped into full transformation as his drag identity, Xy.Chosis.<br><br>
@@ -80,7 +83,7 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
             When Bryan steps into Xy.Chosis, the identity he builds no longer feels like an escape from reality but a space where imagination and expression finally exist without restriction, turning performance into a lived form of creativity made visible. <br>
             </p>
 
-            <h2>𝗕𝗲𝗹𝗼𝗻𝗴𝗶𝗻𝗴 𝗧𝗵𝗿𝗼𝘂𝗴𝗵 𝗪𝗶𝘁𝗻𝗲𝘀𝘀𝗶𝗻𝗴</h2>
+            <strong>𝗕𝗲𝗹𝗼𝗻𝗴𝗶𝗻𝗴 𝗧𝗵𝗿𝗼𝘂𝗴𝗵 𝗪𝗶𝘁𝗻𝗲𝘀𝘀𝗶𝗻𝗴</strong>
 
             <p>
             For the audiences, ExDRAGvaganza was not something simply watched but something lived alongside the performers.
@@ -97,7 +100,7 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
            </p>
            </p>
 
-            <h2>𝗔𝗳𝘁𝗲𝗿 𝘁𝗵𝗲 𝗙𝗶𝗻𝗮𝗹 𝗟𝗶𝗴𝗵𝘁</h2>
+            <strong>𝗔𝗳𝘁𝗲𝗿 𝘁𝗵𝗲 𝗙𝗶𝗻𝗮𝗹 𝗟𝗶𝗴𝗵𝘁</strong>
 
             <p>
             When the stage lights dimmed, the purpose ExDRAGvaganza delivered stuck with the audience. Each transformation; from the moment Carl stepped as Lava Saugn, CJ became Zesty Bite, Cedrick challenged limits through Eklipse and as Bryan emerged as Xy.Chosis; left behind something larger than performance. What made the moment powerful was not only the spectacle but also the quiet agreement between stage and audience that expression is valid, and their identities are worthy of being seen, accepted, and understood without apology.<br><br>
@@ -123,18 +126,18 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
         image: "PHOTOS/FEATURES/feature2.jpg",
         imageAlt: "Sealed, Sent, then Reopened feature image",
         body: `
-            <p><strong>Sealed, Sent, then Reopened</strong></p>
+            <h2>Sealed, Sent, then Reopened</h2>
             <p>
             Like water, the flow of time never stops. It moves forward, constant and unyielding. So in the midst of the digital age where our attention spans seek instant gratification, one institution refuses to be rushed. The post office remains a sanctuary where words are felt by both the hearts and the hand.<br><br>
             This endurance is evident in the recent reopening of the Central Luzon State University (CLSU) Post Office branch,  through a collaboration with the Philippine Postal Corporation (PHLPost). Honing through the waves of time, the office stands once more to serve a new generation of CLSUans.<br>
             
-            <h2>𝗦𝗲𝗻𝘁𝗶𝗻𝗲𝗹 𝗼𝗳 𝘁𝗵𝗲 𝗣𝗮𝘀𝘁</h2>
+            <strong>𝗦𝗲𝗻𝘁𝗶𝗻𝗲𝗹 𝗼𝗳 𝘁𝗵𝗲 𝗣𝗮𝘀𝘁</strong>
             <p>
             If you walk along the sidewalks of University Avenue, the Post Office will meet your eye. It sits directly in front of the university tennis court, where its wooden walls stand as a silent witness to over a century of academic and national history. The building wore many roles before it settled as a courier of dreams. <br><br>
             Established in 1907 during the early years of the institution, it first served to connect a remote campus to the rest of the archipelago. By 1925, it transitioned into the Students’ Trust Bank, a secure vault for the community’s wealth before the fires of Philippine-American war reached the fields. During the pre-war and post-war eras, the building functioned as the Administration Building.<br><br>
             Eventually, the structure became a dedicated postal hub and served for decades as the primary artery for student life. It was the place where student’s allowances arrived in thin envelopes and love letters crossed provinces. However, when the COVID-19 virus hit the country, borders tightened and operations paused. The creaking sound of the mailbox fell silent as the building sat in a forced, quiet quarantine. After years of stillness, the university finally pulled back the curtains this week.<br>
             </p>
-            <h2>𝗦𝘁𝗼𝗿𝗶𝗲𝘀 𝗪𝗼𝘃𝗲𝗻 𝗯𝘆 𝗟𝗲𝘁𝘁𝗲𝗿𝘀</h2>
+            <strong>𝗦𝘁𝗼𝗿𝗶𝗲𝘀 𝗪𝗼𝘃𝗲𝗻 𝗯𝘆 𝗟𝗲𝘁𝘁𝗲𝗿𝘀</strong>
             
             <p>
             Letters once carried stories across time and distance, moving slowly but enduring deeply. The post office preserves these traces of human connection, where each letter holds a piece of someone’s life, sealed and waiting to be felt.<br><br>
@@ -149,7 +152,7 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
             These stories show how the post office became part of everyday life, shaping both simple and meaningful moments. It was not just about sending and receiving, but about the emotions carried in each envelope.
             </p>
             </p>
-            <h2>𝗧𝗮𝗿𝗴𝗲𝘁 𝗭𝗲𝗿𝗼 𝗕𝗮𝗹𝗮𝗻𝗰𝗲 𝗗𝗶𝘀𝗽𝗮𝘁𝗰𝗵 𝗮𝘁 𝗦𝘂𝗻𝗿𝗶𝘀𝗲, 𝗧𝗮𝗿𝗴𝗲𝘁 𝗭𝗲𝗿𝗼 𝗕𝗮𝗹𝗮𝗻𝗰𝗲 𝗗𝗲𝗹𝗶𝘃𝗲𝗿𝘆 𝗮𝘁 𝗦𝘂𝗻𝘀𝗲𝘁</h2>
+            <strong>𝗧𝗮𝗿𝗴𝗲𝘁 𝗭𝗲𝗿𝗼 𝗕𝗮𝗹𝗮𝗻𝗰𝗲 𝗗𝗶𝘀𝗽𝗮𝘁𝗰𝗵 𝗮𝘁 𝗦𝘂𝗻𝗿𝗶𝘀𝗲, 𝗧𝗮𝗿𝗴𝗲𝘁 𝗭𝗲𝗿𝗼 𝗕𝗮𝗹𝗮𝗻𝗰𝗲 𝗗𝗲𝗹𝗶𝘃𝗲𝗿𝘆 𝗮𝘁 𝗦𝘂𝗻𝘀𝗲𝘁</strong>
            
             <p>
             After years of silence, the post office comes back to life once again. The quiet that once filled its halls is now replaced with movement and renewed purpose.<br><br>
@@ -183,7 +186,7 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
         image: "PHOTOS/FEATURES/feature3.jpg",
         imageAlt: "Crossed Out feature artwork",
         body: `
-            <p><strong>Crossed Out</strong></p>
+            <h2>Crossed Out</h2>
             
             <p>A day after April 8.<br>
             Exams are finally over.<br><br>

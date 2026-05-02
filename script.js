@@ -233,18 +233,86 @@ function renderTicker() {
     ticker.innerHTML = `<span>BREAKING:</span> ${items.join(" • ")}`;
 }
 
+function getLiteraryMedia(article, surface = "article") {
+    if (!article || article.category !== "Literary") {
+        return null;
+    }
+
+    const configuredMedia = article.literaryMedia && typeof article.literaryMedia === "object"
+        ? article.literaryMedia
+        : {};
+    const surfaceMedia = configuredMedia[surface] && typeof configuredMedia[surface] === "object"
+        ? configuredMedia[surface]
+        : {};
+    const mediaType = (surfaceMedia.type || article.literaryMediaType || "").trim();
+    const embedUrl = (surfaceMedia.embedUrl || article.videoEmbedUrl || "").trim();
+
+    if (mediaType !== "video" || !embedUrl) {
+        return null;
+    }
+
+    return {
+        type: mediaType,
+        embedUrl
+    };
+}
+
+function isLiteraryVideoArticle(article, surface = "article") {
+    return Boolean(getLiteraryMedia(article, surface));
+}
+
+function normalizeEmbedUrl(embedUrl) {
+    if (typeof embedUrl !== "string") {
+        return "";
+    }
+
+    return (embedUrl.match(/src="([^"]+)"/i)?.[1] || embedUrl).trim().replace(/,$/, "");
+}
+
+function createArticlePlaceholder(article, className = "article-thumb-placeholder") {
+    const isVideo = isLiteraryVideoArticle(article);
+    const placeholderClass = isVideo ? `${className} literary-video-placeholder` : className;
+    const placeholderLabel = isVideo ? "Literary Video" : article.category;
+
+    return `<div class="${placeholderClass}">${placeholderLabel}</div>`;
+}
+
+function createEmbeddedVideoMarkup(embedUrl, title, containerClass = "video-container landscape") {
+    const normalizedEmbedUrl = normalizeEmbedUrl(embedUrl);
+
+    return `
+        <div class="${containerClass}">
+            <iframe
+                src="${normalizedEmbedUrl}"
+                title="${title}"
+                scrolling="no"
+                allowfullscreen="true"
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+            </iframe>
+        </div>
+    `;
+}
+
 function createCardImage(article) {
+    const literaryCardMedia = getLiteraryMedia(article, "card");
+    if (literaryCardMedia) {
+        return createEmbeddedVideoMarkup(literaryCardMedia.embedUrl, article.title, "video-container landscape article-card-video");
+    }
+
     if (article.image) {
         return `<img src="${article.image}" alt="${article.imageAlt || article.title}">`;
     }
 
-    return `<div class="article-thumb-placeholder">${article.category}</div>`;
+    return createArticlePlaceholder(article);
 }
 
 function createSectionCard(article) {
-    const imageMarkup = article.image
-        ? `<img src="${article.image}" alt="${article.imageAlt || article.title}" class="news-thumb">`
-        : `<div class="news-thumb-placeholder">${article.category}</div>`;
+    const literaryCardMedia = getLiteraryMedia(article, "card");
+    const imageMarkup = literaryCardMedia
+        ? createEmbeddedVideoMarkup(literaryCardMedia.embedUrl, article.title, "video-container landscape news-card-video")
+        : (article.image
+            ? `<img src="${article.image}" alt="${article.imageAlt || article.title}" class="news-thumb">`
+            : createArticlePlaceholder(article, "news-thumb-placeholder"));
     const readTime = article.readTime || "10 min read";
 
     return `
@@ -680,14 +748,26 @@ function renderArticlePage() {
     articleBody.innerHTML = article.body;
 
     const articleFigure = document.getElementById("articleFigure");
-    articleFigure.innerHTML = article.image
-        ? `<img src="${article.image}" alt="${article.imageAlt || article.title}"><figcaption id="articleCaption"></figcaption>`
-        : `<div class="hero-placeholder"></div><figcaption id="articleCaption"></figcaption>`;
+    const literaryArticleMedia = getLiteraryMedia(article, "article");
+    articleFigure.innerHTML = literaryArticleMedia
+        ? `
+            <div class="featured-video-shell">
+                ${createEmbeddedVideoMarkup(literaryArticleMedia.embedUrl, article.title, "video-container landscape literary-article-video")}
+            </div>
+            <figcaption id="articleCaption"></figcaption>
+        `
+        : (article.image
+            ? `<img src="${article.image}" alt="${article.imageAlt || article.title}"><figcaption id="articleCaption"></figcaption>`
+            : `<div class="hero-placeholder"></div><figcaption id="articleCaption"></figcaption>`);
 
     const relatedList = document.getElementById("relatedList");
     relatedList.innerHTML = getRelatedArticles(article).map((related) => `
         <a class="related-card" href="${getArticleUrl(related.slug)}" aria-label="Read ${related.title}">
-            ${related.image ? `<img src="${related.image}" alt="${related.imageAlt || related.title}">` : `<div class="related-thumb-placeholder">${related.category}</div>`}
+            ${getLiteraryMedia(related, "card")
+                ? createEmbeddedVideoMarkup(getLiteraryMedia(related, "card").embedUrl, related.title, "video-container landscape related-card-video")
+                : (related.image
+                ? `<img src="${related.image}" alt="${related.imageAlt || related.title}">`
+                : createArticlePlaceholder(related, "related-thumb-placeholder"))}
             <div class="related-content">
                 <h4>${related.title}</h4>
                 <p>${related.summary}</p>

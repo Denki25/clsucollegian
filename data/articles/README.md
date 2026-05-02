@@ -36,6 +36,41 @@ Minimum article object shape:
 }
 ```
 
+Literary-only media options:
+
+- Standard literary article: keep using `image` and `imageAlt`.
+- Literary video article: add a `literaryMedia` object.
+- Use `literaryMedia.card` for the video shown on `literary.html`.
+- Use `literaryMedia.article` for the video shown on `article.html`.
+
+Example:
+
+```js
+{
+    slug: "unique-literary-video",
+    category: "Literary",
+    title: "Literary video title",
+    summary: "Short summary",
+    author: "Author Name",
+    authorLine: "Author Name, CLSU Collegian",
+    date: "2026-04-23",
+    readTime: "3 min read",
+    literaryMedia: {
+        card: {
+            type: "video",
+            embedUrl: "https://www.facebook.com/plugins/video.php?..."
+        },
+        article: {
+            type: "video",
+            embedUrl: "https://www.facebook.com/plugins/video.php?..."
+        }
+    },
+    body: `
+        <p>Full literary body here.</p>
+    `
+}
+```
+
 Optional structured credits:
 
 ```js

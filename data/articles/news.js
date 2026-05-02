@@ -14,7 +14,7 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
         image: "PHOTOS/NEWS/news1.jpg",
         imageAlt: "CLSU Infirmary response during UWeek activities",
         body: `
-            <p><strong>CLSU Infirmary tallies 50 UWeek-related med emergencies</strong></p>
+            <h2>CLSU Infirmary tallies 50 UWeek-related med emergencies</h2>
             <p>
             During the height of the 119th Founding Anniversary of Central Luzon State University (CLSU), the University Infirmary recorded approximately 50 student performers who sought medical assistance for fatigue, injuries, and panic attacks.<br><br>
             This number was accumulated on the night of the Festival Dance performances last April 15. <br>
@@ -53,7 +53,7 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
         image: "PHOTOS/INFOGRAPHICS/infographics1.jpg",
         imageAlt: "USSC officers infographic",
         body: `
-            <p><strong>Bagong USSC Officers, pormal nang kinilala ng UEB; Ballesteros, uupo bilang Chairperson</strong></p>
+            <h2>Bagong USSC Officers, pormal nang kinilala ng UEB; Ballesteros, uupo bilang Chairperson</h2>
             <p>
             Proklamado na ng University Electoral Board (UEB) ang mga susunod na manunungkulan sa University Supreme Student Council (USSC) sa pamamagitan ng pag-endorso ng resulta ng halalan sa Office of the University President kahapon, Abril 21.<br><br>
             Pamumunuan ni Rashela Ballesteros, incoming senior mula sa College of Engineering (CEn) at dating gobernador nito, ang pinakamataas na konseho bilang Chairperson matapos makakuha ng 2,707 na boto at 1,165 na abstain. <br><br>
