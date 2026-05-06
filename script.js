@@ -9,6 +9,12 @@ siteArticles.sort((left, right) => {
     return rightTime - leftTime;
 });
 
+siteIssues.sort((left, right) => {
+    const leftTime = left.date ? new Date(`${left.date}T00:00:00`).getTime() : 0;
+    const rightTime = right.date ? new Date(`${right.date}T00:00:00`).getTime() : 0;
+    return rightTime - leftTime;
+});
+
 const siteData = {
     articles: siteArticles,
     trending: Array.isArray(siteConfig.trending) ? siteConfig.trending : [],
@@ -35,6 +41,11 @@ function getArticleUrl(slug) {
 
 function getArticleBySlug(slug) {
     return siteData.articles.find((article) => article.slug === slug) || null;
+}
+
+function getIssueUrl(issue) {
+    const issueSlug = issue && issue.slug ? issue.slug : "";
+    return issueSlug ? `issues.html#${encodeURIComponent(issueSlug)}` : "issues.html";
 }
 
 function toAbsoluteUrl(value) {
@@ -368,7 +379,25 @@ function buildSearchIndex() {
         external: Boolean(item.sourceUrl)
     }));
 
-    return articleItems.concat(multimediaItems).map((item, index) => {
+    const archiveItems = siteIssues.map((issue, index) => ({
+        resultType: "archive",
+        key: `archive-${issue.slug || index}`,
+        title: [issue.title, issue.titleLineTwo].filter(Boolean).join(" "),
+        summary: issue.summary || issue.subtitle || "Browse this CLSU Collegian archive release.",
+        author: "",
+        category: "Archive",
+        date: issue.date || "",
+        readTime: "",
+        image: issue.image || "",
+        imageAlt: issue.imageAlt || issue.title || "Archive cover",
+        slug: issue.slug || "",
+        url: getIssueUrl(issue),
+        issueLabel: issue.label || "",
+        issueSubtitle: issue.subtitle || "",
+        external: false
+    }));
+
+    return articleItems.concat(multimediaItems, archiveItems).map((item, index) => {
         const searchableText = [
             item.title,
             item.summary,
@@ -378,7 +407,9 @@ function buildSearchIndex() {
             item.platform,
             item.host,
             item.editor,
-            item.caption
+            item.caption,
+            item.issueLabel,
+            item.issueSubtitle
         ].filter(Boolean).join(" ").toLowerCase();
 
         return {
@@ -500,6 +531,13 @@ function createSearchResultMeta(item) {
         ].filter(Boolean).join(" • ");
     }
 
+    if (item.resultType === "archive") {
+        return [
+            item.issueLabel || "Kule Archives",
+            item.date ? formatDate(item.date) : ""
+        ].filter(Boolean).join(" • ");
+    }
+
     return [
         item.author ? `By ${item.author}` : "",
         item.date ? formatDate(item.date) : "",
@@ -508,8 +546,12 @@ function createSearchResultMeta(item) {
 }
 
 function createSearchResultCard(item) {
-    const categoryLabel = item.resultType === "multimedia" ? "Multimedia" : (item.category || "Article");
-    const actionLabel = item.resultType === "multimedia" ? "Watch now" : "Read article";
+    const categoryLabel = item.resultType === "multimedia"
+        ? "Multimedia"
+        : (item.resultType === "archive" ? "Kule Archives" : (item.category || "Article"));
+    const actionLabel = item.resultType === "multimedia"
+        ? "Watch now"
+        : (item.resultType === "archive" ? "View archive" : "Read article");
     const targetAttr = item.external ? ` target="_blank" rel="noopener noreferrer"` : "";
 
     return `
@@ -641,7 +683,7 @@ function renderMultimedia() {
     const multimediaPageGrid = document.getElementById("multimediaPageGrid");
 
     if (homeGrid) {
-        homeGrid.innerHTML = siteMultimedia.slice(0, 3).map((item) => createMultimediaCard(item)).join("");
+        homeGrid.innerHTML = siteMultimedia.slice(0, 1).map((item) => createMultimediaCard(item)).join("");
     }
 
     if (multimediaPageGrid) {
@@ -656,55 +698,26 @@ function renderMultimedia() {
 function createIssueCard(issue) {
     const issueLinks = Array.isArray(issue.links)
         ? issue.links.map((link) => `
-            <a class="issue-link-pill" href="${link.url}" target="_blank" rel="noopener noreferrer">
+            <a class="archive-link-pill" href="${link.url}" target="_blank" rel="noopener noreferrer">
                 ${link.label}
             </a>
         `).join("")
         : "";
 
-    const fullTitle = (issue.title || "").trim();
-    let headingLineOne = fullTitle;
-    let headingLineTwo = (issue.titleLineTwo || "").trim();
-
-    if (!headingLineTwo && fullTitle) {
-        const volumeMatch = fullTitle.match(/\s+(VOL\.?\s+.+)$/i);
-        if (volumeMatch) {
-            headingLineOne = fullTitle.slice(0, volumeMatch.index).trim();
-            headingLineTwo = volumeMatch[1].trim();
-        } else {
-            const titleParts = fullTitle.split(/\s+/);
-            if (titleParts.length > 1) {
-                headingLineOne = titleParts[0];
-                headingLineTwo = titleParts.slice(1).join(" ");
-            }
-        }
-    }
-    const issueSummary = issue.summary || "Read the latest digital issue of the CLSU Collegian.";
-    const issueSubtitle = issue.subtitle ? `<p class="issue-subtitle">${issue.subtitle}</p>` : "";
-    const issueLabel = issue.label ? `<p class="issue-eyebrow">${issue.label}</p>` : "";
-    const issueHeading = headingLineTwo
-        ? `
-            <div class="issue-heading">
-                <h3>${headingLineOne}</h3>
-                <p class="issue-title-line-two">${headingLineTwo}</p>
-            </div>
-        `
-        : `<h3>${headingLineOne}</h3>`;
+    const archiveId = issue.slug ? ` id="${issue.slug}"` : "";
 
     return `
-        <article class="issue-card">
-            <div class="issue-visual-shell">
-                <div class="issue-visual-glow" aria-hidden="true"></div>
-                <div class="issue-cover-frame">
-                    <img src="${issue.image}" alt="${issue.imageAlt || issue.title}" class="issue-cover-image">
+        <article class="archive-card"${archiveId}>
+            <a class="archive-cover-link" href="${getIssueUrl(issue)}" aria-label="View ${issue.title} in Kule Archives">
+                <div class="archive-cover-shell" aria-hidden="true"></div>
+                <img src="${issue.image}" alt="${issue.imageAlt || issue.title}" class="archive-cover-image">
+            </a>
+            <div class="archive-content">
+                <div class="archive-heading">
+                    <h3>${issue.title}</h3>
+                    ${issue.titleLineTwo ? `<p class="archive-title-line-two">${issue.titleLineTwo}</p>` : ""}
                 </div>
-            </div>
-            <div class="issue-content">
-                ${issueLabel}
-                ${issueHeading}
-                ${issueSubtitle}
-                <p class="issue-summary">${issueSummary}</p>
-                <div class="issue-actions">
+                <div class="archive-actions">
                     ${issueLinks}
                 </div>
             </div>
@@ -715,7 +728,7 @@ function createIssueCard(issue) {
 function renderIssues() {
     const homeIssuesGrid = document.getElementById("homeIssuesGrid");
     const issuesPageGrid = document.getElementById("issuesPageGrid");
-    const emptyMarkup = `<div class="news-empty">No issues are available yet.</div>`;
+    const emptyMarkup = `<div class="news-empty">No archive entries are available yet.</div>`;
 
     if (homeIssuesGrid) {
         homeIssuesGrid.innerHTML = siteIssues.length > 0
@@ -1012,7 +1025,7 @@ function renderArticlePage() {
 }
 
 function observeAnimatedElements() {
-    const animatedElements = document.querySelectorAll(".article-card, .board-member, .value-card, .news-card, .multimedia-card, .issue-card, .search-result-card");
+    const animatedElements = document.querySelectorAll(".article-card, .board-member, .value-card, .news-card, .multimedia-card, .archive-card, .search-result-card");
     if (animatedElements.length === 0) {
         return;
     }
@@ -1105,7 +1118,7 @@ function renderSearchResults(query, options = {}) {
     const results = searchSite(trimmedQuery);
     searchHeading.textContent = `Results for "${trimmedQuery}"`;
     searchSummary.textContent = results.length > 0
-        ? `${results.length} matching result${results.length === 1 ? "" : "s"} found across articles and multimedia.`
+        ? `${results.length} matching result${results.length === 1 ? "" : "s"} found across articles, multimedia, and archives.`
         : `No matching results found for "${trimmedQuery}".`;
 
     searchList.innerHTML = results.length > 0
@@ -1174,6 +1187,9 @@ headerSearchForms.forEach((form) => {
         }
 
         syncSearchInputValues(input);
+        const nextUrl = new URL(window.location.href);
+        nextUrl.searchParams.set("search", input.value.trim());
+        window.history.replaceState({}, "", nextUrl);
         renderSearchResults(input.value, { scrollIntoView: true });
     });
 });
@@ -1181,6 +1197,13 @@ headerSearchForms.forEach((form) => {
 headerSearchInputs.forEach((input) => {
     input.addEventListener("input", () => {
         syncSearchInputValues(input);
+        const nextUrl = new URL(window.location.href);
+        if (input.value.trim()) {
+            nextUrl.searchParams.set("search", input.value.trim());
+        } else {
+            nextUrl.searchParams.delete("search");
+        }
+        window.history.replaceState({}, "", nextUrl);
         renderSearchResults(input.value);
     });
 
@@ -1188,10 +1211,21 @@ headerSearchInputs.forEach((input) => {
         if (event.key === "Escape") {
             input.value = "";
             syncSearchInputValues(input);
+            const nextUrl = new URL(window.location.href);
+            nextUrl.searchParams.delete("search");
+            window.history.replaceState({}, "", nextUrl);
             hideSearchResults();
         }
     });
 });
+
+const initialSearchQuery = new URLSearchParams(window.location.search).get("search");
+if (initialSearchQuery) {
+    headerSearchInputs.forEach((input) => {
+        input.value = initialSearchQuery;
+    });
+    renderSearchResults(initialSearchQuery);
+}
 
 if (hamburger && navMenu) {
     const closeMenu = () => {
