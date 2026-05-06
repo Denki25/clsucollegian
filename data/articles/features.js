@@ -186,7 +186,6 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
         image: "PHOTOS/FEATURES/feature3.jpg",
         imageAlt: "Crossed Out feature artwork",
         body: `
-            <h2>Crossed Out</h2>
             
             <p>A day after April 8.<br>
             Exams are finally over.<br><br>
@@ -240,7 +239,7 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
             So, one day, just maybe, we will stop crossing out our well-being for the sake of our studies. And maybe next time, we won’t wait until everything is over to be able to actually take care of ourselves.<br>
             </p>
             </p>
-            <p><strong>#ForStudentryEQUALITY #CLSUCollegian</strong></p>
+
         `
     }
 ]);

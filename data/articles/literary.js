@@ -2,6 +2,37 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
     // Literary entries can use either:
     // 1. image + imageAlt
     // 2. literaryMedia with separate card/article video settings
+    
+    {
+        slug: "The-Mill-that-grinds-us-all",
+        category: "Literary",
+        title: "The Mill that Grinds Us All ",
+        summary: "The air in Toboso usually smells of burnt cane—a heavy, caramel scent that lingers. Its mountain rustles a promise of sweetness—it gathers and trickles far beyond the hands that grow it. But if you dig just a few inches below the stalks, the soil tells a different story.",
+        author: "JASMINE TIANCO",
+        authorLine: "JASMINE TIANCO, CLSU Collegian",
+        credits: {
+            by: "JASMINE TIANCO, CLSU Collegian",
+            illustratedBy: "ROXZYLEEN ANDREIH VASQUEZ, CLSU Collegian",
+            layoutBy: "SOFIA MICAH NICOLE ISLA, CLSU Collegian"
+        },
+        date: "2026-05-04",
+        readTime: "4 min read",
+        image: "PHOTOS/LITERARY/lit3.jpg",
+        imageAlt: "The Mill that grinds us all artwork",
+        body: `
+        
+            <p>
+            The air in Toboso usually smells of burnt cane—a heavy, caramel scent that lingers. Its mountain rustles a promise of sweetness—it gathers and trickles far beyond the hands that grow it. But if you dig just a few inches below the stalks, the soil tells a different story.<br><br>
+            In the vast haciendas, the sugar is white and pure, destined for crystal bowls in Manila or some far-off cities outside Negros Occidental. But at 3:58 a.m. on the 19th of April, the sweetness evaporated. The soil of Barangay Salamanca didn’t yield cane that morning, instead it yielded a harvest of brass casings and broken bodies.<br><br>
+            Nineteen souls were pressed onto earth, much like a bagasse— the crushed, juiceless fiber spat out once the threat had been wrung dry. To the military, this was nothing but a clinical tally: 19 neutralized, 24 firearms recovered, a tactical success. <br><br>
+            But the controversy lies in the milling of their identities. Between the first shot and the final silence, the state’s gears worked to redact their lives. A student researcher somehow became a combatant, the journalist with the lens became a target. In the eyes of the generals, they were weeds to be cleared so the industry of a hollow peace could grow.<br><br>
+            But to the residents who fled the tremors of the hills, and to the mothers waiting in the dust of evacuation centers, these were the Fine Flour of a generation. They were youth who believed that you cannot understand the hunger of the soil from a distance.<br><br>
+            The horror of the sugar bowl is that the land is so fertile it can grow anything, yet it seems most efficient at growing graves. As the sun rose over the 12-hour battlefield, the red clay of Negros did what it has always done. It drank. It didn’t ask if the person behind the notebook was a rebel or a mere dreamer; it simply accepted the sacrifice. It turned the brown to red, burying unfinished sentences alongside 24 pieces of iron, waiting for the next season of planting in a land that produces sugar for the world, but only salt for its own people.<br><br>
+            </p>
+            
+        `
+    }, 
+
     {
         slug: "fare-fear-future",
         category: "Literary",
@@ -14,7 +45,7 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
             illustratedBy: "AVERY NEIL ROQUE, CLSU Collegian",
             layoutBy: "RHAINE KARL FIGUEROA, CLSU Collegian"
         },
-        date: "2026-04-22",
+        date: "2026-05-02",
         readTime: "4 min read",
         literaryMedia: {
             card: {
@@ -28,7 +59,6 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
         },
         imageAlt: "Fare, Fear, Future feature artwork",
         body: `
-            <h2>Fare, Fear, Future</h2>
             <p>
             She held the morning like something fragile.<br>
             Not in her hands, but in her chest—where decisions are weighed without noise, where hope and hesitation sit side by side like strangers forced into the same small room. The brown envelope rested on her lap, worn at the corners.<br>
@@ -78,7 +108,6 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
             and arrived—quietly, unexpectedly—at a future she almost did not choose.<br><br>
             </p>
             </p>
-            <p><strong>#ForStudentryEQUALITY #CLSUCollegian</strong></p>
         `
     }, 
 
@@ -99,7 +128,6 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
         image: "PHOTOS/LITERARY/lit1.jpg",
         imageAlt: "Katapusan ng lahat-lahat feature artwork",
         body: `
-            <h2>Katapusan ng lahat-lahat</h2>
             <p>Dumating na ang dapithapon,<br>
             Nariyan na ang huni ng pangwakas na musika<br><br>
             
@@ -161,7 +189,8 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
             Patapos na ang saglit na pagdaong.<br>
             (2:39 a.m. | sa isang boarding house sa Licaong)
             </p>
-            <p><strong>#ForStudentryEQUALITY #CLSUCollegian</strong></p>
+           
         `
     }
+
 ]);

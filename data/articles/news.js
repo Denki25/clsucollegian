@@ -1,4 +1,39 @@
 window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
+
+     {
+        slug: "‘SielAI’-chatbot-ng-CLSU-ilulunsad-sa-susunod-na-akademikong-taon",
+        category: "News",
+        title: "‘SielAI’ chatbot ng CLSU ilulunsad sa susunod na akademikong taon",
+        summary: "Planong ilunsad ng Central Luzon State University (CLSU) ang Artificial Intelligence(AI)-powered chatbot na “SielAI” sa Comprehensive Academic Information System (CAIS) pagsapit ng unang semestre ng panuruang taon 2026-2027, ayon kay Robert Hernandez, Project Coordinator ng proyekto, sa isang panayam kahapon, Abril 29.",
+        author: "DENRIC MENDOZA",
+        authorLine: "DENRIC MENDOZA, CLSU Collegian",
+        credits: {
+            by: "DENRIC MENDOZA, CLSU Collegian"
+        },
+        date: "2026-04-30",
+        readTime: "3 min read",
+        image: "PHOTOS/NEWS/news2.jpg",
+        imageAlt: "CLSU Infirmary response during UWeek activities",
+        body: `
+           
+            <p>
+
+            Planong ilunsad ng Central Luzon State University (CLSU) ang Artificial Intelligence(AI)-powered chatbot na “SielAI” sa Comprehensive Academic Information System (CAIS) pagsapit ng unang semestre ng panuruang taon 2026-2027, ayon kay Robert Hernandez, Project Coordinator ng proyekto, sa isang panayam kahapon, Abril 29.<br><br>
+            Layunin ng chatbot na pabilisin ang pagsagot sa iba’t ibang academikong hinaing at katanungan na natatanggap ng unibersidad sa email nito mula sa mga estudyante at iba pang indibidwal.<br><br>
+            Umabot sa kabuuang 38,647 emails ang sinuri ng Management Information Systems Office (MISO) mula sa records ng Office of Admissions (OAd) upang tukuyin ang mga pangunahing kategorya ng katanungan ng mga mag-aaral kabilang na ang scholarships, enrollment at document requests na magsisilbing batayan ng kakayahan at saklaw ng chatbot.<br><br>
+            Katuwang sa nasabing pagsusuri ang CLSU Data Management, AI and Analytics Division (DMAAD) at ang kumpanyang AIMAGINEERS. <br><br>
+            Ibinahagi ng MISO ang resulta ng pagsusuri sa isang pagpupulong noong Abril 22 kung saan nangalap din ito ng opinyon mula sa mga kinatawan ng CLSU para mas mapabuti ang performance ng sistema, karanasan ng mga gagamit, at ang integrasyon nito sa mga kasalukuyang online platform ng unibersidad.<br><br>
+            Mula sa pilot testing na isinagawa noong Enero 20, nagkaroon na ng progreso ang nasabing chatbot sa pamamagitan ng pagsagot nito sa mga tanong at integrasyon ng multi-language support, ayon kay Hernandez. <br>
+            
+            <blockquote><p>"Nakapag-develop na ng functional AI chatbot na kayang sumagot ng basic inquiries gamit ang official data sources, at may kakayahan na rin para sa multi-language support like Ilokano," aniya.</blockquote></p>
+            <p>
+            Samantala, upang matiyak ang pagsunod sa patakaran ng privacy at polisiya ng pamantasan sa paggamit ng datos, magsasagawa pa ng konsultasyon ang MISO sa mga direktor at iba't ibang opisina ng unibersidad.
+            </p>
+            </p>
+
+            
+        `
+    },
     {
         slug: "clsu-infirmary-tallies-50-uweek-related-med-emergencies",
         category: "News",
@@ -14,7 +49,7 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
         image: "PHOTOS/NEWS/news1.jpg",
         imageAlt: "CLSU Infirmary response during UWeek activities",
         body: `
-            <h2>CLSU Infirmary tallies 50 UWeek-related med emergencies</h2>
+           
             <p>
             During the height of the 119th Founding Anniversary of Central Luzon State University (CLSU), the University Infirmary recorded approximately 50 student performers who sought medical assistance for fatigue, injuries, and panic attacks.<br><br>
             This number was accumulated on the night of the Festival Dance performances last April 15. <br>
@@ -34,7 +69,7 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
             </p>
             </p>
 
-            <p><strong>#ForStudentryEQUALITY #CLSUCollegian</strong></p>
+            
         `
     },
     {
@@ -53,7 +88,7 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
         image: "PHOTOS/INFOGRAPHICS/infographics1.jpg",
         imageAlt: "USSC officers infographic",
         body: `
-            <h2>Bagong USSC Officers, pormal nang kinilala ng UEB; Ballesteros, uupo bilang Chairperson</h2>
+            
             <p>
             Proklamado na ng University Electoral Board (UEB) ang mga susunod na manunungkulan sa University Supreme Student Council (USSC) sa pamamagitan ng pag-endorso ng resulta ng halalan sa Office of the University President kahapon, Abril 21.<br><br>
             Pamumunuan ni Rashela Ballesteros, incoming senior mula sa College of Engineering (CEn) at dating gobernador nito, ang pinakamataas na konseho bilang Chairperson matapos makakuha ng 2,707 na boto at 1,165 na abstain. <br><br>
@@ -68,7 +103,7 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
 
             </p>
             
-            <p><strong>#ForStudentryEQUALITY #CLSUCollegian</strong></p>
+           
         `
     }
 
