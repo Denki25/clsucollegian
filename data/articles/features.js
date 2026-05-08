@@ -11,7 +11,7 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
             photosBy: "Jexzy Reign De Lara and Sheryn Joy Lacar",
             layoutBy: "Asher Terby Esquivel"
         },
-        date: "2026-04-22",
+        date: "2026-04-21",
         readTime: "10 min read",
         image: "PHOTOS/FEATURES/feature.jpg.jpg",
         imageAlt: "Stars Shaped in Shared Space feature artwork",
@@ -121,7 +121,7 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
             by: "REYMARC ABAYA & REGINA SUPENA, CLSU Collegian",
             photosBy: "Kherby Tabilang and Sheryn Joy Lacar, CLSU Collegian"
         },
-        date: "2026-04-22",
+        date: "2026-04-19",
         readTime: "5 min read",
         image: "PHOTOS/FEATURES/feature2.jpg",
         imageAlt: "Sealed, Sent, then Reopened feature image",
@@ -181,7 +181,7 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
             by: "Jasmine Tianco, CLSU Collegian",
             illustratedBy: "Ysabella Belen Francisco, CLSU Collegian"
         },
-        date: "2026-04-21",
+        date: "2026-04-16",
         readTime: "3 min read",
         image: "PHOTOS/FEATURES/feature3.jpg",
         imageAlt: "Crossed Out feature artwork",

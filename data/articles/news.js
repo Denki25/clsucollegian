@@ -83,7 +83,7 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
             by: "Justine Ace Sandoval, CLSU Collegian",
             layoutBy: "Asher Terby Esquivel, CLSU Collegian"
         },
-        date: "2026-04-22",
+        date: "2026-04-19",
         readTime: "1 min read",
         image: "PHOTOS/INFOGRAPHICS/infographics1.jpg",
         imageAlt: "USSC officers infographic",
@@ -105,6 +105,81 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
             
            
         `
+    },
+
+    {
+        slug: "clsu-rotc-earns-excellent-mark-in-raati-under-first-female-corps-commander",
+        category: "News",
+        title: "CLSU-ROTC earns ‘excellent’ mark in RAATI under first female corps commander",
+        summary: "Central Luzon State University-Reserve Officers' Training Corps (CLSU-ROTC), led by Anabelle Cabanilla as its first female corps commander, garnered 98.39% rating in the Regional Annual Administrative Tactical Inspection (RAATI) held at the CLSU Athletic Grounds yesterday, April 13.  ",
+        author: "KYLA ANGEL TUGADE and ZOE WINTER NICOLAS",
+        authorLine: "By KYLA ANGEL TUGADE and ZOE WINTER NICOLAS, CLSU Collegian",
+        credits: {
+            by: "KYLA ANGEL TUGADE and ZOE WINTER NICOLAS/CLSU Collegian",
+            layoutBy: "Asher Terby Esquivel/CLSU Collegian",
+            photosBy: "SHERYN JOY LACAR/CLSU Collegian",
+        },
+        date: "2026-04-19",
+        readTime: "3 min read",
+        image: "PHOTOS/NEWS/news3.jpg",
+        imageAlt: "CLSU-ROTC officers",
+        body: `
+            
+            <p>
+            Central Luzon State University-Reserve Officers' Training Corps (CLSU-ROTC), led by Anabelle Cabanilla as its first female corps commander, garnered 98.39% rating in the Regional Annual Administrative Tactical Inspection (RAATI) held at the CLSU Athletic Grounds yesterday, April 13.<br>
+            <blockquote><p>“We are happy to make a stepping stone for women to lead in this kind of field, that we are capable of leading in a male-dominated field,” Cabanilla said.</p></blockquote>
+            <p>
+            The first-class cadet officer led the CLSU-ROTC Unit and assumed the corps commander role in the unit’s leadership, alongside Asst. Prof. Zorille Dela Cruz, CLSU-ROTC sub-unit in-charge.<br><br>
+            In addition, Cabanilla also noted that during the trooping of the line, Col. George M. Bergonia, chairperson of the RAATI inspecting team, shared that throughout his conduct of RAATI Inspections from various universities across Region 3, it was his first time to experience walking the ceremonial parade with both women at his sides.<br><br>
+            RAATI aims to evaluate the performance and readiness of ROTC units from various universities to measure training outcomes and cadet readiness by showcasing the knowledge and skills they gained during their training. <br><br>
+            According to Bergonia, universities and schools across the region are rated based on their performances and are classified as Excellent, Very Satisfactory or Satisfactory, allowing multiple schools to receive an Excellent rating when applicable. <br><br>
+            This year's RAATI introduced new components, including the assemble-and-disassemble of the .45 caliber pistol for MS 42 cadet officers, and a comprehensive examination for MS 42 and MS 32 cadets to assess advanced officer performance.  <br><br>
+            Cabanilla shared that she felt nervous during the event, which was further intensified by the extreme heat that made their exhaustion more pronounced. <br>
+           <blockquote><p>“I was really nervous po at epekto na rin po sa sobrang init ng araw, doble yung ramdam na pagod naming lahat. Seeing the cadets with their scorching determination to perform for the RAATI, sobra po akong proud sa kanila,” she added.</p></blockquote>
+            <p>
+           Cabanilla also highlighted that the strong support given by the university contributed to the unit’s success. <br><br>
+            “Almost none po dahil sa support ng ating university for this event…They made sure to provide everything po for our unit to get an evaluation na excellent,” Cabinilla answered when asked about the hardships they faced in preparation. <br><br>
+            Moreover, Cabanilla is looking forward to applying the skills she learned throughout her experience in the future. <br><br>
+            “In the future, magagamit ko po lahat ng experience ko, whether in active military service or civilian life, especially in practicing leadership and applying tactical skills,” the first class officer shared as her journey as a cadet officer and corps commander comes to an end after RAATI. <br><br>
+            In the Academic Year 2025-2026, women accounted for the majority of ROTC enrollees with 371 basic and 16 advanced cadets, compared to 347 basic and 7 advanced male cadets.<br>
+            </p>
+            </p>
+            </p>
+            
+           
+        `
+    },
+
+    {
+        slug: "clsu-records-31-51-pass-rate-in-march-cele",
+        category: "News",
+        title: "CLSU records 31.51% pass rate in March CELE",
+        summary: "Central Luzon State University (CLSU) logged a 31.51% passing rate in the March 2026 Civil Engineering Licensure Examination (CELE), after 46 of its 146 takers passed, as per the results released by the Professional Regulation Commission, April 7.",
+        author: "JEREMY AGLUBA",
+        authorLine: "By JEREMY AGLUBA, CLSU Collegian",
+        credits: {
+            by: "JEREMY AGLUBA/CLSU Collegian",
+        },
+        date: "2026-04-19",
+        readTime: "1 min read",
+        image: "PHOTOS/NEWS/news4.jpg",
+        imageAlt: "CLSU-ROTC officers",
+        body: `
+            
+            <p>
+            Central Luzon State University (CLSU) logged a 31.51% passing rate in the March 2026 Civil Engineering Licensure Examination (CELE), after 46 of its 146 takers passed, as per the results released by the Professional Regulation Commission, April 7.<br><br>
+            This year’s results for CLSU is an increase from its previous 17.78% passing rate last November 2025 CELE. <br><br>
+            Forty-four from 101 first-time takers passed, while 2 out of 45 repeaters passed the CELE, leading to a 43.56% and 4.44% passing rates for first-time takers and repeaters, respectively.<br><br>
+            Moreover, the national passing rate recorded is 35.05% after 6,438 out of 18,370 takers passed the March 2026 CELE.<br><br>
+            To see the full list of passers and schools’ performances, follow the link below:<br><br>
+            <a href="https://www.prc.gov.ph/article/march-2026-civil-engineers-licensure-examination-results-released-five-5-working-days?fbclid=IwY2xjawRq2b5leHRuA2FlbQIxMABicmlkETFScjdOVlkwTzlxWTJsTkh4c3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHqpz6t2ycgJt0bkC8RlVudkI_Hp2y1GOPS9lddhj_83MRwYoXFQF5KJjF5tz_aem_1587o8B6APlvKkL_cMQ1sw" target="_blank">https://www.prc.gov.ph/.../march-2026-civil-engineers...</a>
+
+            </p>
+            
+           
+        `
     }
+
+
 
 ]);
