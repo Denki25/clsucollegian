@@ -191,6 +191,80 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
             </p>
            
         `
-    }
+    },
+
+    {
+        slug: "Hanggang-sa-Maubos",
+        category: "Literary",
+        title: "Hanggang sa Maubos",
+        summary: "Sa bawat pag-abante sa lansangan, may bigat agad sa aking mga paa; hawak ang manibela—pilit kong pinapaikot ang araw kahit ako’y unti-unti nitong nilulusaw.",
+        author: "ANGELIE JONA RIVERA",
+        authorLine: "ANGELIE JONA RIVERA, CLSU Collegian",
+        credits: {
+            by: "ANGELIE JONA RIVERA/CLSU Collegian",
+            illustratedBy: "DEXTER VILORIA/CLSU Collegian",
+        },
+        date: "2026-04-04",
+        readTime: "3 min read",
+        image: "PHOTOS/LITERARY/lit5.jpg",
+        imageAlt: "Hanggang sa Maubos artwork",
+        body: `
+        
+            <p>
+            Sa bawat pag-abante sa lansangan,<br>
+            may bigat agad sa aking mga paa;<br>
+            hawak ang manibela—<br>
+            pilit kong pinapaikot ang araw<br>
+            kahit ako’y unti-unti nitong nilulusaw.<br><br>
+
+            Sa bawat arangkada, kumakalansing ang barya—<br>
+            nakikipagtagisan sa ugong ng tambutso <br>
+            at sa kalam ng sikmura.<br>
+            Pawis ang puhunan, pagod ang kinikita—<br>
+            ngunit kulang pa rin;<br>
+            tangke’t tiyan, kapwa hindi mapuno.<br><br>
+
+            Sa bawat apak sa silinyador,<br>
+            tila ba ako’y inaangat— <br>
+            sa bawat pasada na pilit kong pinupuno<br>
+            upang lalo lamang ibagsak—<br>
+            sa tangkeng hindi ko mapuno.<br>
+            Isang siklong walang hantungan,<br>
+            ipinapasa sa tulad kong walang mapagpilian.<br><br>
+
+            Hindi ko na matukoy<br>
+            kung alin ang pawis, alin ang luha.<br>
+            Sa bawat pasada, tanong ang bumabalik:<br>
+            aabot pa ba sa hapag ang baryang ito,<br>
+            o kailangan ko pang umarangkada—<br>
+            hanggang sa maubos ang laman ng tangke<br>
+            hanggang sa maubos ako<br><br>
+
+            Hanggang kailan mananatili sa ganitong daan?<br>
+            Kailan titigil ang siklong bumibigat?<br>
+            Kailan magiging patag ang lansangang aking tinatahak—<br>
+            at kailan ko maibababa<br>
+            ang korona ng pagdurusang hindi ko ginusto?<br><br>
+
+            Sa kabila ng lahat,<br>
+            pinapasan ko ang bigat ng krus—<br>
+            nakakadena ang mga paa sa silinyador,<br>
+            nakapako ang mga kamay sa manibela,<br>
+            hinahataw ng araw ang aking likod.<br>
+            Sapilitang pag-asa ang tanging baon,<br>
+            sa mundong tila walang pahinga<br><br>
+
+            At kung may liwanag mang nananatili,<br>
+            ito’y hindi biyaya—<br>
+            kundi apoy na ako mismo ang panggatong, <br>
+            upang patuloy mapaikot ang araw.<br>
+            Pananatilihing umiikot ang gulong,<br>
+            sapagkat ang bawat baryang aking pinaghihirapan<br>
+            ay pangakong may bukas <br>
+            sa mga matang naghihintay.<br>
+            </p>
+            
+        `
+    }, 
 
 ]);

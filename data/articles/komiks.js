@@ -28,5 +28,28 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
              </p>
             
          `
+     },
+     {
+         slug: "hindi-natin-laging-hawak-ang-beat",
+         category: "Komiks",
+         title: "Hindi natin laging hawak ang beat ",
+         summary: "Kung may summary and conclusion man ang buhay ng mga 4th year ngayong linggo, ito na ang final draft.",
+         author: " ROXZYLEEN ANDREIH VASQUEZ",
+         authorLine: "By  ROXZYLEEN ANDREIH VASQUEZ/CLSU Collegian",
+         credits: {
+            illustratedBy: "ROXZYLEEN ANDREIH VASQUEZ/CLSU Collegian",
+        },
+         date: "2026-03-30",
+         readTime: "1 min read",
+         image: "PHOTOS/KOMIKS/komiks2.jpg",
+         imageAlt: "hindi natin laging hawak ang beat",
+        body: `
+             <p>
+                May mga bagay na wala sa ating kamay ang beat, katulad ng heat index. Minsan, kahit anong gawin ay tila tagos pa rin sa balat ang init! Gaya sa init, halos wala ding magawa ang mga ordinaryong mamamayan sa nagbabagang pagtaas ng presyo ng gasolina.<br><br>
+                Sa bawat patak ng pawis ay siyang buntong-hininga ng mga tsuper, na sana ang pawis ay maaring ipang-gasolina. <br><br>
+                Patuloy ang laban sa buhay ng mga komyuter o tsuper. Pero hanggang kailan kaya natin ito matitiis?<br><br>
+             </p>
+            
+         `
      }
 ]);
