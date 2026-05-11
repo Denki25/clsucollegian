@@ -4,7 +4,7 @@ Article setup per section:
 - `features.js` uses `category: "Features"`
 - `opinion.js` uses `category: "Opinion"`
 - `devcom.js` uses `category: "DevCom"`
-- `infographics.js` uses `category: "Komiks"`
+- `komiks.js` uses `category: "Komiks"`
 - `literary.js` uses `category: "Literary"`
 
 Rules when adding an article:
@@ -14,6 +14,10 @@ Rules when adding an article:
 - Keep `slug` unique across all files.
 - Use `date` format `YYYY-MM-DD`.
 - Put images in the matching `PHOTOS/` folder when possible.
+- Choose a credit label preset when needed:
+  - `via` for most write-ups
+  - `written` for Literary and First POV write-ups
+  - `filipino` for Filipino labels
 
 Minimum article object shape:
 
@@ -36,20 +40,20 @@ Minimum article object shape:
 }
 ```
 
-Literary-only media options:
+Animated or video media options:
 
-- Standard literary article: keep using `image` and `imageAlt`.
-- Literary video article: add a `literaryMedia` object.
-- Use `literaryMedia.card` for the video shown on `literary.html`.
-- Use `literaryMedia.article` for the video shown on `article.html`.
+- Standard article: keep using `image` and `imageAlt`.
+- Literary or Komiks animation/video article: add a `literaryMedia` object.
+- Use `literaryMedia.card` for the media shown on section pages.
+- Use `literaryMedia.article` for the media shown on `article.html`.
 
 Example:
 
 ```js
 {
-    slug: "unique-literary-video",
-    category: "Literary",
-    title: "Literary video title",
+    slug: "unique-animation-post",
+    category: "Komiks",
+    title: "Animation post title",
     summary: "Short summary",
     author: "Author Name",
     authorLine: "Author Name, CLSU Collegian",
@@ -76,10 +80,18 @@ Optional structured credits:
 ```js
 {
     credits: {
+        labelPreset: "via", // or "written" or "filipino"
         by: "Author Name, CLSU Collegian",
         photosBy: "Photographer Name, CLSU Collegian",
         layoutBy: "Layout Artist Name, CLSU Collegian",
         illustratedBy: "Illustrator Name, CLSU Collegian",
+        animationBy: "Animator Name, CLSU Collegian",
+        labels: {
+            by: "Isinulat ni:",
+            illustratedBy: "Iginuhit nina:",
+            photos: "Larawan nina:",
+            layoutBy: "Inianyo ni:"
+        },
         extra: [
             { label: "Edited By", value: "Editor Name, CLSU Collegian" }
         ]
@@ -87,5 +99,62 @@ Optional structured credits:
 }
 ```
 
-Rendered labels are standardized as `Report by:`, `Photo by:` or `Photos by:`, `Layout by:`, and `Illustrated by:`.
+Available built-in label presets:
+
+- `via`: `Via:`, `Illustrated by:`, `Animation by:`, `Photo by:` or `Photos by:`, `Layout by:`
+- `written`: `Written by:`, `Illustrated by:`, `Animation by:`, `Photo by:` or `Photos by:`, `Layout by:`
+- `filipino`: quick default labels only
+
+For exact Filipino grammar, set the label yourself with `credits.labels`, for example:
+
+```js
+credits: {
+    labelPreset: "filipino",
+    by: "Justine Ace Sandoval, CLSU Collegian",
+    layoutBy: "Asher Terby Esquivel, CLSU Collegian",
+    labels: {
+        by: "Isinulat ni:",
+        layoutBy: "Inianyo ni:"
+    }
+}
+```
+
+You can also choose plural labels like:
+
+- `Isinulat nina:`
+- `Iginuhit nina:`
+- `Animasyon nina:`
+- `Larawan nina:`
+- `Inianyo nina:`
+
+You can also override any single label with `credits.labels`.
+You can also mix English and Filipino labels in the same article. Example:
+
+```js
+credits: {
+    labelPreset: "via",
+    by: "Justine Ace Sandoval, CLSU Collegian",
+    layoutBy: "Asher Terby Esquivel, CLSU Collegian",
+    labels: {
+        by: "Via:",
+        layoutBy: "Inianyo ni:"
+    }
+}
+```
+
 Only include the credit fields you actually need. Missing ones are skipped automatically on the article page.
+
+Multimedia labels are separate from article credits. In `data/multimedia.js`, use exact labels per field, for example:
+
+```js
+{
+    presenterLabel: "Host:",
+    presenter: "Name Here",
+    technicalDirectorLabel: "Technical Director:",
+    technicalDirector: "Name Here",
+    videographerLabel: "Videographers:",
+    videographer: "Name Here",
+    editorLabel: "Editor:",
+    editor: "Name Here"
+}
+```

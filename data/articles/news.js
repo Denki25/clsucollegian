@@ -1,3 +1,10 @@
+// News article guide:
+// 1. Keep each slug unique across all section files.
+// 2. Use credits.labelPreset: "via" for standard write-ups.
+// 3. Use credits.labelPreset: "written" for First POV pieces.
+// 4. Use credits.labelPreset: "filipino" for Filipino labels.
+// 5. Optional credit fields: by, photosBy, illustratedBy, animationBy, layoutBy.
+
 window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
     {
         slug: "sielai-chatbot-ng-clsu-ilulunsad-sa-susunod-na-akademikong-taon",
@@ -73,8 +80,13 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
         author: "Justine Ace Sandoval",
         authorLine: "By Justine Ace Sandoval, CLSU Collegian",
         credits: {
-            by: "Justine Ace Sandoval, CLSU Collegian",
-            layoutBy: "Asher Terby Esquivel, CLSU Collegian"
+            labelPreset: "via",
+            by: "Justine Ace Sandoval/CLSU Collegian",
+            layoutBy: "Asher Terby Esquivel/CLSU Collegian",
+            labels: {
+                by: "Via:",
+                layoutBy: "Inianyo ni:"
+            }
         },
         date: "2026-04-19",
         readTime: "1 min read",

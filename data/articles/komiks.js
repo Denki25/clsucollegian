@@ -4,8 +4,47 @@
 // 3. Replace the sample values with your real article details.
 // 4. Keep each slug unique.
 // 5. Save images inside PHOTOS/KOMIKS/ and update the image path.
+// 6. For animated/video komiks, use literaryMedia.card and literaryMedia.article with a video embed URL.
+// 7. Use credits.labelPreset: "via", "written", or "filipino" depending on the needed byline style.
+// 8. Optional credit fields: by, illustratedBy, animationBy, photosBy, layoutBy.
 
 window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
+    {
+        slug: "Strata",
+        category: "Komiks",
+        title: "STRATA",
+        summary: "Matapos ang maghapong tensyon sa Senado kaugnay ng pagbabago ng liderato at usapin ng ICC arrest warrant, tila ibang “hearing” ang pinasok ni Sen. Bato—cardio hearing.",
+        author: "Kreynium",
+        authorLine: "Kreynium, CLSU Collegian",
+        credits: {
+            illustratedBy: "Kreynium/CLSU Collegian",
+            labels:{
+                illustratedBy: "Animasyon ni:"
+            }
+        },
+        date: "2026-05-12",
+        readTime: "1 min read",
+        literaryMedia: {
+            card: {
+                type: "video",
+                embedUrl: "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fweb.facebook.com%2Freel%2F808164168784448%2F&show_text=false&width=380&t=0"
+            },
+            article: {
+                type: "video",
+                embedUrl: "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fweb.facebook.com%2Freel%2F808164168784448%2F&show_text=false&width=380&t=0"
+            }
+        },
+        imageAlt: "STRATA feature artwork",
+        body: `
+            <p>
+            Matapos ang maghapong tensyon sa Senado kaugnay ng pagbabago ng liderato at usapin ng ICC arrest warrant, tila ibang “hearing” ang pinasok ni Sen. Bato—cardio hearing.<br><br>
+            Namataang tila naka-STRAVA mode umano ang senador sa kaliwa’t kanang pasilyo ng Senado, forda takbo hanggang session hall edition.<br><br>
+            After ilang buwan na tila “AWOL with pay,” dumating na galit na galit, mukhang gustong manaket… pero steps counter lang pala ang hinahabol.<br><br>
+            At mukhang booked and busy na rin sila ni Tatay D—The Hague world tour soon? Dream come true yata kay Bato matapos ang 14 buwang pagbanggit sa ICC.<br><br>
+            </p>
+        `
+    }, 
+
     {
          slug: "dasurb-dasurb",
          category: "Komiks",
@@ -15,6 +54,9 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
          authorLine: "By IAN CABUDOL, CLSU Collegian/CLSU Collegian",
          credits: {
             illustratedBy: "IAN CABUDOL, CLSU Collegian",
+            labels: {
+                illustratedBy: "Animasyon ni:"
+            }
         },
          date: "2026-04-12",
          readTime: "1 min read",
@@ -38,6 +80,9 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
          authorLine: "By  ROXZYLEEN ANDREIH VASQUEZ/CLSU Collegian",
          credits: {
             illustratedBy: "ROXZYLEEN ANDREIH VASQUEZ/CLSU Collegian",
+            labels: {
+                illustratedBy: "Animasyon ni:"
+            }
         },
          date: "2026-03-30",
          readTime: "1 min read",

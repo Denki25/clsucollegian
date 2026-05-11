@@ -2,7 +2,7 @@ window.CLSU_SITE_CONFIG = {
     tickerItems: [
         "Planong ilunsad ng Central Luzon State University (CLSU) ang Artificial Intelligence(AI)-powered chatbot na “SielAI” sa Comprehensive Academic Information System (CAIS) pagsapit ng unang semestre ng panuruang taon 2026-2027, ayon kay Robert Hernandez, Project Coordinator ng proyekto, sa isang panayam kahapon, Abril 29."
     ],
-    featuredSlug: "The-Mill-that-grinds-us-all",
+    featuredSlug: "Isinusuka-ko-ang-Pagbati-ng-Happy-Mother’s-Day",
 
     trending: [
         {

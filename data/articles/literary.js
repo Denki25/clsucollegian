@@ -1,8 +1,93 @@
+// Literary article guide:
+// 1. Literary entries default best with credits.labelPreset: "written".
+// 2. Use credits.labelPreset: "filipino" for Filipino labels.
+// 3. Optional credit fields: by, photosBy, illustratedBy, animationBy, layoutBy.
+// 4. Literary entries can use image + imageAlt or literaryMedia for video posts.
+
 window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
     // Literary entries can use either:
     // 1. image + imageAlt
     // 2. literaryMedia with separate card/article video settings
-    
+    {
+        slug: "Isinusuka-ko-ang-Pagbati-ng-Happy-Mother’s-Day",
+        category: "Literary",
+        title: "Isinusuka ko ang Pagbati ng “Happy Mother’s Day",
+        summary: "Mama,  pasensya ka na dahil ako ang anak mo at hindi bukal sa akin ang bigyan ka ng rosas o magagandang salita.",
+        author: "BIDOT",
+        authorLine: "BIDOT/CLSU Collegian",
+        credits: {
+            by: "BIDOT/CLSU Collegian",
+            illustratedBy: "MA. ELECTRA MAY MACANLALAY/CLSU Collegian",
+            layoutBy: "ASHER TERBY ESQUIVEL/CLSU Collegian",
+            labels: {
+                by: "Isinulat ni:",
+                illustratedBy: "Iginuhit ni:",
+                layoutBy: "Inianyo ni:"
+            }
+        },
+        date: "2026-05-10",
+        readTime: "5 min read",
+        image: "PHOTOS/LITERARY/lit6.jpg",
+        imageAlt: "Isinusuka ko ang Pagbati ng “Happy Mother’s Day” artwork",
+        body: `
+        
+            <p>
+            Mama, <br>
+            pasensya ka na dahil ako ang anak mo<br>
+            at hindi bukal sa akin ang bigyan ka <br>
+            ng rosas o magagandang salita.<br><br>
+
+            Hindi naman ako bulag sa mga <br>
+            sakripisyo mo, na araw-araw <br>
+            mong isinusumbat. <br>
+            Mapapatawad ka ng mundo sa lahat <br>
+            ng pagkukulang at pagkakamali mo <br>
+            bilang aking ina.<br><br>
+
+            Pero ewan ko, para pa rin akong bata <br>
+            At gusto kong humiyaw<br>
+            “Mama! Mama!” <br>
+            Tila nais magpaihip ng sugat. <br>
+            Ngunit ang totoo niyan, <br>
+            kung nandito ka talaga,<br>
+            papalalain mo lang ang lahat<br>
+            at isisisi sa ‘kin. <br><br>
+
+            Ibinabalik ko na sa‘yo ang lahat,<br>
+            ang ‘yong pagmamahal,<br>
+            ang pakikisama sa‘kin <br>
+            ng ilang dekada sa bahay <br>
+            na di matatawag na tahanan,<br>
+            ang aking utang na loob. <br><br>
+
+            Marahil isa pa rin akong paslit,<br>
+            na di maiwaglit ang pagtatampo,<br>
+            dala-dala ko ito kasama ang lahat <br>
+            ng ‘yong pagmamahal, lahat ng sakit, <br>
+            lahat ng pagtitiis, lahat <br>
+            ng hindi maipaliwanag na <br>
+            damdaming hindi dapat ipinaparamdam<br>
+            ng isang ina sa kanyang anak. <br><br>
+
+            Ngayon ito na ‘ko, galit,<br>
+            puno ng sama ng loob at pagmamahal,<br>
+            ang anak na hindi mo pinalaki.<br>
+            Nagpapakalayo-layo upang<br>
+            hindi na natin mailabas, ang <br>
+            pinakamasahol na bersyon natin<br>
+            bilang iyong anak, at bilang aking ina.<br><br>
+
+            Saan man ako makarating, <br>
+            sana umabot sa ‘yo ang pagbating ito<br>
+            at maramdaman mo ang aking <br>
+            pagmamahal.<br><br>
+
+            Happy mother’s day.
+            </p>
+            
+        `
+    }, 
+
     {
         slug: "The-Mill-that-grinds-us-all",
         category: "Literary",
@@ -116,12 +201,17 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
         category: "Literary",
         title: "Katapusan ng lahat-lahat",
         summary: "Dumating na ang dapithapon, Nariyan na ang huni ng pangwakas na musika",
-        author: "Vince Macadangdang",
-        authorLine: "Vince Macadangdang, CLSU Collegian",
+        author: "VINCE MACADANGDANG",
+        authorLine: "VINCE MACADANGDANG/CLSU Collegian",
         credits: {
-            by: "Vince Macadangdang, CLSU Collegian",
-            illustratedBy: "REYAN DEHL MORENO, CLSU Collegian",
-            layoutBy: "MERWIN LAD VELASCO, CLSU Collegian"
+            by: "VINCE MACADANGDANG/CLSU Collegian",
+            illustratedBy: "REYAN DEHL MORENO/CLSU Collegian",
+            layoutBy: "MERWIN LAD VELASCO/CLSU Collegian",
+            labels: {
+                by: "Isinulat ni:",
+                illustratedBy: "Iginuhti ni:",
+                layoutBy: "Inianyo ni:"
+            }
         },
         date: "2026-04-22",
         readTime: "4 min read",

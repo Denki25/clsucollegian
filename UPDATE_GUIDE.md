@@ -10,10 +10,13 @@ The site now uses data files for both articles and multimedia, so most updates d
   - trending list
 - `data/articles/literary.js`
 - `data/articles/features.js`
-- `data/articles/infographics.js`
+- `data/articles/komiks.js`
 - `data/articles/news.js`
 - `data/articles/opinion.js`
 - `data/articles/devcom.js`
+- `data/articles/editorial.js`
+- `data/articles/column.js`
+- `data/articles/sports.js`
 - `data/multimedia.js`
   - homepage latest multimedia
   - full multimedia page
@@ -35,8 +38,32 @@ The site now uses data files for both articles and multimedia, so most updates d
    - `image`
    - `imageAlt`
    - `body`
-5. If the story should be the homepage lead, update `featuredSlug` in `data/site-config.js`.
-6. If it should appear in the ticker or trending area, update `tickerItems` or `trending` in `data/site-config.js`.
+   - `credits`
+5. Set `credits.labelPreset` when needed:
+   - `via` for most write-ups
+   - `written` for Literary and First POV write-ups
+   - `filipino` for Filipino labels
+6. If the story should be the homepage lead, update `featuredSlug` in `data/site-config.js`.
+7. If it should appear in the ticker or trending area, update `tickerItems` or `trending` in `data/site-config.js`.
+
+## Article credit labels
+
+Use `credits.labelPreset` for the article page bylines:
+
+- `via`: `Via:`, `Illustrated by:`, `Animation by:`, `Photo by:` or `Photos by:`, `Layout by:`
+- `written`: `Written by:`, `Illustrated by:`, `Animation by:`, `Photo by:` or `Photos by:`, `Layout by:`
+- `filipino`: quick default labels only
+
+For exact Filipino grammar, use `credits.labels` and choose the exact wording yourself, such as:
+
+- `Isinulat ni:` or `Isinulat nina:`
+- `Iginuhit ni:` or `Iginuhit nina:`
+- `Animasyon ni:` or `Animasyon nina:`
+- `Larawan ni:` or `Larawan nina:`
+- `Inianyo ni:` or `Inianyo nina:`
+
+You can also override any single label with `credits.labels`.
+You can also mix labels, for example `Via:` for the main byline and Filipino for the rest.
 
 ## How to update multimedia
 
@@ -45,8 +72,16 @@ The site now uses data files for both articles and multimedia, so most updates d
 3. Copy an existing item and paste it at the top when adding a new one.
 4. Update:
    - `title`
-   - `summary`
+   - `caption`
    - `platform`
+   - `presenterLabel` with the exact wording you want, like `Host:`, `Host/s:`, `Anchor:`, or `Anchor/s:`
+   - `presenter`
+   - `technicalDirectorLabel`
+   - `technicalDirector`
+   - `videographerLabel`
+   - `videographer`
+   - `editorLabel`
+   - `editor`
    - `embedUrl`
    - `sourceUrl`
    - `aspectRatio` as `"portrait"` or `"landscape"`

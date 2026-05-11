@@ -120,7 +120,49 @@ function normalizeCreditValue(value) {
         return "";
     }
 
-    return value.trim().replace(/^(by|via)\s+/i, "");
+    return value.trim().replace(/^(by|via|written by|isinulat ni\/na|iginuhit ni\/na|animasyon ni\/na|larawan ni\/na|inianyo ni\/na)\s+/i, "");
+}
+
+function getCreditLabelPreset(article) {
+    const preset = (article?.credits?.labelPreset || article?.creditLabelPreset || "").trim().toLowerCase();
+    if (preset === "via" || preset === "written" || preset === "filipino") {
+        return preset;
+    }
+
+    return article?.category === "Literary" ? "written" : "via";
+}
+
+function getCreditLabels(article) {
+    const preset = getCreditLabelPreset(article);
+    const customLabels = article?.credits?.labels && typeof article.credits.labels === "object"
+        ? article.credits.labels
+        : {};
+    const baseLabels = preset === "filipino"
+        ? {
+            by: "Isinulat ni/na:",
+            illustratedBy: "Iginuhit ni/na:",
+            animationBy: "Animasyon ni/na:",
+            photo: "Larawan ni/na:",
+            photos: "Larawan ni/na:",
+            layoutBy: "Inianyo ni/na:"
+        }
+        : {
+            by: preset === "written" ? "Written by:" : "Via:",
+            illustratedBy: "Illustrated by:",
+            animationBy: "Animation by:",
+            photo: "Photo by:",
+            photos: "Photos by:",
+            layoutBy: "Layout by:"
+        };
+
+    return {
+        by: customLabels.by || baseLabels.by,
+        illustratedBy: customLabels.illustratedBy || baseLabels.illustratedBy,
+        animationBy: customLabels.animationBy || baseLabels.animationBy,
+        photo: customLabels.photo || baseLabels.photo,
+        photos: customLabels.photos || baseLabels.photos,
+        layoutBy: customLabels.layoutBy || baseLabels.layoutBy
+    };
 }
 
 function pushCredit(items, label, value) {
@@ -132,30 +174,33 @@ function pushCredit(items, label, value) {
     items.push({ label, value: normalizedValue });
 }
 
-function getPhotoCreditLabel(value) {
+function getPhotoCreditLabel(value, article) {
+    const labels = getCreditLabels(article);
     const normalizedValue = normalizeCreditValue(value).toLowerCase();
     const hasMultipleNames = normalizedValue.includes(" and ")
         || normalizedValue.includes("&")
         || normalizedValue.includes(",");
 
-    return hasMultipleNames ? "Photos by:" : "Photo by:";
+    return hasMultipleNames ? labels.photos : labels.photo;
 }
 
 function getArticleCredits(article) {
     const credits = article && typeof article.credits === "object" && article.credits !== null
         ? article.credits
         : {};
+    const labels = getCreditLabels(article);
     const items = [];
 
-    pushCredit(items, "Report by:", credits.by || getAuthorLine(article));
+    pushCredit(items, labels.by, credits.by || getAuthorLine(article));
 
     const photoCredit = credits.photosBy || article.photosBy;
     if (normalizeCreditValue(photoCredit)) {
-        pushCredit(items, getPhotoCreditLabel(photoCredit), photoCredit);
+        pushCredit(items, getPhotoCreditLabel(photoCredit, article), photoCredit);
     }
 
-    pushCredit(items, "Layout by:", credits.layoutBy || article.layoutBy);
-    pushCredit(items, "Illustrated by:", credits.illustratedBy || article.illustratedBy);
+    pushCredit(items, labels.layoutBy, credits.layoutBy || article.layoutBy);
+    pushCredit(items, labels.illustratedBy, credits.illustratedBy || article.illustratedBy);
+    pushCredit(items, labels.animationBy, credits.animationBy || article.animationBy);
 
     const extraCredits = Array.isArray(credits.extra)
         ? credits.extra
@@ -244,8 +289,8 @@ function renderTicker() {
     ticker.innerHTML = `<span>BREAKING:</span> ${items.join(" • ")}`;
 }
 
-function getLiteraryMedia(article, surface = "article") {
-    if (!article || article.category !== "Literary") {
+function getArticleMedia(article, surface = "article") {
+    if (!article) {
         return null;
     }
 
@@ -268,8 +313,12 @@ function getLiteraryMedia(article, surface = "article") {
     };
 }
 
-function isLiteraryVideoArticle(article, surface = "article") {
-    return Boolean(getLiteraryMedia(article, surface));
+function getLiteraryMedia(article, surface = "article") {
+    return getArticleMedia(article, surface);
+}
+
+function isVideoMediaArticle(article, surface = "article") {
+    return Boolean(getArticleMedia(article, surface));
 }
 
 function normalizeEmbedUrl(embedUrl) {
@@ -281,11 +330,38 @@ function normalizeEmbedUrl(embedUrl) {
 }
 
 function createArticlePlaceholder(article, className = "article-thumb-placeholder") {
-    const isVideo = isLiteraryVideoArticle(article);
+    const isVideo = isVideoMediaArticle(article);
     const placeholderClass = isVideo ? `${className} literary-video-placeholder` : className;
-    const placeholderLabel = isVideo ? "Literary Video" : article.category;
+    const placeholderLabel = isVideo ? `${article.category} Animation` : article.category;
 
     return `<div class="${placeholderClass}">${placeholderLabel}</div>`;
+}
+
+function getMultimediaPresenter(item) {
+    return item.presenter || item.anchor || item.host || "";
+}
+
+function getMultimediaPresenterLabel(item) {
+    if (item.presenterLabel) {
+        return item.presenterLabel;
+    }
+
+    if (item.anchor) {
+        return "Anchor/s:";
+    }
+
+    if (item.presenter || item.host) {
+        return "Host/s:";
+    }
+
+    return "";
+}
+
+function getMultimediaCreditLabel(item, key, fallbackLabel) {
+    const customLabel = item?.[`${key}Label`];
+    return typeof customLabel === "string" && customLabel.trim()
+        ? customLabel.trim()
+        : fallbackLabel;
 }
 
 function createEmbeddedVideoMarkup(embedUrl, title, containerClass = "video-container landscape") {
@@ -363,7 +439,7 @@ function buildSearchIndex() {
         key: `multimedia-${index}`,
         title: item.title || "",
         summary: item.caption || createMultimediaSearchSummary(item),
-        author: item.host || "",
+        author: getMultimediaPresenter(item),
         category: item.platform || "Multimedia",
         date: "",
         readTime: "",
@@ -372,9 +448,16 @@ function buildSearchIndex() {
         slug: "",
         url: item.sourceUrl || "multimedia.html",
         embedUrl: item.embedUrl || "",
+        aspectRatio: item.aspectRatio || "portrait",
         platform: item.platform || "Multimedia",
-        host: item.host || "",
+        presenter: getMultimediaPresenter(item),
+        presenterLabel: getMultimediaPresenterLabel(item),
         editor: item.editor || "",
+        editorLabel: getMultimediaCreditLabel(item, "editor", "Editor/s:"),
+        technicalDirector: item.technicalDirector || "",
+        technicalDirectorLabel: getMultimediaCreditLabel(item, "technicalDirector", "Technical Director/s:"),
+        videographer: item.videographer || "",
+        videographerLabel: getMultimediaCreditLabel(item, "videographer", "Videographer/s:"),
         caption: item.caption || "",
         external: Boolean(item.sourceUrl)
     }));
@@ -512,13 +595,25 @@ function searchSite(query) {
 }
 
 function createSearchResultMedia(item) {
+    if (item.resultType === "multimedia" && item.embedUrl) {
+        const containerClass = item.aspectRatio === "landscape"
+            ? "video-container landscape search-result-video"
+            : "video-container portrait search-result-video";
+        return createEmbeddedVideoMarkup(item.embedUrl, item.title, containerClass);
+    }
+
+    const articleMedia = getArticleMedia(item, "card");
+    if (articleMedia) {
+        return createEmbeddedVideoMarkup(articleMedia.embedUrl, item.title, "video-container portrait search-result-video");
+    }
+
     if (item.image) {
         return `<img src="${item.image}" alt="${item.imageAlt || item.title}" class="search-result-image">`;
     }
 
     const placeholderLabel = item.resultType === "multimedia"
         ? "Multimedia"
-        : (getLiteraryMedia(item, "card") ? "Literary Video" : (item.category || "Article"));
+        : (getArticleMedia(item, "card") ? `${item.category || "Article"} Animation` : (item.category || "Article"));
     return `<div class="search-result-placeholder">${placeholderLabel}</div>`;
 }
 
@@ -526,8 +621,8 @@ function createSearchResultMeta(item) {
     if (item.resultType === "multimedia") {
         return [
             item.platform || "Multimedia",
-            item.host ? `Host: ${item.host}` : "",
-            item.editor ? `Editor: ${item.editor}` : ""
+            item.presenter ? `${item.presenterLabel || "Host/s"} ${item.presenter}` : "",
+            item.editor ? `${item.editorLabel || "Editor/s:"} ${item.editor}` : ""
         ].filter(Boolean).join(" • ");
     }
 
@@ -571,9 +666,9 @@ function createSearchResultCard(item) {
 }
 
 function createCardImage(article) {
-    const literaryCardMedia = getLiteraryMedia(article, "card");
-    if (literaryCardMedia) {
-        return createEmbeddedVideoMarkup(literaryCardMedia.embedUrl, article.title, "video-container landscape article-card-video");
+    const cardMedia = getArticleMedia(article, "card");
+    if (cardMedia) {
+        return createEmbeddedVideoMarkup(cardMedia.embedUrl, article.title, "video-container landscape article-card-video");
     }
 
     if (article.image) {
@@ -584,9 +679,9 @@ function createCardImage(article) {
 }
 
 function createSectionCard(article) {
-    const literaryCardMedia = getLiteraryMedia(article, "card");
-    const imageMarkup = literaryCardMedia
-        ? createEmbeddedVideoMarkup(literaryCardMedia.embedUrl, article.title, "video-container landscape news-card-video")
+    const cardMedia = getArticleMedia(article, "card");
+    const imageMarkup = cardMedia
+        ? createEmbeddedVideoMarkup(cardMedia.embedUrl, article.title, "video-container landscape news-card-video")
         : (article.image
             ? `<img src="${article.image}" alt="${article.imageAlt || article.title}" class="news-thumb">`
             : createArticlePlaceholder(article, "news-thumb-placeholder"));
@@ -641,18 +736,61 @@ function renderTrendingTable(targetId, items) {
         .join("");
 }
 
-function createMultimediaCard(item) {
+function createMultimediaCard(item, variant = "default") {
     const aspectRatioClass = item.aspectRatio === "landscape"
         ? "video-container landscape"
         : "video-container portrait";
     const platformLabel = item.platform || "Multimedia";
+    const isFeatured = variant === "featured";
+    const isHomeCompact = variant === "home-compact";
+    const cardClass = isFeatured ? "multimedia-card multimedia-card-featured" : "multimedia-card";
+    const titleTag = isFeatured ? "h2" : "h3";
+    const captionMarkup = item.caption
+        ? `<p class="multimedia-caption">${item.caption}</p>`
+        : (isFeatured ? `<p class="multimedia-caption multimedia-caption-fallback">Fresh from the CLSU Collegian multimedia desk.</p>` : "");
 
     const sourceLink = item.sourceUrl
         ? `<a class="multimedia-link" href="${item.sourceUrl}" target="_blank" rel="noopener noreferrer">Open on ${item.platform || "source"}</a>`
         : "";
+    const multimediaCredits = [
+        item.presenter ? `<p class="multimedia-meta"><strong>${item.presenterLabel || "Host/s:"}</strong> ${item.presenter}</p>` : "",
+        item.technicalDirector ? `<p class="multimedia-meta"><strong>${item.technicalDirectorLabel || "Technical Director/s:"}</strong> ${item.technicalDirector}</p>` : "",
+        item.videographer ? `<p class="multimedia-meta"><strong>${item.videographerLabel || "Videographer/s:"}</strong> ${item.videographer}</p>` : "",
+        item.editor ? `<p class="multimedia-meta"><strong>${item.editorLabel || "Editor/s:"}</strong> ${item.editor}</p>` : ""
+    ].filter(Boolean).join("");
+    const compactCredits = [
+        item.presenter ? `<p class="multimedia-meta"><strong>${item.presenterLabel || "Host/s:"}</strong> ${item.presenter}</p>` : "",
+        item.anchor ? `<p class="multimedia-meta"><strong>${item.presenterLabel || "Anchor/s:"}</strong> ${item.anchor}</p>` : "",
+        item.editor ? `<p class="multimedia-meta"><strong>${item.editorLabel || "Editor/s:"}</strong> ${item.editor}</p>` : ""
+    ].filter(Boolean).join("");
+
+    if (isHomeCompact) {
+        return `
+            <article class="multimedia-card multimedia-card-home">
+                <div class="multimedia-frame multimedia-frame-home">
+                    <div class="${aspectRatioClass}">
+                        <iframe
+                            src="${item.embedUrl}"
+                            title="${item.title}"
+                            scrolling="no"
+                            allowfullscreen="true"
+                            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+                        </iframe>
+                    </div>
+                </div>
+                <div class="multimedia-card-content">
+                    <p class="multimedia-eyebrow">${platformLabel}</p>
+                    <${titleTag}>${item.title}</${titleTag}>
+                    <div class="multimedia-meta-grid multimedia-meta-grid-home">
+                        ${compactCredits || `<p class="multimedia-meta"><strong>${item.editorLabel || "Editor/s:"}</strong> ${item.editor || "Multimedia Desk"}</p>`}
+                    </div>
+                </div>
+            </article>
+        `;
+    }
 
     return `
-        <article class="multimedia-card">
+        <article class="${cardClass}">
             <div class="multimedia-frame">
                 <div class="${aspectRatioClass}">
                     <iframe
@@ -666,11 +804,10 @@ function createMultimediaCard(item) {
             </div>
             <div class="multimedia-card-content">
                 <p class="multimedia-eyebrow">${platformLabel}</p>
-                <h3>${item.title}</h3>
-                <p class="multimedia-caption">${item.caption || ""}</p>
-                <div class="multimedia-meta-grid">
-                    <p class="multimedia-meta"><strong>Host</strong> ${item.host || "CLSU Collegian"}</p>
-                    <p class="multimedia-meta"><strong>Editor</strong> ${item.editor || "Multimedia Desk"}</p>
+                <${titleTag}>${item.title}</${titleTag}>
+                ${captionMarkup}
+                <div class="multimedia-meta-grid${isFeatured ? " multimedia-meta-grid-featured" : ""}">
+                    ${multimediaCredits || `<p class="multimedia-meta"><strong>${item.editorLabel || "Editor/s:"}</strong> ${item.editor || "Multimedia Desk"}</p>`}
                 </div>
                 ${sourceLink}
             </div>
@@ -683,7 +820,7 @@ function renderMultimedia() {
     const multimediaPageGrid = document.getElementById("multimediaPageGrid");
 
     if (homeGrid) {
-        homeGrid.innerHTML = siteMultimedia.slice(0, 1).map((item) => createMultimediaCard(item)).join("");
+        homeGrid.innerHTML = siteMultimedia.slice(0, 3).map((item) => createMultimediaCard(item, "home-compact")).join("");
     }
 
     if (multimediaPageGrid) {
@@ -996,11 +1133,11 @@ function renderArticlePage() {
     articleBody.innerHTML = article.body;
 
     const articleFigure = document.getElementById("articleFigure");
-    const literaryArticleMedia = getLiteraryMedia(article, "article");
-    articleFigure.innerHTML = literaryArticleMedia
+    const articleMedia = getArticleMedia(article, "article");
+    articleFigure.innerHTML = articleMedia
         ? `
             <div class="featured-video-shell">
-                ${createEmbeddedVideoMarkup(literaryArticleMedia.embedUrl, article.title, "video-container landscape literary-article-video")}
+                ${createEmbeddedVideoMarkup(articleMedia.embedUrl, article.title, "video-container landscape literary-article-video")}
             </div>
             <figcaption id="articleCaption"></figcaption>
         `
@@ -1011,8 +1148,8 @@ function renderArticlePage() {
     const relatedList = document.getElementById("relatedList");
     relatedList.innerHTML = getRelatedArticles(article).map((related) => `
         <a class="related-card" href="${getArticleUrl(related.slug)}" aria-label="Read ${related.title}">
-            ${getLiteraryMedia(related, "card")
-                ? createEmbeddedVideoMarkup(getLiteraryMedia(related, "card").embedUrl, related.title, "video-container landscape related-card-video")
+            ${getArticleMedia(related, "card")
+                ? createEmbeddedVideoMarkup(getArticleMedia(related, "card").embedUrl, related.title, "video-container landscape related-card-video")
                 : (related.image
                 ? `<img src="${related.image}" alt="${related.imageAlt || related.title}">`
                 : createArticlePlaceholder(related, "related-thumb-placeholder"))}
