@@ -9,6 +9,122 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
     // 1. image + imageAlt
     // 2. literaryMedia with separate card/article video settings
     {
+        slug: "grATE",
+        category: "Literary",
+        title: "grATE",
+        summary: "Was it not enough? I ask myself over and over and over again. All while staring at numbers measuring my efforts— the nights I chose textbooks over sleep, where caffeine became my best friend, times when I missed family days...",
+        author: "ZOE WINTER NICOLAS",
+        authorLine: "ZOE WINTER NICOLAS/Contributor",
+        credits: {
+            by: "ZOE WINTER NICOLAS/Contributor",
+            illustratedBy: "ROXZYLEEN ANDREIH VASQUEZ/CLSU Collegian",
+            layoutBy: "ASHER TERBY ESQUIVEL/CLSU Collegian",
+            
+        },
+        date: "2026-05-12",
+        readTime: "5 min read",
+        image: "PHOTOS/LITERARY/lit7.jpg",
+        imageAlt: "Isinusuka ko ang Pagbati ng “Happy Mother’s Day” artwork",
+        body: `
+        
+            <p>
+            Was it not enough?<br>
+            I ask myself over and over and over again.<br>
+            All while staring at numbers measuring my efforts— <br>
+            the nights I chose textbooks over sleep,<br>
+            where caffeine became my best friend,<br>
+            times when I missed family days<br>
+            because holidays became hollow,<br>
+            reduced to merely an extra day for requirements.<br>
+            Yet somehow,<br>
+            it still wasn’t enough.<br><br>
+
+            I expected greatness<br>
+            where I’d feel pride over dread,<br>
+            contentment over regret.<br>
+            The kind that beams,<br>
+            the kind that makes your chest swell—<br>
+            lifting me beyond the weight of almost.<br>
+            But instead, the marks were plain,<br>
+            ordinary, a quiet verdict of average—<br>
+            mediocre.<br><br>
+
+            And it grated.<br>
+            Like dry chalk scraping the board,<br>
+            like a fork grazing a plate.<br>
+            The roaring sound of mediocracy,<br>
+            pounding in my chest,<br>
+            grating against the hours I poured.<br>
+            The nights carved into studying,<br>
+            and the pages I had filled with hope.<br><br>
+
+            It had no trouble reminding me<br>
+            that no matter how hard <br>
+            I carve myself into margins,<br>
+            no matter how many nights  <br>
+            I traded serenity,<br>
+            the numbers arrive indifferent.<br>
+            For it only tallies outcomes,<br>
+            never the cost of trying. <br><br>
+
+            I wanted to be great.<br>
+            But instead, I was ate— <br>
+            devoured by disappointment,<br>
+            munched by the silence of effort<br>
+            that never bloomed into brilliance.<br><br>
+
+            Mediocrity, my cruel companion.<br>
+            It sits with me in class,<br>
+            murmuring: “others grate sharper.”<br>
+            It accompanies me home,<br>
+            scraping against my own thoughts,<br>
+            persistently reminding that<br>
+            while others feast on grandeur,<br>
+            I am left gnawed,<br>
+            my best already eaten <br>
+            away.<br><br>
+
+            Because to excel<br>
+            is never just for pride.<br>
+            It is a quiet key,<br>
+            turning locks toward scholarships, <br>
+            toward futures waiting to unfold— <br>
+            a silent testament <br>
+            that the nights of struggle,<br>
+            and the sacrifices carried at home,<br>
+            were not in vain.<br><br>
+
+            And yet—<br>
+            in the scrape, in the hollow,<br>
+            there is proof of hunger.<br>
+            To ache for greatness<br>
+            is to believe, to hope.<br>
+            To feel the grate of failure<br>
+            is to know you tried.<br>
+            To be eaten by longing<br>
+            is to carry the seed of possibility.<br><br>
+
+            So, I don’t think greatness is a grade.<br>
+            But rather the persistence <br>
+            in the face of silence,<br>
+            the courage to rise once again <br>
+            after being scraped raw,<br>
+            the quiet resilience to continue<br>
+            when the world calls you ordinary.<br><br>
+
+            So let me be grATE—<br>
+            both grated and eaten.<br>
+            Scarred and hungry.<br>
+            Because even in the ache,<br>
+            I carry the hunger.<br>
+            And hunger, though it hurts,<br>
+            is the spark that refuses <br>
+            to die.<br><br>
+            </p>
+            
+        `
+    }, 
+    {
         slug: "Isinusuka-ko-ang-Pagbati-ng-Happy-Mother’s-Day",
         category: "Literary",
         title: "Isinusuka ko ang Pagbati ng “Happy Mother’s Day",
@@ -94,11 +210,11 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
         title: "The Mill that Grinds Us All ",
         summary: "The air in Toboso usually smells of burnt cane—a heavy, caramel scent that lingers. Its mountain rustles a promise of sweetness—it gathers and trickles far beyond the hands that grow it. But if you dig just a few inches below the stalks, the soil tells a different story.",
         author: "JASMINE TIANCO",
-        authorLine: "JASMINE TIANCO, CLSU Collegian",
+        authorLine: "JASMINE TIANCO/CLSU Collegian",
         credits: {
-            by: "JASMINE TIANCO, CLSU Collegian",
-            illustratedBy: "ROXZYLEEN ANDREIH VASQUEZ, CLSU Collegian",
-            layoutBy: "SOFIA MICAH NICOLE ISLA, CLSU Collegian"
+            by: "JASMINE TIANCO/CLSU Collegian",
+            illustratedBy: "ROXZYLEEN ANDREIH VASQUEZ/CLSU Collegian",
+            layoutBy: "SOFIA MICAH NICOLE ISLA/CLSU Collegian"
         },
         date: "2026-05-04",
         readTime: "4 min read",
@@ -126,9 +242,9 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
         author: "KRYZTELLE ASHLEY HERRERA",
         authorLine: "KRYZTELLE ASHLEY HERRERA, CLSU Collegian",
         credits: {
-            by: "KRYZTELLE ASHLEY HERRERA, CLSU Collegian",
-            illustratedBy: "AVERY NEIL ROQUE, CLSU Collegian",
-            layoutBy: "RHAINE KARL FIGUEROA, CLSU Collegian"
+            by: "KRYZTELLE ASHLEY HERRERA/CLSU Collegian",
+            illustratedBy: "AVERY NEIL ROQUE/CLSU Collegian",
+            layoutBy: "RHAINE KARL FIGUEROA/CLSU Collegian"
         },
         date: "2026-05-02",
         readTime: "4 min read",
@@ -289,7 +405,7 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
         title: "Hanggang sa Maubos",
         summary: "Sa bawat pag-abante sa lansangan, may bigat agad sa aking mga paa; hawak ang manibela—pilit kong pinapaikot ang araw kahit ako’y unti-unti nitong nilulusaw.",
         author: "ANGELIE JONA RIVERA",
-        authorLine: "ANGELIE JONA RIVERA, CLSU Collegian",
+        authorLine: "ANGELIE JONA RIVERA/CLSU Collegian",
         credits: {
             by: "ANGELIE JONA RIVERA/CLSU Collegian",
             illustratedBy: "DEXTER VILORIA/CLSU Collegian",

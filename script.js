@@ -39,8 +39,21 @@ function getArticleUrl(slug) {
     return `article.html?slug=${encodeURIComponent(slug)}`;
 }
 
+function normalizeSlugValue(slug) {
+    if (typeof slug !== "string") {
+        return "";
+    }
+
+    return slug
+        .trim()
+        .toLowerCase()
+        .replace(/[‘’‚‛]/g, "'")
+        .replace(/[“”„‟]/g, '"');
+}
+
 function getArticleBySlug(slug) {
-    return siteData.articles.find((article) => article.slug === slug) || null;
+    const normalizedSlug = normalizeSlugValue(slug);
+    return siteData.articles.find((article) => normalizeSlugValue(article.slug) === normalizedSlug) || null;
 }
 
 function getIssueUrl(issue) {
@@ -1117,10 +1130,13 @@ function renderArticlePage() {
 
     const params = new URLSearchParams(window.location.search);
     const selectedSlug = params.get("slug");
-    const article = getArticleBySlug(selectedSlug) || getFeaturedArticle();
+    const selectedArticle = selectedSlug ? getArticleBySlug(selectedSlug) : null;
+    const article = selectedSlug ? selectedArticle : getFeaturedArticle();
 
     if (!article) {
-        articleBody.innerHTML = "<p>No articles are available yet.</p>";
+        articleBody.innerHTML = selectedSlug
+            ? "<p>The requested article could not be found.</p>"
+            : "<p>No articles are available yet.</p>";
         return;
     }
 

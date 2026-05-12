@@ -1,14 +1,19 @@
 window.CLSU_SITE_CONFIG = {
     tickerItems: [
-        "Planong ilunsad ng Central Luzon State University (CLSU) ang Artificial Intelligence(AI)-powered chatbot na “SielAI” sa Comprehensive Academic Information System (CAIS) pagsapit ng unang semestre ng panuruang taon 2026-2027, ayon kay Robert Hernandez, Project Coordinator ng proyekto, sa isang panayam kahapon, Abril 29."
+        "Planong ilunsad ng Central Luzon State University (CLSU) ang Artificial Intelligence(AI)-powered chatbot na \"SielAI\" sa Comprehensive Academic Information System (CAIS) pagsapit ng unang semestre ng panuruang taon 2026-2027, ayon kay Robert Hernandez, Project Coordinator ng proyekto, sa isang panayam kahapon, Abril 29."
     ],
-    featuredSlug: "Isinusuka-ko-ang-Pagbati-ng-Happy-Mother’s-Day",
+    featuredSlug: "grATE",
 
     trending: [
         {
+            title: "3 CLSU Educ grads top 2026 LEPT; both levels surpass nat'l passing",
+            tag: "News",
+            slug: "3-clsu-educ-grads-top-2026-lept-both-levels-surpass-natl-passing"
+        },
+        {
             title: "'SielAI' chatbot ilulunsad sa susunod na akademikong taon",
             tag: "News",
-            slug: "‘SielAI’-chatbot-ng-CLSU-ilulunsad-sa-susunod-na-akademikong-taon"
+            slug: "sielai-chatbot-ng-clsu-ilulunsad-sa-susunod-na-akademikong-taon"
         },
         {
             title: "Bagong USSC Officers, pormal nang kinilala ng UEB; Ballesteros, uupo bilang Chairperson",
@@ -20,6 +25,5 @@ window.CLSU_SITE_CONFIG = {
             tag: "Features",
             slug: "sealed-sent-then-reopened"
         }
-        
     ]
 };

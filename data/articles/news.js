@@ -7,6 +7,33 @@
 
 window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
     {
+        slug: "3-clsu-educ-grads-top-2026-lept-both-levels-surpass-natl-passing",
+        category: "News",
+        title: "3 CLSU Educ grads top 2026 LEPT; both levels surpass nat’l passing",
+        summary: "Central Luzon State University (CLSU) alumni secured three topnotcher positions in the March 2026 Licensure Examination for Professional Teachers (LEPT), posting institutional passing rates above the national average in both elementary and secondary levels.",
+        author: "JANELLE DADAG",
+        authorLine: "JANELLE DADAG/CLSU Collegian",
+        credits: {
+            by: "JANELLE DADAG/CLSU Collegian"
+        },
+        date: "2026-05-12",
+        readTime: "3 min read",
+        image: "PHOTOS/NEWS/news7.jpg",
+        imageAlt: "LEPT topnotchers",
+        body: `
+            <p>
+            Central Luzon State University (CLSU) alumni secured three topnotcher positions in the March 2026 Licensure Examination for Professional Teachers (LEPT), posting institutional passing rates above the national average in both elementary and secondary levels.<br><br>
+            In the secondary level, Miguel Gavino Gantang Sevilla ranked third with a 94.60% rating, while Hannah Matadling Bernardo and Adriane Claude Tecson Cavinta ranked fourth (94.20%) and ninth (93%) in the elementary level, respectively.<br><br>
+            The university obtained a 96.00% institutional passing rate in the elementary level after 24 out of 25 first timers passed, which posted a 93.10% overall performance with 27 passers out of 29 examinees.<br><br>
+            Meanwhile, 94.38% passing rate was recorded in the secondary level after 84 out of 89 first timers passed, logging an 80.70% performance rate with 92 passers out of 114 takers.<br><br>
+            Both exceeded the national passing rate of 56.03% in the elementary level and 73.10% in the secondary level.<br><br>
+            The Licensure Examination for Professional Teachers (LEPT) was conducted on March 15, 2026 across multiple testing centers nationwide, including the National Capital Region (NCR), Baguio, Cebu, Davao, Iloilo and other areas as administered by the Philippine Regulation Commission (PRC).<br><br>
+            PRC added that the results of the examination with respect to 58 examinees were withheld pending final determination of their liabilities under the rules and regulations governing licensure examinations, while two were withheld for further verification of submitted documents.<br><br>
+            SEE list of passers via PRC Board: <a href="https://tinyurl.com/5xhfm55u" target="_blank">https://tinyurl.com/5xhfm55u</a>
+            </p>
+        `
+    },
+    {
         slug: "sielai-chatbot-ng-clsu-ilulunsad-sa-susunod-na-akademikong-taon",
         category: "News",
         title: "‘SielAI’ chatbot ng CLSU ilulunsad sa susunod na akademikong taon",
@@ -40,10 +67,10 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
         category: "News",
         title: "CLSU Infirmary tallies 50 UWeek-related med emergencies",
         summary: "During the height of the 119th Founding Anniversary of CLSU, the University Infirmary recorded around 50 student performers who sought medical assistance.",
-        author: "Eljohn Tolentino",
-        authorLine: "By Eljohn Tolentino, CLSU Collegian",
+        author: "ELJOHN TOLENTINO",
+        authorLine: "By ELJOHN TOLENTINO/CLSU Collegian",
         credits: {
-            by: "Eljohn Tolentino, CLSU Collegian"
+            by: "ELJOHN TOLENTINO/CLSU Collegian"
         },
         date: "2026-04-22",
         readTime: "3 min read",
@@ -77,11 +104,11 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
         category: "News",
         title: "Bagong USSC Officers, pormal nang kinilala ng UEB; Ballesteros, uupo bilang Chairperson",
         summary: "Proklamado na ng University Electoral Board ang mga susunod na manunungkulan sa University Supreme Student Council matapos ang halalan.",
-        author: "Justine Ace Sandoval",
-        authorLine: "By Justine Ace Sandoval, CLSU Collegian",
+        author: "JUSTINE ACE SANDOVAL",
+        authorLine: "By JUSTINE ACE SANDOVAL/CLSU Collegian",
         credits: {
             labelPreset: "via",
-            by: "Justine Ace Sandoval/CLSU Collegian",
+            by: "JUSTINE ACE SANDOVAL/CLSU Collegian",
             layoutBy: "Asher Terby Esquivel/CLSU Collegian",
             labels: {
                 by: "Via:",
@@ -152,7 +179,7 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
         title: "CLSU records 31.51% pass rate in March CELE",
         summary: "Central Luzon State University (CLSU) logged a 31.51% passing rate in the March 2026 Civil Engineering Licensure Examination (CELE), after 46 of its 146 takers passed, as per the results released by the Professional Regulation Commission on April 7.",
         author: "JEREMY AGLUBA",
-        authorLine: "By JEREMY AGLUBA, CLSU Collegian",
+        authorLine: "By JEREMY AGLUBA/CLSU Collegian",
         credits: {
             by: "JEREMY AGLUBA/CLSU Collegian"
         },

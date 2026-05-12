@@ -11,12 +11,12 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
         category: "Features",
         title: "Stars Shaped in Shared Space",
         summary: "ExDRAGvaganza became a shared space where identity was not only performed on stage, but recognized, affirmed, and reflected back through every movement, silence, and applause.",
-        author: "Kryztelle Ashley Herrera",
-        authorLine: "By Kryztelle Ashley Herrera, CLSU Collegian",
+        author: "KRYZTELLE ASHLEY HERRERA",
+        authorLine: "By KRYZTELLE ASHLEY HERRERA/CLSU Collegian",
         credits: {
-            by: "Kryztelle Ashley Herrera, CLSU Collegian",
-            photosBy: "Jexzy Reign De Lara and Sheryn Joy Lacar",
-            layoutBy: "Asher Terby Esquivel"
+            by: "KRYZTELLE ASHLEY HERRERA/CLSU Collegian",
+            photosBy: "JEXZY DE LARA and SHERYN JOY LACAR/CLSU Collegian",
+            layoutBy: "ASHER TERBY ESQUIBEL/CLSU Collegian"
         },
         date: "2026-04-21",
         readTime: "10 min read",

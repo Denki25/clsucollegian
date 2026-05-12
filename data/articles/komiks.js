@@ -22,7 +22,7 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
                 illustratedBy: "Animasyon ni:"
             }
         },
-        date: "2026-05-12",
+        date: "2026-05-11",
         readTime: "1 min read",
         literaryMedia: {
             card: {
