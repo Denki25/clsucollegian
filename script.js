@@ -843,18 +843,91 @@ function createMultimediaCard(item, variant = "default") {
     `;
 }
 
+function getDateValue(dateString) {
+    return dateString ? new Date(`${dateString}T00:00:00`) : null;
+}
+
+function getDateTimestamp(dateString) {
+    const dateValue = getDateValue(dateString);
+    const timestamp = dateValue ? dateValue.getTime() : 0;
+    return Number.isNaN(timestamp) ? 0 : timestamp;
+}
+
+function getMonthKey(dateString) {
+    const dateValue = getDateValue(dateString);
+    if (!dateValue || Number.isNaN(dateValue.getTime())) {
+        return null;
+    }
+
+    return String(dateValue.getMonth() + 1).padStart(2, "0");
+}
+
+function formatMonthLabel(monthKey) {
+    const dateValue = new Date(2000, Number(monthKey) - 1, 1);
+
+    return new Intl.DateTimeFormat("en-US", {
+        month: "long"
+    }).format(dateValue);
+}
+
+function initializeMonthFilter(filterElement, items) {
+    if (!filterElement || filterElement.dataset.initialized) {
+        return;
+    }
+
+    const monthKeys = [...new Set(items
+        .map((item) => getMonthKey(item.date))
+        .filter(Boolean))]
+        .sort((left, right) => Number(right) - Number(left));
+
+    filterElement.innerHTML = [`<option value="all">All months</option>`]
+        .concat(monthKeys.map((monthKey) => `<option value="${monthKey}">${formatMonthLabel(monthKey)}</option>`))
+        .join("");
+    filterElement.dataset.initialized = "true";
+}
+
+function filterItemsByMonth(items, selectedMonth) {
+    if (selectedMonth === "all") {
+        return items;
+    }
+
+    return items.filter((item) => getMonthKey(item.date) === selectedMonth);
+}
+
+function sortItemsByNewest(items) {
+    return [...items].sort((left, right) => getDateTimestamp(right.date) - getDateTimestamp(left.date));
+}
+
 function renderMultimedia() {
     const homeGrid = document.getElementById("homeMultimediaGrid");
     const multimediaPageGrid = document.getElementById("multimediaPageGrid");
+    const monthFilter = document.getElementById("section-month-filter");
 
     if (homeGrid) {
         homeGrid.innerHTML = siteMultimedia.slice(0, 3).map((item) => createMultimediaCard(item, "home-compact")).join("");
     }
 
     if (multimediaPageGrid) {
-        multimediaPageGrid.innerHTML = siteMultimedia.length > 0
-            ? siteMultimedia.map((item) => createMultimediaCard(item)).join("")
-            : `<div class="news-empty">No multimedia entries are available yet.</div>`;
+        initializeMonthFilter(monthFilter, siteMultimedia);
+
+        const renderPageGrid = () => {
+            const selectedMonth = monthFilter ? monthFilter.value : "all";
+            const filteredItems = sortItemsByNewest(filterItemsByMonth(siteMultimedia, selectedMonth));
+
+            multimediaPageGrid.innerHTML = filteredItems.length > 0
+                ? filteredItems.map((item) => createMultimediaCard(item)).join("")
+                : `<div class="news-empty">No multimedia entries are available yet.</div>`;
+
+            observeAnimatedElements();
+        };
+
+        if (monthFilter && !monthFilter.dataset.bound) {
+            monthFilter.addEventListener("change", renderPageGrid);
+            monthFilter.dataset.bound = "true";
+        }
+
+        renderPageGrid();
+        return;
     }
 
     observeAnimatedElements();
@@ -893,6 +966,7 @@ function createIssueCard(issue) {
 function renderIssues() {
     const homeIssuesGrid = document.getElementById("homeIssuesGrid");
     const issuesPageGrid = document.getElementById("issuesPageGrid");
+    const monthFilter = document.getElementById("section-month-filter");
     const emptyMarkup = `<div class="news-empty">No archive entries are available yet.</div>`;
 
     if (homeIssuesGrid) {
@@ -902,9 +976,26 @@ function renderIssues() {
     }
 
     if (issuesPageGrid) {
-        issuesPageGrid.innerHTML = siteIssues.length > 0
-            ? siteIssues.map((issue) => createIssueCard(issue)).join("")
-            : emptyMarkup;
+        initializeMonthFilter(monthFilter, siteIssues);
+
+        const renderPageGrid = () => {
+            const selectedMonth = monthFilter ? monthFilter.value : "all";
+            const filteredIssues = sortItemsByNewest(filterItemsByMonth(siteIssues, selectedMonth));
+
+            issuesPageGrid.innerHTML = filteredIssues.length > 0
+                ? filteredIssues.map((issue) => createIssueCard(issue)).join("")
+                : emptyMarkup;
+
+            observeAnimatedElements();
+        };
+
+        if (monthFilter && !monthFilter.dataset.bound) {
+            monthFilter.addEventListener("change", renderPageGrid);
+            monthFilter.dataset.bound = "true";
+        }
+
+        renderPageGrid();
+        return;
     }
 
     observeAnimatedElements();
@@ -1080,42 +1171,13 @@ function renderSectionPage() {
 
     const category = sectionRoot.dataset.sectionCategory || "";
     const emptyLabel = sectionRoot.dataset.sectionLabel || category || "section";
-    const yearFilter = document.getElementById("section-year-filter");
-    const sortFilter = document.getElementById("section-sort-filter");
+    const monthFilter = document.getElementById("section-month-filter");
     const sectionArticles = getArticlesByCategory(category);
-    const years = [...new Set(sectionArticles
-        .map((article) => article.date ? new Date(`${article.date}T00:00:00`).getFullYear() : null)
-        .filter(Boolean))]
-        .sort((left, right) => right - left);
-
-    if (yearFilter && !yearFilter.dataset.initialized) {
-        yearFilter.innerHTML = [`<option value="all">All years</option>`]
-            .concat(years.map((year) => `<option value="${year}">${year}</option>`))
-            .join("");
-        yearFilter.dataset.initialized = "true";
-    }
-
-    if (sortFilter && !sortFilter.dataset.initialized) {
-        sortFilter.dataset.initialized = "true";
-    }
+    initializeMonthFilter(monthFilter, sectionArticles);
 
     const renderList = () => {
-        const selectedYear = yearFilter ? yearFilter.value : "all";
-        const selectedSort = sortFilter ? sortFilter.value : "latest";
-
-        const filteredArticles = sectionArticles
-            .filter((article) => {
-                if (selectedYear === "all") {
-                    return true;
-                }
-
-                return String(new Date(`${article.date}T00:00:00`).getFullYear()) === selectedYear;
-            })
-            .sort((left, right) => {
-                const leftTime = left.date ? new Date(`${left.date}T00:00:00`).getTime() : 0;
-                const rightTime = right.date ? new Date(`${right.date}T00:00:00`).getTime() : 0;
-                return selectedSort === "oldest" ? leftTime - rightTime : rightTime - leftTime;
-            });
+        const selectedMonth = monthFilter ? monthFilter.value : "all";
+        const filteredArticles = sortItemsByNewest(filterItemsByMonth(sectionArticles, selectedMonth));
 
         list.classList.add("news-feed");
         list.innerHTML = filteredArticles.length > 0
@@ -1124,14 +1186,9 @@ function renderSectionPage() {
         observeAnimatedElements();
     };
 
-    if (yearFilter && !yearFilter.dataset.bound) {
-        yearFilter.addEventListener("change", renderList);
-        yearFilter.dataset.bound = "true";
-    }
-
-    if (sortFilter && !sortFilter.dataset.bound) {
-        sortFilter.addEventListener("change", renderList);
-        sortFilter.dataset.bound = "true";
+    if (monthFilter && !monthFilter.dataset.bound) {
+        monthFilter.addEventListener("change", renderList);
+        monthFilter.dataset.bound = "true";
     }
 
     renderList();

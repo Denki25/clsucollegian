@@ -26,7 +26,7 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
          },
 
          date: "2026-03-25",
-         readTime: "8 min read",
+         readTime: "6 min read",
          image: "PHOTOS/DEVCOMM/dev2.jpg",
          imageAlt: "devcomm image",
          body: `
@@ -38,32 +38,46 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
                 <blockquote><p>“Sa puti [white onion] namin, nakuha siya ng P40 per kilo. Ang naging puhunan ko doon is amounting to P30. So, ‘yong proceed na ten pesos, ‘yon ‘yong naging kita,” ayon kay Infante. Aniya, kulang ang kanyang kinita upang matustusan ang susunod na taniman.</p></blockquote>
                
                 <p>
-                <strong>𝗣𝗮𝗴𝘁𝗮𝘁𝗮𝗸𝗱𝗮 𝗻𝗴 𝗣𝗿𝗲𝘀𝘆𝗼<strong><br>
+                <strong>𝗣𝗮𝗴𝘁𝗮𝘁𝗮𝗸𝗱𝗮 𝗻𝗴 𝗣𝗿𝗲𝘀𝘆𝗼</strong><br>
                 <p>
-                Ayon kay Infante, hindi kontrolado ng mga magsasaka ang farmgate price dahil ang mga trader o ahente ang nagtatakda nito, dahilan upang dumepende ang mga magsasaka sa presyong iniaalok sa panahon ng anihan.
-                Ang mga trader ang nagsisilbing tagapamagitan sa pagbili at pagbebenta ng ani at dahil kontrolado nila ang kapital at distribusyon, sila ang may dominasyon sa pagtatakda ng presyo sa merkado.
-                “‘Yan ang masaklap. Ang nagtatakda talaga diyan ng presyo is the trader or the agent. So, wala tayong magagawa kapag sinabi nilang ang presyo nito ay ganito, ganito lang ‘yong tumatakbo sa kalakaran,” paliwanag niya.
-                Sa tinatayang P10 na kita kada kilo ng sibuyas, paghahatian pa ito ng mga magsasaka kung sila ay may mga kasamang nagtanim at umani.
-                Napipilitan naman ang ilang magsasakang tulad ni Dexter Cabico na mangutang upang magkaroon ulit ng puhunan para sa susunod na taniman.
-                “Hindi mo naman pwede kasing pabayaan. Lalo ka kasing ‘di kikita o magkakaroon pagka-pinabayaan siya. Kaya sakripisyo ang pagsasaka ng sibuyas,” pahayag ni Cabico. 
-                𝗟𝗶𝗺𝗶𝘁𝗮𝗱𝗼𝗻𝗴 𝗖𝗼𝗹𝗱 𝗦𝘁𝗼𝗿𝗮𝗴𝗲
-                Sa ngayon, pag-iimbak sa cold storage ang paraan upang mapahaba ang shelf life ng aning sibuyas at maiwasan ang agarang pagbebenta sa mababang halaga.
-                Kabilang ang onion cold storage sa Bongabon na proyekto ng Department of Agriculture (DA) sa kasalukuyang pinapakinabangan ng mga magsasaka. 
-                Gayunpaman, ayon sa ilang magsasaka, dagdag gastos ang pag-iimbak sa mga storage at nangangailangan magpa-reserba ng alokasyon, pribado man o kooperatiba ang pasilidad. 
-                “Sa ngayon, no need ilagay sa storage kasi wala nang puhunan. Ibibigay pa ang parte ng kasama, kaya ano pa ang matitira?” ani Erwin Barrion, magsasaka sa Bongabon. 
-                Giit naman ni Infante, mga trader lang din ang nakakakuha ng alokasyon sa cold storage, habang nananatiling walang pambayad ang mga magsasaka para rito. 
-                “Kailangan, ang gagawin nilang sistema doon is even si farmers, kayang magpasok ng tanim niya sa cold storage para pagpanahon nila na may kita na, pwede nang [kunin],” pahayag ni Infante.
-                Umaabot sa P150-180 kada sako ng sibuyas ang bayad sa cold storage para sa apat hanggang limang buwan na pag-iimbak. 
-                𝗜𝗺𝗽𝗼𝗿𝘁𝗮𝘀𝘆𝗼𝗻 𝗮𝘁 𝗣𝗮𝗻𝗮𝘄𝗮𝗴𝗮𝗻 𝗻𝗴 𝗜𝗺𝗯𝗲𝘀𝘁𝗶𝗴𝗮𝘀𝘆𝗼𝗻
-                Dagdag pang hamon ang pagpasok ng imported na sibuyas sa gitna ng anihan, na ayon sa Resolution No. 33-S-2026 ng Sangguniang Bayan ng Bongabon ay maaaring nagdulot ng oversupply.
-                Sa ilalim ng resolusyon, nanawagan ang Sanggunian ng agarang imbestigasyon sa DA, Bureau of Customs (BoC), at kay Sen. Francis “Kiko” Pangilinan ukol sa patuloy na pagpasok ng imported na sibuyas sa kabila ng suspensyon ng import permits.
-                “Sa kabila ng naturang deklarasyon, may mga ulat at obserbasyon ng patuloy at tila malakihang pagpasok ng imported na sibuyas sa merkado na nagdudulot ng hindi makatarungang pagbaba ng farmgate price ng lokal na sibuyas, na nagiging dahilan ng pangamba at paghihirap ng ating mga magsasaka at kanilang pamilya,” saad ng resolusyon.
-                Mula sa tala ng DA karaniwang isinasagawa ang suspensyon ng import permits tuwing peak harvest season kapag sapat o mataas ang inaasahang lokal na produksyon upang maiwasan ang pagdagsa ng suplay sa merkado.
-                Ayon sa DA, may 4,454.09 MT na pulang sibuyas at 5,271.15 MT na puting sibuyas sa cold storage noong Pebrero 13 at tatagal lamang umano hanggang kalagitnaan ng Marso, kaya iginiit nito na walang oversupply sa merkado.
-                Panawagan ng Sangguniang Bayan na mas paiigtingin ang pagbabantay sa pag-aangkat at ang pagsasapubliko ng mga datos kaugnay nito. Daing din nito ang mahigpit na pagpapatupad laban sa smuggling at hindi patas na kalakalan.
-                Samantala, iminungkahi naman ni Barrion ang direct buying programs, price monitoring, at market interventions mula sa lokal na pamahalaan ng Bongabon. 
-                Nananatiling hinihintay ng mga magsasaka ang resulta ng imbestigasyon at karagdagang pahayag mula sa DA kaugnay ng isyu.
+
+                Ayon kay Infante, hindi kontrolado ng mga magsasaka ang farmgate price dahil ang mga trader o ahente ang nagtatakda nito, dahilan upang dumepende ang mga magsasaka sa presyong iniaalok sa panahon ng anihan.<br><br>
+                Ang mga trader ang nagsisilbing tagapamagitan sa pagbili at pagbebenta ng ani at dahil kontrolado nila ang kapital at distribusyon, sila ang may dominasyon sa pagtatakda ng presyo sa merkado.<br>
+                <blockquote><p>“‘Yan ang masaklap. Ang nagtatakda talaga diyan ng presyo is the trader or the agent. So, wala tayong magagawa kapag sinabi nilang ang presyo nito ay ganito, ganito lang ‘yong tumatakbo sa kalakaran,” paliwanag niya.</p></blockquote>
+               <p>
+                Sa tinatayang P10 na kita kada kilo ng sibuyas, paghahatian pa ito ng mga magsasaka kung sila ay may mga kasamang nagtanim at umani.<br><br>
+                Napipilitan naman ang ilang magsasakang tulad ni Dexter Cabico na mangutang upang magkaroon ulit ng puhunan para sa susunod na taniman.<br><br>
+                </p>
+                <p>
+                “Hindi mo naman pwede kasing pabayaan. Lalo ka kasing ‘di kikita o magkakaroon pagka-pinabayaan siya. Kaya sakripisyo ang pagsasaka ng sibuyas,” pahayag ni Cabico. <br>
+                </p>
+
+                <strong>𝗟𝗶𝗺𝗶𝘁𝗮𝗱𝗼𝗻𝗴 𝗖𝗼𝗹𝗱 𝗦𝘁𝗼𝗿𝗮𝗴𝗲</strong><br>
+
+              <p>
+                Sa ngayon, pag-iimbak sa cold storage ang paraan upang mapahaba ang shelf life ng aning sibuyas at maiwasan ang agarang pagbebenta sa mababang halaga.<br><br>
+                Kabilang ang onion cold storage sa Bongabon na proyekto ng Department of Agriculture (DA) sa kasalukuyang pinapakinabangan ng mga magsasaka. <br><br>
+                Gayunpaman, ayon sa ilang magsasaka, dagdag gastos ang pag-iimbak sa mga storage at nangangailangan magpa-reserba ng alokasyon, pribado man o kooperatiba ang pasilidad. <br><br>
+                “Sa ngayon, no need ilagay sa storage kasi wala nang puhunan. Ibibigay pa ang parte ng kasama, kaya ano pa ang matitira?” ani Erwin Barrion, magsasaka sa Bongabon. <br><br>
+                Giit naman ni Infante, mga trader lang din ang nakakakuha ng alokasyon sa cold storage, habang nananatiling walang pambayad ang mga magsasaka para rito. <br>
+                
+                <blockquote><p>“Kailangan, ang gagawin nilang sistema doon is even si farmers, kayang magpasok ng tanim niya sa cold storage para pagpanahon nila na may kita na, pwede nang [kunin],” pahayag ni Infante.</blockquote></p>
+                <p>
+                Umaabot sa P150-180 kada sako ng sibuyas ang bayad sa cold storage para sa apat hanggang limang buwan na pag-iimbak. <br>
+               </p>
+                <strong>𝗜𝗺𝗽𝗼𝗿𝘁𝗮𝘀𝘆𝗼𝗻 𝗮𝘁 𝗣𝗮𝗻𝗮𝘄𝗮𝗴𝗮𝗻 𝗻𝗴 𝗜𝗺𝗯𝗲𝘀𝘁𝗶𝗴𝗮𝘀𝘆𝗼𝗻</strong><br>
+               <p>
+                Dagdag pang hamon ang pagpasok ng imported na sibuyas sa gitna ng anihan, na ayon sa Resolution No. 33-S-2026 ng Sangguniang Bayan ng Bongabon ay maaaring nagdulot ng oversupply.<br><br>
+                Sa ilalim ng resolusyon, nanawagan ang Sanggunian ng agarang imbestigasyon sa DA, Bureau of Customs (BoC), at kay Sen. Francis “Kiko” Pangilinan ukol sa patuloy na pagpasok ng imported na sibuyas sa kabila ng suspensyon ng import permits.<br><br>
+                “Sa kabila ng naturang deklarasyon, may mga ulat at obserbasyon ng patuloy at tila malakihang pagpasok ng imported na sibuyas sa merkado na nagdudulot ng hindi makatarungang pagbaba ng farmgate price ng lokal na sibuyas, na nagiging dahilan ng pangamba at paghihirap ng ating mga magsasaka at kanilang pamilya,” saad ng resolusyon.<br><br>
+                Mula sa tala ng DA karaniwang isinasagawa ang suspensyon ng import permits tuwing peak harvest season kapag sapat o mataas ang inaasahang lokal na produksyon upang maiwasan ang pagdagsa ng suplay sa merkado.<br><br>
+                Ayon sa DA, may 4,454.09 MT na pulang sibuyas at 5,271.15 MT na puting sibuyas sa cold storage noong Pebrero 13 at tatagal lamang umano hanggang kalagitnaan ng Marso, kaya iginiit nito na walang oversupply sa merkado.<br><br>
+                Panawagan ng Sangguniang Bayan na mas paiigtingin ang pagbabantay sa pag-aangkat at ang pagsasapubliko ng mga datos kaugnay nito. Daing din nito ang mahigpit na pagpapatupad laban sa smuggling at hindi patas na kalakalan.<br><br>
+                Samantala, iminungkahi naman ni Barrion ang direct buying programs, price monitoring, at market interventions mula sa lokal na pamahalaan ng Bongabon. <br><br>
+                Nananatiling hinihintay ng mga magsasaka ang resulta ng imbestigasyon at karagdagang pahayag mula sa DA kaugnay ng isyu.<br><br>
             </p>
+            </p>
+                </p>
              
          `
      },
