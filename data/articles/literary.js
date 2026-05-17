@@ -127,6 +127,7 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
     {
         slug: "Isinusuka-ko-ang-Pagbati-ng-Happy-Mother’s-Day",
         category: "Literary",
+        displayCategory: "PANITIKAN",
         title: "Isinusuka ko ang Pagbati ng “Happy Mother’s Day",
         summary: "Mama,  pasensya ka na dahil ako ang anak mo at hindi bukal sa akin ang bigyan ka ng rosas o magagandang salita.",
         author: "BIDOT",
@@ -315,6 +316,7 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
     {
         slug: "katapusan-ng-lahat-lahat",
         category: "Literary",
+        displayCategory: "PANITIKAN",
         title: "Katapusan ng lahat-lahat",
         summary: "Dumating na ang dapithapon, Nariyan na ang huni ng pangwakas na musika",
         author: "VINCE MACADANGDANG",
@@ -402,6 +404,7 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
     {
         slug: "Hanggang-sa-Maubos",
         category: "Literary",
+        displayCategory: "PANITIKAN",
         title: "Hanggang sa Maubos",
         summary: "Sa bawat pag-abante sa lansangan, may bigat agad sa aking mga paa; hawak ang manibela—pilit kong pinapaikot ang araw kahit ako’y unti-unti nitong nilulusaw.",
         author: "ANGELIE JONA RIVERA",

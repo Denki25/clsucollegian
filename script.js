@@ -56,6 +56,18 @@ function getArticleBySlug(slug) {
     return siteData.articles.find((article) => normalizeSlugValue(article.slug) === normalizedSlug) || null;
 }
 
+function getArticleDisplayCategory(article) {
+    if (!article || typeof article !== "object") {
+        return "Article";
+    }
+
+    const customLabel = typeof article.displayCategory === "string"
+        ? article.displayCategory.trim()
+        : "";
+
+    return customLabel || article.category || "Article";
+}
+
 function getIssueUrl(issue) {
     const issueSlug = issue && issue.slug ? issue.slug : "";
     return issueSlug ? `issues.html#${encodeURIComponent(issueSlug)}` : "issues.html";
@@ -345,7 +357,8 @@ function normalizeEmbedUrl(embedUrl) {
 function createArticlePlaceholder(article, className = "article-thumb-placeholder") {
     const isVideo = isVideoMediaArticle(article);
     const placeholderClass = isVideo ? `${className} literary-video-placeholder` : className;
-    const placeholderLabel = isVideo ? `${article.category} Animation` : article.category;
+    const displayCategory = getArticleDisplayCategory(article);
+    const placeholderLabel = isVideo ? `${displayCategory} Animation` : displayCategory;
 
     return `<div class="${placeholderClass}">${placeholderLabel}</div>`;
 }
@@ -437,6 +450,7 @@ function buildSearchIndex() {
         summary: article.summary || getTextExcerpt(article.body || "", 220),
         author: article.author || "",
         category: article.category || "Article",
+        displayCategory: getArticleDisplayCategory(article),
         date: article.date || "",
         readTime: article.readTime || "",
         image: article.image || "",
@@ -626,7 +640,7 @@ function createSearchResultMedia(item) {
 
     const placeholderLabel = item.resultType === "multimedia"
         ? "Multimedia"
-        : (getArticleMedia(item, "card") ? `${item.category || "Article"} Animation` : (item.category || "Article"));
+        : (getArticleMedia(item, "card") ? `${item.displayCategory || item.category || "Article"} Animation` : (item.displayCategory || item.category || "Article"));
     return `<div class="search-result-placeholder">${placeholderLabel}</div>`;
 }
 
@@ -656,7 +670,7 @@ function createSearchResultMeta(item) {
 function createSearchResultCard(item) {
     const categoryLabel = item.resultType === "multimedia"
         ? "Multimedia"
-        : (item.resultType === "archive" ? "Kule Archives" : (item.category || "Article"));
+        : (item.resultType === "archive" ? "Kule Archives" : (item.displayCategory || item.category || "Article"));
     const actionLabel = item.resultType === "multimedia"
         ? "Watch now"
         : (item.resultType === "archive" ? "View archive" : "Read article");
@@ -699,13 +713,14 @@ function createSectionCard(article) {
             ? `<img src="${article.image}" alt="${article.imageAlt || article.title}" class="news-thumb">`
             : createArticlePlaceholder(article, "news-thumb-placeholder"));
     const readTime = article.readTime || "10 min read";
+    const displayCategory = getArticleDisplayCategory(article);
 
     return `
         <article class="news-card">
             <a class="news-card-link" href="${getArticleUrl(article.slug)}" aria-label="Read ${article.title}">
                 ${imageMarkup}
                 <div class="news-content">
-                    <span class="category">${article.category}</span>
+                    <span class="category">${displayCategory}</span>
                     <h2>${article.title}</h2>
                     <p>${article.summary}</p>
                     <div class="news-meta">
@@ -729,7 +744,7 @@ function renderTrendingTable(targetId, items) {
 
     const fallbackItems = siteData.articles.slice(0, 5).map((article) => ({
         title: article.title,
-        tag: article.category,
+        tag: getArticleDisplayCategory(article),
         slug: article.slug
     }));
 
@@ -913,7 +928,7 @@ function renderHomePage() {
     const heroNextButton = document.getElementById("heroNextButton");
 
     if (featured && heroCategory && heroTitle && heroSummary && heroLink && heroImageWrapper && heroSlideMedia) {
-        heroCategory.textContent = featured.category;
+        heroCategory.textContent = getArticleDisplayCategory(featured);
         heroTitle.textContent = featured.title;
         heroSummary.textContent = featured.summary;
         heroLink.href = getArticleUrl(featured.slug);
@@ -1035,7 +1050,7 @@ function renderHomePage() {
                 <a class="article-card-link" href="${getArticleUrl(article.slug)}" aria-label="Read ${article.title}">
                     ${createCardImage(article)}
                     <div class="card-content">
-                        <span class="category">${article.category}</span>
+                        <span class="category">${getArticleDisplayCategory(article)}</span>
                         <h3>${article.title}</h3>
                         <p>${article.summary}</p>
                         <div class="card-meta">
@@ -1141,7 +1156,7 @@ function renderArticlePage() {
     }
 
     updateArticleSocialMeta(article);
-    document.getElementById("articleCategory").textContent = article.category;
+    document.getElementById("articleCategory").textContent = getArticleDisplayCategory(article);
     document.getElementById("articleTitle").textContent = article.title;
     document.getElementById("articleDate").textContent = formatDate(article.date);
     document.getElementById("articleReadTime").textContent = article.readTime || "10 min read";

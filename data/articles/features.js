@@ -24,7 +24,7 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
         imageAlt: "Stars Shaped in Shared Space feature artwork",
         body: `
         
-            <h2>Stars Shaped in Shared Space</h2>
+            
             <p>
             Under the lights that revealed more than performance, ExDRAGvaganza became a shared space where identity was not just exhibited on stage but recognized in the eyes of those who watched, responded, and saw themselves reflected back through every movement, silence, and applause.<br><br>
             What made the moment powerful was not only the spectacle of performance but the quiet agreement between the stage and the audience that allowed people to exist in the room without shrinking any part of themselves.<br>
@@ -32,7 +32,6 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
             <strong>
             𝗖𝘂𝗿𝗶𝗼𝘀𝗶𝘁𝘆 𝗶𝗻𝘁𝗼 𝗜𝗱𝗲𝗻𝘁𝗶𝘁𝘆
             </strong>
-            </h2>
 
             <p>
             For Carl Joshua Kier Coloma, a Bachelor of Science in Textile and Fashion Technology (BSTFT) student, stepping into ExDRAGvaganza as Lava Saugn meant stepping into a version of themselves that only fully exists when they become the persona they carry on stage: a fearless embodiment of expression that they bring to life through their drag identity.<br><br>
@@ -45,7 +44,7 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
             <strong>
             𝗖𝗼𝗻𝗰𝗲𝗮𝗹𝗺𝗲𝗻𝘁 𝘁𝗼 𝗕𝗼𝗹𝗱 𝗔𝗿𝗿𝗶𝘃𝗮𝗹
             </strong>
-            </h2>
+          
             <p>
 
             Behind the electrifying presence of Zesty Bite is Joshua, a Bachelor of Culture and Arts Education (BCAED) student whose drag identity was born from inspiration, decision, and the courage to return to a stage that once sparked a promise.<br><br>

@@ -11,6 +11,7 @@ Rules when adding an article:
 
 - Put the article in the matching section file.
 - Keep `category` exactly the same as the section name above.
+- Use optional `displayCategory` if you want a custom visible badge without changing the section filter.
 - Keep `slug` unique across all files.
 - Use `date` format `YYYY-MM-DD`.
 - Put images in the matching `PHOTOS/` folder when possible.
@@ -25,6 +26,7 @@ Minimum article object shape:
 {
     slug: "unique-slug",
     category: "SectionName",
+    displayCategory: "Custom visible label", // optional, e.g. "DEVCOMM NEWS"
     title: "Article title",
     summary: "Short summary",
     author: "Author Name",
@@ -143,6 +145,19 @@ credits: {
 ```
 
 Only include the credit fields you actually need. Missing ones are skipped automatically on the article page.
+
+Category label note:
+
+- `category` decides which section page the article belongs to.
+- `displayCategory` decides the visible badge shown on cards, article pages, hero, related items, trending, and search results.
+- Example:
+
+```js
+{
+    category: "DevCom",
+    displayCategory: "DEVCOMM FEATURE"
+}
+```
 
 Multimedia labels are separate from article credits. In `data/multimedia.js`, use exact labels per field, for example:
 
