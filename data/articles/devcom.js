@@ -30,8 +30,7 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
          imageAlt: "Short description of the DevComm image",
          body: `
              <p>
-                 Write the opening paragraph here.<br><br>
-                 Use additional paragraphs for interviews, context, and analysis.
+                 
              </p>
              
          `
