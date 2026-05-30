@@ -15,6 +15,7 @@ Rules when adding an article:
 - Keep `slug` unique across all files.
 - Use `date` format `YYYY-MM-DD`.
 - Put images in the matching `PHOTOS/` folder when possible.
+- For `News` articles, you can add an optional `imageCaption` string to show a small gray caption under the main image on `article.html`.
 - Choose a credit label preset when needed:
   - `via` for most write-ups
   - `written` for Literary and First POV write-ups
@@ -35,6 +36,7 @@ Minimum article object shape:
     readTime: "3 min read",
     image: "PHOTOS/SECTION/example.jpg",
     imageAlt: "Image description",
+    imageCaption: "Optional short caption for the main image", // News only
     body: `
         <p><strong>SECTION | Article title</strong></p>
         <p>Full article body here.</p>

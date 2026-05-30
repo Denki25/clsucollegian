@@ -4,6 +4,7 @@
 // 3. Use credits.labelPreset: "written" for First POV pieces.
 // 4. Use credits.labelPreset: "filipino" for Filipino labels.
 // 5. Optional credit fields: by, photosBy, illustratedBy, animationBy, layoutBy.
+// 6. Optional imageCaption for a short gray caption under the main photo.
 
 window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
     {
@@ -20,6 +21,7 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
         readTime: "3 min read",
         image: "PHOTOS/NEWS/news7.jpg",
         imageAlt: "LEPT topnotchers",
+         imageCaption: "We, the sovereign Filipino people, imploring the aid of Almighty God, in order to build a just and humane society, and establish a Government that shall embody our ideals and aspirations, promote the common good, conserve and develop our patrimony, and secure to ourselves and our posterity, the blessings of independence and democracy under the rule of law and a regime of truth, justice, freedom, love, equality, and peace, do ordain and promulgate this Constitution.",
         body: `
             <p>
             Central Luzon State University (CLSU) alumni secured three topnotcher positions in the March 2026 Licensure Examination for Professional Teachers (LEPT), posting institutional passing rates above the national average in both elementary and secondary levels.<br><br>
@@ -33,35 +35,7 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
             </p>
         `
     },
-    {
-        slug: "sielai-chatbot-ng-clsu-ilulunsad-sa-susunod-na-akademikong-taon",
-        category: "News",
-        title: "‘SielAI’ chatbot ng CLSU ilulunsad sa susunod na akademikong taon",
-        summary: "Planong ilunsad ng Central Luzon State University (CLSU) ang Artificial Intelligence (AI)-powered chatbot na “SielAI” sa Comprehensive Academic Information System (CAIS) pagsapit ng unang semestre ng panuruang taon 2026-2027, ayon kay Robert Hernandez, project coordinator ng proyekto, sa isang panayam noong Abril 29.",
-        author: "DENRIC MENDOZA",
-        authorLine: "DENRIC MENDOZA, CLSU Collegian",
-        credits: {
-            by: "DENRIC MENDOZA, CLSU Collegian"
-        },
-        date: "2026-04-30",
-        readTime: "3 min read",
-        image: "PHOTOS/NEWS/news2.jpg",
-        imageAlt: "CLSU Infirmary response during UWeek activities",
-        body: `
-            <p>
-            Planong ilunsad ng Central Luzon State University (CLSU) ang Artificial Intelligence (AI)-powered chatbot na “SielAI” sa Comprehensive Academic Information System (CAIS) pagsapit ng unang semestre ng panuruang taon 2026-2027, ayon kay Robert Hernandez, project coordinator ng proyekto, sa isang panayam noong Abril 29.<br><br>
-            Layunin ng chatbot na pabilisin ang pagsagot sa iba’t ibang akademikong hinaing at katanungan na natatanggap ng unibersidad sa email nito mula sa mga estudyante at iba pang indibidwal.<br><br>
-            Umabot sa kabuuang 38,647 emails ang sinuri ng Management Information Systems Office (MISO) mula sa records ng Office of Admissions (OAd) upang tukuyin ang mga pangunahing kategorya ng katanungan ng mga mag-aaral kabilang na ang scholarships, enrollment, at document requests na magsisilbing batayan ng kakayahan at saklaw ng chatbot.<br><br>
-            Katuwang sa nasabing pagsusuri ang CLSU Data Management, AI and Analytics Division (DMAAD) at ang kumpanyang AIMAGINEERS.<br><br>
-            Ibinahagi ng MISO ang resulta ng pagsusuri sa isang pagpupulong noong Abril 22 kung saan nangalap din ito ng opinyon mula sa mga kinatawan ng CLSU para mas mapabuti ang performance ng sistema, karanasan ng mga gagamit, at ang integrasyon nito sa mga kasalukuyang online platform ng unibersidad.<br><br>
-            Mula sa pilot testing na isinagawa noong Enero 20, nagkaroon na ng progreso ang nasabing chatbot sa pamamagitan ng pagsagot nito sa mga tanong at integrasyon ng multi-language support, ayon kay Hernandez.<br>
-            </p>
-            <blockquote><p>"Nakapag-develop na ng functional AI chatbot na kayang sumagot ng basic inquiries gamit ang official data sources, at may kakayahan na rin para sa multi-language support like Ilokano," aniya.</p></blockquote>
-            <p>
-            Samantala, upang matiyak ang pagsunod sa patakaran ng privacy at polisiya ng pamantasan sa paggamit ng datos, magsasagawa pa ng konsultasyon ang MISO sa mga direktor at iba't ibang opisina ng unibersidad.
-            </p>
-        `
-    },
+    
     {
         slug: "clsu-infirmary-tallies-50-uweek-related-med-emergencies",
         category: "News",
@@ -150,9 +124,10 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
         readTime: "3 min read",
         image: "PHOTOS/NEWS/news3.jpg",
         imageAlt: "CLSU-ROTC officers",
+       
         body: `
             <p>
-            Central Luzon State University-Reserve Officers' Training Corps (CLSU-ROTC), led by Anabelle Cabanilla as its first female corps commander, garnered a 98.39% rating in the Regional Annual Administrative Tactical Inspection (RAATI) held at the CLSU Athletic Grounds on April 13.<br><br>
+            Central Luzon State University-Reserve Officers' Training Corps (CLSU-ROTC), led by Anabelle Cabanilla as its first female corps commander, garnered a 98.39% rating in the Regional Annual Administrative Tactical Inspection (RAATI) held at the CLSU Athletic Grounds on April 13.<br>
             </p>
             <blockquote><p>“We are happy to make a stepping stone for women to lead in this kind of field, that we are capable of leading in a male-dominated field,” Cabanilla said.</p></blockquote>
             <p>

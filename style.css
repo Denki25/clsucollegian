@@ -396,6 +396,7 @@ body.search-results-visible footer {
     --clsu-gold: #fe5d13;
     --dark-green: #d94b0d;
     --text-dark: #454545;
+    --headline-color: #000000;
     --text-light: #E0E0E0;
 }
 
@@ -2004,8 +2005,8 @@ body > header {
 
 /* Footer */
 footer {
-    background-color: #fe5d13;
-    color: white;
+    background-color: #4444;
+    color: #fe5d13;
     padding: 3rem 0 1rem;
 }
 
@@ -2018,11 +2019,11 @@ footer {
 
 .footer-section h4 {
     margin-bottom: 1rem;
-    color: #fff;
+    color: #fe5d13;
 }
 
 .footer-section p {
-    color: #fff;
+    color: #fe5d13
     margin-bottom: 0.5rem;
 }
 
@@ -2037,7 +2038,7 @@ footer {
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
-    color: #fff;
+    color: #fe5d13;
     transition: color 0.3s ease;
 }
 
@@ -2048,11 +2049,11 @@ footer {
 }
 
 .social-links a:hover {
-    color: #fe5d13;
+    color: #ccc;
 }
 
 .contact-info {
-    color: #ccc;
+    color: #fe5d13
 }
 
 .contact-info p {
@@ -2070,14 +2071,14 @@ footer {
 }
 
 .contact-info a {
-    color: #fff;
+    color: #fe5d13;
     font-weight: 600;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .contact-info a:hover {
-    color: #ffdfb0;
+    color: #ccc;
 }
 
 .footer-bottom {
@@ -3468,6 +3469,56 @@ footer {
     .ticker {
         animation-duration: 30s;
     }
+}
+
+/* Headline color and editorial layout overrides */
+body h1,
+body h2,
+body h3,
+body h4,
+body h5,
+body h6,
+body .news-heading,
+body .hero-text h2,
+body .featured-text h2,
+body .page-intro h1,
+body .section-heading h2,
+body .search-result-content h3,
+body .story-card h2,
+body .board-header h2,
+body .values h2,
+body .mission h2,
+body .vision h2,
+body .value-card h3,
+body .member-info h3,
+body .trending-title,
+body .trending-item h4 a,
+body .search-results-header h2,
+body .section-news h1,
+body .article-card h3,
+body .article-header h1 {
+    color: var(--headline-color);
+}
+
+body[data-section-category="News"] .news-content h2,
+body[data-article-category="News"] .article-header h1,
+body[data-article-category="News"] .featured-image figcaption,
+body .article-card.news-article-card h3 {
+    color: #4444;
+}
+
+body[data-article-category="News"] .featured-image figcaption {
+    display: block;
+    margin: 0.7rem 0 0;
+    font-size: 0.92rem;
+    color: #7b7b7b;
+    font-style: normal;
+    line-height: 1.55;
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    hyphens: auto;
 }
 
 

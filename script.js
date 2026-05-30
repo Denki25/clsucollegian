@@ -19,7 +19,9 @@ const siteData = {
     articles: siteArticles,
     trending: Array.isArray(siteConfig.trending) ? siteConfig.trending : [],
     tickerItems: Array.isArray(siteConfig.tickerItems) ? siteConfig.tickerItems : [],
-    featuredSlug: siteConfig.featuredSlug || ""
+    featuredSlug: siteConfig.featuredSlug || "",
+    featuredCategory: siteConfig.featuredCategory || "News",
+    featuredCount: Number(siteConfig.featuredCount) || 5
 };
 
 function formatDate(dateString) {
@@ -66,6 +68,16 @@ function getArticleDisplayCategory(article) {
         : "";
 
     return customLabel || article.category || "Article";
+}
+
+function getRecentArticlesByCategory(category, limit = 5) {
+    if (!category) {
+        return [];
+    }
+
+    return siteData.articles
+        .filter((article) => article.category === category)
+        .slice(0, Math.max(0, limit));
 }
 
 function getIssueUrl(issue) {
@@ -286,7 +298,8 @@ function setupAnimationObserver() {
 }
 
 function getFeaturedArticle() {
-    return getArticleBySlug(siteData.featuredSlug) || siteData.articles[0] || null;
+    const featuredArticles = getRecentArticlesByCategory(siteData.featuredCategory, siteData.featuredCount);
+    return featuredArticles[0] || getArticleBySlug(siteData.featuredSlug) || siteData.articles[0] || null;
 }
 
 function getRelatedArticles(currentArticle) {
@@ -707,6 +720,7 @@ function createCardImage(article) {
 
 function createSectionCard(article) {
     const cardMedia = getArticleMedia(article, "card");
+    const isEditorial = article.category === "Editorial";
     const imageMarkup = cardMedia
         ? createEmbeddedVideoMarkup(cardMedia.embedUrl, article.title, "video-container landscape news-card-video")
         : (article.image
@@ -716,7 +730,7 @@ function createSectionCard(article) {
     const displayCategory = getArticleDisplayCategory(article);
 
     return `
-        <article class="news-card">
+        <article class="news-card${isEditorial ? " editorial-card" : ""}">
             <a class="news-card-link" href="${getArticleUrl(article.slug)}" aria-label="Read ${article.title}">
                 ${imageMarkup}
                 <div class="news-content">
@@ -1024,10 +1038,12 @@ function renderHomePage() {
         heroSummary.textContent = featured.summary;
         heroLink.href = getArticleUrl(featured.slug);
 
-        const heroArticles = siteData.articles
+        const heroArticles = getRecentArticlesByCategory(siteData.featuredCategory, siteData.featuredCount)
+            .filter((article) => article.image);
+        const fallbackCarouselItems = siteData.articles
             .filter((article) => article.image)
-            .slice(0, 5);
-        const carouselItems = heroArticles.length > 0 ? heroArticles : [featured];
+            .slice(0, siteData.featuredCount);
+        const carouselItems = heroArticles.length > 0 ? heroArticles : (fallbackCarouselItems.length > 0 ? fallbackCarouselItems : [featured]);
         let activeIndex = 0;
 
         const startCarouselAutoplay = () => {
@@ -1137,7 +1153,7 @@ function renderHomePage() {
         seenCategories.add(categoryId);
 
         return `
-            <article class="article-card" id="${articleId}">
+            <article class="article-card${article.category === "News" ? " news-article-card" : ""}" id="${articleId}">
                 <a class="article-card-link" href="${getArticleUrl(article.slug)}" aria-label="Read ${article.title}">
                     ${createCardImage(article)}
                     <div class="card-content">
@@ -1213,6 +1229,7 @@ function renderArticlePage() {
     }
 
     updateArticleSocialMeta(article);
+    document.body.dataset.articleCategory = article.category || "";
     document.getElementById("articleCategory").textContent = getArticleDisplayCategory(article);
     document.getElementById("articleTitle").textContent = article.title;
     document.getElementById("articleDate").textContent = formatDate(article.date);
@@ -1222,6 +1239,9 @@ function renderArticlePage() {
 
     const articleFigure = document.getElementById("articleFigure");
     const articleMedia = getArticleMedia(article, "article");
+    const newsImageCaption = article.category === "News"
+        ? (article.imageCaption || article.caption || "")
+        : "";
     articleFigure.innerHTML = articleMedia
         ? `
             <div class="featured-video-shell">
@@ -1233,7 +1253,17 @@ function renderArticlePage() {
             ? `<img src="${article.image}" alt="${article.imageAlt || article.title}"><figcaption id="articleCaption"></figcaption>`
             : `<div class="hero-placeholder"></div><figcaption id="articleCaption"></figcaption>`);
 
+    const renderedCaption = document.getElementById("articleCaption");
+    if (renderedCaption) {
+        renderedCaption.textContent = newsImageCaption;
+        renderedCaption.hidden = !newsImageCaption;
+    }
+
     const relatedList = document.getElementById("relatedList");
+    const relatedHeading = document.querySelector(".related-articles h3");
+    if (relatedHeading) {
+        relatedHeading.textContent = "Read More";
+    }
     relatedList.innerHTML = getRelatedArticles(article).map((related) => `
         <a class="related-card" href="${getArticleUrl(related.slug)}" aria-label="Read ${related.title}">
             ${getArticleMedia(related, "card")
