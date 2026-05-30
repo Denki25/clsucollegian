@@ -27,7 +27,7 @@ Minimum article object shape:
 {
     slug: "unique-slug",
     category: "SectionName",
-    displayCategory: "Custom visible label", // optional, e.g. "DEVCOMM NEWS"
+    displayCategory: "Custom visible label", // optional, e.g. "News"
     title: "Article title",
     summary: "Short summary",
     author: "Author Name",
@@ -157,7 +157,7 @@ Category label note:
 ```js
 {
     category: "DevCom",
-    displayCategory: "DEVCOMM FEATURE"
+    displayCategory: "News"
 }
 ```
 

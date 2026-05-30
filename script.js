@@ -24,6 +24,98 @@ const siteData = {
     featuredCount: Number(siteConfig.featuredCount) || 5
 };
 
+const themeStorageKey = "clsu-theme";
+
+function getPreferredTheme() {
+    try {
+        const savedTheme = window.localStorage.getItem(themeStorageKey);
+        if (savedTheme === "light" || savedTheme === "dark") {
+            return savedTheme;
+        }
+    } catch (error) {
+        // Ignore storage access failures.
+    }
+
+    return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
+
+function applyTheme(theme, persist = true) {
+    const normalizedTheme = theme === "dark" ? "dark" : "light";
+    document.documentElement.dataset.theme = normalizedTheme;
+    document.documentElement.style.colorScheme = normalizedTheme;
+
+    if (persist) {
+        try {
+            window.localStorage.setItem(themeStorageKey, normalizedTheme);
+        } catch (error) {
+            // Ignore storage access failures.
+        }
+    }
+
+    document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
+        const isDark = normalizedTheme === "dark";
+        button.setAttribute("aria-pressed", isDark ? "true" : "false");
+        button.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+        button.innerHTML = isDark
+            ? `
+                <span class="theme-toggle-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" focusable="false">
+                        <path d="M20.1 15.3A8.3 8.3 0 0 1 8.7 3.9a1 1 0 0 0-1.24-1.24A10.5 10.5 0 1 0 21.34 16.54a1 1 0 0 0-1.24-1.24Z"/>
+                    </svg>
+                </span>
+            `
+            : `
+                <span class="theme-toggle-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" focusable="false">
+                        <circle cx="12" cy="12" r="4.25" fill="currentColor"/>
+                        <g stroke="currentColor" stroke-linecap="round" stroke-width="1.8" fill="none">
+                            <path d="M12 2.5v2.2"/>
+                            <path d="M12 19.3v2.2"/>
+                            <path d="M2.5 12h2.2"/>
+                            <path d="M19.3 12h2.2"/>
+                            <path d="M5.1 5.1l1.56 1.56"/>
+                            <path d="M17.34 17.34l1.56 1.56"/>
+                            <path d="M18.9 5.1l-1.56 1.56"/>
+                            <path d="M6.66 17.34l-1.56 1.56"/>
+                        </g>
+                    </svg>
+                </span>
+            `;
+    });
+}
+
+function setupThemeToggle() {
+    const navTools = document.querySelector(".nav-tools");
+    const headerSearch = document.querySelector(".header-search");
+    const hamburger = document.querySelector(".hamburger");
+
+    if (!navTools || navTools.querySelector("[data-theme-toggle]")) {
+        return;
+    }
+
+    const themeToggle = document.createElement("button");
+    themeToggle.type = "button";
+    themeToggle.className = "theme-toggle";
+    themeToggle.setAttribute("data-theme-toggle", "true");
+
+    if (headerSearch && headerSearch.nextSibling) {
+        navTools.insertBefore(themeToggle, hamburger || null);
+    } else if (hamburger) {
+        navTools.insertBefore(themeToggle, hamburger);
+    } else {
+        navTools.appendChild(themeToggle);
+    }
+
+    applyTheme(document.documentElement.dataset.theme || getPreferredTheme(), false);
+
+    themeToggle.addEventListener("click", () => {
+        const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+        applyTheme(nextTheme);
+    });
+}
+
+applyTheme(getPreferredTheme(), false);
+
 function formatDate(dateString) {
     if (!dateString) {
         return "";
@@ -315,6 +407,10 @@ function getRelatedArticles(currentArticle) {
 
 function getArticlesByCategory(category) {
     return siteData.articles.filter((article) => article.category === category);
+}
+
+function getOpinionArticles() {
+    return siteData.articles.filter((article) => article.category === "Editorial" || article.category === "Column");
 }
 
 function renderTicker() {
@@ -1188,6 +1284,53 @@ function renderSectionPage() {
     const category = sectionRoot.dataset.sectionCategory || "";
     const emptyLabel = sectionRoot.dataset.sectionLabel || category || "section";
     const monthFilter = document.getElementById("section-month-filter");
+
+    if (category === "Opinion") {
+        const opinionArticles = getOpinionArticles();
+        initializeMonthFilter(monthFilter, opinionArticles);
+
+        const renderOpinionList = () => {
+            const selectedMonth = monthFilter ? monthFilter.value : "all";
+            const filteredOpinionArticles = sortItemsByNewest(filterItemsByMonth(opinionArticles, selectedMonth));
+            const opinionGroups = [
+                {
+                    title: "Editorial",
+                    category: "Editorial"
+                },
+                {
+                    title: "Column",
+                    category: "Column"
+                }
+            ];
+
+            list.classList.add("opinion-sections");
+            list.innerHTML = opinionGroups.map((group) => {
+                const groupedArticles = filteredOpinionArticles.filter((article) => article.category === group.category);
+                return `
+                    <section class="opinion-group">
+                        <div class="opinion-group-header">
+                            <h2>${group.title}</h2>
+                        </div>
+                        <div class="news-feed opinion-feed">
+                            ${groupedArticles.length > 0
+                                ? groupedArticles.map((article) => createSectionCard(article)).join("")
+                                : `<div class="news-empty">No ${group.title.toLowerCase()} articles are available yet.</div>`}
+                        </div>
+                    </section>
+                `;
+            }).join("");
+            observeAnimatedElements();
+        };
+
+        if (monthFilter && !monthFilter.dataset.bound) {
+            monthFilter.addEventListener("change", renderOpinionList);
+            monthFilter.dataset.bound = "true";
+        }
+
+        renderOpinionList();
+        return;
+    }
+
     const sectionArticles = getArticlesByCategory(category);
     initializeMonthFilter(monthFilter, sectionArticles);
 
@@ -1405,6 +1548,8 @@ const navTools = document.querySelector(".nav-tools");
 const headerSearch = document.querySelector(".header-search");
 const headerSearchForms = document.querySelectorAll(".header-search");
 const headerSearchInputs = document.querySelectorAll(".header-search-input");
+
+setupThemeToggle();
 
 function syncMobileSearchPlacement() {
     if (!navMenu || !headerSearch || !navTools) {

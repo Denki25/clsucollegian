@@ -2,7 +2,7 @@
 // 1. Duplicate the sample object below.
 // 2. Remove the // comment markers.
 // 3. Update the fields with your finished Development Communication article.
-// 4. Keep the category as "DevComm" so the section filter works correctly.
+// 4. Keep the category as "DevCom" so the section filter works correctly.
 // 5. Use credits.labelPreset: "via", "written", or "filipino" for byline choices.
 // 6. Optional credit fields: by, photosBy, illustratedBy, animationBy, layoutBy.
 
@@ -10,7 +10,7 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
     {
          slug: "Farmgate-price-ng-sibuyas-sa-Bongabon-sumadsad;-Imbestigasyon-sa-imports-panawagan-ng-LGU",
          category: "DevCom",
-         displayCategory: "DEVCOMM NEWS",
+         displayCategory: "News",
          title: "Farmgate price ng sibuyas sa Bongabon sumadsad; Imbestigasyon sa imports panawagan ng LGU",
          summary: "Humina ang kita ng mga magsasaka sa Bongabon, Nueva Ecija matapos bumagsak sa P30 hanggang P40 kada kilo ang farmgate price ng sibuyas nitong nagdaang Pebrero mula sa presyong P80 hanggang P95 kada kilo noong Enero. ",
          author: "JANELLE DADAG & DENRIC MENDOZA",
@@ -85,7 +85,7 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
     {
          slug: "Pagsuspinde-sa-VAT,-excise-tax-ng-krudo-panawagan-ng-PUV-drivers-mula-N.-Ecija",
          category: "DevCom",
-         displayCategory: "DEVCOMM NEWS",
+         displayCategory: "News",
          title: "Pagsuspinde sa VAT, excise tax ng krudo panawagan ng PUV drivers mula N. Ecija",
          summary: "Nakalahati ang kita.  Ganito ilarawan ng ilang tsuper mula sa Science City of Muñoz at San Jose City, Nueva Ecija ang kanilang kasalukuyang kondisyon dulot ng patuloy na pagtaas ng presyo ng diesel.",
          author: "ALIANAH MARIE PANGILINAN",
