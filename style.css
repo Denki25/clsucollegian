@@ -3284,7 +3284,7 @@ footer {
     }
 
     .nav-tools {
-        gap: 0;
+        gap: 1rem;
     }
 
     .nav-menu .header-search {
