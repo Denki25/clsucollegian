@@ -870,7 +870,7 @@ body > header {
         display: flex;
         flex-direction: row;
         align-items: flex-end;
-        gap: 0.7rem;
+        gap: 1rem;
         margin-left: auto;
         padding-bottom: 0;
     }
@@ -2895,7 +2895,7 @@ footer {
         display: flex;
         flex-direction: row;
         align-items: flex-end;
-        gap: 0.7rem;
+        gap: 1rem;
         margin-left: auto;
         padding-bottom: 0;
     }
