@@ -244,6 +244,10 @@ function getAuthorLine(article) {
     return article.authorLine;
 }
 
+function shouldShowByline(article) {
+    return (article?.category || "").trim() !== "Editorial";
+}
+
 function normalizeCreditValue(value) {
     if (typeof value !== "string") {
         return "";
@@ -320,7 +324,9 @@ function getArticleCredits(article) {
     const labels = getCreditLabels(article);
     const items = [];
 
-    pushCredit(items, labels.by, credits.by || getAuthorLine(article));
+    if (shouldShowByline(article)) {
+        pushCredit(items, labels.by, credits.by || getAuthorLine(article));
+    }
 
     const photoCredit = credits.photosBy || article.photosBy;
     if (normalizeCreditValue(photoCredit)) {
