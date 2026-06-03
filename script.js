@@ -425,6 +425,12 @@ function renderTicker() {
         return;
     }
 
+    const tickerWrap = ticker.closest(".breaking-news");
+    const header = tickerWrap ? tickerWrap.closest("header") : null;
+    if (tickerWrap && header && header.parentElement === document.body && header.previousElementSibling !== tickerWrap) {
+        document.body.insertBefore(tickerWrap, header);
+    }
+
     const items = siteData.tickerItems.length > 0 ? siteData.tickerItems : ["Latest updates from CLSU Collegian"];
     ticker.innerHTML = `<span>BREAKING:</span> ${items.join(" • ")}`;
 }
@@ -480,6 +486,14 @@ function createArticlePlaceholder(article, className = "article-thumb-placeholde
 
 function getMultimediaPresenter(item) {
     return item.presenter || item.anchor || item.host || "";
+}
+
+function getMultimediaBylineName(item) {
+    return getMultimediaPresenter(item) || "Multimedia Desk";
+}
+
+function getMultimediaByline(item) {
+    return `By ${getMultimediaBylineName(item)}`;
 }
 
 function getMultimediaPresenterLabel(item) {
@@ -897,16 +911,16 @@ function createMultimediaCard(item, variant = "default") {
         ? `<a class="multimedia-link" href="${item.sourceUrl}" target="_blank" rel="noopener noreferrer">Open on ${item.platform || "source"}</a>`
         : "";
     const multimediaCredits = [
-        item.presenter ? `<p class="multimedia-meta"><strong>${item.presenterLabel || "Host/s:"}</strong> ${item.presenter}</p>` : "",
         item.technicalDirector ? `<p class="multimedia-meta"><strong>${item.technicalDirectorLabel || "Technical Director/s:"}</strong> ${item.technicalDirector}</p>` : "",
         item.videographer ? `<p class="multimedia-meta"><strong>${item.videographerLabel || "Videographer/s:"}</strong> ${item.videographer}</p>` : "",
         item.editor ? `<p class="multimedia-meta"><strong>${item.editorLabel || "Editor/s:"}</strong> ${item.editor}</p>` : ""
     ].filter(Boolean).join("");
     const compactCredits = [
-        item.presenter ? `<p class="multimedia-meta"><strong>${item.presenterLabel || "Host/s:"}</strong> ${item.presenter}</p>` : "",
-        item.anchor ? `<p class="multimedia-meta"><strong>${item.presenterLabel || "Anchor/s:"}</strong> ${item.anchor}</p>` : "",
+        item.technicalDirector ? `<p class="multimedia-meta"><strong>${item.technicalDirectorLabel || "Technical Director/s:"}</strong> ${item.technicalDirector}</p>` : "",
+        item.videographer ? `<p class="multimedia-meta"><strong>${item.videographerLabel || "Videographer/s:"}</strong> ${item.videographer}</p>` : "",
         item.editor ? `<p class="multimedia-meta"><strong>${item.editorLabel || "Editor/s:"}</strong> ${item.editor}</p>` : ""
     ].filter(Boolean).join("");
+    const bylineMarkup = `<p class="multimedia-byline">${getMultimediaByline(item)}</p>`;
 
     if (isHomeCompact) {
         return `
@@ -925,9 +939,12 @@ function createMultimediaCard(item, variant = "default") {
                 <div class="multimedia-card-content">
                     <p class="multimedia-eyebrow">${platformLabel}</p>
                     <${titleTag}>${item.title}</${titleTag}>
+                    ${bylineMarkup}
+                    ${captionMarkup}
                     <div class="multimedia-meta-grid multimedia-meta-grid-home">
-                        ${compactCredits || `<p class="multimedia-meta"><strong>${item.editorLabel || "Editor/s:"}</strong> ${item.editor || "Multimedia Desk"}</p>`}
+                        ${multimediaCredits || `<p class="multimedia-meta"><strong>${item.editorLabel || "Editor/s:"}</strong> ${item.editor || "Multimedia Desk"}</p>`}
                     </div>
+                    ${sourceLink}
                 </div>
             </article>
         `;
@@ -949,6 +966,7 @@ function createMultimediaCard(item, variant = "default") {
             <div class="multimedia-card-content">
                 <p class="multimedia-eyebrow">${platformLabel}</p>
                 <${titleTag}>${item.title}</${titleTag}>
+                ${bylineMarkup}
                 ${captionMarkup}
                 <div class="multimedia-meta-grid${isFeatured ? " multimedia-meta-grid-featured" : ""}">
                     ${multimediaCredits || `<p class="multimedia-meta"><strong>${item.editorLabel || "Editor/s:"}</strong> ${item.editor || "Multimedia Desk"}</p>`}
@@ -1020,7 +1038,7 @@ function renderMultimedia() {
     const monthFilter = document.getElementById("section-month-filter");
 
     if (homeGrid) {
-        homeGrid.innerHTML = siteMultimedia.slice(0, 3).map((item) => createMultimediaCard(item, "home-compact")).join("");
+        homeGrid.innerHTML = siteMultimedia.slice(0, 3).map((item) => createMultimediaCard(item)).join("");
     }
 
     if (multimediaPageGrid) {
@@ -1252,6 +1270,7 @@ function renderHomePage() {
         const categoryId = article.category.toLowerCase();
         const articleId = seenCategories.has(categoryId) ? article.slug : categoryId;
         const readTime = article.readTime || "10 min read";
+        const showByline = shouldShowByline(article);
         seenCategories.add(categoryId);
 
         return `
@@ -1263,8 +1282,7 @@ function renderHomePage() {
                         <h3>${article.title}</h3>
                         <p>${article.summary}</p>
                         <div class="card-meta">
-                            <span>By ${article.author}</span>
-                            <span>&bull;</span>
+                            ${showByline ? `<span>By ${article.author}</span><span>&bull;</span>` : ""}
                             <span>${formatDate(article.date)}</span>
                             <span>&bull;</span>
                             <span>${readTime}</span>
