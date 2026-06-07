@@ -122,7 +122,13 @@ function buildSharePageHtml(article) {
         <p style="font-size: 1.05rem; line-height: 1.6; color: #444; margin: 0 0 24px;">${escapeHtml(seo.summary)}</p>
         <img src="${seo.image}" alt="${escapeHtml(seo.imageAlt)}" style="width: 100%; height: auto; border-radius: 16px; display: block; margin-bottom: 20px;">
         <p><a href="${seo.canonicalUrl}" style="display: inline-block; background: #fe5d13; color: #fff; text-decoration: none; padding: 12px 18px; border-radius: 999px; font-weight: 700;">Open the article</a></p>
+        <p style="font-size: .95rem; color: #666; margin-top: 12px;">Redirecting to the full article in a moment.</p>
     </main>
+    <script>
+        window.setTimeout(function () {
+            window.location.replace(${JSON.stringify(seo.canonicalUrl)});
+        }, 1200);
+    </script>
 </body>
 </html>
 `;
