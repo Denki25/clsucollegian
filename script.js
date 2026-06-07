@@ -1792,6 +1792,10 @@ async function shareViaNativeSheet(articleUrl, title) {
     return false;
 }
 
+function buildShareCaption(title, articleUrl) {
+    return `${title}\n${articleUrl}`;
+}
+
 function openShareUrl(shareUrl) {
     if (isLikelyMobileDevice()) {
         window.location.assign(shareUrl);
@@ -1807,6 +1811,7 @@ shareButtons.forEach((button) => {
         const currentSlug = window.__CLSU_ACTIVE_ARTICLE_SLUG || new URLSearchParams(window.location.search).get("slug") || "";
         const articleUrl = getArticleShareUrl(currentSlug);
         const title = document.title;
+        const shareCaption = buildShareCaption(title, articleUrl);
 
         setShareFeedback("");
 
@@ -1820,26 +1825,14 @@ shareButtons.forEach((button) => {
             return;
         }
 
-        if (isLikelyMobileDevice()) {
-            try {
-                const shared = await shareViaNativeSheet(articleUrl, title);
-                if (shared) {
-                    setShareFeedback("Share sheet opened.");
-                    return;
-                }
-            } catch (error) {
-                // Fall back to the platform-specific share URL below.
-            }
-        }
-
         if (platform === "facebook") {
-            const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(articleUrl)}`;
+            const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(articleUrl)}&quote=${encodeURIComponent(shareCaption)}`;
             openShareUrl(shareUrl);
             return;
         }
 
         if (platform === "twitter") {
-            const shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(articleUrl)}&text=${encodeURIComponent(title)}`;
+            const shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(articleUrl)}&text=${encodeURIComponent(shareCaption)}`;
             openShareUrl(shareUrl);
             return;
         }
