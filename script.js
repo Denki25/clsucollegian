@@ -1783,7 +1783,7 @@ async function shareViaNativeSheet(articleUrl, title) {
     if (navigator.share) {
         await navigator.share({
             title,
-            text: title,
+            text: `${title}\n${articleUrl}`,
             url: articleUrl
         });
         return true;
