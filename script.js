@@ -1779,12 +1779,12 @@ async function copyTextToClipboard(value) {
     }
 }
 
-async function shareViaNativeSheet(articleUrl, title) {
+async function shareViaNativeSheet(shareUrl, title, visibleUrl) {
     if (navigator.share) {
         await navigator.share({
             title,
-            text: `${title}\n${articleUrl}`,
-            url: articleUrl
+            text: `${title}\n${visibleUrl}`,
+            url: shareUrl
         });
         return true;
     }
@@ -1809,7 +1809,8 @@ shareButtons.forEach((button) => {
     button.addEventListener("click", async function() {
         const platform = this.getAttribute("data-platform");
         const currentSlug = window.__CLSU_ACTIVE_ARTICLE_SLUG || new URLSearchParams(window.location.search).get("slug") || "";
-        const articleUrl = getArticleShareUrl(currentSlug);
+        const shareUrl = getArticleShareUrl(currentSlug);
+        const articleUrl = toAbsoluteUrl(getArticleUrl(currentSlug));
         const title = document.title;
         const shareCaption = buildShareCaption(title, articleUrl);
 
@@ -1817,7 +1818,7 @@ shareButtons.forEach((button) => {
 
         if (platform === "copy") {
             try {
-                const copied = await copyTextToClipboard(articleUrl);
+                const copied = await copyTextToClipboard(shareUrl);
                 setShareFeedback(copied ? "Article link copied to your clipboard." : "Copy the article link from the address bar.");
             } catch (error) {
                 setShareFeedback("Copy the article link from the address bar.");
@@ -1825,21 +1826,33 @@ shareButtons.forEach((button) => {
             return;
         }
 
+        if (isLikelyMobileDevice()) {
+            try {
+                const shared = await shareViaNativeSheet(shareUrl, title, articleUrl);
+                if (shared) {
+                    setShareFeedback("Share sheet opened.");
+                    return;
+                }
+            } catch (error) {
+                // Fall through to platform-specific fallback.
+            }
+        }
+
         if (platform === "facebook") {
-            const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(articleUrl)}&quote=${encodeURIComponent(shareCaption)}`;
-            openShareUrl(shareUrl);
+            const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}&quote=${encodeURIComponent(shareCaption)}`;
+            openShareUrl(facebookShareUrl);
             return;
         }
 
         if (platform === "twitter") {
-            const shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(articleUrl)}&text=${encodeURIComponent(shareCaption)}`;
-            openShareUrl(shareUrl);
+            const twitterShareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareCaption)}`;
+            openShareUrl(twitterShareUrl);
             return;
         }
 
         if (platform === "instagram") {
             try {
-                const copied = await copyTextToClipboard(articleUrl);
+                const copied = await copyTextToClipboard(shareUrl);
                 if (copied) {
                     setShareFeedback("Article link copied. You can now paste it on Instagram.");
                 } else {
