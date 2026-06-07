@@ -99,6 +99,16 @@ image: "PHOTOS/LITERARY/lit1.jpg"
 image: "PHOTOS/NEWS/news1.jpg"
 ```
 
+## Facebook share previews
+
+After updating article titles, summaries, or featured images, regenerate the static share pages so Facebook can scrape the right preview:
+
+```bash
+node scripts/generate-share-pages.js
+```
+
+The generated pages live in `share/` and are what the Facebook share button opens.
+
 ## Article body format
 
 `body` uses HTML. Example:

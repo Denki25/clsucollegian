@@ -133,6 +133,10 @@ function getArticleUrl(slug) {
     return `article.html?slug=${encodeURIComponent(slug)}`;
 }
 
+function getArticleShareUrl(slug) {
+    return `share/${encodeURIComponent(slug)}.html`;
+}
+
 function normalizeSlugValue(slug) {
     if (typeof slug !== "string") {
         return "";
@@ -1396,6 +1400,7 @@ function renderArticlePage() {
     }
 
     updateArticleSocialMeta(article);
+    currentArticleShareUrl = toAbsoluteUrl(getArticleShareUrl(article.slug));
     document.body.dataset.articleCategory = article.category || "";
     document.getElementById("articleCategory").textContent = getArticleDisplayCategory(article);
     document.getElementById("articleTitle").textContent = article.title;
@@ -1721,6 +1726,7 @@ window.addEventListener("scroll", stickyNavbar);
 
 const shareButtons = document.querySelectorAll(".share-btn");
 const shareFeedback = document.getElementById("shareFeedback");
+let currentArticleShareUrl = window.location.href;
 
 function setShareFeedback(message) {
     if (shareFeedback) {
@@ -1752,13 +1758,13 @@ async function copyTextToClipboard(value) {
 shareButtons.forEach((button) => {
     button.addEventListener("click", async function() {
         const platform = this.getAttribute("data-platform");
-        const url = window.location.href;
-        const title = document.title;
+        const url = currentArticleShareUrl || window.location.href;
+        const title = document.getElementById("articleTitle")?.textContent || document.title;
 
         setShareFeedback("");
 
         if (platform === "facebook") {
-            const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+            const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(title)}`;
             window.open(shareUrl, "_blank", "width=600,height=500");
             return;
         }
