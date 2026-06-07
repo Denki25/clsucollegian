@@ -2418,6 +2418,13 @@ footer {
     font-size: 0.9rem;
 }
 
+.share-note {
+    margin-top: 0.35rem;
+    color: #7b6a58;
+    font-size: 0.82rem;
+    line-height: 1.45;
+}
+
 .article-sidebar {
     padding-top: 2rem;
     padding-left: 1rem;
@@ -3876,6 +3883,10 @@ html[data-theme="dark"] .board-header p,
 html[data-theme="dark"] .member-info p,
 html[data-theme="dark"] .share-feedback {
     color: var(--text-secondary);
+}
+
+html[data-theme="dark"] .share-note {
+    color: var(--text-muted);
 }
 
 html[data-theme="dark"] .article-body {

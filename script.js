@@ -134,7 +134,18 @@ function getArticleUrl(slug) {
 }
 
 function getArticleShareUrl(slug) {
-    return `share/${encodeURIComponent(slug)}.html`;
+    if (!slug) {
+        return window.location.href;
+    }
+
+    try {
+        const baseUrl = window.location.origin && window.location.origin !== "null"
+            ? window.location.origin
+            : window.location.href;
+        return new URL(`share/${slug}.html`, baseUrl).toString();
+    } catch (error) {
+        return `share/${slug}.html`;
+    }
 }
 
 function normalizeSlugValue(slug) {
@@ -203,11 +214,14 @@ function setMetaContent(id, content, attribute = "content") {
 }
 
 function updateArticleSocialMeta(article) {
+    // Keep these values aligned with scripts/article-seo.js, which generates the
+    // server-rendered /share/*.html preview pages used by Facebook and X/Twitter.
     if (!article) {
         return;
     }
 
-    const articleUrl = toAbsoluteUrl(getArticleUrl(article.slug));
+    const canonicalUrl = toAbsoluteUrl(getArticleUrl(article.slug));
+    const shareUrl = toAbsoluteUrl(getArticleShareUrl(article.slug));
     const articleImage = article.image ? toAbsoluteUrl(article.image) : toAbsoluteUrl("logo.png");
     const articleTitle = `${article.title} | CLSU Collegian`;
     const articleDescription = (article.summary || "Campus stories from CLSU Collegian.").trim();
@@ -220,15 +234,18 @@ function updateArticleSocialMeta(article) {
         descriptionMeta.setAttribute("content", articleDescription);
     }
 
-    setMetaContent("canonicalUrl", articleUrl, "href");
+    setMetaContent("canonicalUrl", canonicalUrl, "href");
     setMetaContent("ogTitle", articleTitle);
     setMetaContent("ogDescription", articleDescription);
-    setMetaContent("ogUrl", articleUrl);
+    setMetaContent("ogUrl", shareUrl);
     setMetaContent("ogImage", articleImage);
     setMetaContent("ogImageAlt", articleImageAlt);
+    setMetaContent("ogImageWidth", "1200");
+    setMetaContent("ogImageHeight", "630");
     setMetaContent("twitterTitle", articleTitle);
     setMetaContent("twitterDescription", articleDescription);
     setMetaContent("twitterImage", articleImage);
+    setMetaContent("twitterImageAlt", articleImageAlt);
 }
 
 function getAuthorLine(article) {
@@ -1400,7 +1417,7 @@ function renderArticlePage() {
     }
 
     updateArticleSocialMeta(article);
-    currentArticleShareUrl = toAbsoluteUrl(getArticleShareUrl(article.slug));
+    window.__CLSU_ACTIVE_ARTICLE_SLUG = article.slug;
     document.body.dataset.articleCategory = article.category || "";
     document.getElementById("articleCategory").textContent = getArticleDisplayCategory(article);
     document.getElementById("articleTitle").textContent = article.title;
@@ -1726,7 +1743,6 @@ window.addEventListener("scroll", stickyNavbar);
 
 const shareButtons = document.querySelectorAll(".share-btn");
 const shareFeedback = document.getElementById("shareFeedback");
-let currentArticleShareUrl = window.location.href;
 
 function setShareFeedback(message) {
     if (shareFeedback) {
@@ -1758,26 +1774,37 @@ async function copyTextToClipboard(value) {
 shareButtons.forEach((button) => {
     button.addEventListener("click", async function() {
         const platform = this.getAttribute("data-platform");
-        const url = currentArticleShareUrl || window.location.href;
-        const title = document.getElementById("articleTitle")?.textContent || document.title;
+        const currentSlug = window.__CLSU_ACTIVE_ARTICLE_SLUG || new URLSearchParams(window.location.search).get("slug") || "";
+        const articleUrl = getArticleShareUrl(currentSlug);
+        const title = document.title;
 
         setShareFeedback("");
 
+        if (platform === "copy") {
+            try {
+                const copied = await copyTextToClipboard(articleUrl);
+                setShareFeedback(copied ? "Article link copied to your clipboard." : "Copy the article link from the address bar.");
+            } catch (error) {
+                setShareFeedback("Copy the article link from the address bar.");
+            }
+            return;
+        }
+
         if (platform === "facebook") {
-            const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(title)}`;
+            const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(articleUrl)}`;
             window.open(shareUrl, "_blank", "width=600,height=500");
             return;
         }
 
         if (platform === "twitter") {
-            const shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`;
+            const shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(articleUrl)}&text=${encodeURIComponent(title)}`;
             window.open(shareUrl, "_blank", "width=600,height=500");
             return;
         }
 
         if (platform === "instagram") {
             try {
-                const copied = await copyTextToClipboard(url);
+                const copied = await copyTextToClipboard(articleUrl);
                 if (copied) {
                     setShareFeedback("Article link copied. You can now paste it on Instagram.");
                 } else {

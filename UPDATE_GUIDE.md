@@ -37,6 +37,8 @@ The site now uses data files for both articles and multimedia, so most updates d
    - `readTime` like `3 min read`
    - `image`
    - `imageAlt`
+   - `socialImage` if you have a dedicated social preview crop
+   - `socialImageAlt` if the social preview image needs its own alt text
    - `body`
    - `credits`
 5. Set `credits.labelPreset` when needed:
@@ -45,6 +47,14 @@ The site now uses data files for both articles and multimedia, so most updates d
    - `filipino` for Filipino labels
 6. If the story should be the homepage lead, update `featuredSlug` in `data/site-config.js`.
 7. If it should appear in the ticker or trending area, update `tickerItems` or `trending` in `data/site-config.js`.
+
+## Social sharing previews
+
+- The reusable metadata helper lives in `scripts/article-seo.js`.
+- The generated preview pages live in `share/*.html`.
+- Run `node scripts/generate-share-pages.js` after editing article metadata so Facebook, X/Twitter, and Instagram previews stay in sync.
+- Keep `summary` concise and keep social artwork as close as possible to a 1200x630 crop for best results.
+- The article page share buttons copy the preview URL from `/share/<slug>.html`, which is the URL you should paste or distribute when you want the preview card to render correctly.
 
 ## Article credit labels
 
@@ -98,16 +108,6 @@ image: "PHOTOS/FEATURES/feature3.jpg"
 image: "PHOTOS/LITERARY/lit1.jpg"
 image: "PHOTOS/NEWS/news1.jpg"
 ```
-
-## Facebook share previews
-
-After updating article titles, summaries, or featured images, regenerate the static share pages so Facebook can scrape the right preview:
-
-```bash
-node scripts/generate-share-pages.js
-```
-
-The generated pages live in `share/` and are what the Facebook share button opens.
 
 ## Article body format
 

@@ -36,6 +36,8 @@ Minimum article object shape:
     readTime: "3 min read",
     image: "PHOTOS/SECTION/example.jpg",
     imageAlt: "Image description",
+    socialImage: "PHOTOS/SECTION/example-social.jpg", // optional, use a dedicated 1200x630 preview image when available
+    socialImageAlt: "Preview image description", // optional, falls back to imageAlt/title
     imageCaption: "Optional short caption for the main image", // News only
     body: `
         <p><strong>SECTION | Article title</strong></p>
@@ -175,3 +177,10 @@ Multimedia labels are separate from article credits. In `data/multimedia.js`, us
     editor: "Name Here"
 }
 ```
+
+Social preview note:
+
+- `summary` becomes the Open Graph and Twitter description.
+- `image` or `socialImage` becomes the preview image.
+- Keep preview art absolute-URL safe and ideally close to a 1200x630 crop.
+- After changing article metadata, run `node scripts/generate-share-pages.js` so every `/share/*.html` page is regenerated with the new server-rendered meta tags.
