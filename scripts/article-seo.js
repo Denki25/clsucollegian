@@ -93,18 +93,18 @@ function buildSharePageHtml(article) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; url=${seo.canonicalUrl}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${escapeHtml(pageTitle)}</title>
     <meta name="description" content="${escapeHtml(seo.summary)}">
     <meta name="robots" content="noindex,nofollow">
-    <link rel="canonical" href="${seo.canonicalUrl}">
+    <link rel="canonical" href="${seo.previewUrl}">
     <meta property="og:type" content="${seo.ogType}">
     <meta property="og:site_name" content="${escapeHtml(seo.siteName)}">
     <meta property="og:title" content="${escapeHtml(pageTitle)}">
     <meta property="og:description" content="${escapeHtml(seo.summary)}">
     <meta property="og:url" content="${seo.previewUrl}">
     <meta property="og:image" content="${seo.image}">
+    <meta property="og:image:secure_url" content="${seo.image}">
     <meta property="og:image:alt" content="${escapeHtml(seo.imageAlt)}">
     <meta property="og:image:width" content="${seo.imageWidth}">
     <meta property="og:image:height" content="${seo.imageHeight}">
@@ -112,13 +112,17 @@ function buildSharePageHtml(article) {
     <meta name="twitter:title" content="${escapeHtml(pageTitle)}">
     <meta name="twitter:description" content="${escapeHtml(seo.summary)}">
     <meta name="twitter:image" content="${seo.image}">
+    <meta name="twitter:image:secure_url" content="${seo.image}">
     <meta name="twitter:image:alt" content="${escapeHtml(seo.imageAlt)}">
-    <script>
-        window.location.replace(${JSON.stringify(seo.canonicalUrl)});
-    </script>
 </head>
 <body>
-    <p>Redirecting to the article. <a href="${seo.canonicalUrl}">Open the article</a>.</p>
+    <main style="max-width: 720px; margin: 48px auto; font-family: Arial, sans-serif; padding: 0 20px;">
+        <p style="text-transform: uppercase; letter-spacing: .12em; color: #fe5d13; font-weight: 700; margin-bottom: 12px;">CLSU Collegian</p>
+        <h1 style="font-size: 2rem; line-height: 1.15; margin: 0 0 12px;">${escapeHtml(seo.title)}</h1>
+        <p style="font-size: 1.05rem; line-height: 1.6; color: #444; margin: 0 0 24px;">${escapeHtml(seo.summary)}</p>
+        <img src="${seo.image}" alt="${escapeHtml(seo.imageAlt)}" style="width: 100%; height: auto; border-radius: 16px; display: block; margin-bottom: 20px;">
+        <p><a href="${seo.canonicalUrl}" style="display: inline-block; background: #fe5d13; color: #fff; text-decoration: none; padding: 12px 18px; border-radius: 999px; font-weight: 700;">Open the article</a></p>
+    </main>
 </body>
 </html>
 `;
