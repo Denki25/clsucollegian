@@ -1750,6 +1750,14 @@ function setShareFeedback(message) {
     }
 }
 
+function isLikelyMobileDevice() {
+    if (typeof window === "undefined") {
+        return false;
+    }
+
+    return window.matchMedia && window.matchMedia("(max-width: 768px)").matches;
+}
+
 async function copyTextToClipboard(value) {
     if (navigator.clipboard && window.isSecureContext) {
         await navigator.clipboard.writeText(value);
@@ -1771,6 +1779,28 @@ async function copyTextToClipboard(value) {
     }
 }
 
+async function shareViaNativeSheet(articleUrl, title) {
+    if (navigator.share) {
+        await navigator.share({
+            title,
+            text: title,
+            url: articleUrl
+        });
+        return true;
+    }
+
+    return false;
+}
+
+function openShareUrl(shareUrl) {
+    if (isLikelyMobileDevice()) {
+        window.location.assign(shareUrl);
+        return;
+    }
+
+    window.open(shareUrl, "_blank", "width=600,height=500");
+}
+
 shareButtons.forEach((button) => {
     button.addEventListener("click", async function() {
         const platform = this.getAttribute("data-platform");
@@ -1790,15 +1820,27 @@ shareButtons.forEach((button) => {
             return;
         }
 
+        if (isLikelyMobileDevice()) {
+            try {
+                const shared = await shareViaNativeSheet(articleUrl, title);
+                if (shared) {
+                    setShareFeedback("Share sheet opened.");
+                    return;
+                }
+            } catch (error) {
+                // Fall back to the platform-specific share URL below.
+            }
+        }
+
         if (platform === "facebook") {
             const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(articleUrl)}`;
-            window.open(shareUrl, "_blank", "width=600,height=500");
+            openShareUrl(shareUrl);
             return;
         }
 
         if (platform === "twitter") {
             const shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(articleUrl)}&text=${encodeURIComponent(title)}`;
-            window.open(shareUrl, "_blank", "width=600,height=500");
+            openShareUrl(shareUrl);
             return;
         }
 
@@ -1814,7 +1856,11 @@ shareButtons.forEach((button) => {
                 setShareFeedback("Copy the article link from the address bar, then paste it on Instagram.");
             }
 
-            window.open("https://www.instagram.com/", "_blank");
+            if (isLikelyMobileDevice()) {
+                window.location.assign("https://www.instagram.com/");
+            } else {
+                window.open("https://www.instagram.com/", "_blank");
+            }
         }
     });
 });
