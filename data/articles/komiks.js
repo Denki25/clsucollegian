@@ -10,12 +10,35 @@
 
 window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
     {
+         slug: "everything-everywhere-all-absent-at-once",
+         category: "Komiks",
+         title: "Everything, Everywhere, All Absent at Once",
+         summary: "Kung may summary and conclusion man ang buhay ng mga 4th year ngayong linggo, ito na ang final draft.",
+         author: "ROXZYLEEN ANDREIH VASQUEZ",
+         authorLine: "By ROXZYLEEN ANDREIH VASQUEZ/CLSU Collegian",
+         credits: {
+            illustratedBy: "ROXZYLEEN ANDREIH VASQUEZ/CLSU Collegian",
+        },
+         date: "2026-06-03",
+         readTime: "1 min read",
+         image: "PHOTOS/KOMIKS/komiks3.jpg",
+         imageAlt: "everything everywhere all absent at once",
+        body: `
+             <p>
+                Tapos na ang bakasyon kaya kailangan na pumasok sa eskwela. Siyempre, hindi mawawala ang attendance check! Pero teka lang, woopsies...parang may kulang... nasa trese?? All of them all at once? Iba pala talaga kapag majority ay solid. Sana pang ay may excuse letter.<br><br>
+                Paalala: Ang pagliban ng klase nang walang totoong dahilan ay hindi makabubuti sa iyo, pati na sa mga taong apektado ng iyong pagliban.
+             </p>
+            
+         `
+     },
+
+    {
         slug: "Strata",
         category: "Komiks",
         title: "STRATA",
         summary: "Matapos ang maghapong tensyon sa Senado kaugnay ng pagbabago ng liderato at usapin ng ICC arrest warrant, tila ibang “hearing” ang pinasok ni Sen. Bato—cardio hearing.",
         author: "Kreynium",
-        authorLine: "Kreynium, CLSU Collegian",
+        authorLine: "Kreynium/CLSU Collegian",
         credits: {
             illustratedBy: "Kreynium/CLSU Collegian",
             labels:{
@@ -51,9 +74,9 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
          title: "DASURB? DASURB",
          summary: "Kung may summary and conclusion man ang buhay ng mga 4th year ngayong linggo, ito na ang final draft.",
          author: "IAN CABUDOL",
-         authorLine: "By IAN CABUDOL, CLSU Collegian/CLSU Collegian",
+         authorLine: "By IAN CABUDOL/CLSU Collegian",
          credits: {
-            illustratedBy: "IAN CABUDOL, CLSU Collegian",
+            illustratedBy: "IAN CABUDOL/CLSU Collegian",
             labels: {
                 illustratedBy: "Animasyon ni:"
             }

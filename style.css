@@ -458,7 +458,7 @@ body[data-section-category="Opinion"] .opinion-feed {
     --header-bg: #ffffff;
     --nav-bg: #ffffff;
     --card-bg: #ffffff;
-    --footer-bg: #fe5d13;
+    --footer-bg: #4444;
     --footer-text: #ffffff;
     --theme-toggle-bg: #ffffff;
     --theme-toggle-fg: #1a1a1a;
@@ -476,7 +476,7 @@ html[data-theme="dark"] {
     --header-bg: #0f0f0f;
     --nav-bg: #0f0f0f;
     --card-bg: #1d1d1d;
-    --footer-bg: #0f0f0f;
+    --footer-bg: #4444;
     --footer-text: #f2f2f2;
     --theme-toggle-bg: #ffffff;
     --theme-toggle-fg: #121212;
@@ -1736,6 +1736,15 @@ body > header {
     letter-spacing: 0.01em;
 }
 
+.multimedia-date {
+    margin-bottom: 0.45rem;
+    color: #8a6f5a;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
 .multimedia-caption {
     margin-bottom: 0.85rem;
     color: #4f4f4f;
@@ -2097,7 +2106,7 @@ footer {
 }
 
 .footer-brand-title-accent {
-    color: #ffffff;
+    color: #fe5d13;
 }
 
 .footer-brand-desc {
@@ -3643,7 +3652,11 @@ body[data-section-category="News"] .news-content h2,
 body[data-article-category="News"] .article-header h1,
 body[data-article-category="News"] .featured-image figcaption,
 body .article-card.news-article-card h3 {
-    color: #4444;
+    color: #000000;
+}
+
+body[data-section-category="News"] .section-news h1 {
+    color: #000000;
 }
 
 body[data-article-category="News"] .featured-image figcaption {
@@ -4089,12 +4102,12 @@ html[data-theme="dark"] .board-photo {
 html[data-theme="dark"] .read-more {
     background: linear-gradient(135deg, #111111, #1d1d1d);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    color: #f7f7f7;
+    color: #fe5d13;
 }
 
 html[data-theme="dark"] .read-more:hover {
     background: linear-gradient(135deg, #1a1a1a, #262626);
-    color: #ffffff;
+    color: #ffb07f;
 }
 
 html[data-theme="dark"] .read-more::before {
@@ -4145,7 +4158,7 @@ html[data-theme="dark"] .footer-brand-title-accent {
 html[data-theme="dark"] .read-more,
 html[data-theme="dark"] .featured-btn,
 html[data-theme="dark"] .feature-link {
-    color: #ffffff;
+    color: #fe5d13;
 }
 
 html[data-theme="dark"] .read-more,

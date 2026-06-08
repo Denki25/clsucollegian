@@ -78,12 +78,13 @@ You can also mix labels, for example `Via:` for the main byline and Filipino for
 ## How to update multimedia
 
 1. Open `data/multimedia.js`.
-2. Keep the newest multimedia entry at the top of the array.
-3. Copy an existing item and paste it at the top when adding a new one.
+2. Add a `date` value in `YYYY-MM-DD` format for each entry.
+3. Copy an existing item and paste it anywhere in the array when adding a new one.
 4. Update:
    - `title`
    - `caption`
    - `platform`
+   - `date`
    - `presenterLabel` with the exact wording you want, like `Host:`, `Host/s:`, `Anchor:`, or `Anchor/s:`
    - `presenter`
    - `technicalDirectorLabel`
@@ -97,7 +98,7 @@ You can also mix labels, for example `Via:` for the main byline and Filipino for
    - `aspectRatio` as `"portrait"` or `"landscape"`
 5. Save the file.
 
-The homepage automatically shows the first 3 multimedia entries. The `multimedia.html` page automatically shows the full list.
+The homepage and `multimedia.html` page automatically sort multimedia from oldest to newest using the `date` field. The date filter on `multimedia.html` uses the same field.
 
 ## Image paths
 
@@ -122,6 +123,6 @@ image: "PHOTOS/NEWS/news1.jpg"
 ## Suggested organization
 
 - Keep article files grouped by category.
-- Keep multimedia entries in `data/multimedia.js` ordered from newest to oldest.
+- Keep multimedia entries in `data/multimedia.js` dated correctly so automatic sorting stays accurate.
 - Keep slugs unique across all article files.
 - Use exact publish dates for articles so sorting stays correct.

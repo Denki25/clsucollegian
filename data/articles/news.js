@@ -8,6 +8,138 @@
 
 window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
     {
+        slug: "pagdami-ng-magsisipagtapos-sa-clsu-nagtulak-sa-kada-kolehiyong-seremonya",
+        category: "News",
+        displayCategory: "BALITA",
+        title: "Pagdami ng magsisipagtapos sa CLSU, nagtulak sa kada kolehiyong seremonya",
+        summary: "Isasagawa na kada kolehiyo ang nakagawiang 'mass graduation’ dahil sa mataas na bilang ng mga magsisipagtapos sa ika-74 Taunang Seremonya ng Pagtatapos ng Central Luzon State University (CLSU).",
+        author: "ELJOHN TOLENTINO",
+        authorLine: "ELJOHN TOLENTINO/CLSU Collegian",
+        credits: {
+            by: "ELJOHN TOLENTINO/CLSU Collegian",
+            labels: {
+                by: "Isinulat ni:"
+            }
+        },
+        date: "2026-05-20",
+        readTime: "4 min read",
+        image: "PHOTOS/NEWS/news10.jpg",
+        imageAlt: "Pagdami ng magsisipagtapos sa CLSU, nagtulak sa kada kolehiyong seremonya",
+        body: `
+            <p>
+             Isasagawa na kada kolehiyo ang nakagawiang 'mass graduation’ dahil sa mataas na bilang ng mga magsisipagtapos sa ika-74 Taunang Seremonya ng Pagtatapos ng Central Luzon State University (CLSU).<br><br>
+            Hinati sa limang araw ang seremonya upang maakomoda ang 2,648 na magsisipagtapos ngayong taon alinsunod sa inilabas na Memorandum Blg. 2026-05-12(05) ng Office of the Vice President for Academic Affairs (OVPAA).<br>
+           
+            <blockquote><p>
+            “The increasing number of graduates has resulted in longer ceremonies, with some extending until mid-afternoon,” paliwanag ng opisina.<br><br>
+            </p></blockquote>
+            <p>
+
+            Sa pagbabagong ito, igagawad na kada kolehiyo ang mga akademiko at espesyal na parangal, kabilang dito ang tatlong magtatapos ng summa cum laude, 165 magna cum laude, 728 cum laude, anim na with high honors, at 57 na with honors.<br><br>
+            Bawat kolehiyo na rin ang magsasagawa ng Tea Party na dating idinaraos pagkatapos ng Ecumenical and Baccalaureate Services (Ekumenikong Pagtitipon para sa Panalangin at Papuri).  <br><br>
+            Batay sa panayam sa OVPAA sa pamamagitan ng kasulatan, pangunahing konsiderasyon sa desisyong ito ang mga hamong operasyonal at lohistikal, kabilang ang mas maayos na paggamit ng pondo at mas organisadong daloy ng seremonya. <br>
+            
+            <blockquote><p>
+            “The university recognized the need to streamline planning and practice better stewardship of institutional funds through a more consolidated and efficient graduation system,” dagdag nito.<br><br>
+            </p></blockquote>
+
+            <p>
+            Base sa inilabas na iskedyul ng CLSU, magsisimula ang kada kolehiyong seremonya sa hapon ng Mayo 22, pagkatapos ng Conferment of Degrees sa umaga, at magwawakas sa Mayo 26 ng hapon.<br><br>
+
+            <strong>#CLSU74thAnnualCommencementExercises</strong><br><br>
+            </p>
+            </p>
+            </p>
+            
+        `
+    },
+
+    {
+        slug: "gov-umali-to-be-awarded-honoris-causa-once-ched-oks-clsu-bor-endorsement",
+        category: "News",
+        title: "Gov. Umali to be awarded honoris causa once CHED OKs CLSU BOR endorsement",
+        summary: "Central Luzon State University (CLSU) is set to confer an honorary Doctorate in Rural Development on Nueva Ecija Gov. Aurelio “Oyie” Umali, pending approval from the Commission on Higher Education (CHED), following a possible endorsement by the University's Board of Regents (BOR).",
+        author: "JUSTINE ACE SANDOVAL",
+        authorLine: "JUSTINE ACE SANDOVAL/CLSU Collegian",
+        credits: {
+            by: "JUSTINE ACE SANDOVAL/CLSU Collegian"
+        },
+        date: "2026-05-21",
+        readTime: "4 min read",
+        image: "PHOTOS/NEWS/news9.jpg",
+        imageAlt: "Gov. Umali to be awarded honoris causa once CHED OKs CLSU BOR endorsement",
+        body: `
+            <p>
+            Central Luzon State University (CLSU) is set to confer an honorary Doctorate in Rural Development on Nueva Ecija Gov. Aurelio “Oyie” Umali, pending approval from the Commission on Higher Education (CHED), following a possible endorsement by the University's Board of Regents (BOR).<br><br>
+            In an interview with CLSU Collegian on May 18, Vice President for Academic Affairs (VPAA) Dr. Ravelina Velasco revealed that Gov. Umali was initially supposed to receive the honor during the University’s 74th Annual Commencement Exercises, where he will also serve as the commencement speaker. <br><br>
+            However, the conferment was deferred due to stricter requirements under CHED Memorandum No. 9, series of 2021, which requires a longer approval process from the commission which may take at least two months.<br><br>
+            
+            <b>SELECTION AND APPROVAL PROCESS  </b><br><br>
+
+            Dr. Velasco explained that candidates for honoris causa undergo a multi-level screening process, where their office prepares a roster of speakers, which is then reviewed by the Council of Deans. <br><br>
+            Once approved, the Academic Council shall review the propositions, which will then be forwarded to the BOR for endorsement, before being submitted to CHED for final approval. <br>
+           
+            <blockquote><p>
+            “[Hindi] pa naman nag-Board of Regents [meeting] ngayon. Eh ang graduation natin ay sa Friday na. So definitely, hindi ito maibibigay pero siya pa rin ang ating guest speaker,” the VPAA stated. “Pero once ito ay ma-approve hanggang sa kataas-taasang Commission on Higher Education, ito ay ia-award natin.”
+            <p></blockquote>
+            <p>
+
+            Velasco then explained that the selection of the governor as the commencement speaker was based on his contributions in the province. <br>
+            
+            <blockquote><p>
+            “Why do we select people? We select on the contributions of these people, whether it's small or ‘yung impact na nagagawa niya sa community, sa kanyang territory, sa kanyang domain,” she added.
+            <p></blockquote>
+            <p>
+
+            She also clarified that initially, it was Senator Bam Aquino who was the originally chosen as the selected speaker of the graduation, but withdrew two weeks prior to the event. Hence, the next in line, Umali, was then invited to take the role. <br><br>
+            
+            <b>BACKLASH AND RESPONSE</b><br><br>
+
+            Following the announcement of Umali’s speakership, reactions emerged from members of the community with some questioning his credibility due to a suspension order by the Ombudsman in 2025.<br><br>
+            Responding to the issue, Velasco said that the matter had already been resolved, “Yun namang suspension na yun eh. It's over. Tama ba? It's over. So, why do we [go] back on that?”<br><br>
+            She also addressed the criticisms pointing to alleged environmental violations linked to the governor.<br>
+            <blockquote><p>
+            “Sa akin personally ah, hindi naman namin tinignan yung ganoong punto, we did not look at it that way. We looked at his contributions,” she explained. “Madami naman na siyang nagawa. Yung nagawa naman niya sa quarry is one part lang naman yun.” 
+            <p></blockquote>
+            <p>
+
+            Meanwhile, three progressive organizations—Anakbayan CLSU, Independent Campus Journalists’ Union for Press Freedom (ICJUPF), and Unity of Leaders’ and Students for the Advancement of Democratic Students’ Rights and Welfare—released statements opposing Umali's participation as speaker. <br><br>
+            Despite the negative reception, the governor will push through to address the Graduating Class of 2026 in the Conferment of Degree ceremony on Friday, May 22
+            </p>
+            </p>
+            </p>
+            </p>
+            </p>
+            
+        `
+    },
+    {
+        slug: "clsu-produces-18-new-cpas-in-may-cplease-passing-rate-exceeds-natl-average",
+        category: "News",
+        title: "CLSU produces 18 new CPAs in May CPALE, passing rate exceeds nat’l average",
+        summary: "Central Luzon State University (CLSU) posted a 48.65% passing rate in the May 2026 Certified Public Accountant Licensure Examination (CPALE), with 18 out of 37 takers passed, surpassing the national passing rate of 30.83%.",
+        author: "JANELLE DADAG",
+        authorLine: "JANELLE DADAG/CLSU Collegian",
+        credits: {
+            by: "JANELLE DADAG/CLSU Collegian"
+        },
+        date: "2026-06-02",
+        readTime: "4 min read",
+        image: "PHOTOS/NEWS/news8.jpg",
+        imageAlt: "CLSU produces 18 new CPAs in May CPALE, passing rate exceeds nat’l average",
+        body: `
+            <p>
+            Central Luzon State University (CLSU) posted a 48.65% passing rate in the May 2026 Certified Public Accountant Licensure Examination (CPALE), with 18 out of 37 takers passed, surpassing the national passing rate of 30.83%.<br><br>
+            According to the results released by the Professional Regulation Commission (PRC) on Tuesday, May 6.,13 out of 29, or 44.83%, first-time takers from CLSU passed the examination. Meanwhile, five out of eight repeaters passed, yielding a 62.50% passing rate. <br><br>
+            On a nationwide scope, 3,004 out of 9,745 examinees passed the May 2026 CPALE.<br><br>
+            Moreover, the PRC withheld the results of eight examinees pending final determination of their liabilities under the rules and regulations of governing licensure examination.<br><br>
+            The three-day examination was conducted from May 24 to 26, 2026 in testing centers in the National Capital Region (NCR), Baguio, Butuan, Cagayan de Oro, Cebu, Davao, Iloilo, Koronadal, Legazpi, Lucena, Pagadian, Pampanga, Rosales, Tacloban, Tuguegarao, and Zamboanga. <br><br>
+            The PRC Board of Accountancy released the results, including the list of top-performing examinees and performance of schools, four working days after the last day of the examination.<br><br>
+            Access the full results here: <a href="https://tinyurl.com/3zk8undc" target="_blank">https://tinyurl.com/3zk8undc</a>
+            </p>
+        `
+    },
+    {
         slug: "3-clsu-educ-grads-top-2026-lept-both-levels-surpass-natl-passing",
         category: "News",
         title: "3 CLSU Educ grads top 2026 LEPT; both levels surpass nat’l passing",
@@ -70,41 +202,6 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
             <blockquote><p>“Ang precautionary measures [to avoid health problems] kailangan [mag-maintain ng] healthy lifestyle, enough sleep, balanced diet, hydration lalo na ngayon kasi mainit,” said Fabricante.</p></blockquote>
             <p>
             All of them were discharged shortly after their vital signs stabilized, while follow-up consultation was prescribed for patients experiencing further symptoms.
-            </p>
-        `
-    },
-    {
-        slug: "bagong-ussc-officers-pormal-nang-kinilala-ng-ueb-ballesteros-uupo-bilang-chairperson",
-        category: "News",
-        title: "Bagong USSC Officers, pormal nang kinilala ng UEB; Ballesteros, uupo bilang Chairperson",
-        summary: "Proklamado na ng University Electoral Board ang mga susunod na manunungkulan sa University Supreme Student Council matapos ang halalan.",
-        author: "JUSTINE ACE SANDOVAL",
-        authorLine: "By JUSTINE ACE SANDOVAL/CLSU Collegian",
-        credits: {
-            labelPreset: "via",
-            by: "JUSTINE ACE SANDOVAL/CLSU Collegian",
-            layoutBy: "Asher Terby Esquivel/CLSU Collegian",
-            labels: {
-                by: "Via:",
-                layoutBy: "Inianyo ni:"
-            }
-        },
-        date: "2026-04-19",
-        readTime: "1 min read",
-        image: "PHOTOS/INFOGRAPHICS/infographics1.jpg",
-        imageAlt: "USSC officers infographic",
-        body: `
-            <p>
-            Proklamado na ng University Electoral Board (UEB) ang mga susunod na manunungkulan sa University Supreme Student Council (USSC) sa pamamagitan ng pag-endorso ng resulta ng halalan sa Office of the University President kahapon, Abril 21.<br><br>
-            Pamumunuan ni Rashela Ballesteros, incoming senior mula sa College of Engineering (CEn) at dating gobernador nito, ang pinakamataas na konseho bilang Chairperson matapos makakuha ng 2,707 na boto at 1,165 na abstain.<br><br>
-            Uupo rin si Queen Stefanie Bandolin, dating External Vice Chairperson ng College of Agriculture at kasalukuyang Chairperson ng Anakbayan CLSU, sa pagka-Vice Chairperson ng USSC sa botong 2,504 at 1,368 na abstain.<br><br>
-            Naihalal rin si Lifred Marzan, incoming senior mula College of Arts and Social Sciences (CASS) at dating Students Rights and Welfare (STRAW) Head ng nasabing kolehiyo sa pagiging Secretary sa botong 2,572 at 1,300 abstain.<br><br>
-            Samantala, proklamado bilang Treasurer ang dating CEn Student Government (CESG) Treasurer at incoming Information Technology junior na si Matt Joshua Torres, sa botong 2,522 at 1,350 abstain.<br><br>
-            Nailuklok rin sa posisyon ng Auditor ang dating College of Education (CEd) Councilor na si Jianna Margaret Ongoda sa botong 2,496 at 1,376 na abstain.<br><br>
-            Si Mark Joshua Ramos naman, dating Business Manager ng CESG, ang manunungkulan bilang Public Information Officer sa botong 2,418 at 1,454 abstain.<br><br>
-            Samantala, ang mga naihalal na konsehal ng mga kolehiyo ay ang mga sumusunod: Joseph Vincent Tan (College of Business and Accountancy), 145 votes, 82 abstain; Vindrel Velasco (CEn), 358 votes, 193 abstain; John Vincent Garcia (CEd), 1098 votes, 472 abstain; at Gabrielle Tadeo (CVSM), 377 votes, 43 abstain.<br><br>
-            Kabibilangan ng CLSU Students for National Democracy, bilang tanging partidong tumakbo, ang 10 sa 15 posisyon sa USSC sa taong panuruan 2026-2027.<br><br>
-            Ginanap ang USSC Elections 2026 noong Abril 14 hanggang 16 at nakapagtala ito ng 26.52% election turnout o 3,872 na bilang bumoto mula sa 14,601 na eligible voters ng pamantasan. Ito ay mas mababa sa 40.04% turnout noong nakaraang taong panuruan.
             </p>
         `
     },

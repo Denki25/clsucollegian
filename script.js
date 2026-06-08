@@ -1,6 +1,10 @@
 const siteConfig = window.CLSU_SITE_CONFIG || {};
 const siteArticles = Array.isArray(window.CLSU_ARTICLES) ? [...window.CLSU_ARTICLES] : [];
-const siteMultimedia = Array.isArray(window.CLSU_MULTIMEDIA) ? [...window.CLSU_MULTIMEDIA] : [];
+const siteMultimedia = Array.isArray(window.CLSU_MULTIMEDIA)
+    ? [...window.CLSU_MULTIMEDIA].sort((left, right) => {
+        return compareMultimediaDates(left.date, right.date);
+    })
+    : [];
 const siteIssues = Array.isArray(window.CLSU_ISSUES) ? [...window.CLSU_ISSUES] : [];
 
 siteArticles.sort((left, right) => {
@@ -618,7 +622,7 @@ function buildSearchIndex() {
         summary: item.caption || createMultimediaSearchSummary(item),
         author: getMultimediaPresenter(item),
         category: item.platform || "Multimedia",
-        date: "",
+        date: item.date || "",
         readTime: "",
         image: "",
         imageAlt: item.title || "Multimedia entry",
@@ -924,6 +928,7 @@ function createMultimediaCard(item, variant = "default") {
     const isHomeCompact = variant === "home-compact";
     const cardClass = isFeatured ? "multimedia-card multimedia-card-featured" : "multimedia-card";
     const titleTag = isFeatured ? "h2" : "h3";
+    const dateMarkup = item.date ? `<p class="multimedia-date">${formatDate(item.date)}</p>` : "";
     const captionMarkup = item.caption
         ? `<p class="multimedia-caption">${item.caption}</p>`
         : (isFeatured ? `<p class="multimedia-caption multimedia-caption-fallback">Fresh from the CLSU Collegian multimedia desk.</p>` : "");
@@ -959,6 +964,7 @@ function createMultimediaCard(item, variant = "default") {
                 </div>
                 <div class="multimedia-card-content">
                     <p class="multimedia-eyebrow">${platformLabel}</p>
+                    ${dateMarkup}
                     <${titleTag}>${item.title}</${titleTag}>
                     ${bylineMarkup}
                     ${captionMarkup}
@@ -986,6 +992,7 @@ function createMultimediaCard(item, variant = "default") {
             </div>
             <div class="multimedia-card-content">
                 <p class="multimedia-eyebrow">${platformLabel}</p>
+                ${dateMarkup}
                 <${titleTag}>${item.title}</${titleTag}>
                 ${bylineMarkup}
                 ${captionMarkup}
@@ -1006,6 +1013,27 @@ function getDateTimestamp(dateString) {
     const dateValue = getDateValue(dateString);
     const timestamp = dateValue ? dateValue.getTime() : 0;
     return Number.isNaN(timestamp) ? 0 : timestamp;
+}
+
+function getMultimediaDateSortValue(dateString) {
+    const dateValue = getDateValue(dateString);
+    const timestamp = dateValue ? dateValue.getTime() : Number.POSITIVE_INFINITY;
+    return Number.isNaN(timestamp) ? Number.POSITIVE_INFINITY : timestamp;
+}
+
+function compareMultimediaDates(leftDate, rightDate) {
+    const leftTime = getMultimediaDateSortValue(leftDate);
+    const rightTime = getMultimediaDateSortValue(rightDate);
+
+    if (leftTime === rightTime) {
+        return 0;
+    }
+
+    return leftTime - rightTime;
+}
+
+function sortItemsByOldest(items) {
+    return [...items].sort((left, right) => compareMultimediaDates(left.date, right.date));
 }
 
 function getMonthKey(dateString) {
@@ -1049,6 +1077,30 @@ function filterItemsByMonth(items, selectedMonth) {
     return items.filter((item) => getMonthKey(item.date) === selectedMonth);
 }
 
+function initializeDateFilter(filterElement, items) {
+    if (!filterElement || filterElement.dataset.initialized) {
+        return;
+    }
+
+    const uniqueDates = [...new Set(items
+        .map((item) => item.date)
+        .filter((dateValue) => getMultimediaDateSortValue(dateValue) !== Number.POSITIVE_INFINITY))]
+        .sort((left, right) => compareMultimediaDates(left, right));
+
+    filterElement.innerHTML = [`<option value="all">All dates</option>`]
+        .concat(uniqueDates.map((dateValue) => `<option value="${dateValue}">${formatDate(dateValue)}</option>`))
+        .join("");
+    filterElement.dataset.initialized = "true";
+}
+
+function filterItemsByDate(items, selectedDate) {
+    if (selectedDate === "all") {
+        return items;
+    }
+
+    return items.filter((item) => item.date === selectedDate);
+}
+
 function sortItemsByNewest(items) {
     return [...items].sort((left, right) => getDateTimestamp(right.date) - getDateTimestamp(left.date));
 }
@@ -1056,18 +1108,19 @@ function sortItemsByNewest(items) {
 function renderMultimedia() {
     const homeGrid = document.getElementById("homeMultimediaGrid");
     const multimediaPageGrid = document.getElementById("multimediaPageGrid");
-    const monthFilter = document.getElementById("section-month-filter");
+    const dateFilter = document.getElementById("section-date-filter");
+    const sortedMultimedia = sortItemsByOldest(siteMultimedia);
 
     if (homeGrid) {
-        homeGrid.innerHTML = siteMultimedia.slice(0, 3).map((item) => createMultimediaCard(item)).join("");
+        homeGrid.innerHTML = sortedMultimedia.slice(0, 3).map((item) => createMultimediaCard(item)).join("");
     }
 
     if (multimediaPageGrid) {
-        initializeMonthFilter(monthFilter, siteMultimedia);
+        initializeDateFilter(dateFilter, sortedMultimedia);
 
         const renderPageGrid = () => {
-            const selectedMonth = monthFilter ? monthFilter.value : "all";
-            const filteredItems = sortItemsByNewest(filterItemsByMonth(siteMultimedia, selectedMonth));
+            const selectedDate = dateFilter ? dateFilter.value : "all";
+            const filteredItems = sortItemsByOldest(filterItemsByDate(sortedMultimedia, selectedDate));
 
             multimediaPageGrid.innerHTML = filteredItems.length > 0
                 ? filteredItems.map((item) => createMultimediaCard(item)).join("")
@@ -1076,9 +1129,9 @@ function renderMultimedia() {
             observeAnimatedElements();
         };
 
-        if (monthFilter && !monthFilter.dataset.bound) {
-            monthFilter.addEventListener("change", renderPageGrid);
-            monthFilter.dataset.bound = "true";
+        if (dateFilter && !dateFilter.dataset.bound) {
+            dateFilter.addEventListener("change", renderPageGrid);
+            dateFilter.dataset.bound = "true";
         }
 
         renderPageGrid();

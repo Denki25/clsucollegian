@@ -9,6 +9,48 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
     // 1. image + imageAlt
     // 2. literaryMedia with separate card/article video settings
     {
+        slug: "How-far-can-you-go-for-love",
+        category: "Literary",
+        displayCategory: "LITERARY",
+        title: "How far can you go for love?",
+        summary: "For my family, freedom is the most important gift. Although I didn't personally experience martial law, I grew up listening to stories about it from my grandmother, Imang.",
+        author: "ANGELINE DOMINGO",
+        authorLine: "ANGELINE DOMINGO/CLSU Collegian",
+        credits: {
+            by: "ANGELINE DOMINGO/CLSU Collegian",
+            illustratedBy: "MARIA AIRIS LABAO/CLSU Collegian",
+            layoutBy: "RHAINE KARL FIGUEROA/CLSU Collegian",
+        },
+        date: "2026-06-06",
+        readTime: "6 min read",
+        image: "PHOTOS/LITERARY/lit8.jpg",
+        imageAlt: "How far can you go for love?",
+        body: `
+        
+            <p>
+            
+            For my family, freedom is the most important gift. Although I didn't personally experience martial law, I grew up listening to stories about it from my grandmother, Imang. <br><br>
+            Imang was eighteen when she heard the news of the declaration of martial law in the Philippines. This became the talk of the entire village, with opinions divided, but Imang was sure that the welfare of the people was not the reason for the imposition of this decree. Morning or night, there are soldiers on patrol. Imang described how intimidating the large guns they held were, or how some of them used it as a threat to command respect. <br><br>
+            One story stayed with me the most. Among the victims of the regime was Edgar Jopson, who attended the same university as Imang. His disappearance became a reminder of the dangers faced by those who spoke against the dictatorship. <br><br>
+            I was ten when I first heard the story, and at that time, I didn't fully understand it. But as time passed, it truly left a mark on my mind. Imang did not stop telling the story; she had no intention of letting anyone in the family forget what she experienced during her childhood.<br><br>
+            So I learned to live right, even when she died, I made sure that every story of hers would not be erased or changed. I was eighteen when I entered university, and getting along with others wasn't difficult for me, for being talkative is a natural trait of mine that has remained since childhood.<br><br>
+            That's where I also met Niko. At first, we started as friends, but before I knew it, I had started to fall for him. The problem was that I had my doubts. His lack of interest in politics was hard to ignore. Whenever it became the topic of conversation among our friends, he would immediately look for something else to talk about. <br><br>
+            As much as I wanted to quietly fall in love, my fear outweighed my feelings. I didn’t want the day to come when I would have to give up what I stand for just because I loved someone. <br><br>
+            I talked to Niko because I wanted to fall in love without feeling guilty. Some of his answers were difficult to understand, but I knew I had to respect them. He told me he had already lost his faith in the government. Every time he invested his time, energy, and hope in it, he always ended up disappointed and discouraged.<br><br>
+            He also added that he had no plans of staying in the country for long. If given the opportunity, he would leave and build a life abroad. I understand where he was coming from, after all, that is often why people stop paying attention to the country’s problems. Still, I couldn’t help but feel sad. Was it really that easy to lose hope, especially when it was for the country we call home?<br><br>
+            Normally, I keep my distance from people whose beliefs differ greatly from mine to avoid conflict. But with Niko, I chose to understand. I convinced myself that he simply needed time to understand why these issues matter so much to me.<br><br>
+            Yet as days turned into months and years, Niko remained blind to politics. We once had an argument when I urged him to do some research before the national election. He said it was pointless—that the outcome would always be the same: politicians would steal, and the people would remain poor. His words angered me. They were painfully true, but what annoyed me the most was that there was a chance to change things, yet he continued to cling to what he believed was right. <br><br>
+            Niko and I stayed together. We rarely fought except when it came to politics. Once, I joined a protest. I never imagined that the ridicule I would endure would come not from someone I did not know, but from the very person I believed would be my safe haven. I stood for human rights, yet because my convictions were beyond his understanding, he mocked me and labeled me as a rebel. He apologized a few days later, but I could still remember how small and ashamed his words made me feel. <br><br>
+            We stayed together for six years. Yet I still remember how, on our third anniversary, the money he used to treat me came from corrupt politicians in our city after he sold his vote. I remember how he called me dramatic when I threw up everything I had eaten after finding out. I remember the way he looked at me with contempt simply because I believed what he had done was wrong. <br><br>
+            We stayed together for a long time, but eventually my conscience could no longer bear it. By staying with Niko, I was not only betraying Imang’s memory—I was betraying myself too. I ended our relationship, and I will never forget how, for the last time, he mocked the very cause I had dedicated myself into. <br><br>
+            And now, with Niko no longer in my life, I am finally free to express my love—not for someone whose beliefs stand against my own, but for a nation that continues to cry out for people willing to fight for it. <br><br>
+            From Imang, I learned what it means to remain strong amidst hardships. Though I may never face the same battles she did against the military during Martial law, I will stand just as firmly for what I believe in—even in the face of judgement from the man I once loved, or against a government that continues to deceive its own people.<br><br>
+
+            </p>
+            
+        `
+    }, 
+    {
         slug: "grATE",
         category: "Literary",
         title: "grATE",
@@ -475,5 +517,6 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
             
         `
     }, 
+    
 
 ]);

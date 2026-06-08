@@ -7,6 +7,244 @@
 
 window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
     {
+        slug: "Kapag-Namumukadkad-ang-Alaala",
+        category: "Features",
+        displayCategory: "LATHALAIN",
+        title: "Kapag Namumukadkad ang Alaala",
+        summary: "Bago pa dumating ang panahon ng social media, mamahaling mga damit, at kaliwa’t kanan na picture-taking, naging bahagi muna ng payak ngunit masiglang buhay-baryo ang Flores de Mayo. Sa mga kwentong tangan nina Nanay Tess, Nanay Maribel, at Nanay Lorna, nananatiling buhay ang tradisyong minsang nagbuklod sa simbahan, pamilya, at buong komunidad.",
+        author: "KRYZTELLE ASHLEY HERRERA",
+        authorLine: "By KRYZTELLE ASHLEY HERRERA/CLSU Collegian",
+        credits: {
+            by: "KRYZTELLE ASHLEY HERRERA/CLSU Collegian",
+            layoutBy: "ASHER TERBY ESQUIVEL/CLSU Collegian",
+            illustratedBy: "YSABELLA BELEN FRANCISCO/Kontribyutor",
+            labels: { 
+                layoutBy: "Inianyo ni:",
+                illustratedBy: "Iginuhit ni:"
+
+        }   
+        },
+        date: "2026-05-20",
+        readTime: "10 min read",
+        image: "PHOTOS/FEATURES/feature5.jpg",
+        imageAlt: "Kapag Namumukadkad ang Alaala",
+        body: `
+            <p>
+                Bago pa dumating ang panahon ng social media, mamahaling mga damit, at kaliwa’t kanan na picture-taking, naging bahagi muna ng payak ngunit masiglang buhay-baryo ang Flores de Mayo. Sa mga kwentong tangan nina Nanay Tess, Nanay Maribel, at Nanay Lorna, nananatiling buhay ang tradisyong minsang nagbuklod sa simbahan, pamilya, at buong komunidad.<br><br>
+                Sa bawat pagsapit ng Mayo, muling sumasariwa ang halimuyak ng sampaguita, tunog ng kampana, at puting bestidang minsang isinuot ng mga batang sagala sa tahimik na bakuran ng simbahan. Para sa ilan, isa lamang itong taunang tradisyon, ngunit para sa mga dating sagala ng Flores de Mayo, ang Mayo ay tila pintuang nagbabalik sa makukulay na yugto ng kanilang kabataan.<br><br>
+                
+                <b>PUTING SAYA, MAY BITBIT NA KABA</b><br>
+
+                <blockquote><p>
+                “Masaya at nakakakaba talaga noon kasi bata pa ako at first time kong magsuot ng puting saya para sa prusisyon,” pagbabalik-tanaw ni Nanay Teresita “Tess” Ramos, 74, dating sagala noong 1972 sa St. Rose of Lima Parish Church, Sta. Rosa, Nueva Ecija.
+                </p></blockquote>
+                <p>
+
+                Hindi lamang simpleng gawain ng simbahan noon ang Flores de Mayo kundi bahagi ng araw-araw na buhay sa baryo. Maaga pa lamang ay maririnig na ang matinis na tawanan ng mga batang naglalaro sa labas ng simbahan habang abala naman ang matatanda sa pamimitas at pag-aayos ng samu’t saring mga bulaklak para sa prusisyon. <br><br>
+                Bagaman payak lamang ang kanilang pamumuhay noon, ibinahagi ni Nanay Tess kung paanong nagsikap ang kanyang mga magulang na maisali sila sa mga gawaing-simbahan upang lumaki silang may malalim na paggalang sa pananampalataya at tradisyon.<br><br>
+                “Doon ko rin natutunan kung gaano kahalaga sa pamilya namin ang Flores de Mayo at iba pang gawain sa simbahan,” pagbabahagi ni Nanay Tess, na aniya’y naging pundasyon ng kanyang paggalang sa pananampalataya at tradisyon. <br><br>
+                Sariwa pa rin sa isip ni Nanay Tess ang mga gabing abala ang kanilang buong pamilya sa paghahanda bago ang prusisyon. Kwento niya, pinatahi lamang ang kanyang damit pang sagala, habang ang mga bulaklak naman ay galing sa bakuran.Tahimik lamang din ang simbahan sa araw ng misa.<br>
+                
+                <blockquote><p>
+                “Halos lahat talaga noon nakikinig kapag nagsimula na yung dasal. Tahimik lang sa loob ng simbahan at nakatuon talaga ang mga tao sa pag-aalay kay Maria,” ani Nanay Tess, na hanggang ngayon ay dama pa rin ang taimtim na debosyon ng komunidad tuwing Flores de Mayo. 
+                </p></blockquote>
+                <p>
+
+                Hindi lamang simbahan ang abala noon dahil maging ang buong baryo ay nakibabahagi sa paghahanda para sa prusisyon. “‘Yung iba naming kapitbahay, nagbibigay pa ng sampaguita at bulaklak mula sa bakuran nila para may magamit sa prusisyon. Talagang may mga tumutulong sa paghahanda,” saad ni Nanay Tess.<br><br>
+                Hanggang ngayon, nananatili pa ring malinaw sa isip ni Nanay Tess ang mga tagpong humubog sa kanyang kabataan. “Kapag naaamoy ko minsan ‘yung sampaguita, parang bumabalik ulit ako sa panahon na bata pa ako. Naaalala ko agad yung paghahanda namin noon at yung saya habang magkakasama kaming nag-aabang ng prusisyon sa simbahan,” saad ni Nanay Tess. Sa tuwing nakakakita siya ng mga dalagang nakabihis bilang sagala, tila muling nabubuhay ang isang panahong payak ngunit puno ng init, debosyon, at sama-samang pagdiriwang.<br><br>
+                
+                <b>TAWANAN, PAMPAHUPA NG ULAN</b><br><br>
+
+                Hindi agad pinangarap ni Nanay Maribel Santos, 62, ang pagsali sa sagala noong 1986 sa St. Nicholas of Tolentine Parish Cathedral, Cabanatuan City dahil aminado siyang mahiyain siya noong dalaga. Ibinahagi ni Nanay Maribel na ang pagharap sa prusisyon noon ay higit na isang bagay na kailangang pagdaanan kaysa isang pangarap na nais makamtan.<br>
+               
+                <blockquote><p>
+                “Dahil sumali rin ‘yung mga kaibigan ko, napasama na rin ako. Nahihiya pa ako noon pero habang tumatagal, nasasanay na rin akong sumama sa mga ensayo at prusisyon kasama sila,” kwento ni Nanay Maribel.
+                </p></blockquote>
+                <p>
+
+                Bahagi ni Nanay Maribel ang kanyang lola na nagsilbing gabay sa kanyang pagsali sa sagala. Mula sa maagang paggising sa kanya tuwing may ensayo hanggang sa paulit-ulit na pagpapaalala kung paano kumilos nang maayos sa prusisyon, malinaw kung gaano kalaki ang naging bahagi nito sa kanyang karanasan. <br><br>
+
+                Naging makabuluhan pa rin kay Nanay Maribel ang karanasan sa kabila ng kakulangan noon sa salapi. “Nanghiram lang ako ng mga abubot saka tela sa mga kamag-anak namin. Minsan ay halos buong gabi gising ‘yung lola ko para tapusin ‘yung damit ko,” kwento niya.<br><br>
+                Isa sa mga pinakatumatak kay Nanay Maribel ay ang hindi inaasahang pag-ulan habang papalapit ang prusisyon. Hanggang ngayon ay malinaw pa rin sa kaniya ang eksenang nagbigay ng kakaibang init sa isang malamig at maalimuom na gabi ng Mayo. <br><br>
+                “May mga pagkakataon na umuulan pa noon, pero tuloy pa rin ‘yung ensayo at tawanan namin habang naghihintay humupa ito,” pagbabalik-tanaw niya sa sandaling nakasilong silang magkakaibigan sa gilid ng simbahan habang pinagmamasdan ang malalakas na patak ng ulan sa sementadong daan.<br><br>
+                Sa paglalarawan ni Nanay Maribel, buhay na buhay noon ang paligid ng simbahan tuwing Flores de Mayo. Habang taimtim na nagdarasal ang ilan sa loob ng simbahan, may mga inang nagkukwentuhan naman sa labas habang pinapatuyo ang mga nabasang damit dahil sa ulan. Bagay na aniya ay tila “reunion na rin ng barangay” kahit hindi planado.<br><br>
+                Isa sa pinakamahalagang naituro kay Nanay Maribel ng Flores de Mayo ay ang pagbuo ng kumpiyansa sa sarili. “Natuto akong humarap sa maraming tao. Noong una, talagang kinakabahan ako sa bawat paglakad ko,” pagbabahagi niya, kahit aminado siyang nanginginig noon sa kaba sa bawat hakbang sa prusisyon.<br><br>
+                Sa pagdaan ng panahon, mas naunawaan ni Nanay Maribel na ang Flores de Mayo ay hindi lamang gawain sa simbahan kundi paalala rin ng pagmamahal ng kanyang lola at ritmo ng komunidad na kanyang kinalakhan. Sa pagbabalik tanaw ni Nanay Maribel, ang mga gabing may ensayo, tawanan, at kahit malakas na pag-ulan ay hindi naging hadlang kundi bahagi ng mga sandaling nananatiling buhay sa kaniyang puso.<br><br>
+                
+                <b>PANSIT AT TINAPAY, PAMPAHABA NG KWENTUHAN</b><br><br>
+
+                Kwento naman ni Nanay Lorna Manalo, 45, dating sagala noong 2002 sa San Josef Sur Chapel, Cabanatuan City, isang munting gantimpala noon ang pagsali sa Flores de Mayo dahil ito ang panahong maaari siyang mag-ayos, magsuot ng magandang damit, at makasama ang ibang bata sa kapilya.<br>
+                
+                <blockquote><p>
+                “Talagang ako mismo ‘yung may gusto sumali kasi naiinggit ako sa mga ate ko na dati rin sumagala,” paglalahad ni Nanay Lorna habang tila dumadampi muli sa kaniya ang pananabik na kaniyang nararamdaman tuwing papalapit ang Mayo.<br>
+                </p></blockquote>
+                <p>
+
+                Bukod sa mismong prusisyon, malaking bahagi rin ng karanasan ni Nanay Lorna ang masasayang paghahanda sa bahay kung saan maingat na inaayos ng kanyang ina ang kanyang buhok habang ang kapatid naman niya ang abalang nagpaplantsa ng kanyang damit. Sa mga simpleng kilos na ito, dama ni Nanay Lorna ang init ng sama-samang paghahanda na kasing-halaga rin ng mismong pagdiriwang sa labas.<br><br>
+                Buhay na buhay ang paligid noong panahon nila sa mga sigawan, tawanan, at yabag ng mga batang naghahabulan sa paligid ng kapilya bago magsimula ang prusisyon. Sa gilid ng daan ay nakahilera rin ang maliliit na tindahan na nagdadagdag ng ingay, liwanag, at kulay sa buong lugar kaya mistulang isang maliit na pista ang tagpo sa buong komunidad.<br>
+                
+                <blockquote><p>
+                “Kapag may kulang na alahas o sandalyas, may mga nagpapahiram talaga para makasali lahat sa prusisyon. ‘Yung iba naman, sila ‘yung nagsasalansan ng mga bulaklak sa arko,” pagbabahagi ni Nanay Lorna, na malinaw na nagpapakita kung paano naging bahagi ng Flores de Mayo ang bayanihan at pagtutulungan sa kanilang barangay.<br>
+                </p></blockquote>
+                <p>
+
+                Bagama’t mas naging moderno na ngayon ang Flores de Mayo, nananatiling espesyal para sa kanya ang dating kinagisnan. <br><br>
+                “Sabay-sabay kaming kumain ng pansit saka tinapay tapos nagkukwentuhan kami.”<br><br>
+                Idinagdag pa ni Nanay Lorna na ang tunay na halaga ng Flores de Mayo ay nasa mga sandaling ito na nabubuo kasama ang kapwa sagala, pamilya, at buong barangay. Ang mga karanasang ito, para sa kaniya, ay hindi nasusukat sa engrandeng selebrasyon kundi sa samahan at kwentuhan.<br><br>
+                Para sa kaniya, ang Flores de Mayo ay isa sa mga karanasang nagpapaalala kung gaano kasimple ngunit kasaya ang kanilang kabataan noon. Sa likod ng makukulay na bulaklak, kumukutitap na kandila, at mahabang prusisyon, nananatili kay Nanay Lorna ang halaga ng pagiging bahagi ng isang komunidad na sama-samang nagdiriwang ng tradisyon at pananampalataya.<br><br>
+                
+                <b>MGA GUNITA NA HINDI NALALANTA</b><br><br>
+
+                Sa paglipas ng panahon, maaaring nagbago na ang paraan ng pagdiriwang, ngunit nananatiling buhay ang diwa ng pista sa mga gunitaing hindi naglalaho at patuloy na ipinapasa mula sa isang henerasyon patungo sa susunod. Higit pa sa magagandang bestida at mga litrato, nakaugat dito ang pananampalataya, pagkakaisa ng komunidad, at payak ngunit masayang karanasan ng pagiging bata.<br><br>
+                Magkakaiba man ang panahong kanilang kinamulatan, iisa pa rin ang malinaw sa mga kuwentong tangan ng tatlong dating sagala. Ang Flores de Mayo ay hindi lamang simpleng tradisyon kundi bahagi ng kanilang paglaki at pagkatao. Sa bawat bulaklak na iniaalay, kampanang banayad na tumutunog, at batang nakasuot ng puting saya, muling nabubuhay ang mga gunitaing minsang humubog sa kanilang kabataan at hanggang ngayo’y hindi nalalanta sa kanilang puso.<br><br>
+            </p>
+            </p>
+            </p>
+            </p>
+            </p>
+            </p>
+
+        `
+    },
+    {
+        slug: "Limang-Hakbang-sa-Likod-ng-Parangal-at-Papuri-Peter’s-Version",
+        category: "Features",
+        displayCategory: "LATHALAIN",
+        title: "Limang Hakbang sa Likod ng Parangal at Papuri (Peter’s Version)",
+        summary: "I stand with the belief that people can't be 100% everyday. Taliwas sa inaasahang imahe ng mga pangalang madalas tawagin sa entablado kakabit ang kani-kanilang tagumpay, may mga kwentong hindi nakikita ng mga mata.",
+        author: "KATRINA ALESSANDRA DANTING & ELJOHN TOLENTINO",
+        authorLine: "By KATRINA ALESSANDRA DANTING & ELJOHN TOLENTINO/CLSU Collegian",
+        credits: {
+            by: "KATRINA ALESSANDRA DANTING & ELJOHN TOLENTINO/CLSU Collegian",
+            layoutBy: "ASHER TERBY ESQUIVEL/CLSU Collegian",
+            labels: { 
+                layoutBy: "Inianyo ni:"
+
+        }   
+        },
+        
+
+        date: "2026-06-03",
+        readTime: "10 min read",
+        image: "PHOTOS/FEATURES/feature4.jpg",
+        imageAlt: "Limang Hakbang sa Likod ng Parangal at Papuri (Peter’s Version)",
+        body: `
+            <p>
+
+            "I stand with the belief that people can't be 100% everyday."<br><br>
+            Taliwas sa inaasahang imahe ng mga pangalang madalas tawagin sa entablado kakabit ang kani-kanilang tagumpay, may mga kwentong hindi nakikita ng mga mata.<br><br>
+            Kaya naman kung sasabihin sa’yo na ang estudyanteng nagtala ng pinakamataas na General Weighted Average (GWA) sa kasaysayan ng Central Luzon State University (CLSU) ay isang self-confessed na "crammer," marahil ay hindi ka agad maniniwala.<br><br>
+            Ngunit ito ang isa sa mga naging tagpo ni Peter Ryuken Hermosura, tubong Obando, Bulacan—isang kuwentong hinubog ng mga bagyong kanyang nilusong bago marating ang pinakamataas na grado sa kasaysayan ng unibersidad.<br><br>
+
+            <b>UNANG HAKBANG: MAS MAINAM NA HANDA</b><br><br>
+
+            “Sa panahon na parang nagpapahinga ang lahat, mainam sigurong mag-aral.” Ito ang mga katagang sinambit ni Peter kung paano niya sinimulang tahakin ang kaniyang kurso bago pa man ang pasukan.<br><br>
+            Paminsan-minsan, karamihan sa mga estudyante ay dumarating sa punto ng pagdududa sa sarili o kawalan ng pag-asa sa ibinigay na kurso ng mga pamantasan. Maski si Peter ay hindi nakaligtas dito.<br><br>
+            Bago pa matiyak ni Peter ang kanyang tatahaking landas ay napapalibutan siya ng mga nauna niyang pangarap. Nariyan ang maging guro sa Araling Panlipunan, guro sa Math, journalist, doktor, at abogado na ilan sa kanyang pinagpilian. Ngunit isang pangarap ang muling kumalabit kay Peter nang baybayin niya ang pangarap na kala niya’y hanggang libangan lamang. <br><br>
+            Matapos makapagdesisyon ni Peter na tahakin ang kanyang ‘quiet interest’ na Bachelor of Science in Meteorology (BSMet) at mapapayag ang kanyang mga magulang, dito niya sinimulang subukang araling mag-isa ang ilang asignatura. Para kay Peter, para siyang nakabangga ng malaking pader.<br><br>
+            Tulad ng marami, nahirapan din si Peter na umayon sa kanyang napiling kurso. May kalayuan umano ito sa mga hilig niyang aralin na kasaysayan sa Araling Panlipunan at sa nakasanayan niyang matematika. Dahil dito, maaga niyang pinag-aralan ang ilan mga asignatura sa programang kinuha matapos makapagdesisyon sa kanyang kurso at sitwasyon. <br>
+            <blockquote><p>
+
+            “Doon siya parang nag-start. So, self-learning ventures, napakalaking bahagi siya ng kung paano ko siguro narating ito,” kwento niya. “Kung hindi ako nag-a-advance noon, feeling ko mahihirapan na ako mag-adjust sa pagseek ng calculus at ‘yung mathematics in general sa Meteorology.”
+            </p></blockquote>
+            <p>
+
+            Bawat sitwasyon at mahirap na desisyon ay kaakibat ang pagdududa sa sarili gayong punong-puno ng emosyon ang katawan ng tao. Sa halip na magpadala sa takot, hindi niya ito hinahayaang humadlang bagkus ginawa niyang motibasyon para makausad at makahakbang palapit sa kanyang pangarap.<br><br>
+           
+            <b>IKALAWA, ‘CONTENT-HEAVY’ VS ‘MECHANISM-HEAVY’</b><br><br>
+
+            Madalas nakalilimutan ng marami kung paano itrato o diskartehan ang bawat dumaang pagsusulit sa kanilang harapan. Sa bawat bumabagyong subjects, namimili na si Peter ng kaakibat na payong na dadalhin sa bawat paglalakbay. Hindi lang siya basta-bastang sumasabak; inaasahan niya agad ang uri at paraan batay pa lamang sa titulo ng asignatura.<br><br>
+            Bilang unang hakbang sa kanyang ‘problem-solving process,’ dito ay masusing inoobserbahan ni Peter ang sitwasyong haharapin.“Tini-tailor ko ‘yung paraan kung paano ako mag-review, depending sa subject,” kanyang pagku-kwento. Malaking sandigan aniya ang pagtukoy sa uri ng subject—kung ‘mechanism-heavy’ o ‘content-heavy’.<br><br>
+            Sa mga ‘mechanism-heavy’ subjects ay mas mahalagang makabisa nang maigi aniya ang proseso lalong-lalo na sa mga pagsusulit. Dito ay nagagamit ni Peter ang kanyang karanasan sa pagtuturo. <br><br>
+            “Nagpe-pretend ako na meron akong kausap, meron akong tinuturuan,” dagdag nya na sa paraang ito ay naitatatak sa kanyang isipan ang mga pasikot-sikot at detalye.<br><br>
+            Taliwas naman ito sa ‘content-heavy’ subjects kung saan maraming terminolohiya o detalye ang kinakailangang isaulo tulad ng mga kurso bahagi ng General Education. <br><br>
+            Sa ganitong sitwasyon ay gumagamit si Peter ng tinatawag na ‘Active Recall’ kung saan inaalala ng isang tao ang mga impormasyon mula sa memorya nang hindi tumitingin sa Lecture notes. At bilang panigurado, hinahaluan niya ito ng ‘Blurting Method,’ kung saan pupunan ng lahat ng maalalang detalye at saka ito ikukumpara sa sariling lektura. <br>
+           
+            <blockquote><p>
+            “Kung halimbawa, GE [General Education] course siya na medyo maraming ime-memorize, isusulat ko lahat ng terms na ‘yun sa isang yellow pad. Hindi ko lalagyan ng meaning tapos kailangan after having a few passes dun sa material, eh ma-explain ko lahat ng terms na ‘yun. Ganon usually yung naging style,” pagdedetalye ni Peter.<br><br>
+            </p></blockquote>
+            <p>
+
+            <b>IKATLO: TAKBO, HINTO, TAKBO</b><br><br>
+
+            Sa likod ng mga titulong ikinakabit sa pangalan ni Peter, hindi na nakagugulat kung iisiping marahil ay subsob sa pagpupuyat upang magrebyu.<br><br>
+            Ngunit sa kaso niya, may espasyo rin para sa katahimikan sa pagitan ng ingay ng mga responsibilidad bilang estudyante.<br>
+            
+            <blockquote><p>
+            “Nagpo-pomodoro ako 1.5 hours ng trabaho tapos 15 to 30 minutes ng rest time [...] ina-accept ko rin ‘yung katotohanan na [sa atin], hindi tayo pwede magtrabaho nang [diretso].” kwento nito.
+            </p></blockquote>
+            <p>
+
+            Imbis na lunurin ang sarili sa pag-aaral, mas pinipili niyang pakinggan kung hanggang saan lamang ang kayang ibigay ng kanyang isip at katawan. Madalas niyang ginugugol ang libreng oras sa pagsusulat ng journals, tula, at kanta. Nanonood din siya ng documentaries at YouTube shorts, habang minsan nama’y naglalaro ng mobile at computer games.<br><br>
+            Sa kasalukuyan, nahumaling rin si Peter sa pagtakbo sa loob ng unibersidad na nag-umpisa sa aniya'y "trip lang". <br><br>
+            “Hindi ako nagse-set ng specific na oras [para mag-aral]. ‘Pag may kailangang aralin [...] bibigyan natin siya ng oras pero hindi ko ipe-pressure ‘yung sarili ko kasi baka mag-burn out ako.” dagdag nito sa kahalagan ng paghinto.<br><br>
+            Sa gitna ng pagkalito, madalas din niyang isilong ang sarili sa musika kabilang ang mga kantang tumatak sa kanya ay ang The Lucky One at Mirrorball ni Taylor Swift. Mga kantang sumasalamin sa kasikatan na aniya'y may temang malapit sa kanyang mga karanasan.<br><br>
+            “Being high performing means you have to sacrifice things… your sleep, [yung] kahit pagkain na nga lang, oras sa kaibigan, oras para sa sarili…nakatulong sa akin siguro ang pakikinig sa mga kanta tungkol sa sikatan. Para i-process yung ganung feeling.” pagbabahagi nito.<br><br>
+            
+            <b>IKAAPAT, MAKINIG SA KATAWANG HUMIHINGI NG PAHINGA</b><br><br>
+
+            Sa patuloy na pakikibaka ng bawat kolehiyala para sa rurok ng sari-sariling minimithing tagumpay, tila walang puwang ang mapagod, magpahinga, o kahit man lang manghina dahil sa haba ng kailangang tawirin.<br><br>
+            Pero kontra ni Peter, valid magpahinga.<br>
+            
+            <blockquote><p>
+            “I stand with the belief that people can't be 100% everyday, ani nito.
+            </p></blockquote>
+            <p>
+
+            Sa likod ng halos perpektong gradong kanyang iniukit sa kasaysayan ng CLSU, inamin ni Peter na madalas ay isa rin siyang “crammer.” Kwento niya, marami sa mga output at speech na ipinapasa niyang pulido sa paningin ng iba ay madalas lamang ding natatapos ilang araw o minsan ilang oras bago ang deadline.<br>
+            
+            <blockquote><p>
+            “Yung mental health ko kasi, for some reason, hindi ko siya [maharap] hangga’t wala ‘yung deadline, it's an ongoing struggle for me[...] It’s a very dangerous situation,” pag-amin niya.<br>
+            </p></blockquote>
+            <p>
+
+            Gaya ng marami, sa mga panahong nagsasabay-sabay ang deadlines, competitions, at personal na pagod, doon niya higit na nararamdaman ang bigat ng pagiging isang high-performing student. Isang bigat na kadalasang hindi nakikita sa mga medalya, mataas na marka, at palakpak na natatanggap. Dito, natutunan niyang pakiramdaman ang sarili, huminto kung kinakailangan at pahalagahan ang limitasyon ng utak at emosyon.<br><br>
+            Para kay Peter, hindi pagtalikod sa responsibilidad ang pahinga. Isa itong paraan upang muling buuin ang sarili bago humarap sa panibagong unos.<br>
+            
+            <blockquote><p>
+            “You’re only as good as the day you take the exam, if you're not well rested, and if you're not okay emotionally and mentally, kahit kabisado mo pa lahat ‘yan, you will not perform well,” paalala nito.
+            </p></blockquote>
+           
+            <p>
+            
+            <b>IKALIMA, TUMINDIG SA GITNA NG UNOS</b><br><br>
+
+            Gaya ng panahon na kanyang pinag-aaralan, may mga unos na hindi maiiwasang daanan, mga bagyong mahirap tawirin, ngunit kailangang matutuhan at hayaang palagpasin.<br>
+            
+            <blockquote><p>
+            “Babagsak ka man ngayon sa isa, maipe-perfect mo ‘yung susunod. Ganun dapat ‘yung tingin sa mga exams and activities,” paalala nito sa mga kapwa-estudyante..
+            </p></blockquote>
+            <p>
+
+            Sa apat na taon ni Peter sa CLSU, hindi lamang puro tagumpay ang kanyang hinarap. Kasabay ng mga ito ang mga panahong kinailangan niyang tahimik na harapin ang iba’t ibang bersyon ng sariling nauna na niyang piniling lusungin.
+            <blockquote><p>
+            “I will do my best to keep it hidden from everyone because I think the things that people don't know are also the things that they can't do,” paglalahad nito tungkol sa mga laban na pinili nyang sarilihin.
+            </p></blockquote>
+            <p>
+
+            Sa likod ng ordinaryong imahe ng isang estudyanteng tahimik na dumadalo sa mga pagpupulong at nakikisabay sa agos ng klase, pasan niya rin ang pangamba at pagod mula sa mga kompetisyong hindi niya inaasahang tatahakin, at pagtupad sa mga tungkulin sa iba’t ibang organisasyon sa loob ng pamantasan.<br><br>
+            Dagdag ni Peter, “There will be days that the world will ask me to be a certain version of Peter.,” aniya.<br><br>
+            May mga pagkakataong kailangan niyang maging statistician, essay writer, physicist, lider, o contestant–mga katauhang hindi niya man lubos na gamay ay pinili niyang yakapin. <br><br>
+            Minsan na ring dumating si Peter sa puntong halos hindi na niya makita ang sarili sa dulo ng kanyang paglalakbay.<br><br>
+            Kwento niya, dumating ang Pebrero na tila unti-unting lumalabo ang posibilidad na makapagtapos siya sa oras dahil sa bigat ng kanyang thesis.<br><br>
+            “Doon nag-dawn sa akin ‘yung fact na baka hindi ko siya matapos [...] That scared me so much because I know what to do but then, nawawala ‘yung drive para tapusin siya,” pagbabalik tanaw niya.<br><br>
+            May araw na umabot umano siya sa halos 18 oras na diretsong walang kain, halos walang pahinga, pilit na tinatapos ang papel na kalauna’y nairekomenda pa bilang Best Thesis sa kanyang kolehiyo.<br><br>
+            Magmula noong una siyang umalis mula Bulacan patungong Nueva Ecija upang mamuhay mag-isa, natuto na niyang harapin ang sariling bagyo. Doon higit na nabuo si Peter: hindi sa dami ng medalya, organisasyon, o titulong ikinakabit sa kanyang pangalan, kundi sa mga eksenang hindi madalas makita ng iba—sa mga pagkakataong pinili niyang magpatuloy kahit pagod at kahit hindi sigurado. <br><br>
+            “Now that it's here, now that I took the challenge, I should live up to the challenge,” pahayag nito, tanda ng mga labang minsan nyang kinatakutan ngunit pinili parin nyang lusingin.<br><br>
+            Marahil wala naman talagang eksaktong pormula kung paano maging si ‘Peter.’ Sapagkat gaya ng daang kanyang tinahak, walang daang di kailanman daraanan ng bagyo, at nasa atin na lamang kung paano tayo tutugon sa hamon ng panahon.<br><br>
+
+            </p>
+            </p>
+            </p>
+            </p>
+            </p>
+            </p>
+            </p>
+            </p>
+
+        `
+    },
+    {
         slug: "stars-shaped-in-shared-space",
         category: "Features",
         title: "Stars Shaped in Shared Space",
@@ -27,11 +265,11 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
             
             <p>
             Under the lights that revealed more than performance, ExDRAGvaganza became a shared space where identity was not just exhibited on stage but recognized in the eyes of those who watched, responded, and saw themselves reflected back through every movement, silence, and applause.<br><br>
-            What made the moment powerful was not only the spectacle of performance but the quiet agreement between the stage and the audience that allowed people to exist in the room without shrinking any part of themselves.<br>
+            What made the moment powerful was not only the spectacle of performance but the quiet agreement between the stage and the audience that allowed people to exist in the room without shrinking any part of themselves.<br><br>
             
-            <strong>
+            <b>
             𝗖𝘂𝗿𝗶𝗼𝘀𝗶𝘁𝘆 𝗶𝗻𝘁𝗼 𝗜𝗱𝗲𝗻𝘁𝗶𝘁𝘆
-            </strong>
+            </b>
 
             <p>
             For Carl Joshua Kier Coloma, a Bachelor of Science in Textile and Fashion Technology (BSTFT) student, stepping into ExDRAGvaganza as Lava Saugn meant stepping into a version of themselves that only fully exists when they become the persona they carry on stage: a fearless embodiment of expression that they bring to life through their drag identity.<br><br>
@@ -41,9 +279,10 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
             “Maging totoo kayo sa sarili niyo kapag authentic ka, mas nagiging meaningful lahat ng ginagawa mo,” they shared.<br><br>
             Carl’s journey in ExDRAGvaganza reflects how drag can serve both as performance and as self-discovery, where identity is not concealed but rather fully embraced. In becoming their stage persona, they find a space where authenticity and expression meet beyond everyday limitations.<br>
             </p>
-            <strong>
+
+            <b>
             𝗖𝗼𝗻𝗰𝗲𝗮𝗹𝗺𝗲𝗻𝘁 𝘁𝗼 𝗕𝗼𝗹𝗱 𝗔𝗿𝗿𝗶𝘃𝗮𝗹
-            </strong>
+            </b>
           
             <p>
 
@@ -59,9 +298,9 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
 
             <p>Joshua’s journey, which earned him the position of ExDRAGvaganza 2026 First Runner-Up, highlights how drag exists both as escape and celebration, shaped by the tension between personal truth and external expectations. Through this experience, he transforms struggle into an act of courage.</p>
             
-            <strong>
+            <b>
             𝗙𝗿𝗼𝗺 𝗗𝗼𝘂𝗯𝘁 𝘁𝗼 𝗗𝗿𝗮𝗴 𝗦𝘂𝗽𝗲𝗿𝘀𝘁𝗮𝗿
-            </strong>
+            </b>
 
             <p>
             Eklipse transforms into a self-defined person who refuses to submit to limitations. Cedrick Garcia, a Bachelor of Secondary Education (BSEd) major in Social Studies freshie, entered ExDRAGvaganza after being told she was not meant for drag. <br><br>
@@ -72,12 +311,12 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
             She added that drag allowed her to reclaim confidence that was once questioned which gave her space to prove herself that he can.<br><br>
             On stage, Cedrick becomes a version of herself that proves identity is not fixed, it is continually made.<br><br>
             That journey culminated in recognition, as Eklipse was ultimately hailed as ExDRAGvaganza 2026 Drag Superstar. <br><br>
-            Cedrick’s experience highlights how drag challenges imposed labels and opens space for self-definition through performance and expression. It shows how identity can be actively shaped through confidence, creativity, and the refusal to be limited by others’ expectations.<br>
+            Cedrick’s experience highlights how drag challenges imposed labels and opens space for self-definition through performance and expression. It shows how identity can be actively shaped through confidence, creativity, and the refusal to be limited by others’ expectations.<br><br>
             </p>
 
-            <strong>
+            <b>
             𝗙𝘂𝗹𝗳𝗶𝗹𝗹𝗲𝗱 𝗧𝗵𝗿𝗼𝘂𝗴𝗵 𝗪𝗶𝗽𝗶𝗻𝗴
-            </strong>
+            </b>
 
             <p>
             Before the stage ever met the audience, Bryan Kenneth Cruz, a Bachelor of Arts in Literature student, already existed in quiet creativity until he stepped into full transformation as his drag identity, Xy.Chosis.<br><br>
@@ -86,10 +325,10 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
             This identity was also shaped with support from others, showing that drag is never a solitary creation but a shared process of imagination and collaboration.<br><br>
             He describes drag as both art and protest, saying, “it is a form of art where we express ourselves freely and it is a protest,” turning visibility into resistance.<br><br>
             Xy.Chosis embodies how drag transforms imagination into lived reality, turning self-expression into both liberation and statement. It affirms that identity, when fully embraced, becomes a powerful act of visibility that challenges limitation and celebrates authenticity.<br><br>
-            When Bryan steps into Xy.Chosis, the identity he builds no longer feels like an escape from reality but a space where imagination and expression finally exist without restriction, turning performance into a lived form of creativity made visible. <br>
+            When Bryan steps into Xy.Chosis, the identity he builds no longer feels like an escape from reality but a space where imagination and expression finally exist without restriction, turning performance into a lived form of creativity made visible. <br><br>
             </p>
 
-            <strong>𝗕𝗲𝗹𝗼𝗻𝗴𝗶𝗻𝗴 𝗧𝗵𝗿𝗼𝘂𝗴𝗵 𝗪𝗶𝘁𝗻𝗲𝘀𝘀𝗶𝗻𝗴</strong>
+            <b>𝗕𝗲𝗹𝗼𝗻𝗴𝗶𝗻𝗴 𝗧𝗵𝗿𝗼𝘂𝗴𝗵 𝗪𝗶𝘁𝗻𝗲𝘀𝘀𝗶𝗻𝗴</b>
 
             <p>
             For the audiences, ExDRAGvaganza was not something simply watched but something lived alongside the performers.
@@ -102,18 +341,18 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
             He added that the event allowed him to feel seen in a way that everyday environments often fail to provide., “Dito ko naramdaman na valid ako kahit hindi ako loud about who I am,” as the experience redefined for him what acceptance looks like beyond mere tolerance.<br><br>
             He further described the atmosphere as more than a performance, saying, “Hindi siya basta show lang, parang community siya na buhay,” and reflected that true acceptance means inclusion, not just acknowledgment: “hindi pala sapat yung tinatanggap ka lang, dapat nararamdaman mong kasama ka talaga.” <br><br>
             He also noted the emotional impact of the performances, sharing that there were moments he could not help  but cry. The pieces resonated with him. “Parang kinakausap din ako nung performances,” as he described.<br><br>
-            Through these views, ExDRAGvaganza extends beyond performance when the audience becomes part of its meaning, engaging not just as viewers but as co-experiencers of expression and identity. In witnessing, they internalize the messages on stage and carrying reflections that reshape how they see self-expression.<br>
+            Through these views, ExDRAGvaganza extends beyond performance when the audience becomes part of its meaning, engaging not just as viewers but as co-experiencers of expression and identity. In witnessing, they internalize the messages on stage and carrying reflections that reshape how they see self-expression.<br><br>
            </p>
            </p>
 
-            <strong>𝗔𝗳𝘁𝗲𝗿 𝘁𝗵𝗲 𝗙𝗶𝗻𝗮𝗹 𝗟𝗶𝗴𝗵𝘁</strong>
+            <b>𝗔𝗳𝘁𝗲𝗿 𝘁𝗵𝗲 𝗙𝗶𝗻𝗮𝗹 𝗟𝗶𝗴𝗵𝘁</b>
 
             <p>
             When the stage lights dimmed, the purpose ExDRAGvaganza delivered stuck with the audience. Each transformation; from the moment Carl stepped as Lava Saugn, CJ became Zesty Bite, Cedrick challenged limits through Eklipse and as Bryan emerged as Xy.Chosis; left behind something larger than performance. What made the moment powerful was not only the spectacle but also the quiet agreement between stage and audience that expression is valid, and their identities are worthy of being seen, accepted, and understood without apology.<br><br>
             In that shared space, stars were shaped through presence and the collective act of witnessing.
             </p>
 
-            <p><strong>#ForStudentryEQUALITY #CLSUCollegian</strong></p>
+        
         `
     },
     {
@@ -173,7 +412,6 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
             </p>
 
 
-            <p><strong>#ForStudentryEQUALITY #CLSUCollegian</strong></p>
         `
     },
     {
