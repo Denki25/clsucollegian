@@ -236,10 +236,6 @@ function ensureArticleReadingProgress() {
         <div class="article-reading-progress-bar" aria-hidden="true">
             <span id="articleReadingProgressFill"></span>
         </div>
-        <div class="article-reading-progress-pill">
-            <span class="article-reading-progress-label">Reading</span>
-            <strong id="articleReadingProgressValue">0%</strong>
-        </div>
     `;
 
     document.body.appendChild(progressShell);
@@ -294,23 +290,30 @@ function updateArticleScrollTopButton() {
 function updateArticleReadingProgress() {
     const progressShell = document.getElementById("articleReadingProgress");
     const progressFill = document.getElementById("articleReadingProgressFill");
-    const progressValue = document.getElementById("articleReadingProgressValue");
     const articleMain = document.querySelector(".article-main");
+    const articleFigure = document.querySelector(".featured-image");
     const articleBody = document.querySelector(".article-body");
-    if (!progressShell || !progressFill || !progressValue || !articleMain || !articleBody) {
+    const tickerWrap = document.querySelector(".breaking-news");
+    if (!progressShell || !progressFill || !articleMain || !articleBody) {
         return;
     }
 
     const scrollTop = Math.max(window.scrollY || document.documentElement.scrollTop || 0, 0);
     const viewportBottom = scrollTop + window.innerHeight;
-    const articleStart = articleMain.getBoundingClientRect().top + scrollTop;
+    const articleStartElement = articleFigure || articleMain;
+    const articleStart = articleStartElement.getBoundingClientRect().top + scrollTop;
     const articleEnd = articleBody.getBoundingClientRect().bottom + scrollTop;
     const readingRange = Math.max(articleEnd - articleStart, 1);
-    const progress = Math.min(100, Math.max(0, ((viewportBottom - articleStart) / readingRange) * 100));
+    const tickerBottom = tickerWrap ? tickerWrap.getBoundingClientRect().bottom + scrollTop : 0;
+    const hasPassedTicker = !tickerWrap || scrollTop > tickerBottom + 8;
+    const hasReachedPhoto = viewportBottom >= articleStart;
+    const progress = hasReachedPhoto
+        ? Math.min(100, Math.max(0, ((viewportBottom - articleStart) / readingRange) * 100))
+        : 0;
     const rounded = Math.round(progress);
 
+    progressShell.hidden = !(hasPassedTicker && hasReachedPhoto);
     progressFill.style.width = `${rounded}%`;
-    progressValue.textContent = `${rounded}%`;
     progressShell.dataset.endReached = progress >= 98 ? "true" : "false";
 }
 
