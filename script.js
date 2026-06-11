@@ -29,6 +29,7 @@ const siteData = {
 };
 
 const themeStorageKey = "clsu-theme";
+let themeSwitchTimerId = null;
 
 function getPreferredTheme() {
     try {
@@ -45,8 +46,9 @@ function getPreferredTheme() {
 
 function applyTheme(theme, persist = true) {
     const normalizedTheme = theme === "dark" ? "dark" : "light";
+    const root = document.documentElement;
     document.documentElement.dataset.theme = normalizedTheme;
-    document.documentElement.style.colorScheme = normalizedTheme;
+    root.style.colorScheme = normalizedTheme;
 
     if (persist) {
         try {
@@ -55,6 +57,15 @@ function applyTheme(theme, persist = true) {
             // Ignore storage access failures.
         }
     }
+
+    root.classList.add("theme-switching");
+    if (themeSwitchTimerId) {
+        window.clearTimeout(themeSwitchTimerId);
+    }
+    themeSwitchTimerId = window.setTimeout(() => {
+        root.classList.remove("theme-switching");
+        themeSwitchTimerId = null;
+    }, 420);
 
     document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
         const isDark = normalizedTheme === "dark";
@@ -132,10 +143,7 @@ function ensurePageTransitionLoader() {
     loader.hidden = true;
     loader.setAttribute("aria-hidden", "true");
     loader.innerHTML = `
-        <div class="page-transition-loader-panel">
-            <div class="page-transition-loader-wave" aria-hidden="true"></div>
-            <p>Loading article</p>
-        </div>
+        <div class="page-transition-loader-wave" aria-hidden="true"></div>
     `;
     document.body.appendChild(loader);
     return loader;
@@ -518,13 +526,14 @@ function updateArticleSocialMeta(article) {
 }
 
 function getAuthorLine(article) {
-    const fallbackAuthorLine = `By ${article.author}, CLSU Collegian`;
+    const author = (article?.author || "").trim();
+    const fallbackAuthorLine = author ? `By ${author}, CLSU Collegian` : "";
 
     if (!article.authorLine) {
         return fallbackAuthorLine;
     }
 
-    const normalizedAuthor = (article.author || "").trim().toLowerCase();
+    const normalizedAuthor = author.toLowerCase();
     const normalizedAuthorLine = article.authorLine.trim().toLowerCase();
 
     if (normalizedAuthor && !normalizedAuthorLine.includes(normalizedAuthor)) {
@@ -709,6 +718,100 @@ function getArticlesByCategory(category) {
 
 function getOpinionArticles() {
     return siteData.articles.filter((article) => article.category === "Editorial" || article.category === "Column");
+}
+
+const SECTION_PAGE_SIZE = 5;
+
+function clampPageNumber(page, totalPages) {
+    const nextPage = Number(page) || 1;
+    return Math.min(Math.max(1, nextPage), Math.max(1, totalPages));
+}
+
+function getPaginatedItems(items, page, pageSize = SECTION_PAGE_SIZE) {
+    const totalItems = Array.isArray(items) ? items.length : 0;
+    const totalPages = Math.max(1, Math.ceil(totalItems / Math.max(1, pageSize)));
+    const currentPage = clampPageNumber(page, totalPages);
+    const startIndex = (currentPage - 1) * pageSize;
+
+    return {
+        currentPage,
+        totalPages,
+        pageItems: (items || []).slice(startIndex, startIndex + pageSize)
+    };
+}
+
+function buildPaginationSequence(currentPage, totalPages) {
+    if (totalPages <= 7) {
+        return Array.from({ length: totalPages }, (_, index) => index + 1);
+    }
+
+    const pages = new Set([1, totalPages, currentPage - 1, currentPage, currentPage + 1]);
+
+    return Array.from(pages)
+        .filter((page) => page >= 1 && page <= totalPages)
+        .sort((left, right) => left - right)
+        .reduce((sequence, page, index, array) => {
+            if (index > 0 && page - array[index - 1] > 1) {
+                sequence.push("ellipsis");
+            }
+
+            sequence.push(page);
+            return sequence;
+        }, []);
+}
+
+function createPaginationMarkup(currentPage, totalPages, ariaLabel = "Pagination") {
+    if (totalPages <= 1) {
+        return "";
+    }
+
+    const pageSequence = buildPaginationSequence(currentPage, totalPages);
+
+    return `
+        <div class="section-pagination-wrap">
+            <nav class="section-pagination" aria-label="${ariaLabel}">
+                <button type="button" class="section-pagination-button section-pagination-nav" data-page="${currentPage - 1}" ${currentPage === 1 ? "disabled" : ""}>
+                    Previous
+                </button>
+                <div class="section-pagination-pages" aria-label="Page numbers">
+                    ${pageSequence.map((page) => page === "ellipsis"
+                        ? `<span class="section-pagination-ellipsis" aria-hidden="true">...</span>`
+                        : `<button type="button" class="section-pagination-button${page === currentPage ? " active" : ""}" data-page="${page}" ${page === currentPage ? 'aria-current="page"' : ""}>${page}</button>`
+                    ).join("")}
+                </div>
+                <button type="button" class="section-pagination-button section-pagination-nav" data-page="${currentPage + 1}" ${currentPage === totalPages ? "disabled" : ""}>
+                    Next &raquo;
+                </button>
+            </nav>
+        </div>
+    `;
+}
+
+function bindPaginationControls(container, onPageChange) {
+    if (!container) {
+        return;
+    }
+
+    container._onPageChange = onPageChange;
+
+    if (container.dataset.paginationBound === "true") {
+        return;
+    }
+
+    container.dataset.paginationBound = "true";
+    container.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-page]");
+        if (!button || button.disabled) {
+            return;
+        }
+
+        const nextPage = Number(button.dataset.page);
+        if (Number.isNaN(nextPage) || typeof container._onPageChange !== "function") {
+            return;
+        }
+
+        container._onPageChange(nextPage);
+    });
 }
 
 function renderTicker() {
@@ -1597,6 +1700,7 @@ function renderHomePage() {
     const heroSummary = document.getElementById("heroSummary");
     const heroByline = document.getElementById("heroByline");
     const heroDate = document.getElementById("heroDate");
+    const heroMetaSeparator = document.getElementById("heroMetaSeparator");
     const heroReadTime = document.getElementById("heroReadTime");
     const heroLink = document.getElementById("heroLink");
     const heroImageWrapper = document.getElementById("heroImageWrapper");
@@ -1610,10 +1714,18 @@ function renderHomePage() {
         heroTitle.textContent = featured.title;
         heroSummary.textContent = featured.summary;
         if (heroByline) {
-            heroByline.textContent = getAuthorLine(featured);
+            const heroBylineText = getAuthorLine(featured);
+            heroByline.textContent = heroBylineText;
+            heroByline.hidden = !heroBylineText;
         }
         if (heroDate) {
-            heroDate.textContent = formatDate(featured.date);
+            const heroDateText = formatDate(featured.date);
+            heroDate.textContent = heroDateText;
+            heroDate.hidden = !heroDateText;
+        }
+        if (heroMetaSeparator) {
+            const showSeparator = Boolean((heroDate && heroDate.textContent.trim()) && (heroByline && heroByline.textContent.trim()));
+            heroMetaSeparator.hidden = !showSeparator;
         }
         if (heroReadTime) {
             heroReadTime.textContent = featured.readTime || "10 min";
@@ -1773,43 +1885,39 @@ function renderSectionPage() {
 
     if (category === "Opinion") {
         const opinionArticles = getOpinionArticles();
+        let currentOpinionPage = 1;
         initializeMonthFilter(monthFilter, opinionArticles);
 
         const renderOpinionList = () => {
             const selectedMonth = monthFilter ? monthFilter.value : "all";
             const filteredOpinionArticles = sortItemsByNewest(filterItemsByMonth(opinionArticles, selectedMonth));
-            const opinionGroups = [
-                {
-                    title: "Editorial",
-                    category: "Editorial"
-                },
-                {
-                    title: "Column",
-                    category: "Column"
-                }
-            ];
+            const paginationState = getPaginatedItems(filteredOpinionArticles, currentOpinionPage, SECTION_PAGE_SIZE);
+            currentOpinionPage = paginationState.currentPage;
+            const emptyMarkup = `<div class="news-empty">No ${emptyLabel.toLowerCase()} articles are available yet.</div>`;
 
-            list.classList.add("opinion-sections");
-            list.innerHTML = opinionGroups.map((group) => {
-                const groupedArticles = filteredOpinionArticles.filter((article) => article.category === group.category);
-                return `
-                    <section class="opinion-group">
-                        <div class="opinion-group-header">
-                            <h2>${group.title}</h2>
-                        </div>
-                        <div class="news-feed opinion-feed">
-                            ${groupedArticles.length > 0
-                                ? groupedArticles.map((article) => createSectionCard(article)).join("")
-                                : `<div class="news-empty">No ${group.title.toLowerCase()} articles are available yet.</div>`}
-                        </div>
-                    </section>
-                `;
-            }).join("");
+            list.classList.add("news-feed");
+            list.innerHTML = `
+                ${paginationState.pageItems.length > 0
+                    ? paginationState.pageItems.map((article) => createSectionCard(article)).join("")
+                    : emptyMarkup}
+                ${createPaginationMarkup(paginationState.currentPage, paginationState.totalPages, "Opinion pagination")}
+            `;
+
+            const paginationWrap = list.querySelector(".section-pagination-wrap");
+            if (paginationWrap) {
+                bindPaginationControls(paginationWrap, (page) => {
+                    currentOpinionPage = page;
+                    renderOpinionList();
+                });
+            }
             observeAnimatedElements();
         };
 
         if (monthFilter && !monthFilter.dataset.bound) {
-            monthFilter.addEventListener("change", renderOpinionList);
+            monthFilter.addEventListener("change", () => {
+                currentOpinionPage = 1;
+                renderOpinionList();
+            });
             monthFilter.dataset.bound = "true";
         }
 
@@ -1818,21 +1926,39 @@ function renderSectionPage() {
     }
 
     const sectionArticles = getArticlesByCategory(category);
+    let currentSectionPage = 1;
     initializeMonthFilter(monthFilter, sectionArticles);
 
     const renderList = () => {
         const selectedMonth = monthFilter ? monthFilter.value : "all";
         const filteredArticles = sortItemsByNewest(filterItemsByMonth(sectionArticles, selectedMonth));
+        const paginationState = getPaginatedItems(filteredArticles, currentSectionPage, SECTION_PAGE_SIZE);
+        currentSectionPage = paginationState.currentPage;
+        const emptyMarkup = `<div class="news-empty">No ${emptyLabel.toLowerCase()} articles are available yet.</div>`;
 
         list.classList.add("news-feed");
-        list.innerHTML = filteredArticles.length > 0
-            ? filteredArticles.map((article) => createSectionCard(article)).join("")
-            : `<div class="news-empty">No ${emptyLabel.toLowerCase()} articles are available yet.</div>`;
+        list.innerHTML = `
+            ${paginationState.pageItems.length > 0
+                ? paginationState.pageItems.map((article) => createSectionCard(article)).join("")
+                : emptyMarkup}
+            ${createPaginationMarkup(paginationState.currentPage, paginationState.totalPages, `${emptyLabel} pagination`)}
+        `;
+
+        const paginationWrap = list.querySelector(".section-pagination-wrap");
+        if (paginationWrap) {
+            bindPaginationControls(paginationWrap, (page) => {
+                currentSectionPage = page;
+                renderList();
+            });
+        }
         observeAnimatedElements();
     };
 
     if (monthFilter && !monthFilter.dataset.bound) {
-        monthFilter.addEventListener("change", renderList);
+        monthFilter.addEventListener("change", () => {
+            currentSectionPage = 1;
+            renderList();
+        });
         monthFilter.dataset.bound = "true";
     }
 
