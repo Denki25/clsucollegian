@@ -559,6 +559,34 @@ input[type="reset"]:focus-visible {
     box-shadow: 0 0 0 3px rgba(254, 93, 19, 0.28);
 }
 
+.read-more,
+.feature-link,
+.section-link,
+.search-results-close,
+.share-btn,
+.theme-toggle,
+.article-carousel-arrow,
+.article-scroll-top-button,
+.section-pagination-button {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.read-more:focus-visible,
+.feature-link:focus-visible,
+.section-link:focus-visible,
+.search-results-close:focus-visible,
+.share-btn:focus-visible,
+.theme-toggle:focus-visible,
+.article-carousel-arrow:focus-visible,
+.article-scroll-top-button:focus-visible,
+.section-pagination-button:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(254, 93, 19, 0.28);
+}
+
 html {
     font-size: 16px;
     scroll-behavior: smooth;
@@ -1343,8 +1371,8 @@ html:not([data-theme="dark"]) body.home-page .trending-row {
 }
 
 .read-more:focus-visible {
-    outline: 3px solid rgba(254, 93, 19, 0.24);
-    outline-offset: 3px;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(254, 93, 19, 0.24), 0 14px 28px rgba(254, 93, 19, 0.34);
 }
 
 @keyframes readMoreSweep {
@@ -2477,8 +2505,8 @@ footer {
 }
 
 .article-scroll-top-button:focus-visible {
-    outline: 3px solid rgba(254, 93, 19, 0.28);
-    outline-offset: 3px;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(254, 93, 19, 0.28);
 }
 
 .article-scroll-top-button svg {
@@ -3465,6 +3493,15 @@ footer {
         text-align: center;
     }
 
+    .hero-meta {
+        justify-content: center;
+        align-self: center;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
     .hero-carousel-dots {
         justify-content: center;
         bottom: 1rem;
@@ -3933,8 +3970,8 @@ footer {
 }
 
 .article-carousel-arrow:focus-visible {
-    outline: 3px solid rgba(254, 93, 19, 0.28);
-    outline-offset: 3px;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(254, 93, 19, 0.28), 0 10px 22px rgba(254, 93, 19, 0.16);
 }
 
 .article-carousel-arrow svg {
