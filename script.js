@@ -120,6 +120,220 @@ function setupThemeToggle() {
 
 applyTheme(getPreferredTheme(), false);
 
+function ensurePageTransitionLoader() {
+    let loader = document.getElementById("pageTransitionLoader");
+    if (loader) {
+        return loader;
+    }
+
+    loader = document.createElement("div");
+    loader.id = "pageTransitionLoader";
+    loader.className = "page-transition-loader";
+    loader.hidden = true;
+    loader.setAttribute("aria-hidden", "true");
+    loader.innerHTML = `
+        <div class="page-transition-loader-panel">
+            <div class="page-transition-loader-wave" aria-hidden="true"></div>
+            <p>Loading article</p>
+        </div>
+    `;
+    document.body.appendChild(loader);
+    return loader;
+}
+
+function showPageTransitionLoader() {
+    const loader = ensurePageTransitionLoader();
+    loader.hidden = false;
+    loader.classList.add("is-visible");
+}
+
+function hidePageTransitionLoader() {
+    const loader = document.getElementById("pageTransitionLoader");
+    if (!loader) {
+        return;
+    }
+
+    loader.classList.remove("is-visible");
+    loader.hidden = true;
+}
+
+function isArticleNavigationLink(anchor) {
+    if (!anchor || anchor.tagName !== "A") {
+        return false;
+    }
+
+    const href = anchor.getAttribute("href") || "";
+    return href.includes("article.html?slug=");
+}
+
+function setupArticleNavigationTransition() {
+    document.addEventListener("click", (event) => {
+        if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+            return;
+        }
+
+        const anchor = event.target.closest && event.target.closest("a");
+        if (!isArticleNavigationLink(anchor)) {
+            return;
+        }
+
+        const target = anchor.getAttribute("target");
+        if (target && target !== "_self") {
+            return;
+        }
+
+        const href = anchor.getAttribute("href");
+        if (!href) {
+            return;
+        }
+
+        event.preventDefault();
+        showPageTransitionLoader();
+
+        window.setTimeout(() => {
+            window.location.href = href;
+        }, 180);
+    }, true);
+
+    window.addEventListener("pageshow", hidePageTransitionLoader);
+    window.addEventListener("beforeunload", () => {
+        const loader = document.getElementById("pageTransitionLoader");
+        if (loader) {
+            loader.hidden = false;
+            loader.classList.add("is-visible");
+        }
+    });
+}
+
+setupArticleNavigationTransition();
+
+let articleProgressRafId = null;
+
+function ensureArticleReadingProgress() {
+    const articleMain = document.querySelector(".article-main");
+    if (!articleMain) {
+        return null;
+    }
+
+    let progressShell = document.getElementById("articleReadingProgress");
+    if (progressShell) {
+        return progressShell;
+    }
+
+    progressShell = document.createElement("div");
+    progressShell.id = "articleReadingProgress";
+    progressShell.className = "article-reading-progress";
+    progressShell.setAttribute("aria-hidden", "true");
+    progressShell.innerHTML = `
+        <div class="article-reading-progress-bar" aria-hidden="true">
+            <span id="articleReadingProgressFill"></span>
+        </div>
+        <div class="article-reading-progress-pill">
+            <span class="article-reading-progress-label">Reading</span>
+            <strong id="articleReadingProgressValue">0%</strong>
+        </div>
+    `;
+
+    document.body.appendChild(progressShell);
+    return progressShell;
+}
+
+function ensureArticleScrollTopButton() {
+    const articleMain = document.querySelector(".article-main");
+    if (!articleMain) {
+        return null;
+    }
+
+    let scrollTopButton = document.getElementById("articleScrollTopButton");
+    if (scrollTopButton) {
+        return scrollTopButton;
+    }
+
+    scrollTopButton = document.createElement("button");
+    scrollTopButton.id = "articleScrollTopButton";
+    scrollTopButton.className = "article-scroll-top-button";
+    scrollTopButton.type = "button";
+    scrollTopButton.setAttribute("aria-label", "Scroll to top of article");
+    scrollTopButton.hidden = true;
+    scrollTopButton.innerHTML = `
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M12 5.5 4.5 13l1.06 1.06L11.25 8.4V18h1.5V8.4l5.69 5.66L19.5 13 12 5.5Z"></path>
+        </svg>
+    `;
+
+    scrollTopButton.addEventListener("click", () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+
+    document.body.appendChild(scrollTopButton);
+    return scrollTopButton;
+}
+
+function updateArticleScrollTopButton() {
+    const scrollTopButton = document.getElementById("articleScrollTopButton");
+    if (!scrollTopButton) {
+        return;
+    }
+
+    const scrollTop = Math.max(window.scrollY || document.documentElement.scrollTop || 0, 0);
+    const revealThreshold = Math.max(120, Math.min(window.innerHeight * 0.18, 180));
+    scrollTopButton.hidden = scrollTop < revealThreshold;
+}
+
+function updateArticleReadingProgress() {
+    const progressShell = document.getElementById("articleReadingProgress");
+    const progressFill = document.getElementById("articleReadingProgressFill");
+    const progressValue = document.getElementById("articleReadingProgressValue");
+    const articleMain = document.querySelector(".article-main");
+    const articleBody = document.querySelector(".article-body");
+    if (!progressShell || !progressFill || !progressValue || !articleMain || !articleBody) {
+        return;
+    }
+
+    const scrollTop = Math.max(window.scrollY || document.documentElement.scrollTop || 0, 0);
+    const viewportBottom = scrollTop + window.innerHeight;
+    const articleStart = articleMain.getBoundingClientRect().top + scrollTop;
+    const articleEnd = articleBody.getBoundingClientRect().bottom + scrollTop;
+    const readingRange = Math.max(articleEnd - articleStart, 1);
+    const progress = Math.min(100, Math.max(0, ((viewportBottom - articleStart) / readingRange) * 100));
+    const rounded = Math.round(progress);
+
+    progressFill.style.width = `${rounded}%`;
+    progressValue.textContent = `${rounded}%`;
+    progressShell.dataset.endReached = progress >= 98 ? "true" : "false";
+}
+
+function setupArticleReadingProgress() {
+    const articleMain = document.querySelector(".article-main");
+    if (!articleMain) {
+        return;
+    }
+
+    ensureArticleReadingProgress();
+    ensureArticleScrollTopButton();
+
+    const scheduleUpdate = () => {
+        if (articleProgressRafId) {
+            return;
+        }
+
+        articleProgressRafId = window.requestAnimationFrame(() => {
+            articleProgressRafId = null;
+            updateArticleReadingProgress();
+            updateArticleScrollTopButton();
+        });
+    };
+
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
+    window.addEventListener("pageshow", scheduleUpdate);
+
+    scheduleUpdate();
+}
+
 function formatDate(dateString) {
     if (!dateString) {
         return "";
@@ -217,6 +431,56 @@ function setMetaContent(id, content, attribute = "content") {
     element.setAttribute(attribute, content || "");
 }
 
+function normalizeArticleImageItem(image, fallbackAlt = "") {
+    if (!image) {
+        return null;
+    }
+
+    if (typeof image === "string") {
+        const src = image.trim();
+        return src ? { src, alt: fallbackAlt, caption: "" } : null;
+    }
+
+    if (typeof image !== "object") {
+        return null;
+    }
+
+    const src = (image.src || image.image || image.url || "").trim();
+    if (!src) {
+        return null;
+    }
+
+    return {
+        src,
+        alt: (image.alt || image.imageAlt || fallbackAlt || "").trim(),
+        caption: (image.caption || image.description || "").trim(),
+        showCaption: image.showCaption !== false
+    };
+}
+
+function getArticleImages(article) {
+    if (!article) {
+        return [];
+    }
+
+    if (Array.isArray(article.images) && article.images.length > 0) {
+        return article.images
+            .map((image) => normalizeArticleImageItem(image, article.title || ""))
+            .filter(Boolean);
+    }
+
+    const fallbackImage = normalizeArticleImageItem(article.image ? {
+        src: article.image,
+        alt: article.imageAlt || article.title || ""
+    } : null, article.title || "");
+
+    return fallbackImage ? [fallbackImage] : [];
+}
+
+function getPrimaryArticleImage(article) {
+    return getArticleImages(article)[0] || null;
+}
+
 function updateArticleSocialMeta(article) {
     // Keep these values aligned with scripts/article-seo.js, which generates the
     // server-rendered /share/*.html preview pages used by Facebook and X/Twitter.
@@ -226,10 +490,11 @@ function updateArticleSocialMeta(article) {
 
     const canonicalUrl = toAbsoluteUrl(getArticleUrl(article.slug));
     const shareUrl = toAbsoluteUrl(getArticleShareUrl(article.slug));
-    const articleImage = article.image ? toAbsoluteUrl(article.image) : toAbsoluteUrl("logo.png");
+    const primaryImage = getPrimaryArticleImage(article);
+    const articleImage = primaryImage ? toAbsoluteUrl(primaryImage.src) : toAbsoluteUrl("logo.png");
     const articleTitle = `${article.title} | CLSU Collegian`;
     const articleDescription = (article.summary || "Campus stories from CLSU Collegian.").trim();
-    const articleImageAlt = (article.imageAlt || article.title || "CLSU Collegian article image").trim();
+    const articleImageAlt = (primaryImage?.alt || article.title || "CLSU Collegian article image").trim();
 
     document.title = articleTitle;
 
@@ -295,6 +560,8 @@ function getCreditLabels(article) {
     const customLabels = article?.credits?.labels && typeof article.credits.labels === "object"
         ? article.credits.labels
         : {};
+    const customPhotoLabel = customLabels.photo || customLabels.photos || customLabels.photoBy || customLabels.photosBy || "";
+    const customPhotosLabel = customLabels.photos || customLabels.photosBy || customLabels.photoBy || "";
     const baseLabels = preset === "filipino"
         ? {
             by: "Isinulat ni/na:",
@@ -317,8 +584,8 @@ function getCreditLabels(article) {
         by: customLabels.by || baseLabels.by,
         illustratedBy: customLabels.illustratedBy || baseLabels.illustratedBy,
         animationBy: customLabels.animationBy || baseLabels.animationBy,
-        photo: customLabels.photo || baseLabels.photo,
-        photos: customLabels.photos || baseLabels.photos,
+        photo: customPhotoLabel || baseLabels.photo,
+        photos: customPhotosLabel || customPhotoLabel || baseLabels.photos,
         layoutBy: customLabels.layoutBy || baseLabels.layoutBy
     };
 }
@@ -560,6 +827,135 @@ function createEmbeddedVideoMarkup(embedUrl, title, containerClass = "video-cont
     `;
 }
 
+function createArticleImageCarouselMarkup(images, title) {
+    const safeImages = Array.isArray(images) ? images.filter(Boolean) : [];
+    const slides = safeImages.map((image, index) => `
+        <div class="article-image-slide${index === 0 ? " active" : ""}" data-slide-index="${index}" aria-hidden="${index === 0 ? "false" : "true"}">
+            <img src="${image.src}" alt="${image.alt || title}">
+            ${image.showCaption && image.caption ? `<div class="article-image-slide-caption">${image.caption}</div>` : ""}
+        </div>
+    `).join("");
+
+    const dots = safeImages.length > 1
+        ? safeImages.map((image, index) => `
+            <button
+                type="button"
+                class="article-carousel-dot${index === 0 ? " active" : ""}"
+                data-slide-index="${index}"
+                aria-label="View image ${index + 1} of ${safeImages.length}"
+                aria-pressed="${index === 0 ? "true" : "false"}"></button>
+        `).join("")
+        : "";
+
+    const counter = safeImages.length > 1
+        ? `<div class="article-carousel-counter"><span id="articleCarouselCurrent">1</span><span>/</span><span id="articleCarouselTotal">${safeImages.length}</span></div>`
+        : "";
+
+    return `
+        <div class="article-image-carousel" data-carousel-total="${safeImages.length}">
+            <div class="article-image-carousel-stage">
+                ${slides}
+            </div>
+            ${safeImages.length > 1 ? `
+                <button type="button" class="article-carousel-arrow article-carousel-arrow-left" data-carousel-prev aria-label="Previous image">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
+                    </svg>
+                </button>
+                <button type="button" class="article-carousel-arrow article-carousel-arrow-right" data-carousel-next aria-label="Next image">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path d="M8.59 16.59 10 18l6-6-6-6-1.41 1.41L13.17 12z"></path>
+                    </svg>
+                </button>
+            ` : ""}
+            ${counter}
+            ${safeImages.length > 1 ? `<div class="article-carousel-dots" aria-label="Article images">${dots}</div>` : ""}
+        </div>
+    `;
+}
+
+function setupArticleImageCarousel(articleFigure) {
+    const carousel = articleFigure.querySelector(".article-image-carousel");
+    if (!carousel) {
+        return;
+    }
+
+    const slides = Array.from(carousel.querySelectorAll(".article-image-slide"));
+    const dots = Array.from(carousel.querySelectorAll(".article-carousel-dot"));
+    const prevButton = carousel.querySelector("[data-carousel-prev]");
+    const nextButton = carousel.querySelector("[data-carousel-next]");
+    const currentValue = carousel.querySelector("#articleCarouselCurrent");
+    const totalValue = carousel.querySelector("#articleCarouselTotal");
+
+    const totalSlides = slides.length;
+    if (totalValue) {
+        totalValue.textContent = String(totalSlides);
+    }
+
+    if (totalSlides <= 1) {
+        return;
+    }
+
+    let activeIndex = 0;
+
+    const applySlide = (nextIndex) => {
+        activeIndex = (nextIndex + totalSlides) % totalSlides;
+
+        slides.forEach((slide, index) => {
+            const isActive = index === activeIndex;
+            slide.classList.toggle("active", isActive);
+            slide.setAttribute("aria-hidden", isActive ? "false" : "true");
+        });
+
+        dots.forEach((dot, index) => {
+            const isActive = index === activeIndex;
+            dot.classList.toggle("active", isActive);
+            dot.setAttribute("aria-pressed", isActive ? "true" : "false");
+        });
+
+        if (currentValue) {
+            currentValue.textContent = String(activeIndex + 1);
+        }
+    };
+
+    if (prevButton) {
+        prevButton.addEventListener("click", () => applySlide(activeIndex - 1));
+    }
+
+    if (nextButton) {
+        nextButton.addEventListener("click", () => applySlide(activeIndex + 1));
+    }
+
+    dots.forEach((dot) => {
+        dot.addEventListener("click", () => {
+            const nextIndex = Number(dot.dataset.slideIndex);
+            if (!Number.isNaN(nextIndex)) {
+                applySlide(nextIndex);
+            }
+        });
+    });
+
+    let touchStartX = 0;
+    let touchDeltaX = 0;
+
+    carousel.addEventListener("touchstart", (event) => {
+        touchStartX = event.changedTouches[0]?.clientX || 0;
+        touchDeltaX = 0;
+    }, { passive: true });
+
+    carousel.addEventListener("touchmove", (event) => {
+        touchDeltaX = (event.changedTouches[0]?.clientX || 0) - touchStartX;
+    }, { passive: true });
+
+    carousel.addEventListener("touchend", () => {
+        if (Math.abs(touchDeltaX) < 36) {
+            return;
+        }
+
+        applySlide(touchDeltaX < 0 ? activeIndex + 1 : activeIndex - 1);
+    });
+}
+
 function stripHtmlTags(value) {
     if (typeof value !== "string") {
         return "";
@@ -607,8 +1003,8 @@ function buildSearchIndex() {
         displayCategory: getArticleDisplayCategory(article),
         date: article.date || "",
         readTime: article.readTime || "",
-        image: article.image || "",
-        imageAlt: article.imageAlt || article.title || "",
+        image: getPrimaryArticleImage(article)?.src || "",
+        imageAlt: getPrimaryArticleImage(article)?.alt || article.title || "",
         slug: article.slug || "",
         url: getArticleUrl(article.slug),
         bodyText: stripHtmlTags(article.body || ""),
@@ -809,7 +1205,7 @@ function createSearchResultMeta(item) {
 
     if (item.resultType === "archive") {
         return [
-            item.issueLabel || "Kule Archives",
+            item.issueLabel || "Kulê Archives",
             item.date ? formatDate(item.date) : ""
         ].filter(Boolean).join(" • ");
     }
@@ -824,7 +1220,7 @@ function createSearchResultMeta(item) {
 function createSearchResultCard(item) {
     const categoryLabel = item.resultType === "multimedia"
         ? "Multimedia"
-        : (item.resultType === "archive" ? "Kule Archives" : (item.displayCategory || item.category || "Article"));
+        : (item.resultType === "archive" ? "Kulê Archives" : (item.displayCategory || item.category || "Article"));
     const actionLabel = item.resultType === "multimedia"
         ? "Watch now"
         : (item.resultType === "archive" ? "View archive" : "Read article");
@@ -838,7 +1234,7 @@ function createSearchResultCard(item) {
             <div class="search-result-content">
                 <span class="search-result-category">${categoryLabel}</span>
                 <h3>${item.title}</h3>
-                <p class="search-result-summary">${item.summary || getTextExcerpt(item.bodyText || "", 180)}</p>
+                ${item.resultType === "multimedia" ? "" : `<p class="search-result-summary">${item.summary || getTextExcerpt(item.bodyText || "", 180)}</p>`}
                 <div class="search-result-meta">${createSearchResultMeta(item)}</div>
                 <span class="search-result-action">${actionLabel}</span>
             </div>
@@ -852,8 +1248,9 @@ function createCardImage(article) {
         return createEmbeddedVideoMarkup(cardMedia.embedUrl, article.title, "video-container landscape article-card-video");
     }
 
-    if (article.image) {
-        return `<img src="${article.image}" alt="${article.imageAlt || article.title}">`;
+    const primaryImage = getPrimaryArticleImage(article);
+    if (primaryImage) {
+        return `<img src="${primaryImage.src}" alt="${primaryImage.alt || article.title}">`;
     }
 
     return createArticlePlaceholder(article);
@@ -862,10 +1259,11 @@ function createCardImage(article) {
 function createSectionCard(article) {
     const cardMedia = getArticleMedia(article, "card");
     const isEditorial = article.category === "Editorial";
+    const primaryImage = getPrimaryArticleImage(article);
     const imageMarkup = cardMedia
         ? createEmbeddedVideoMarkup(cardMedia.embedUrl, article.title, "video-container landscape news-card-video")
-        : (article.image
-            ? `<img src="${article.image}" alt="${article.imageAlt || article.title}" class="news-thumb">`
+        : (primaryImage
+            ? `<img src="${primaryImage.src}" alt="${primaryImage.alt || article.title}" class="news-thumb">`
             : createArticlePlaceholder(article, "news-thumb-placeholder"));
     const readTime = article.readTime || "10 min read";
     const displayCategory = getArticleDisplayCategory(article);
@@ -1053,7 +1451,7 @@ function formatMonthLabel(monthKey) {
     }).format(dateValue);
 }
 
-function initializeMonthFilter(filterElement, items) {
+function initializeMonthFilter(filterElement, items, sortOrder = "desc") {
     if (!filterElement || filterElement.dataset.initialized) {
         return;
     }
@@ -1061,7 +1459,9 @@ function initializeMonthFilter(filterElement, items) {
     const monthKeys = [...new Set(items
         .map((item) => getMonthKey(item.date))
         .filter(Boolean))]
-        .sort((left, right) => Number(right) - Number(left));
+        .sort((left, right) => sortOrder === "asc"
+            ? Number(left) - Number(right)
+            : Number(right) - Number(left));
 
     filterElement.innerHTML = [`<option value="all">All months</option>`]
         .concat(monthKeys.map((monthKey) => `<option value="${monthKey}">${formatMonthLabel(monthKey)}</option>`))
@@ -1077,30 +1477,6 @@ function filterItemsByMonth(items, selectedMonth) {
     return items.filter((item) => getMonthKey(item.date) === selectedMonth);
 }
 
-function initializeDateFilter(filterElement, items) {
-    if (!filterElement || filterElement.dataset.initialized) {
-        return;
-    }
-
-    const uniqueDates = [...new Set(items
-        .map((item) => item.date)
-        .filter((dateValue) => getMultimediaDateSortValue(dateValue) !== Number.POSITIVE_INFINITY))]
-        .sort((left, right) => compareMultimediaDates(left, right));
-
-    filterElement.innerHTML = [`<option value="all">All dates</option>`]
-        .concat(uniqueDates.map((dateValue) => `<option value="${dateValue}">${formatDate(dateValue)}</option>`))
-        .join("");
-    filterElement.dataset.initialized = "true";
-}
-
-function filterItemsByDate(items, selectedDate) {
-    if (selectedDate === "all") {
-        return items;
-    }
-
-    return items.filter((item) => item.date === selectedDate);
-}
-
 function sortItemsByNewest(items) {
     return [...items].sort((left, right) => getDateTimestamp(right.date) - getDateTimestamp(left.date));
 }
@@ -1108,19 +1484,19 @@ function sortItemsByNewest(items) {
 function renderMultimedia() {
     const homeGrid = document.getElementById("homeMultimediaGrid");
     const multimediaPageGrid = document.getElementById("multimediaPageGrid");
-    const dateFilter = document.getElementById("section-date-filter");
-    const sortedMultimedia = sortItemsByOldest(siteMultimedia);
+    const monthFilter = document.getElementById("section-month-filter");
+    const sortedMultimedia = sortItemsByNewest(siteMultimedia);
 
     if (homeGrid) {
         homeGrid.innerHTML = sortedMultimedia.slice(0, 3).map((item) => createMultimediaCard(item)).join("");
     }
 
     if (multimediaPageGrid) {
-        initializeDateFilter(dateFilter, sortedMultimedia);
+        initializeMonthFilter(monthFilter, sortedMultimedia, "asc");
 
         const renderPageGrid = () => {
-            const selectedDate = dateFilter ? dateFilter.value : "all";
-            const filteredItems = sortItemsByOldest(filterItemsByDate(sortedMultimedia, selectedDate));
+            const selectedMonth = monthFilter ? monthFilter.value : "all";
+            const filteredItems = sortItemsByNewest(filterItemsByMonth(sortedMultimedia, selectedMonth));
 
             multimediaPageGrid.innerHTML = filteredItems.length > 0
                 ? filteredItems.map((item) => createMultimediaCard(item)).join("")
@@ -1129,9 +1505,9 @@ function renderMultimedia() {
             observeAnimatedElements();
         };
 
-        if (dateFilter && !dateFilter.dataset.bound) {
-            dateFilter.addEventListener("change", renderPageGrid);
-            dateFilter.dataset.bound = "true";
+        if (monthFilter && !monthFilter.dataset.bound) {
+            monthFilter.addEventListener("change", renderPageGrid);
+            monthFilter.dataset.bound = "true";
         }
 
         renderPageGrid();
@@ -1154,7 +1530,7 @@ function createIssueCard(issue) {
 
     return `
         <article class="archive-card"${archiveId}>
-            <a class="archive-cover-link" href="${getIssueUrl(issue)}" aria-label="View ${issue.title} in Kule Archives">
+            <a class="archive-cover-link" href="${getIssueUrl(issue)}" aria-label="View ${issue.title} in Kulê Archives">
                 <div class="archive-cover-shell" aria-hidden="true"></div>
                 <img src="${issue.image}" alt="${issue.imageAlt || issue.title}" class="archive-cover-image">
             </a>
@@ -1219,6 +1595,9 @@ function renderHomePage() {
     const heroCategory = document.getElementById("heroCategory");
     const heroTitle = document.getElementById("heroTitle");
     const heroSummary = document.getElementById("heroSummary");
+    const heroByline = document.getElementById("heroByline");
+    const heroDate = document.getElementById("heroDate");
+    const heroReadTime = document.getElementById("heroReadTime");
     const heroLink = document.getElementById("heroLink");
     const heroImageWrapper = document.getElementById("heroImageWrapper");
     const heroSlideMedia = document.getElementById("heroSlideMedia");
@@ -1230,6 +1609,15 @@ function renderHomePage() {
         heroCategory.textContent = getArticleDisplayCategory(featured);
         heroTitle.textContent = featured.title;
         heroSummary.textContent = featured.summary;
+        if (heroByline) {
+            heroByline.textContent = getAuthorLine(featured);
+        }
+        if (heroDate) {
+            heroDate.textContent = formatDate(featured.date);
+        }
+        if (heroReadTime) {
+            heroReadTime.textContent = featured.readTime || "10 min";
+        }
         heroLink.href = getArticleUrl(featured.slug);
 
         const heroArticles = getRecentArticlesByCategory(siteData.featuredCategory, siteData.featuredCount)
@@ -1481,6 +1869,7 @@ function renderArticlePage() {
 
     const articleFigure = document.getElementById("articleFigure");
     const articleMedia = getArticleMedia(article, "article");
+    const articleImages = getArticleImages(article);
     const newsImageCaption = article.category === "News"
         ? (article.imageCaption || article.caption || "")
         : "";
@@ -1491,15 +1880,19 @@ function renderArticlePage() {
             </div>
             <figcaption id="articleCaption"></figcaption>
         `
-        : (article.image
-            ? `<img src="${article.image}" alt="${article.imageAlt || article.title}"><figcaption id="articleCaption"></figcaption>`
-            : `<div class="hero-placeholder"></div><figcaption id="articleCaption"></figcaption>`);
+        : (articleImages.length > 1
+            ? `${createArticleImageCarouselMarkup(articleImages, article.title)}<figcaption id="articleCaption"></figcaption>`
+            : (articleImages.length === 1
+                ? `<img src="${articleImages[0].src}" alt="${articleImages[0].alt || article.title}"><figcaption id="articleCaption"></figcaption>`
+                : `<div class="hero-placeholder"></div><figcaption id="articleCaption"></figcaption>`));
 
     const renderedCaption = document.getElementById("articleCaption");
     if (renderedCaption) {
         renderedCaption.textContent = newsImageCaption;
         renderedCaption.hidden = !newsImageCaption;
     }
+
+    setupArticleImageCarousel(articleFigure);
 
     const relatedList = document.getElementById("relatedList");
     const relatedHeading = document.querySelector(".related-articles h3");
@@ -1510,8 +1903,8 @@ function renderArticlePage() {
         <a class="related-card" href="${getArticleUrl(related.slug)}" aria-label="Read ${related.title}">
             ${getArticleMedia(related, "card")
                 ? createEmbeddedVideoMarkup(getArticleMedia(related, "card").embedUrl, related.title, "video-container landscape related-card-video")
-                : (related.image
-                ? `<img src="${related.image}" alt="${related.imageAlt || related.title}">`
+                : (getPrimaryArticleImage(related)
+                ? `<img src="${getPrimaryArticleImage(related).src}" alt="${getPrimaryArticleImage(related).alt || related.title}">`
                 : createArticlePlaceholder(related, "related-thumb-placeholder"))}
             <div class="related-content">
                 <h4>${related.title}</h4>
@@ -1519,6 +1912,8 @@ function renderArticlePage() {
             </div>
         </a>
     `).join("");
+
+    setupArticleReadingProgress();
 }
 
 function observeAnimatedElements() {

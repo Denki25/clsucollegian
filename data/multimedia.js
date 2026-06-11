@@ -4,6 +4,22 @@ window.CLSU_MULTIMEDIA = [
     // - Use presenterLabel for exact wording like "Host:", "Hosts:", "Host/s:", "Anchor:", or "Anchor/s:".
     // - Optional exact labels: technicalDirectorLabel, videographerLabel, editorLabel.
     // - Optional credits: technicalDirector, videographer, editor.
+
+    {
+        title: "MULA SA MADLA",
+        date: "2026-03-30",
+        platform: "Facebook Reel",
+        presenterLabel: "Host:",
+        presenter: "CLSU Collegian",
+        editorLabel: "Editor:",
+        editor: "NOEL MANUBAY",
+        videographer: "RIANA MIKAELA BAUTISTA & JEMIMA PAGAD",
+        videographerLabel: "Videographers:",
+        embedUrl: "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F27340914618832313%2F&show_text=false&width=267&t=0",
+        sourceUrl: "https://www.facebook.com/share/v/18jQ4t3rty/",
+        aspectRatio: "portrait"
+    },
+
     {
         title: "MULA SA MADLA",
         date: "2026-05-29",

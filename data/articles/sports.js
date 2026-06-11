@@ -6,6 +6,33 @@
 // 5. Optional credit fields: by, photosBy, illustratedBy, animationBy, layoutBy.
 
 window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
+    {
+        slug: "clsu-tanker",
+        category: "Sports",
+        title: "CLSU tankers grab 9 medals at SUC III Olympics swimming events",
+        summary: "CLSU Green Cobras swimming team bagged three gold, four silver, and two bronze in individual swimming events in the 2026 State Universities and Colleges (SUC) III Olympics at Nueva Ecija University of Science and Technology (NEUST) Sumacab Campus.",
+        author: "RHAINE KARL FIGUEROA",
+        authorLine: "By RHAINE KARL FIGUEROA/CLSU Collegian",
+        credits: {
+            by: "RHAINE KARL FIGUEROA/CLSU Collegian",
+            photoBy: "REGINA ROSE SUPEÑA"
+            
+        },
+        date: "2026-03-01",
+        readTime: "3 min read",
+        image: "PHOTOS/SPORTS/sports2.jpg",
+        imageAlt: "clsu tanker",
+        body: `
+            <p>
+            CLSU Green Cobras swimming team bagged three gold, four silver, and two bronze in individual swimming events in the 2026 State Universities and Colleges (SUC) III Olympics at Nueva Ecija University of Science and Technology (NEUST) Sumacab Campus. <br><br>
+            Gerry Kian Perez swam fastest in Men's 100-meter freestyle and Men's 50-meter freestyle, while Penelope Rago won the third gold medal in Women's 400-meter Individual Medley.<br><br>
+            Individual silver awards were also brought home by Rago in Women's 100-meter Breaststroke and 50-meter Butterfly; and Gerram Theo Perez in Men's 50-meter Breaststroke and 50-meter Butterfly.<br><br>
+            Additionally, Rago also finished bronze in the Women's 200-meter Breaststroke and 200-meter Individual Medley along with her gold and two silver medals.<br><br>
+            With only individual awards, these results placed the Cobras in fourth overall in swimming events behind BPSU, PSU, and BulSU.<br><br>
+            </p>
+        `
+    },
+
 
 {
         slug: "clsu-runner-nabs-four-medal-haul-in-regl-track-meet-after-near-withdrawal",

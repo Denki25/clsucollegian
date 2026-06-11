@@ -32,6 +32,46 @@ function toAbsoluteUrl(value, baseUrl = SITE_BASE_URL) {
     }
 }
 
+function normalizeArticleImageItem(image, fallbackAlt = "") {
+    if (!image) {
+        return null;
+    }
+
+    if (typeof image === "string") {
+        const src = image.trim();
+        return src ? { src, alt: fallbackAlt } : null;
+    }
+
+    if (typeof image !== "object") {
+        return null;
+    }
+
+    const src = normalizeText(image.src || image.image || image.url);
+    if (!src) {
+        return null;
+    }
+
+    return {
+        src,
+        alt: normalizeText(image.alt || image.imageAlt || fallbackAlt)
+    };
+}
+
+function getPrimaryArticleImage(article) {
+    if (!article) {
+        return null;
+    }
+
+    if (Array.isArray(article.images) && article.images.length > 0) {
+        return normalizeArticleImageItem(article.images[0], normalizeText(article.title));
+    }
+
+    return normalizeArticleImageItem(
+        article.image ? { src: article.image, alt: article.imageAlt || article.title } : null,
+        normalizeText(article.title)
+    );
+}
+
 function getArticleSlug(article) {
     return normalizeText(article && article.slug);
 }
@@ -55,11 +95,13 @@ function getArticleCanonicalUrl(article) {
 }
 
 function getSocialImage(article) {
-    return toAbsoluteUrl(article && (article.socialImage || article.image || "logo.png"));
+    const primaryImage = getPrimaryArticleImage(article);
+    return toAbsoluteUrl(article && (article.socialImage || primaryImage?.src || "logo.png"));
 }
 
 function getSocialImageAlt(article) {
-    return normalizeText(article && (article.socialImageAlt || article.imageAlt || article.title), SITE_NAME);
+    const primaryImage = getPrimaryArticleImage(article);
+    return normalizeText(article && (article.socialImageAlt || primaryImage?.alt || article.title), SITE_NAME);
 }
 
 function buildArticleSeo(article) {

@@ -10,6 +10,81 @@
 
 window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
     {
+         slug: "February-29n’t",
+         category: "Komiks",
+         title: "February 29n’t",
+         summary: " Staying forever young is too good to be true. Pero para sa mga leap year babies, possible ito. Hindi tumatanda—kasi bihira lang magkaroon ng birthday! ",
+         author: "ROXZYLEEN ANDREIH VASQUEZ",
+         authorLine: "By ROXZYLEEN ANDREIH VASQUEZ/CLSU Collegian",
+         credits: {
+            illustratedBy: "ROXZYLEEN ANDREIH VASQUEZ/CLSU Collegian",
+        },
+         date: "2026-03-01",
+         readTime: "1 min read",
+         image: "PHOTOS/KOMIKS/komiks6.jpg",
+         imageAlt: "February 29n’t",
+        body: `
+             <p>
+             Staying forever young is too good to be true. Pero para sa mga leap year babies, possible ito. Hindi tumatanda—kasi bihira lang magkaroon ng birthday! <br><br>
+            Ang catch? May soft deletion sila sa kalendaryo. February 29: “Is available in your region… every four years.”
+             </p>
+            
+         `
+     },
+
+    {
+         slug: "pabitin-na-pabitin",
+         category: "Komiks",
+         title: "Pabitin na Pabitin",
+         summary: "Yung nakapag-samgyup na mga tropa mo tapos ikaw nasa “this form is no longer accepting responses” pa rin… Aray ko.",
+         author: "REYAN DEHL MORENO",
+         authorLine: "By  REYAN DEHL MORENO/CLSU Collegian",
+         credits: {
+            illustratedBy: "REYAN DEHL MORENO/CLSU Collegian",
+            labels: {
+                illustratedBy: "Iginuhit ni:"
+            }
+        },
+         date: "2026-03-09",
+         readTime: "1 min read",
+         image: "PHOTOS/KOMIKS/komiks5.jpg",
+         imageAlt: "Pabitin na Pabitin",
+        body: `
+             <p>
+                Yung nakapag-samgyup na mga tropa mo tapos ikaw nasa “this form is no longer accepting responses” pa rin… Aray ko.<br><br>
+                Don't worry, CLSUans! Meron pa naman kayo hanggang this week para ma-claim sa cashier ang bunga ng inyong pinaghirapan. Walang sawang refresh lang sa 'already saved mo na google form' is the key para ikaw ay sumakses at makapag-samgyup with unli cheese!<br><br>
+             </p>
+            
+         `
+     },
+
+    {
+         slug: "thesis-revisions-ano-tara",
+         category: "Komiks",
+         title: "Thesis revisions, ano tara?",
+         summary: "Ready na ang pakyawan ng package sa studio dahil ready na rin ang best angles and smile para sa graduation… pero pakyawan din ang red marks ng adviser sa thesis?! Mahirap kayang ngumiti kapag naalala mo ang “REVISE CHAPTER 3” na naka-bold at italic.",
+         author: "BLUE LOUZENE MORES",
+         authorLine: "By  BLUE LOUZENE MORES/Kontribyutor",
+         credits: {
+            illustratedBy: " BLUE LOUZENE MORES/Kontribyutor",
+            labels: {
+                illustratedBy: "Iginuhit ni:"
+            }
+        },
+         date: "2026-03-17",
+         readTime: "1 min read",
+         image: "PHOTOS/KOMIKS/komiks4.jpg",
+         imageAlt: "Thesis revisions, ano tara?",
+        body: `
+             <p>
+                Ready na ang pakyawan ng package sa studio dahil ready na rin ang best angles and smile para sa graduation… pero pakyawan din ang red marks ng adviser sa thesis?! Mahirap kayang ngumiti kapag naalala mo ang “REVISE CHAPTER 3” na naka-bold at italic.<br><br>
+                Graduation is about surviving struggles and sleepless nights as a student and not just walking to the stage. Pero walang grad pic kung walang graduation, kaya thesis muna bago pictorial dahil walang filter ang defense panel—di tulad ng sa studio.<br><br>
+             </p>
+            
+         `
+     },
+
+    {
          slug: "everything-everywhere-all-absent-at-once",
          category: "Komiks",
          title: "Everything, Everywhere, All Absent at Once",

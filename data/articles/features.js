@@ -4,8 +4,299 @@
 // 3. Use credits.labelPreset: "written" for First POV features.
 // 4. Use credits.labelPreset: "filipino" for Filipino labels.
 // 5. Optional credit fields: by, photosBy, illustratedBy, animationBy, layoutBy.
+// 6. Use images: [{ src, alt, caption, showCaption }] for multi-photo articles; the article page will automatically render a carousel when more than one image is present.
 
 window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
+    {
+        slug: "kung-saan-lumutang-ang-cuyapo",
+        category: "Features",
+        displayCategory: "LATHALAIN",
+        title: "Kung Saan Lumutang ang Cuyapo",
+        summary: "Isang bagong kapistahan ang sumibol ngayong Marso sa bayan ng Cuyapo, ang Warek-Warek Festival na nagbibigay-pugay sa isang putaheng Ilokano. Indakan sa lansangan, malilikhaing floats, at masisiglang kantahan ang nagbigay-buhay sa taunang kapistahan ng bayan.",
+        author: "REYMARC ABAYA, RENZ JUSTINE AQUINO & CASSANDRA MARIE CANSINO",
+        authorLine: "By REYMARC ABAYA, RENZ JUSTINE AQUINO & CASSANDRA MARIE CANSINO, CLSU Collegian",
+        credits: {
+            by: "REYMARC ABAYA, RENZ JUSTINE AQUINO & CASSANDRA MARIE CANSINO/CLSU Collegian",
+            layoutBy: "CASSANDRA MARIE CANSINO/CLSU Collegian",
+            illustratedBy: "CASSANDRA MARIE CANSINO/CLSU Collegian",
+            labels: {
+                by: "Isinulat nina:",
+                layoutBy: "Inianyo ni:",
+                illustratedBy: "Iginuhit ni:"
+            }
+        },
+
+        date: "2026-03-10",
+        readTime: "10 min read",
+        image: "PHOTOS/FEATURES/feature9.jpg",
+        imageAlt: "Kung Saan Lumutang ang Cuyapo",
+        body: `
+    
+            <p>
+            Isang bagong kapistahan ang sumibol ngayong Marso sa bayan ng Cuyapo, ang Warek-Warek Festival na nagbibigay-pugay sa isang putaheng Ilokano. Indakan sa lansangan, malilikhaing floats, at masisiglang kantahan ang nagbigay-buhay sa taunang kapistahan ng bayan.<br><br>
+            Kadalasan sa mga opisyal na kapistahan ng mga pook sa Pilipinas gaya nito ay may malalim na kultural o historikal na pinanggagalingan. Ngunit kung babaybayin ang alaala ng bayan ng Cuyapo, hindi Warek-Warek Festival ang matatagpuan, kundi ang isang kapistahan na unang nagpalutang sa kagandahan at pagkamalikhain ng komunidad.<br><br>
+            
+            <b>𝗘𝘁𝗶𝗺𝗼𝗹𝗼𝗵𝗶𝘆𝗮 𝗻𝗴 𝗯𝗮𝘆𝗮𝗻</b><br><br>
+            
+            Nagmula ang pangalan ng bayan sa kiapo, isang halamang tumutubo sa mga ilog at lawa, at namumuhay nang hindi nakakapit sa lupa.<br><br>
+            Katulad ng kiapo, isa rin sa mga lumutang sa bayan ng Cuyapo ang Water Lily na dati’y karaniwan lamang na tanawin sa mga daluyan ng tubig, bahagi ng kalikasang tahimik na kasama sa araw-araw na pamumuhay.<br><br>
+            Tuwing sasapit noon ang buwan ng Abril, ipinagdiriwang ng mga Cuyapeño ang Water Lily Festival na nagtatampok sa iba’t ibang produkto mula sa liryo ng tubig—isang produktong tangi sa Cuyapo.<br><br>
+            Tahimik at matiisin ang buhay ng isang Water Lily. Hindi man ito nakaugat sa lupa, patuloy itong lumulutang at namumukadkad sa ibabaw ng tubig, sumasabay sa agos at panahon. Sa ganitong anyo, nahahawig ito sa alaala ng bayan—hindi madalas mapansin, ngunit patuloy na nabubuhay.<br><br>
+            Nakaukit sa puso’t isipan ng isang lokal sa lugar ang mga panahong ang ilog ay puno ng liryo at buhay ang bawat baryo. Ang mga tanawing ito ang nagsilbing saksi sa kasaganahang minsang bumalot sa komunidad. <br>
+           
+            <blockquote><p>
+            “Sa mga baryo, hindi mawawala ang Water Lily, marami’t marami pa rin. Mas marami noon, gaya noong tulay sa amin dati maraming [Water Lily]. Siguro nilinis-linis na, pinakamarami na tinutubuan ‘yung ilog sa barangay,” pagbabalik tanaw ni Tatay Renato Bernandino, 65. 
+            </p></blockquote>
+            <p>
+
+            Sa kanyang tinig, malinaw ang paggunita sa panahong ang ilog ay sentro ng buhay at ugnayan. Ang Water Lily ay hindi lamang halaman, kundi bahagi ng kanilang kasaysayan.<br>
+           
+            <blockquote><p>
+            “Noong nakaraang administrasyon, ‘yan talaga ang pinopromote ng turismo noong araw Water Lily, bawat barangay concentrate sa pag-produce ng products gawa sa Water Lily,” pagkukwento ni Tatay Renato na nagpapakita ng pagpapahalaga sa halaman na nagpalutang sa bayan.
+            </p></blockquote>
+            <p>
+
+            <b>𝗕𝘂𝗻𝗴𝗮 𝗻𝗴 𝗧𝘂𝗯𝗶𝗴</b><br><br>
+          
+            Sa bayang pinagpala sa maliliit na lawa sa gitna ng kabukiran, umusbong ang malikhaing sining mula sa liryo ng tubig. Mula rito, nabuo ang mga bag at basket na may matitibay na habi, pati mga tsinelas, sumbrero, at iba’t ibang kagamitang pantahanan tulad ng lampshade, plorera, at palamuti.<br>
+           
+            <blockquote><p>
+            “Kukuha kami dyan [sa Libsong lake] tapos papatuyuin namin, tapos meron kaming machine na pangpitpit. ‘Yun ‘yung trinitrintas namin,” pagkukwento ni Tita Daisy Rosina, 54, na isa sa mga naging artisan ng Water Lily.
+            </p></blockquote>
+            <p>
+
+            Isang natatanging likhang-sining na sumasalamin sa malikhaing paggamit ng likas na yaman ng bayan ay ang malaking tsinelas sa Cuyapo. Bukod sa pagiging atraksyon sa mga bisita ay isa ang higanteng tsinelas sa mga pinakatumatak sa mga alaala ng mga Cuyapeño sa paggunita ng pista ng Water Lily.<br>
+            
+            <blockquote><p>
+            “Tsinelas na malaki, pinanglaban ng barangay namin ‘yan. ‘Yung nasa taas ng munisipyo. Kami ‘yung nanalo non. Gawa lang ‘yon lahat sa Water Lily,” pagmamalaki ni Tita Daisy.
+            </p></blockquote>
+            <p>
+
+            Ang minsang namukadkad na kuwento ng Water Lily sa bayan ay dumaong na sa katapusan. Kalakip nito ang halos hindi namamalayang paglubog ng oportunidad sa bayan upang gawing hanapbuhay ang bunga ng tubig.<br>
+
+            <blockquote><p>
+            “Sayang kasi nga malaking pakinabang, maraming nakikinabang noon eh ‘pag gumagawa kami noon ng slipper nabebenta. Hanap buhay din siya. Kapag may fiesta kasi may booth doon itinitinda ng barangay,” ani Tita Daisy.
+            </p></blockquote>
+            <p>
+
+            Para sa mga Cuyapeño, ang mga produktong ito ay patunay ng kanilang pagkamalikhain, tiyaga, pagkakaisa, at higit sa lahat, pagkakakilanlan. <br><br>
+           
+            <b>𝗣𝗮𝗴𝗹𝘂𝗯𝗼𝗴 𝗻𝗴 𝗗𝗮𝘁𝗶𝗻𝗴 𝗡𝗮𝗴𝗽𝗮𝗹𝘂𝘁𝗮𝗻𝗴</b><br><br>
+           
+            Sinubok ng panahon ang tibay ng hinabing kasaysayan ng Water Lily sa bayan ng Cuyapo. Sa likod ng makulay na pagdiriwang, bitbit ng mga lokal ang katotohanan ng dahan-dahang pagpanaw ng halamang minsang bumuhay sa pista. <br><br>
+            Sa pagbabalik-tanaw ni Antonio Sabado, 58, mabigat ang kanyang tinig habang inaalala ang nangyari sa Water Lily, “May kumakain sa waterlily [igat at pagkalusaw sa herbicide], tapos napalitan ng rubaw [ibang puno].” Isang tahimik na pahayag, ngunit sapat upang ipakita kung paanong napalitan ang dating sagana.<br><br>
+            Gayunpaman, hindi lamang alaala ng kasaganahan ang iniwan ng Water Lily. Sa ilang bahagi ng bayan, naging balakid din ito sa kabuhayan. Sa dami noon ng bilang nito, mga magsasaka ang napeperwisyo. <br>
+           
+            <blockquote><p>
+            “Sa farmers, sagabal ‘yun sa palayan, minsan kasi sa palayan na tumutubo ‘yung Water Lily kaya siguro paunti-unti nawawala ‘yung Water Lily kasi nililinis na nung may sakahan,” paglalahad ni Tatay Renato. 
+            </p></blockquote>
+            <p>
+
+            Sa mga pangyayaring ito, ang bayan ay patuloy na hinahaluan ang orihinal na mukha ng selebrasyon. Ayon kay Antonio, “Noon, ang konsepto talaga ng pista ay Water Lily, kalaunan nagkaroon ng cornhusk.” Kalaunan, inanunsyo ng lokal ng pamahalaan ang bagong opisyal na pista ng Cuyapo na malayo sa ugat ng taniman.<br><br>
+            Kung titimbangin ang kalagayan ng Water Lily sa bayan ngayon, tila mas madaling kumuha ng mga produktong nakaugat sa lupa gaya ng palay at mais.<br><br>
+            Gayunpaman, hindi maitatanggi ang naging kontribusyon ng Water Lily sa turismo ng bayan, kung saan nakilala ang Cuyapeño at kung saan nagmula ang pangalan ng sariling bayan.<br>
+           
+            <blockquote><p>
+            “Kung sa kapakinabangan at ikagaganda ng turismo, ‘yan kasi ang isang nagpayaman sa turismo kagaya ng Cuyapo na nag-promote ng Water Lily, siguro pwede pa rin ibalik ‘yung dati depende sa tao nga,” paninindigan ni Tatay Renato.
+            </p></blockquote>
+            <p>
+
+            Mula sa magkakahiwalay na hibla ng Water Lily, nabubuo ang mga produktong matibay at may saysay, gaya ng isang pamayanang humuhugot ng lakas sa pagkakaisa. Katulad ng mga Cuyapeño, ang hiwa-hiwalay na anyo ay nagiging masagana kapag pinagtagpi-tagpi.<br><br>
+            Saan nga ba tunay na lumutang ang Cuyapo?<br><br>
+            Hindi lamang sa mga liryo ng tubig na minsang umusbong sa ilog, kundi sa mga taong patuloy na nagbabayanihan upang ipamalas ang galing, sipag, at kinang ng bawat isa. <br><br>
+            Tulad ng alaala ng Water Lily, hindi tuluyang lulubog ang kasaysayan at pinagmulan ng isang bayan kung ito ay ituturo sa kabataan at patuloy na pahahalagahan.<br><br>
+
+            </p>
+            </p>
+            </p>
+            </p>
+            </p>
+            </p>
+            </p>
+            </p>
+
+
+
+        `
+    },
+
+    {
+        slug: "bravery-beyond-the-byline",
+        category: "Features",
+        title: "Bravery Beyond the Byline",
+        summary: "The newsroom is often imagined as a world of deadlines, breaking stories, and constant pressure. But for women in Philippine journalism, it is also a space of courage, resilience, and conviction.",
+        author: "REYMARC ABAYA & REGINA SUPENA",
+        authorLine: "By REYMARC ABAYA & REGINA SUPENA, CLSU Collegian",
+        credits: {
+            by: "KRYZTELLE ASHLEY HERRERA/CLSU Collegian",
+            layoutBy: "MARLFEY MACTAL/CLSU Collegian",
+        },
+
+        date: "2026-03-20",
+        readTime: "10 min read",
+        image: "PHOTOS/FEATURES/feature8.jpg",
+        imageAlt: "Bravery Beyond the Byline",
+        body: `
+    
+            <p>
+            The newsroom is often imagined as a world of deadlines, breaking stories, and constant pressure. But for women in Philippine journalism, it is also a space of courage, resilience, and conviction.<br><br>
+            As we celebrate National Women’s Month, the stories of Filipina journalists remind us that reporting is not just about narrating events. It is about shaping public awareness, defending democracy, and giving voice to those often unheard. Their experiences reveal a dual challenge: not only must they navigate the dangers of their profession, but also to confront the gender biases that question their credibility simply because they are women.<br><br>
+            
+            <b>𝗥𝗶𝗽𝗽𝗹𝗲𝘀 𝗼𝗳 𝗧𝗿𝘂𝘁𝗵</b><br>
+            <p>
+            Maria Ressa has spent decades exposing disinformation, corruption, and human rights issues through her work at Rappler. Her reporting placed her at the center of political controversies, legal battles, and relentless online harassment. <br><br>
+            During the administration of former President Rodrigo Duterte, the veteran journalist became one of the most prominent targets of attempts to silence critical media voices. She faced multiple legal cases, including cyberlibel charges, which critics have described ‘politically motivated,’ alongside coordinated attacks on social media intended to intimidate her and her colleagues. For her and many other journalists, telling the truth often means facing powerful forces that seek to suppress critical reporting.<br><br>
+            Beyond legal challenges, the Rappler CEO has also been subjected to gendered attacks, including online trolling and coordinated harassment campaigns that specifically targeted her as a woman journalist. These attacks, which often extend to her personal life, reflect a broader pattern in Philippine journalism. According to a study published in the International Journal of Multidisciplinary: Applied Business and Education Research, women journalists in the Philippines commonly experience online harassment, threats, blackmail, and public humiliation, with such gendered attacks often used to undermine their credibility and discourage them from reporting on sensitive issues.<br><br>
+            Her experiences reveal the reality that speaking truth to power can carry personal risks, especially for women who refuse to stay silent.<br>
+            
+            <b>𝗦𝘁𝗼𝗿𝗶𝗲𝘀 𝘄𝗶𝘁𝗵 𝗛𝗲𝗮𝗿𝘁 𝗮𝗻𝗱 𝗣𝘂𝗿𝗽𝗼𝘀𝗲</b><br>
+            <p>
+            Jessica Soho has long been one of the most recognizable faces in Philippine broadcast journalism. Through programs such as Kapuso Mo, Jessica Soho, she has told stories that resonate with audiences nationwide, from her coverage of major events and disasters to powerful human-interest stories that have changed lives. <br><br>
+            For instance, features on children like Reymark, who worked at a young age to support his family, and Ranelyn, who suffered from severe malnutrition, moved viewers to donate and help improve their lives. Stories like these have not only raised awareness but also mobilized public action, proving the program’s wide-reaching impact. <br><br>
+            However, even well-established journalists like Soho have not been spared from criticism and gender-based attacks. The veteran reporter herself became a target of body shaming and rape jokes during a controversial comedy concert by Vice Ganda in 2013, where remarks about her appearance drew widespread criticism; the incident later prompted a public apology from the comedian and sparked broader conversations about respect, humor, and the treatment of women in media.<br><br>
+            She later addressed the issue in a statement, emphasizing that humor should not come at the expense of dignity and that women should not be subjected to ridicule because of their looks. Her response highlighted how women in media are often scrutinized beyond their work. Critics frequently target their appearance, personality, or credibility in ways that male journalists rarely experience. <br><br>
+            In a 2020 article published by Southeast Asia Globe, Filipino women reporters were documented as experiencing online harassment, body shaming, and pressure to conform to rigid beauty standards. These patterns reflect experiences that even established journalists encounter. <br><br>
+            Despite these pressures, the award-winning journalist continues to tell stories that matter. Throughout her career, she has covered dangerous situations, including reporting on natural disasters such as Typhoon Yolanda and conflict-affected areas where journalists face physical risks while gathering information. By continuing to excel in her reporting, she demonstrates that courage in journalism is not only about facing real dangers in the field but also about resisting societal pressures that seek to diminish women’s voices, proving that truth-telling requires strength both in the field and in the public eye.<br><br>
+           
+            <b>𝗨𝗻𝘆𝗶𝗲𝗹𝗱𝗶𝗻𝗴 𝗥𝗲𝗽𝗼𝗿𝘁𝗶𝗻𝗴 𝗳𝗼𝗿 𝗔𝗹𝗹</b><br>
+            <p>
+            For many young women reporters in the Philippines, stepping into the field means confronting both physical and digital risks. Online harassment is a common challenge; according to a UNESCO report on the safety of women journalists, nearly three‑quarters of female journalists surveyed have experienced online violence, ranging from sexist insults and trolling to threats that can affect their well‑being and their work.<br><br>
+            EJ Gomez, a rising field reporter for GMA Integrated News, exemplifies courage and dedication in her reporting. She has covered news amid typhoons and other hazardous conditions, where delivering accurate information requires both physical bravery and composure under pressure. Gomez has also gone straight from high-profile events to frontline coverage, such as rushing from the GMA Gala 2025 to report on a major fire incident in Caloocan City late at night, demonstrating her unwavering commitment to keeping the public informed. Her work draws attention not for her appearance but for her steadfast professionalism, showing that courage in journalism can take many forms.<br><br>
+            Her presence on the frontlines reflects a new generation of women journalists determined to pursue reporting with resilience, showing that steadfast commitment to the public good can withstand the threats and pressures faced by many in the profession.<br><br>
+           
+            <b>𝗣𝗿𝗲𝘀𝘀 𝗙𝗿𝗲𝗲𝗱𝗼𝗺 𝗕𝗲𝗵𝗶𝗻𝗱 𝗜𝗿𝗼𝗻 𝗕𝗮𝗿𝘀</b><br>
+            <p>
+            Despite the courage shown by many Filipina journalists, the risks can be grave and personal. One clear example is community journalist Frenchie Mae Cumpio, who was first charged with financing terrorism more than six years ago in a case widely condemned by press freedom advocates. She was recently convicted, a ruling that carries a prison sentence of 12 to 18 years, even though Cumpio was acquitted of related weapons charges and has consistently denied the allegations, insisting that the prosecution stems from her reporting on police and military abuses.<br><br>
+            International media organizations have rallied behind the detained journalist, describing her as a beacon of journalism and calling for her immediate release. The Committee to Protect Journalists (CPJ), Reporters Without Borders (RSF), and Free Press Unlimited have repeatedly urged Philippine authorities to free her, saying her prolonged detention is a “sobering reminder” of the dangers faced by journalists who simply do their jobs. In fact, these groups, along with the International Federation of Journalists (IFJ) and Article 19, have nominated her for prestigious awards such as UNESCO’s Guillermo Cano Prize, highlighting her commitment to reporting despite the personal cost.<br><br>
+            Cumpio’s experience is one of many that underscores the chilling realities faced by journalists in the Philippines. According to the Philippine Center for Investigative Journalism, between 2016 and 2022, at least 86 journalists were killed, threatened, or harassed in connection with their work, with women reporters disproportionately targeted online through coordinated harassment and threats. These incidents highlight that attacks against journalists are not isolated, and that Cumpio’s prolonged detention reflects broader systemic risks facing media practitioners in the country.<br><br>
+           
+            <b>𝗩𝗼𝗶𝗰𝗲𝘀 𝗧𝗵𝗮𝘁 𝗖𝗵𝗮𝗹𝗹𝗲𝗻𝗴𝗲 𝗣𝗼𝘄𝗲𝗿</b><br>
+            <p>
+            National Women’s Month celebrates not only achievements but also the strength and power of women who refuse to be silenced. Filipina journalists such as Ressa, Soho, Gomez, and Cumpio reveal the realities behind the profession, each facing unique challenges that reflect broader patterns in the media landscape. <br><br>
+            Ressa and Cumpio have endured lawsuits, cyberlibel charges, and prolonged detention, showing how legal pressures can be wielded to suppress critical voices. Soho has navigated public scrutiny, body-shaming, and unfair expectations about appearance and professionalism, while Gomez represents a younger generation confronting both frontline dangers and the pressures of fast-paced reporting, proving that courage in journalism transcends age and circumstance. <br><br>
+            Their experiences show that journalism is not just about telling stories; it is also about confronting harassment, discrimination, intimidation, and even imprisonment while remaining committed to the truth.<br><br>
+            Women’s Month calls attention to these struggles and honors the courage behind them. When Filipina journalists stand up for truth despite threats, discrimination, or imprisonment, they do more than reporting the news. They amplify the voices of the marginalized, challenge abuses of power, and hold institutions accountable—speaking out not only for women but for all those whose voices are often silenced. Their bravery shows that standing up for truth can change narratives, inspire others to act, and resist the forces that seek to suppress both journalists and the communities they represent. <br><br>
+            </p>
+            </p>
+            </p>
+            </p>
+
+
+
+        `
+    },
+
+    {
+        slug: "Isang-Linggong-Pag-ibig-sa-Loob-ng-Pitong-Simbahan",
+        category: "Features",
+        displayCategory: "LATHALAIN",
+        title: "Isang Linggong Pag-ibig sa Loob ng Pitong Simbahan",
+        summary: "Isa ang Visita Iglesia sa mga tradisyon ng mga Katoliko tuwing Semana Santa. Ito ay bahagi ng pag-alala sa sakripisyo ng Panginoon—isang makabuluhang ritwal ng pananampalataya at pagninilay.",
+        author: "NOVELYN CABILOGAN, REYMARC ABAYA & KATRINA ALESSANDRA DANTING",
+        authorLine: "By NOVELYN CABILOGAN, REYMARC ABAYA & KATRINA ALESSANDRA DANTING/CLSU Collegian",
+        credits: {
+            by: "NOVELYN CABILOGAN, REYMARC ABAYA & KATRINA ALESSANDRA DANTING/CLSU Collegian",
+            layoutBy: "MERWIN LAD VELASCO/CLSU Collegian",
+
+            labels: {
+                by: "Isinulat nina:",
+                layoutBy: "Inianyo ni:"}
+        },
+        date: "2026-04-06",
+        readTime: "5 min read",
+        images: [
+        { src: "PHOTOS/FEATURES/feature7.jpg", alt: "..."},
+        { src: "PHOTOS/FEATURES/feature7.1.jpg", alt: "..."},
+        { src: "PHOTOS/FEATURES/feature7.2.jpg", alt: "..."},
+        { src: "PHOTOS/FEATURES/feature7.3.jpg", alt: "..."},
+        { src: "PHOTOS/FEATURES/feature7.4.jpg", alt: "..."},
+        { src: "PHOTOS/FEATURES/feature7.5.jpg", alt: "..."},
+        { src: "PHOTOS/FEATURES/feature7.6.jpg", alt: "..."},
+        { src: "PHOTOS/FEATURES/feature7.7.jpg", alt: "..."}
+        
+
+        ],
+
+        imageAlt: "Isang Linggong Pag-ibig sa Loob ng Pitong Simbahan",
+        body: `
+    
+            <p>
+            
+            Isa ang Visita Iglesia sa mga tradisyon ng mga Katoliko tuwing Semana Santa. Ito ay bahagi ng pag-alala sa sakripisyo ng Panginoon—isang makabuluhang ritwal ng pananampalataya at pagninilay.<br><br>
+            Bitbit ang aming kani-kaniyang layunin at panalangin, aming sinimulan ang makabuluhang paglalakbay sa Linggo ng Palaspas bilang simula ng Semana Santa.<br><br>
+            Huwebes Santo ang pormal na simula ng Visita Iglesia, ito ang panimula ng tatlong araw na Banal na Triduum at pagbubukas ng mga Altar ng Reposisyon. Ngunit sa makabagong panahon, pinapayagan at hinihikayat na ang pagsisimula sa kahit na anong araw ng Semana Santa sapagkat ang mahalaga ay ang taos-pusong panalangin at pakikiisa sa Espiritu ng Kabanalan.<br><br>
+            Sa aming paglalakbay, pitong simbahan sa Nueva Ecija ang aming napuntahan: Parokya ni San Isidro Labrador ng Talavera, Katedral ni San Nikolas de Tolentino ng Cabanatuan, Parokya Santuaryo ni San Jeronimo ng Baloc, Kapilya ng Kristong Manggagawa sa CLSU, San Antonio De Padua Mission Station ng Muñoz, Katedral ni Apo San Jose, at ang Parokya ni Santa Rosa de Lima.<br><br>
+            Sa mga simbahang ito namin naramdaman ang lalim ng sakripisyo at pag-ibig ng ating Poong Maykapal. Bawat sandali at bawat hakbang sa loob ng pitong araw ay puno ng pag-asa at pagmamahal.<br><br>
+            Buksan ang bawat larawan at samahan kami sa isang paglalakbay patungo sa iba’t ibang simbahan, at ating damhin ang Kaniyang presensya saan man tayo tumungo at patutungo.<br><br>
+            Ang ibang larawang ay kinuha mula sa internet sa pagmamay-ari nina RAMON VELASQUEZ, RALFF NESTOR NACOR, PARROQUIA SANTUARIO DE SAN JERONIMO <br><br>
+
+            Tingnan ang buong album sa Facebook page ng CLSU Collegian: <a href="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FCLSUCollegian.Official%2Fposts%2Fpfbid0gc2wXawqQSiZQBtVYHzrvBP8B6sNJrpJXvVSxL4kGTrwBZWnMzx3LNYzEi8P9r7il&show_text=true&width=500" width="500" height="690" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" target="_blank" rel="noopener">https://www.facebook.com/share/p/1CjieY9Kzd/</a><br><br>
+            </p>
+
+
+        `
+    },
+
+    {
+        slug: "may-kasaysayan-ang-sarili-at-pag-ibig-ang-pinilakang-tabing-ni-ricky-lee-at-ang-pagbasa-bilang-pakikibaka",
+        category: "Features",
+        title: "May Kasaysayan ang Sarili at Pag-ibig: Ang Pinilakang Tabing ni Ricky Lee at ang Pagbasa bilang Pakikibaka",
+        summary: "Like water, the flow of time never stops. It moves forward, constant and unyielding. So in the midst of the digital age where our attention spans seek instant gratification, one institution refuses to be rushed.",
+        author: "REYMARC ABAYA & REGINA SUPENA",
+        authorLine: "By REYMARC ABAYA & REGINA SUPENA, CLSU Collegian",
+        credits: {
+            by: "ALIANA JOY SINGIAN/CLSU Collegian",
+            layoutBy: "ASHER TERBY ESQUIVEL/CLSU Collegian",
+
+            labels: {
+                layoutBy: "Inianyo ni:"}
+        },
+        date: "2026-05-16",
+        readTime: "10 min read",
+        image: "PHOTOS/FEATURES/feature6.jpg",
+        imageAlt: "May Kasaysayan ang Sarili at Pag-ibig: Ang Pinilakang Tabing ni Ricky Lee at ang Pagbasa bilang Pakikibaka",
+        body: `
+    
+            <p>
+            “Dahil ang pelikula, gaya ng lahat ng kwento, ay nagsisimula sa kagustuhan nating baguhin ang mundo.”<br><br>
+            “Lahat ng kwento ay kahilingan para sa isang mas mabuting mundo.”<br><br>
+            Nalimbag ang mga linyang ito ng National Artist for Film and Broadcast Arts na si Ricardo Arreola Lee ONA o ‘Ricky Lee’ sa kanyang panibagong librong Pinilakang Tabing. Kasabay ng koleksyon na Agaw-Tingin, inilabas niya ito nitong 2025. Ayon sa isang panayam sa Rolling Stone Philippines, ang Pinilakang Tabing ay isang kwento na nagtatampok sa karanasan ng mga karakter na ‘aktibista, bakla, ampon, at hitman.’<br><br>
+            Mas malalim ang pag-uungkat ng kasaysayan at politiko sa bagong nobela ni Ricky Lee, bilang kilala ang awtor sa kwento ng pag-ibig tulad ng Para Kay B at Kalahating Bahaghari, mas nagbigay ng pokus ang awtor sa usapin ng kasaysayan ng pelikula at kung paano sumasabay ang Pilipinas sa paglaki ng sining, mula sa bakyaan o masa lamang ang nakakanood hanggang sa pagpapalabas nito sa malalaking sinehan. Mula sa pagbabanggit ng mga sikat na direktor tulad ni Lino Brocka at Ishmael Bernal, mga direktor ng Hollywood at Indie, pati ang mga kasalukuyang artista ng bayan.<br><br> 
+            Ang bagong nobela ay pumapalibot sa iba't ibang kuwento ng mga karakter ni Journey (ang bida), si Danny (ang kasintahan), si Jose at Luisa (ang mga magulang), at sina Carla, Jennifer, at Enzo na mga piling karakter na nakakaapekto sa buhay ni Journey. Mula ito sa kwento ng kanyang mga magulang, hanggang sa pagkawala ng bida sa kalagitnaan ng Batas Militar, at umiigpaw sa kasalukuyang panahon, kung saan si Luisa ay isa nang propesor sa Unibersidad ng Pilipinas na naghahanap sa nawawalang anak. <br><br>
+            Bilang isang love letter to cinema, ipinakilala ni Ricky Lee ang pakikibaka sa pamamagitan ng pagbasa at ang reyalidad ng humanidades sa isang bansang walang pangangalaga sa sining. <br><br>
+           
+            <b>SI JOURNEY BILANG IMAHE NG PANGARAP</b><br><br>
+            
+           
+            Makasaysayan ang pagdating ng pelikula sa Pilipinas—ito ang nais iparating ni Lee. Sa akdang ito, ipinakilala niya ang karakter ni Journey na simbolismo ng pagbabagong-bihis ng pelikulang Pilipino mula sa mga silent films hanggang sa makabagong studio films. <br><br>
+            Simula pa lamang ng tahakin ni Journey ay malupit na ang trato sa kanya ng tadhana. Iba't ibang patibong ang ipinakita ng awtor, mula sa kanyang paglaki sa estero hanggang sa pagkawala iba't ibang lugar tulad ng Quiapo. Subalit, ang paglalakbay ni Journey sa nobelang ito ay maihahalintulad sa isang pelikulang Pilipino, nawawala man o naliligaw ang landas, pag-ibig pa ‘rin ang tatahakin at pipiliin at nakita niya ito sa katauhan ni Danny. <br><br>
+            Tulad ng pelikula na nawala sa panahon ng pananakop, inilarawan ni Lee si Journey bilang karakter na patuloy na nagbabago at nawawala. Mula sa estero ng nakaraan at pagnanakaw upang mabuhay, siya bilang tauhan ng akda ang nagpapatunay na ang mga Pilipino ay minsan metapora ng pagmamalupit ng tadhana at kapalaran dahil sa kahirapan. <br><br>
+            
+            <b>SI JOSE, LUISA, AT ANG PAGMAMAHAL SA MASA</b><br><br>
+           
+            Dangal ang pakikibaka at pagmamahal sa masa. Si Jose at Luisa ang naging piksyonal na mukha ni Lee noong Diliman Commune, kung saan nagbarikada ang mga mag-aaral, drayber, manggagawa at guro bilang depensa sa panghihimasok ng kapulisan at militar, na nagdulot ng pagkamatay ng isang estudyante at ikinasugat ng apat na mag-aaral, isang empleyado, at limang manggagawa. Sa pagputok ng Dekada ‘70, sa piksyonal na mundo ni Ricky Lee, umiibig ang mga mag-aaral sa kabila ng lahat. <br><br>
+            Bilang ama't ina ng karakter ni Journey,  ipinamulat ni Lee ang kahalagahan ng pagtanaw sa nakaraan ng kasaysayan, kung paano ang sakripisyo para sa kalayaan ay nakatambal sa kakayahang umibig sa kapwa. <br><br>
+            Dalawang magkaibang mundo, isang laki sa layaw sa probinsya—si Jose, at ang kolehiyala ng Maynila—si Luisa ay nagtatagpo, nagtunggalian ng kinalakihan, at piniling magsisilbi sa mga mag-aaral ng Diliman sa likod ng panganib na madakip at maging desaparesidos si Jose. <br><br>
+            Mahal kong burgis. <br><br>
+            Ito ang pinaka maikli ngunit pinakamayaman na diyalogo sa buong libro ni Ricky Lee. Ang salitang nagtatambal at nagtatagpo sa dalawang karakter na pinaghiwalay ng militarisasyon at pasismo. Sa kanilang kwento ay inihandog ni Lee ang kondisyon ng kalayaan ng pahayagan, ang underground movement, at mosquito press kung saan patagong naglilimbag ng dyaryo ang mga peryodista ng bayan. <br><br>
+            Naikwento rin kung paano kitilin ng militar ang mga mag-aaral na nais ipaglaban ang kanilang karapatan sa pamantasan. Mula sa  mga nagkalat na molotov at ang huling gabi ng mga upuang nakabarikada, ang kwento ni Jose at Luisa ang patunay na sa awit ng kalayaan, kasama ang masa, ang pagpili ng rebolusyon at pagmamahal sa kabila ng lahat. <br><br>
+           
+            <b>SI DANNY, CARLA, ANG PAG-ALALA SA NAKARAAN, AT ANG PAGTANAW SA NGAYON</b><br><br>
+           
+            Ang kababaihan sa mga akda ni Lee ay politika. Sa karakter ni Carla, isang anak ng sikat na bomba film actress, o aktor na gumanap sa kwentong erotika. Napatunayan ng karakter na ito ang matagal na diskurso ng kababaihan sa mga bomba films noong panahon ng diktaturyang Marcos Sr.—hindi sila naging pain para makalimutan ang paghihirap ng masang api, kundi isang patunay na ang mga kababaihan ay biktima ng mas malaking makinarya ng katiwalian at kapitalismo.<br><br>
+            Kahirapan ang ugat ng lahat ng problemang bayan. Pelikula ang naging metapora na nagbubuklod sa lahat ng mga karakter ng nobela. Hangga’t nasasaid ang bulsa, ang masa ay kapit sa patalim para mabuhay. Patunay nito si Danny na buong-buhay na naghahanap ng saysay at silbi na hindi nakwekwenta ng pera. Kasama nila si Jennifer na nangakong  kailanma’y hindi mabibili ng salapi ang kanyang dangal bilang kababaihan. Bagama’t nagkakamali, ay pinipili ang kanyang pagkababae. <br><br>
+            
+            <b>ANG LIBRO AT ANG KASAYSAYAN (NG PAGMAMAHAL)</b><br><br>
+            
+            Mula sa kwento ni Jose at Luisa na naging tulay ang pelikula at sa pagpili ng rebolusyon at kalayaang magmahal, kay Journey na hinanap ang pelikula sa gitna ng pagkawala at pagsinta, kay Carla na pinakitang ang pelikula ay parehas na pagtanggap at pagtanggi sa kultura, at kay Danny na pinili ang sining dahil sa pag-ibig, hinuhulma ni Ricky Lee ang kasaysayan ng nakaraan at kasalukuyan sa bawat kuwento na kanyang hinaharap. Pinapaalala nito na ang mga mambabasa ay mayroong malaking gampanin ng pakikihalubilo sa lipunan. <br><br>
+            Nararapat lamang pag-aralan ang mga tao at hindi nakakalimot sa kasaysayan, kaya sa mga nais matuto ng kasaysayan mula sa lente ng masa at pelikula, ito ang libro para sa kasalukuyan<br><br>
+            Nakalimbag at nakasulat sa Wikang Filipino sa panahon kung saan pilit na sinusupil ang sining at pag-aaral ng kasaysayan, nagsisilbing arkibo ng katotohanan ang Pinilakang Tabing. Ito ay manipesto ng isang bansang patuloy na binubura ang sining na bumubuhay sa bayan. May kakayahan itong baguhin, hindi man ang mundo, kundi ang imahinasyon at tapang ng mga nais magbasa, at para sa mga tulad kong umiibig sa bayan, sa sarili, at sa kapwa.<br><br>
+
+            </p>
+
+
+        `
+    },
     {
         slug: "Kapag-Namumukadkad-ang-Alaala",
         category: "Features",
@@ -262,7 +553,6 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
         imageAlt: "Stars Shaped in Shared Space feature artwork",
         body: `
         
-            
             <p>
             Under the lights that revealed more than performance, ExDRAGvaganza became a shared space where identity was not just exhibited on stage but recognized in the eyes of those who watched, responded, and saw themselves reflected back through every movement, silence, and applause.<br><br>
             What made the moment powerful was not only the spectacle of performance but the quiet agreement between the stage and the audience that allowed people to exist in the room without shrinking any part of themselves.<br><br>
@@ -371,7 +661,7 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
         image: "PHOTOS/FEATURES/feature2.jpg",
         imageAlt: "Sealed, Sent, then Reopened feature image",
         body: `
-            <h2>Sealed, Sent, then Reopened</h2>
+    
             <p>
             Like water, the flow of time never stops. It moves forward, constant and unyielding. So in the midst of the digital age where our attention spans seek instant gratification, one institution refuses to be rushed. The post office remains a sanctuary where words are felt by both the hearts and the hand.<br><br>
             This endurance is evident in the recent reopening of the Central Luzon State University (CLSU) Post Office branch,  through a collaboration with the Philippine Postal Corporation (PHLPost). Honing through the waves of time, the office stands once more to serve a new generation of CLSUans.<br>

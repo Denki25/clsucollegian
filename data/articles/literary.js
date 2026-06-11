@@ -3,11 +3,335 @@
 // 2. Use credits.labelPreset: "filipino" for Filipino labels.
 // 3. Optional credit fields: by, photosBy, illustratedBy, animationBy, layoutBy.
 // 4. Literary entries can use image + imageAlt or literaryMedia for video posts.
+// 5. Use images: [{ src, alt, caption, showCaption }] for multi-photo entries; the article page will automatically render a carousel when more than one image is present.
 
 window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
     // Literary entries can use either:
     // 1. image + imageAlt
     // 2. literaryMedia with separate card/article video settings
+    {
+        slug: "Hindi-Guguho-ang-Punla-ng-Pangako",
+        category: "Literary",
+        displayCategory: "PANITIKAN",
+        title: "Hindi Guguho ang Punla ng Pangako",
+        summary: "Sa pagyapak sa maputik at makipot na taniman, Nakapunla ang pangarap na minimithi noon pa man; Mula sa pagpapatubig ng kalupaan, Hanggang sa bungang may dalang kinabukasan.",
+        author: "JUSTINE SANTIAGO",
+        authorLine: "JUSTINE SANTIAGO/CLSU Collegian",
+        credits: {
+            by: "JUSTINE SANTIAGO/CLSU Collegian",
+            illustratedBy: "CASSANDRA MARIE CANSINO/CLSU Collegian",
+            layoutBy: "JOHN MICHAEL DAYOG/CLSU Collegian",
+
+            labels: {
+                by: "Isinulat ni:",
+                illustratedBy: "Iginuhit ni:",
+                layoutBy: "Inianyo ni:"
+            }
+        },
+        date: "2026-03-20",
+        readTime: "7 min read",
+        image: "PHOTOS/LITERARY/lit12.jpg",
+        body: `
+        
+            <p>
+            
+            Sa pagyapak sa maputik at makipot na taniman,<br>
+            Nakapunla ang pangarap na minimithi noon pa man;<br>
+            Mula sa pagpapatubig ng kalupaan,<br>
+            Hanggang sa bungang may dalang kinabukasan.<br><br>
+
+            Aming hapag ay laging may puwang <br>
+            para sa isa pang basong tubig,<br>
+            Upang lunurin ang kalam <br>
+            na di kayang patahimikin ng kaunting kanin;<br>
+            Niluluma ng panahon ang iisang tsinelas <br>
+            na salit-salitang hinihiram,<br>
+            Habang pag-asa’y nakatupi <br>
+            sa ilalim ng banig na higaan.<br><br>
+
+            Aming ina’y napagdesisyunang <br>
+            magsilbi sa banyagang lupa,<br>
+            Tanging dala-dala’y mga pangarap <br>
+            na aming ipinunla<br>
+            Sa alapaap, <br>
+            pagkakahawak niya sa upua’y maluwag,<br>
+            Patungo sa dako ng gitnang silangan.<br><br>
+
+            Doon nagsimula <br>
+            ang pagbabagong nais makamtan,<br>
+            Ang dating banig ay pinalitan <br>
+            ng malambot na higaan;<br>
+            Pintura ay bago; <br>
+            Selyado na, bawat butas at siwang<br>
+            Ngunit kislap nito’y<br>
+            may bahid ng dugong inutang.<br><br>
+
+            Tahanan nami’y binalot ng pangamba<br>
+            Nang dumating ang balitang <br>
+            sa katahimika’y bumarag;<br>
+            Nahanap man, <br>
+            lunan ng pangkabuhayan,<br>
+            Nagtatago naman sa mga bombang<br>
+            sa punlang pangarap papatay.<br><br>
+
+            Ang kaniyang hawak na pluma't tela <br>
+            sa mumunti niyang espasyo,<br>
+            Nabitawan nang ang langit ay maging impiyerno;<br>
+            Mula sa pagyuko sa harap ng kaniyang amo,<br>
+            Ay nauwi sa pagkaripas sa gitna ng mga guho.<br><br>
+
+            Nanginginig ang mitsa<br>
+            sa bawat dagundong ng kanyon,<br>
+            Habang binibilang niya, <br>
+            baryang pambili ng pagkakataon;<br>
+            Tinitiis ang palaging pagtakip ng tenga <br>
+            sa sirenang humihiyaw,<br>
+            Upang sa ating muling pagkikita’y <br>
+            wala nang pangambang matatanaw.<br><br>
+
+            Hindi man madali ang daang tinatahak,<br>
+            Sa gitna ng putik ay may uusbong na bulaklak;<br>
+            Ang pangakong pangarap na sa hirap natin itinanim,<br>
+            Ay may ugat na kailanma'y 'di mababali sa ilalim.<br>
+
+            </p>
+            
+        `
+    }, 
+    
+    {
+        slug: "Ako-na-lang-ba-ang-naiwan",
+        category: "Literary",
+        displayCategory: "PANITIKAN",
+        title: "Ako na lang ba ang naiwan?",
+        summary: "Masaya ang aking pagkabata, Isang makapal na librong puno ng pahina Na gabi-gabi kong ginugunita; Ngunit ang bawat kwento’y nanatili na lamang, Nakakintal sa aking mga memorya.",
+        author: "ANGELINE DOMINGO",
+        authorLine: "ANGELINE DOMINGO/CLSU Collegian",
+        credits: {
+            by: "ANGELINE DOMINGO/CLSU Collegian",
+            illustratedBy: "ROXZYLEEN ANDREIH VASQUEZ/CLSU Collegian",
+            layoutBy: "JOHN MICHAEL DAYOG/CLSU Collegian",
+
+            labels: {
+                by: "Isinulat ni:",
+                illustratedBy: "Iginuhit ni:",
+                layoutBy: "Inianyo ni:"
+            }
+        },
+        date: "2026-03-23",
+        readTime: "6 min read",
+        image: "PHOTOS/LITERARY/lit11.jpg",
+        body: `
+        
+            <p>
+            
+            Masaya ang aking pagkabata,<br>
+            Isang makapal na librong puno ng pahina<br>
+            Na gabi-gabi kong ginugunita;<br>
+            Ngunit ang bawat kwento’y nanatili na lamang,<br>
+            Nakakintal sa aking mga memorya.<br><br>
+
+            Kung noon ay nagigising sa away ni ate at kuya,<br>
+            Kung kanino ba nararapat ang upuan sa mesa;<br>
+            Ngayon, tilaok na lamang ng manok ang kasama,<br>
+            At ang sayaw ng amihan sa bintana<br><br>
+
+            Ang lamesang ginawa sana para sa lima,<br>
+            Ngayon, lulan na lang ay dalawa.<br>
+            Hindi ako sanay na walang nagsisiksikan sa sofa,<br>
+            Nawala na rin ang ingay at sigla;<br>
+            Ng kahapong puno ng ligaya<br><br>
+
+            Subalit wala kaming magawa ni ina.<br>
+            Kasama ang panauhing hindi umiimik—ang lungkot di matago,<br>
+            Mananatiling nakaupo sa hapag kasama ang katahimikang ito;<br>
+            Parehong pagpapanggap ang laman ng bawat subo,<br>
+            Mananatiling alimpuyo ang gumugulo sa puso.<br><br>
+
+            Nakita ko ang pag-alis ni ate sa kolehiyo,<br>
+            Ang pangingibang-bayan ni kuya para magtrabaho,<br>
+            Maging si ama’y lumayo patungong ibang ibayo;<br>
+            Lahat ng ito’y iniyakan ng musmos kong puso,<br>
+            Mga matang hindi pa handang magpaalam sa ganito.<br><br>
+
+            Kaya, tuwing patapos na ang buwan,<br>
+            Uhaw ang puso ko sa kwentong inaasahan;<br>
+            Ngunit, hindi na ito tulad ng nakaraan,<br>
+            Madalas pagod na si ate, pangako’y napaparam,<br>
+            At ang “oo” noon ay nagiging “sa susunod na lamang.”<br><br>
+
+            Si kuya, nananatili lang nang tatlong araw,<br>
+            Hindi kasi bayad ang pananatili sa tahanan;<br>
+            At si papa—tatlong buwan na siyang hindi nasisilayan,<br>
+            “Sayang naman kung ipamasahe pa,” wika niyang pauulit-ulit lamang, <br>
+            “Kung pwede namang ipadala,” kahit puso’y nahahadlangan. <br><br>
+
+            Ganito pala ang maging bunso;<br>
+            Hindi mo sila nasaksihang lumaki, pero namasdan ng iyong mata ang kanilang paglisan,<br>
+            sinanay ka sa haplos ng pagmamahal, ngunit hindi pala ito panghangganan.<br><br>
+
+            Hindi matatawid ng linya sa telepono ang pag-asang maibalik ang dati,<br>
+            Hindi mawawala ang pait sa labi ng bawat nakakahong tsokolate;<br>
+            Hindi mababawi ng “I love you” ang bawat luha sa gabi,<br>
+            Hindi kayang hilumin ng salapi ang mga sanang aking nabanggit.<br><br>
+
+            </p>
+            
+        `
+    }, 
+
+    {
+        slug: "Hindi-Tayo-sa-Papel",
+        category: "Literary",
+        displayCategory: "PANITIKAN",
+        title: "Hindi Tayo sa Papel",
+        summary: "For my family, freedom is the most important gift. Although I didn't personally experience martial law, I grew up listening to stories about it from my grandmother, Imang.",
+        author: "NOEL MANUBAY",
+        authorLine: "NOEL MANUBAY/CLSU Collegian",
+        credits: {
+            by: "NOEL MANUBAY/CLSU Collegian",
+            illustratedBy: "CASSANDRA MARIE CANSINO/CLSU Collegian",
+            layoutBy: "ASHER TERBY ESQUIVEL/CLSU Collegian",
+            labels: {
+                by: "Isinulat ni:",
+                illustratedBy: "Iginuhit ni:",
+                layoutBy: "Inianyo ni:"
+            }
+        },
+        date: "2026-05-13",
+        readTime: "3 min read",
+        image: "PHOTOS/LITERARY/lit10.jpg",
+        body: `
+        
+            <p>
+            
+            Kahit ilang siglo ka pang manahan<br>
+            sa bawat sulok at kwarto ng aking puso,<br>
+            Kahit ilang litro pa ng iyong dugo<br>
+            at anopamang likido <br>
+            ang padaluyin sa mga ugat ko,<br>
+            hindi pa rin magiging tayo.<br><br>
+
+            Kahit gawin mo pang balon<br>
+            ang aking balikat <br>
+            para sa pag-ulan ng iyong luha,<br>
+            Kahit na magkatabi tayo<br>
+            sa lahat ng litrato<br>
+            kasama ng iyong pamilya, <br>
+            Kahit hindi ko na maalala<br>
+            ang hitsura ng buhay na wala ka<br>
+            hindi pa rin magiging tayo.<br><br>
+
+            Kahit na ilaan mo <br>
+            ang kalahati ng iyong buhay<br>
+            para ako’y paglingkuran<br>
+            Kahit na ang tanging ibulong mo<br>
+            Sa mga nalalabing hikbi ng iyong katawan<br>
+            ang aking pangalan <br>
+            sa mata ng batas <br>
+            at sa porselanang mga mata<br>
+            ng mga diyos at santo nila<br>
+            ay hindi pa rin tayo.<br><br>
+
+            Pero sapat na sa akin,<br>
+            na hindi man sa dokumento ngunit<br>
+            sa bawat kanto ng iyong balat<br>
+            sa bawat kunot  ng iyong noo,<br>
+            sa pagitan ng bawat salitang<br>
+            pumupuslit sa mga labi mo<br>
+            naroon ang aking pangalan<br>
+            Nakasulat sa buong mong pagkatao<br>
+            magpakailanman.<br>
+
+            </p>
+            
+        `
+    }, 
+    {
+        slug: "long-time-no-see",
+        category: "Literary",
+        displayCategory: "LITERARY",
+        title: "Long Time No See",
+        summary: "For my family, freedom is the most important gift. Although I didn't personally experience martial law, I grew up listening to stories about it from my grandmother, Imang.",
+        author: "ANGELINE DOMINGO",
+        authorLine: "ANGELINE DOMINGO/CLSU Collegian",
+        credits: {
+            by: "MARIA ALEXA PEÑAFLOR/CLSU Collegian",
+            photosBy: "JEMIMA PAGAD/CLSU Collegian",
+        },
+        date: "2026-05-19",
+        readTime: "6 min read",
+        images: [
+            { src: "PHOTOS/LITERARY/lit9.jpg", alt: "How far can you go for love?", caption: "Opening frame", showCaption: true },
+            { src: "PHOTOS/LITERARY/lit9.1.jpg", alt: "How far can you go for love? alternate image", caption: "This caption stays hidden", showCaption: false },
+            { src: "PHOTOS/LITERARY/lit9.2.jpg", alt: "How far can you go for love? alternate image", caption: "Closing frame", showCaption: true },
+            { src: "PHOTOS/LITERARY/lit9.3.jpg", alt: "How far can you go for love? alternate image", showCaption: false }
+        ],
+
+        imageAlt: "Long Time No See",
+        body: `
+        
+            <p>
+            
+            From your view on the coast,<br>
+            where the hot sand burns your palm, <br>
+            when the sinking sun <br>
+            lingers over my head, <br>
+            you squint as the glare <br>
+            from the tide slices through the sea <br>
+            swallowing the untouchable halo.<br><br>
+
+            Every May, I hear a eulogy. <br>
+            When you ask if the river’s stillness <br>
+            fell with my hair. “You cut it too short.” <br>
+            When you try to hide the fear in your voice. <br>
+            As if your best friend’s life <br>
+            was snipped with the same scissors.<br><br>
+
+            It’s metallic, the taste on your tongue <br>
+            when my words cut a little too angry, <br>
+            about the litter from the tourists, <br>
+            the weather in this city. <br>
+            You wonder when my hair and blood <br>
+            turned red like the campfires you’ve seen. <br>
+            Maybe on the jeepney, <br>
+            maybe in the crowded halls at university.<br>
+            Maybe at my desolate dormitory.<br><br>
+
+            Beaded charms still cling to our wrists<br>
+            like familiar wishes and old prayers <br>
+            we no longer kneel to catch. Do we just <br>
+            let them fall now? <br>
+            When our friendship bracelets are too brittle <br>
+            to wear every day, <br>
+            when it takes us longer to find each other’s faces <br>
+            in Facebook group photos. <br>
+            But you’re just as scared to hear the beads unravel <br>
+            as you are burying them in a memory box.<br><br>
+
+            Unlike our bracelets, I can’t hide from you.<br>
+            You know me. <br>
+            You say the trees in Science City <br>
+            earn their rings every year <br>
+            until the branches bend too far.<br>
+            You know me enough to hate <br>
+            what I’ve grown into.<br>
+            Yet we return to each other<br>
+            every summer, <br>
+            like the quiet retreat of our bones to soil.<br>
+            Every May, I will hear a eulogy. <br><br>
+
+            Next summer, we will meet again<br>
+            by the shore, <br>
+            then, further from the water.<br>
+            Until we reach <br>
+            just the bus stop <br>
+            where you will drive me home and pretend,<br>
+            we still know each other. <br>
+            </p>
+            
+        `
+    }, 
     {
         slug: "How-far-can-you-go-for-love",
         category: "Literary",
@@ -24,7 +348,6 @@ window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
         date: "2026-06-06",
         readTime: "6 min read",
         image: "PHOTOS/LITERARY/lit8.jpg",
-        imageAlt: "How far can you go for love?",
         body: `
         
             <p>
