@@ -1,32 +1,26 @@
-# Daily Update Guide
+# Content Update Guide
 
-The site now uses data files for both articles and multimedia, so most updates do not require editing `index.html` or `multimedia.html` directly.
+This project is data-driven. Most content updates live in `data/`, and the site pages update automatically from those files.
 
-## Where content lives now
+## Where content lives
 
 - `data/site-config.js`
   - homepage ticker
   - featured story slug
   - trending list
-- `data/articles/literary.js`
-- `data/articles/features.js`
-- `data/articles/komiks.js`
-- `data/articles/news.js`
-- `data/articles/opinion.js`
-- `data/articles/devcom.js`
-- `data/articles/editorial.js`
-- `data/articles/column.js`
-- `data/articles/sports.js`
+- `data/articles/`
+  - article content by section
 - `data/multimedia.js`
-  - homepage latest multimedia
-  - full multimedia page
+  - homepage multimedia entries
+  - multimedia page entries
+- `data/issues.js`
+  - archive entries
 
-## How to add a new article
+## Article updates
 
-1. Open the matching category file inside `data/articles/`.
-2. Copy one existing article object.
-3. Paste the new article object into that same file.
-4. Fill in:
+1. Open the matching file inside `data/articles/`.
+2. Copy an existing article object.
+3. Update the required fields:
    - `slug`
    - `category`
    - `title`
@@ -34,58 +28,22 @@ The site now uses data files for both articles and multimedia, so most updates d
    - `author`
    - `authorLine`
    - `date` in `YYYY-MM-DD`
-   - `readTime` like `3 min read`
+   - `readTime`
    - `image`
    - `imageAlt`
-   - `socialImage` if you have a dedicated social preview crop
-   - `socialImageAlt` if the social preview image needs its own alt text
    - `body`
-   - `credits`
-5. Set `credits.labelPreset` when needed:
-   - `via` for most write-ups
-   - `written` for Literary and First POV write-ups
-   - `filipino` for Filipino labels
-6. If the story should be the homepage lead, update `featuredSlug` in `data/site-config.js`.
-7. If it should appear in the ticker or trending area, update `tickerItems` or `trending` in `data/site-config.js`.
+4. Update `credits` when needed.
+5. If the story should lead the homepage, change `featuredSlug` in `data/site-config.js`.
 
-## Social sharing previews
-
-- The reusable metadata helper lives in `scripts/article-seo.js`.
-- The generated preview pages live in `share/*.html`.
-- Run `node scripts/generate-share-pages.js` after editing article metadata so Facebook, X/Twitter, and Instagram previews stay in sync.
-- Keep `summary` concise and keep social artwork as close as possible to a 1200x630 crop for best results.
-- The article page share buttons copy the preview URL from `/share/<slug>.html`, which is the URL you should paste or distribute when you want the preview card to render correctly.
-
-## Article credit labels
-
-Use `credits.labelPreset` for the article page bylines:
-
-- `via`: `Via:`, `Illustrated by:`, `Animation by:`, `Photo by:` or `Photos by:`, `Layout by:`
-- `written`: `Written by:`, `Illustrated by:`, `Animation by:`, `Photo by:` or `Photos by:`, `Layout by:`
-- `filipino`: quick default labels only
-
-For exact Filipino grammar, use `credits.labels` and choose the exact wording yourself, such as:
-
-- `Isinulat ni:` or `Isinulat nina:`
-- `Iginuhit ni:` or `Iginuhit nina:`
-- `Animasyon ni:` or `Animasyon nina:`
-- `Larawan ni:` or `Larawan nina:`
-- `Inianyo ni:` or `Inianyo nina:`
-
-You can also override any single label with `credits.labels`.
-You can also mix labels, for example `Via:` for the main byline and Filipino for the rest.
-
-## How to update multimedia
+## Multimedia updates
 
 1. Open `data/multimedia.js`.
-2. Add a `date` value in `YYYY-MM-DD` format for each entry.
-3. Copy an existing item and paste it anywhere in the array when adding a new one.
-4. Update:
+2. Copy an existing multimedia item.
+3. Update:
    - `title`
-   - `caption`
-   - `platform`
    - `date`
-   - `presenterLabel` with the exact wording you want, like `Host:`, `Host/s:`, `Anchor:`, or `Anchor/s:`
+   - `platform`
+   - `presenterLabel`
    - `presenter`
    - `technicalDirectorLabel`
    - `technicalDirector`
@@ -95,14 +53,47 @@ You can also mix labels, for example `Via:` for the main byline and Filipino for
    - `editor`
    - `embedUrl`
    - `sourceUrl`
-   - `aspectRatio` as `"portrait"` or `"landscape"`
-5. Save the file.
+   - `aspectRatio`
+4. Mark the two cards you want featured with `featured: true`.
+5. Keep the dates accurate because the site sorts multimedia by date automatically.
 
-The homepage and `multimedia.html` page automatically sort multimedia from oldest to newest using the `date` field. The date filter on `multimedia.html` uses the same field.
+## Archive updates
+
+1. Open `data/issues.js`.
+2. Copy an existing issue object.
+3. Update:
+   - `slug`
+   - `title`
+   - `titleLineTwo`
+   - `label`
+   - `date`
+   - `subtitle`
+   - `summary`
+   - `image`
+   - `imageAlt`
+   - `links`
+4. The newest issue becomes the featured archive automatically.
+
+## Social sharing previews
+
+- The preview metadata helper lives in `scripts/article-seo.js`.
+- Generated preview pages live in `share/*.html`.
+- Run `node scripts/generate-share-pages.js` after editing article metadata.
+- Keep `summary` short and social artwork close to a `1200x630` crop.
+
+## Article credit labels
+
+Use `credits.labelPreset` when you want standard labels:
+
+- `via`
+- `written`
+- `filipino`
+
+For exact Filipino labels, use `credits.labels` and define the wording yourself.
 
 ## Image paths
 
-Use paths relative to the project root, for example:
+Use project-relative paths like:
 
 ```js
 image: "PHOTOS/FEATURES/feature3.jpg"
@@ -110,19 +101,9 @@ image: "PHOTOS/LITERARY/lit1.jpg"
 image: "PHOTOS/NEWS/news1.jpg"
 ```
 
-## Article body format
+## Best practices
 
-`body` uses HTML. Example:
-
-```html
-<p>Your paragraph here.</p>
-<h2>Your section heading</h2>
-<blockquote><p>Your quoted line here.</p></blockquote>
-```
-
-## Suggested organization
-
-- Keep article files grouped by category.
-- Keep multimedia entries in `data/multimedia.js` dated correctly so automatic sorting stays accurate.
-- Keep slugs unique across all article files.
-- Use exact publish dates for articles so sorting stays correct.
+- Keep slugs unique.
+- Keep dates in `YYYY-MM-DD` format.
+- Prefer short summaries.
+- Reuse existing entry shapes when adding new content.

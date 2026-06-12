@@ -1450,11 +1450,6 @@ function createMultimediaCard(item, variant = "default") {
         item.videographer ? `<p class="multimedia-meta"><strong>${item.videographerLabel || "Videographer/s:"}</strong> ${item.videographer}</p>` : "",
         item.editor ? `<p class="multimedia-meta"><strong>${item.editorLabel || "Editor/s:"}</strong> ${item.editor}</p>` : ""
     ].filter(Boolean).join("");
-    const compactCredits = [
-        item.technicalDirector ? `<p class="multimedia-meta"><strong>${item.technicalDirectorLabel || "Technical Director/s:"}</strong> ${item.technicalDirector}</p>` : "",
-        item.videographer ? `<p class="multimedia-meta"><strong>${item.videographerLabel || "Videographer/s:"}</strong> ${item.videographer}</p>` : "",
-        item.editor ? `<p class="multimedia-meta"><strong>${item.editorLabel || "Editor/s:"}</strong> ${item.editor}</p>` : ""
-    ].filter(Boolean).join("");
     const bylineMarkup = `<p class="multimedia-byline">${getMultimediaByline(item)}</p>`;
 
     if (isGmaLayout) {
@@ -1575,10 +1570,6 @@ function compareMultimediaDates(leftDate, rightDate) {
     }
 
     return leftTime - rightTime;
-}
-
-function sortItemsByOldest(items) {
-    return [...items].sort((left, right) => compareMultimediaDates(left.date, right.date));
 }
 
 function getMonthKey(dateString) {
