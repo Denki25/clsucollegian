@@ -7,6 +7,119 @@
 // 6. Use images: [{ src, alt, caption, showCaption }] for multi-photo articles; the article page will automatically render a carousel when more than one image is present.
 
 window.CLSU_ARTICLES = (window.CLSU_ARTICLES || []).concat([
+        {
+        slug: "Freshies-Map",
+        category: "Features",
+        displayCategory: "LATHALAIN",
+        title: "Places That Feel Like Home: A Freshie’s Map to CLSU",
+        summary: "Isang bagong kapistahan ang sumibol ngayong Marso sa bayan ng Cuyapo, ang Warek-Warek Festival na nagbibigay-pugay sa isang putaheng Ilokano. Indakan sa lansangan, malilikhaing floats, at masisiglang kantahan ang nagbigay-buhay sa taunang kapistahan ng bayan.",
+        author: "REYMARC ABAYA, RENZ JUSTINE AQUINO & CASSANDRA MARIE CANSINO",
+        authorLine: "By REYMARC ABAYA, RENZ JUSTINE AQUINO & CASSANDRA MARIE CANSINO, CLSU Collegian",
+        credits: {
+            by: "REYMARC ABAYA, RENZ JUSTINE AQUINO & CASSANDRA MARIE CANSINO/CLSU Collegian",
+            layoutBy: "CASSANDRA MARIE CANSINO/CLSU Collegian",
+            illustratedBy: "CASSANDRA MARIE CANSINO/CLSU Collegian",
+            labels: {
+                by: "Isinulat nina:",
+                layoutBy: "Inianyo ni:",
+                illustratedBy: "Iginuhit ni:"
+            }
+        },
+
+        date: "2026-03-10",
+        readTime: "10 min read",
+        image: "PHOTOS/FEATURES/feature9.jpg",
+        imageAlt: "Kung Saan Lumutang ang Cuyapo",
+        body: `
+    
+            <p>
+            Isang bagong kapistahan ang sumibol ngayong Marso sa bayan ng Cuyapo, ang Warek-Warek Festival na nagbibigay-pugay sa isang putaheng Ilokano. Indakan sa lansangan, malilikhaing floats, at masisiglang kantahan ang nagbigay-buhay sa taunang kapistahan ng bayan.<br><br>
+            Kadalasan sa mga opisyal na kapistahan ng mga pook sa Pilipinas gaya nito ay may malalim na kultural o historikal na pinanggagalingan. Ngunit kung babaybayin ang alaala ng bayan ng Cuyapo, hindi Warek-Warek Festival ang matatagpuan, kundi ang isang kapistahan na unang nagpalutang sa kagandahan at pagkamalikhain ng komunidad.<br><br>
+            
+            <b>𝗘𝘁𝗶𝗺𝗼𝗹𝗼𝗵𝗶𝘆𝗮 𝗻𝗴 𝗯𝗮𝘆𝗮𝗻</b><br><br>
+            
+            Nagmula ang pangalan ng bayan sa kiapo, isang halamang tumutubo sa mga ilog at lawa, at namumuhay nang hindi nakakapit sa lupa.<br><br>
+            Katulad ng kiapo, isa rin sa mga lumutang sa bayan ng Cuyapo ang Water Lily na dati’y karaniwan lamang na tanawin sa mga daluyan ng tubig, bahagi ng kalikasang tahimik na kasama sa araw-araw na pamumuhay.<br><br>
+            Tuwing sasapit noon ang buwan ng Abril, ipinagdiriwang ng mga Cuyapeño ang Water Lily Festival na nagtatampok sa iba’t ibang produkto mula sa liryo ng tubig—isang produktong tangi sa Cuyapo.<br><br>
+            Tahimik at matiisin ang buhay ng isang Water Lily. Hindi man ito nakaugat sa lupa, patuloy itong lumulutang at namumukadkad sa ibabaw ng tubig, sumasabay sa agos at panahon. Sa ganitong anyo, nahahawig ito sa alaala ng bayan—hindi madalas mapansin, ngunit patuloy na nabubuhay.<br><br>
+            Nakaukit sa puso’t isipan ng isang lokal sa lugar ang mga panahong ang ilog ay puno ng liryo at buhay ang bawat baryo. Ang mga tanawing ito ang nagsilbing saksi sa kasaganahang minsang bumalot sa komunidad. <br>
+           
+            <blockquote><p>
+            “Sa mga baryo, hindi mawawala ang Water Lily, marami’t marami pa rin. Mas marami noon, gaya noong tulay sa amin dati maraming [Water Lily]. Siguro nilinis-linis na, pinakamarami na tinutubuan ‘yung ilog sa barangay,” pagbabalik tanaw ni Tatay Renato Bernandino, 65. 
+            </p></blockquote>
+            <p>
+
+            Sa kanyang tinig, malinaw ang paggunita sa panahong ang ilog ay sentro ng buhay at ugnayan. Ang Water Lily ay hindi lamang halaman, kundi bahagi ng kanilang kasaysayan.<br>
+           
+            <blockquote><p>
+            “Noong nakaraang administrasyon, ‘yan talaga ang pinopromote ng turismo noong araw Water Lily, bawat barangay concentrate sa pag-produce ng products gawa sa Water Lily,” pagkukwento ni Tatay Renato na nagpapakita ng pagpapahalaga sa halaman na nagpalutang sa bayan.
+            </p></blockquote>
+            <p>
+
+            <b>𝗕𝘂𝗻𝗴𝗮 𝗻𝗴 𝗧𝘂𝗯𝗶𝗴</b><br><br>
+          
+            Sa bayang pinagpala sa maliliit na lawa sa gitna ng kabukiran, umusbong ang malikhaing sining mula sa liryo ng tubig. Mula rito, nabuo ang mga bag at basket na may matitibay na habi, pati mga tsinelas, sumbrero, at iba’t ibang kagamitang pantahanan tulad ng lampshade, plorera, at palamuti.<br>
+           
+            <blockquote><p>
+            “Kukuha kami dyan [sa Libsong lake] tapos papatuyuin namin, tapos meron kaming machine na pangpitpit. ‘Yun ‘yung trinitrintas namin,” pagkukwento ni Tita Daisy Rosina, 54, na isa sa mga naging artisan ng Water Lily.
+            </p></blockquote>
+            <p>
+
+            Isang natatanging likhang-sining na sumasalamin sa malikhaing paggamit ng likas na yaman ng bayan ay ang malaking tsinelas sa Cuyapo. Bukod sa pagiging atraksyon sa mga bisita ay isa ang higanteng tsinelas sa mga pinakatumatak sa mga alaala ng mga Cuyapeño sa paggunita ng pista ng Water Lily.<br>
+            
+            <blockquote><p>
+            “Tsinelas na malaki, pinanglaban ng barangay namin ‘yan. ‘Yung nasa taas ng munisipyo. Kami ‘yung nanalo non. Gawa lang ‘yon lahat sa Water Lily,” pagmamalaki ni Tita Daisy.
+            </p></blockquote>
+            <p>
+
+            Ang minsang namukadkad na kuwento ng Water Lily sa bayan ay dumaong na sa katapusan. Kalakip nito ang halos hindi namamalayang paglubog ng oportunidad sa bayan upang gawing hanapbuhay ang bunga ng tubig.<br>
+
+            <blockquote><p>
+            “Sayang kasi nga malaking pakinabang, maraming nakikinabang noon eh ‘pag gumagawa kami noon ng slipper nabebenta. Hanap buhay din siya. Kapag may fiesta kasi may booth doon itinitinda ng barangay,” ani Tita Daisy.
+            </p></blockquote>
+            <p>
+
+            Para sa mga Cuyapeño, ang mga produktong ito ay patunay ng kanilang pagkamalikhain, tiyaga, pagkakaisa, at higit sa lahat, pagkakakilanlan. <br><br>
+           
+            <b>𝗣𝗮𝗴𝗹𝘂𝗯𝗼𝗴 𝗻𝗴 𝗗𝗮𝘁𝗶𝗻𝗴 𝗡𝗮𝗴𝗽𝗮𝗹𝘂𝘁𝗮𝗻𝗴</b><br><br>
+           
+            Sinubok ng panahon ang tibay ng hinabing kasaysayan ng Water Lily sa bayan ng Cuyapo. Sa likod ng makulay na pagdiriwang, bitbit ng mga lokal ang katotohanan ng dahan-dahang pagpanaw ng halamang minsang bumuhay sa pista. <br><br>
+            Sa pagbabalik-tanaw ni Antonio Sabado, 58, mabigat ang kanyang tinig habang inaalala ang nangyari sa Water Lily, “May kumakain sa waterlily [igat at pagkalusaw sa herbicide], tapos napalitan ng rubaw [ibang puno].” Isang tahimik na pahayag, ngunit sapat upang ipakita kung paanong napalitan ang dating sagana.<br><br>
+            Gayunpaman, hindi lamang alaala ng kasaganahan ang iniwan ng Water Lily. Sa ilang bahagi ng bayan, naging balakid din ito sa kabuhayan. Sa dami noon ng bilang nito, mga magsasaka ang napeperwisyo. <br>
+           
+            <blockquote><p>
+            “Sa farmers, sagabal ‘yun sa palayan, minsan kasi sa palayan na tumutubo ‘yung Water Lily kaya siguro paunti-unti nawawala ‘yung Water Lily kasi nililinis na nung may sakahan,” paglalahad ni Tatay Renato. 
+            </p></blockquote>
+            <p>
+
+            Sa mga pangyayaring ito, ang bayan ay patuloy na hinahaluan ang orihinal na mukha ng selebrasyon. Ayon kay Antonio, “Noon, ang konsepto talaga ng pista ay Water Lily, kalaunan nagkaroon ng cornhusk.” Kalaunan, inanunsyo ng lokal ng pamahalaan ang bagong opisyal na pista ng Cuyapo na malayo sa ugat ng taniman.<br><br>
+            Kung titimbangin ang kalagayan ng Water Lily sa bayan ngayon, tila mas madaling kumuha ng mga produktong nakaugat sa lupa gaya ng palay at mais.<br><br>
+            Gayunpaman, hindi maitatanggi ang naging kontribusyon ng Water Lily sa turismo ng bayan, kung saan nakilala ang Cuyapeño at kung saan nagmula ang pangalan ng sariling bayan.<br>
+           
+            <blockquote><p>
+            “Kung sa kapakinabangan at ikagaganda ng turismo, ‘yan kasi ang isang nagpayaman sa turismo kagaya ng Cuyapo na nag-promote ng Water Lily, siguro pwede pa rin ibalik ‘yung dati depende sa tao nga,” paninindigan ni Tatay Renato.
+            </p></blockquote>
+            <p>
+
+            Mula sa magkakahiwalay na hibla ng Water Lily, nabubuo ang mga produktong matibay at may saysay, gaya ng isang pamayanang humuhugot ng lakas sa pagkakaisa. Katulad ng mga Cuyapeño, ang hiwa-hiwalay na anyo ay nagiging masagana kapag pinagtagpi-tagpi.<br><br>
+            Saan nga ba tunay na lumutang ang Cuyapo?<br><br>
+            Hindi lamang sa mga liryo ng tubig na minsang umusbong sa ilog, kundi sa mga taong patuloy na nagbabayanihan upang ipamalas ang galing, sipag, at kinang ng bawat isa. <br><br>
+            Tulad ng alaala ng Water Lily, hindi tuluyang lulubog ang kasaysayan at pinagmulan ng isang bayan kung ito ay ituturo sa kabataan at patuloy na pahahalagahan.<br><br>
+
+            </p>
+            </p>
+            </p>
+            </p>
+            </p>
+            </p>
+            </p>
+            </p>
+
+
+
+        `
+    },
+    
     {
         slug: "kung-saan-lumutang-ang-cuyapo",
         category: "Features",

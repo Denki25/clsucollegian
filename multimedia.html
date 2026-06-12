@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700;800&family=Noto+Serif:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="multimedia-page">
     <header>
         <nav class="navbar">
             <div class="nav-container">
@@ -62,18 +62,21 @@
 
     <main class="section-page">
         <section class="container">
-            <div class="page-intro">
+            <div class="page-intro multimedia-intro">
                 <h1>Multimedia</h1>
-               
             </div>
 
-            <div class="news-filters">
-                <select id="section-month-filter" title="Filter by month">
-                    <option value="all">All months</option>
-                </select>
-            </div>
+            <section class="multimedia-featured-section">
+                <div class="section-heading multimedia-section-heading">
+                    <h2>Featured Videos</h2>
+                </div>
+                <div class="videos-grid multimedia-featured-grid" id="multimediaFeaturedGrid"></div>
+            </section>
 
-            <section class="multimedia">
+            <section class="multimedia multimedia-latest-section">
+                <div class="section-heading multimedia-section-heading">
+                    <h2>Latest Videos</h2>
+                </div>
                 <div class="videos-grid" id="multimediaPageGrid"></div>
             </section>
         </section>

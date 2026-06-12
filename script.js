@@ -421,6 +421,10 @@ function getIssueUrl(issue) {
     return issueSlug ? `issues.html#${encodeURIComponent(issueSlug)}` : "issues.html";
 }
 
+function getSortedIssuesByNewest() {
+    return sortItemsByNewest(siteIssues);
+}
+
 function toAbsoluteUrl(value) {
     if (!value) {
         return "";
@@ -773,13 +777,10 @@ function createPaginationMarkup(currentPage, totalPages, ariaLabel = "Pagination
     return `
         <div class="section-pagination-wrap">
             <nav class="section-pagination" aria-label="${ariaLabel}">
-                <button type="button" class="section-pagination-button section-pagination-nav" data-page="${currentPage - 1}" ${currentPage === 1 ? "disabled" : ""}>
-                    Previous
-                </button>
-                <div class="section-pagination-pages" aria-label="Page numbers">
+                <div class="section-pagination-steps" aria-label="Page numbers">
                     ${pageSequence.map((page) => page === "ellipsis"
                         ? `<span class="section-pagination-ellipsis" aria-hidden="true">...</span>`
-                        : `<button type="button" class="section-pagination-button${page === currentPage ? " active" : ""}" data-page="${page}" ${page === currentPage ? 'aria-current="page"' : ""}>${page}</button>`
+                        : `<button type="button" class="section-pagination-button section-pagination-step${page === currentPage ? " active" : ""}" data-page="${page}" ${page === currentPage ? 'aria-current="page"' : ""}>${page}</button>`
                     ).join("")}
                 </div>
                 <button type="button" class="section-pagination-button section-pagination-nav" data-page="${currentPage + 1}" ${currentPage === totalPages ? "disabled" : ""}>
@@ -1430,6 +1431,8 @@ function createMultimediaCard(item, variant = "default") {
     const platformLabel = item.platform || "Multimedia";
     const isFeatured = variant === "featured";
     const isHomeCompact = variant === "home-compact";
+    const isGmaLayout = variant === "gma" || variant === "gma-featured";
+    const isGmaFeatured = variant === "gma-featured";
     const cardClass = isFeatured ? "multimedia-card multimedia-card-featured" : "multimedia-card";
     const titleTag = isFeatured ? "h2" : "h3";
     const dateMarkup = item.date ? `<p class="multimedia-date">${formatDate(item.date)}</p>` : "";
@@ -1451,6 +1454,31 @@ function createMultimediaCard(item, variant = "default") {
         item.editor ? `<p class="multimedia-meta"><strong>${item.editorLabel || "Editor/s:"}</strong> ${item.editor}</p>` : ""
     ].filter(Boolean).join("");
     const bylineMarkup = `<p class="multimedia-byline">${getMultimediaByline(item)}</p>`;
+
+    if (isGmaLayout) {
+        const hostName = getMultimediaBylineName(item);
+        const hostDate = [hostName, item.date ? formatDate(item.date) : ""].filter(Boolean).join(", ");
+
+        return `
+            <article class="multimedia-card multimedia-card-gma${isGmaFeatured ? " multimedia-card-gma-featured" : ""}">
+                <div class="multimedia-frame multimedia-frame-gma">
+                    <div class="${aspectRatioClass}">
+                        <iframe
+                            src="${item.embedUrl}"
+                            title="${item.title}"
+                            scrolling="no"
+                            allowfullscreen="true"
+                            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+                        </iframe>
+                    </div>
+                </div>
+                <div class="multimedia-card-content multimedia-card-content-gma">
+                    <h3 class="multimedia-title">${item.title}</h3>
+                    <p class="multimedia-meta-line">${hostDate}</p>
+                </div>
+            </article>
+        `;
+    }
 
     if (isHomeCompact) {
         return `
@@ -1589,41 +1617,38 @@ function sortItemsByNewest(items) {
 
 function renderMultimedia() {
     const homeGrid = document.getElementById("homeMultimediaGrid");
+    const featuredGrid = document.getElementById("multimediaFeaturedGrid");
     const multimediaPageGrid = document.getElementById("multimediaPageGrid");
-    const monthFilter = document.getElementById("section-month-filter");
     const sortedMultimedia = sortItemsByNewest(siteMultimedia);
 
     if (homeGrid) {
         homeGrid.innerHTML = sortedMultimedia.slice(0, 3).map((item) => createMultimediaCard(item)).join("");
     }
 
-    if (multimediaPageGrid) {
-        initializeMonthFilter(monthFilter, sortedMultimedia, "asc");
+    if (featuredGrid || multimediaPageGrid) {
+        const featuredItems = sortedMultimedia.filter((item) => item.featured).slice(0, 2);
+        const regularItems = sortedMultimedia.filter((item) => !item.featured);
 
-        const renderPageGrid = () => {
-            const selectedMonth = monthFilter ? monthFilter.value : "all";
-            const filteredItems = sortItemsByNewest(filterItemsByMonth(sortedMultimedia, selectedMonth));
-
-            multimediaPageGrid.innerHTML = filteredItems.length > 0
-                ? filteredItems.map((item) => createMultimediaCard(item)).join("")
-                : `<div class="news-empty">No multimedia entries are available yet.</div>`;
-
-            observeAnimatedElements();
-        };
-
-        if (monthFilter && !monthFilter.dataset.bound) {
-            monthFilter.addEventListener("change", renderPageGrid);
-            monthFilter.dataset.bound = "true";
+        if (featuredGrid) {
+            featuredGrid.innerHTML = featuredItems.length > 0
+                ? featuredItems.map((item) => createMultimediaCard(item, "gma-featured")).join("")
+                : `<div class="news-empty">No featured multimedia entries are available yet.</div>`;
         }
 
-        renderPageGrid();
+        if (multimediaPageGrid) {
+            multimediaPageGrid.innerHTML = regularItems.length > 0
+                ? regularItems.map((item) => createMultimediaCard(item, "gma")).join("")
+                : `<div class="news-empty">No multimedia entries are available yet.</div>`;
+        }
+
+        observeAnimatedElements();
         return;
     }
 
     observeAnimatedElements();
 }
 
-function createIssueCard(issue) {
+function createIssueCard(issue, isFeatured = false) {
     const issueLinks = Array.isArray(issue.links)
         ? issue.links.map((link) => `
             <a class="archive-link-pill" href="${link.url}" target="_blank" rel="noopener noreferrer">
@@ -1633,15 +1658,21 @@ function createIssueCard(issue) {
         : "";
 
     const archiveId = issue.slug ? ` id="${issue.slug}"` : "";
+    const archiveClasses = ["archive-card"];
+
+    if (isFeatured) {
+        archiveClasses.push("archive-card--featured");
+    }
 
     return `
-        <article class="archive-card"${archiveId}>
+        <article class="${archiveClasses.join(" ")}"${archiveId}>
             <a class="archive-cover-link" href="${getIssueUrl(issue)}" aria-label="View ${issue.title} in Kulê Archives">
                 <div class="archive-cover-shell" aria-hidden="true"></div>
                 <img src="${issue.image}" alt="${issue.imageAlt || issue.title}" class="archive-cover-image">
             </a>
             <div class="archive-content">
                 <div class="archive-heading">
+                    ${isFeatured ? '<span class="archive-badge">Latest Release</span>' : ""}
                     <h3>${issue.title}</h3>
                     ${issue.titleLineTwo ? `<p class="archive-title-line-two">${issue.titleLineTwo}</p>` : ""}
                 </div>
@@ -1653,27 +1684,69 @@ function createIssueCard(issue) {
     `;
 }
 
+function createFeaturedIssueHero(issue) {
+    if (!issue) {
+        return "";
+    }
+
+    const issueSummary = issue.summary || issue.subtitle || "Browse the latest CLSU Collegian archive release.";
+    const issueDate = formatDate(issue.date);
+    const issueButtons = Array.isArray(issue.links)
+        ? issue.links.map((link) => `
+            <a class="featured-archive-link" href="${link.url}" target="_blank" rel="noopener noreferrer">
+                ${link.label}
+            </a>
+        `).join("")
+        : "";
+
+    return `
+        <article class="featured-archive-card">
+            <a class="featured-archive-media" href="${getIssueUrl(issue)}" aria-label="Open ${issue.title} featured archive">
+                <img src="${issue.image}" alt="${issue.imageAlt || issue.title}" class="featured-archive-image">
+            </a>
+            <div class="featured-archive-content">
+                <span class="featured-archive-kicker">Latest Release</span>
+                <h2>${issue.title}</h2>
+                ${issue.titleLineTwo ? `<p class="featured-archive-subtitle">${issue.titleLineTwo}</p>` : ""}
+                ${issueDate ? `<p class="featured-archive-date">${issueDate}</p>` : ""}
+                <p class="featured-archive-summary">${issueSummary}</p>
+                ${issueButtons ? `<div class="featured-archive-actions">${issueButtons}</div>` : ""}
+            </div>
+        </article>
+    `;
+}
+
 function renderIssues() {
     const homeIssuesGrid = document.getElementById("homeIssuesGrid");
     const issuesPageGrid = document.getElementById("issuesPageGrid");
     const monthFilter = document.getElementById("section-month-filter");
+    const featuredArchive = document.getElementById("featuredArchive");
     const emptyMarkup = `<div class="news-empty">No archive entries are available yet.</div>`;
+    const sortedIssues = getSortedIssuesByNewest();
+    const featuredIssue = sortedIssues[0] || null;
+
+    if (featuredArchive) {
+        featuredArchive.innerHTML = featuredIssue
+            ? createFeaturedIssueHero(featuredIssue)
+            : emptyMarkup;
+    }
 
     if (homeIssuesGrid) {
-        homeIssuesGrid.innerHTML = siteIssues.length > 0
-            ? siteIssues.slice(0, 1).map((issue) => createIssueCard(issue)).join("")
+        homeIssuesGrid.innerHTML = featuredIssue
+            ? createIssueCard(featuredIssue, true)
             : emptyMarkup;
     }
 
     if (issuesPageGrid) {
-        initializeMonthFilter(monthFilter, siteIssues);
+        initializeMonthFilter(monthFilter, sortedIssues);
 
         const renderPageGrid = () => {
             const selectedMonth = monthFilter ? monthFilter.value : "all";
-            const filteredIssues = sortItemsByNewest(filterItemsByMonth(siteIssues, selectedMonth));
+            const filteredIssues = sortItemsByNewest(filterItemsByMonth(sortedIssues, selectedMonth));
+            const pageIssues = filteredIssues.filter((issue) => issue !== featuredIssue);
 
-            issuesPageGrid.innerHTML = filteredIssues.length > 0
-                ? filteredIssues.map((issue) => createIssueCard(issue)).join("")
+            issuesPageGrid.innerHTML = pageIssues.length > 0
+                ? pageIssues.map((issue) => createIssueCard(issue)).join("")
                 : emptyMarkup;
 
             observeAnimatedElements();
@@ -2327,6 +2400,7 @@ function setShareFeedback(message) {
     }
 }
 
+
 function isLikelyMobileDevice() {
     if (typeof window === "undefined") {
         return false;
@@ -2411,7 +2485,7 @@ shareButtons.forEach((button) => {
                     return;
                 }
             } catch (error) {
-                // Fall through to platform-specific fallback.
+                
             }
         }
 

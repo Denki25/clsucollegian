@@ -1,4 +1,27 @@
 window.CLSU_ISSUES = [
+    
+    {
+        slug: "blooms-heart",
+        title: "What blooms in your heart?",
+        titleLineTwo: "LITERARY FOLIO VOL.LXVII, Issue No. II",
+        label: "Latest Release",
+        date: "2026-05-31",
+        subtitle: "A Botanist's Guide to Love That Blooms in the Philippines",
+        summary: "A month after an intense regional battle in the courts of the State Universities and Colleges (SUC) III Olympics in Cabanatuan City, let's look back on the stories of the ones who seized the glory, the ones who fell short, the ones who were left behind, and the ones who gave their sacrifices and expertise to ensure the regional event's efficiency.",
+        image: "PHOTOS/ISSUES/valentines.jpg",
+        imageAlt: "What blooms in your heart?",
+        links: [
+            {
+                label: "Google Drive",
+                url: "https://tinyurl.com/34jcw22m"
+            },
+            {
+                label: "Flipbook",
+                url: "https://tinyurl.com/2yxh5zjf"
+            }
+        ]
+    },
+
     {
         slug: "suc-iii-olympics-2026",
         title: "SUC III OLYMPICS 2026",
