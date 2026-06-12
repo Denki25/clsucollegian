@@ -928,7 +928,9 @@ function createEmbeddedVideoMarkup(embedUrl, title, containerClass = "video-cont
                 title="${title}"
                 scrolling="no"
                 allowfullscreen="true"
-                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+                webkitallowfullscreen="true"
+                mozallowfullscreen="true"
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share; fullscreen">
             </iframe>
         </div>
     `;
@@ -1462,13 +1464,20 @@ function createMultimediaCard(item, variant = "default") {
         return `
             <article class="multimedia-card multimedia-card-gma${isGmaFeatured ? " multimedia-card-gma-featured" : ""}">
                 <div class="multimedia-frame multimedia-frame-gma">
+                    <button type="button" class="multimedia-fullscreen-button" data-multimedia-fullscreen aria-label="Open video fullscreen">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <path d="M7 3H3v4h2V5h2V3Zm12 0h-4v2h2v2h2V3ZM5 17H3v4h4v-2H5v-2Zm14 0v2h-2v2h4v-4h-2Z"/>
+                        </svg>
+                    </button>
                     <div class="${aspectRatioClass}">
                         <iframe
                             src="${item.embedUrl}"
                             title="${item.title}"
                             scrolling="no"
                             allowfullscreen="true"
-                            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+                            webkitallowfullscreen="true"
+                            mozallowfullscreen="true"
+                            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share; fullscreen">
                         </iframe>
                     </div>
                 </div>
@@ -1490,7 +1499,9 @@ function createMultimediaCard(item, variant = "default") {
                             title="${item.title}"
                             scrolling="no"
                             allowfullscreen="true"
-                            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+                            webkitallowfullscreen="true"
+                            mozallowfullscreen="true"
+                            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share; fullscreen">
                         </iframe>
                     </div>
                 </div>
@@ -1518,7 +1529,9 @@ function createMultimediaCard(item, variant = "default") {
                         title="${item.title}"
                         scrolling="no"
                         allowfullscreen="true"
-                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+                        webkitallowfullscreen="true"
+                        mozallowfullscreen="true"
+                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share; fullscreen">
                     </iframe>
                 </div>
             </div>
@@ -1646,6 +1659,60 @@ function renderMultimedia() {
     }
 
     observeAnimatedElements();
+}
+
+function requestElementFullscreen(element) {
+    if (!element) {
+        return false;
+    }
+
+    const request = element.requestFullscreen
+        || element.webkitRequestFullscreen
+        || element.mozRequestFullScreen
+        || element.msRequestFullscreen;
+
+    if (!request) {
+        return false;
+    }
+
+    const result = request.call(element);
+    if (result && typeof result.catch === "function") {
+        result.catch(() => {
+            // Ignore fullscreen errors and let the fallback handle it.
+        });
+    }
+
+    return true;
+}
+
+function setupMultimediaFullscreenControls() {
+    document.addEventListener("click", (event) => {
+        const button = event.target.closest && event.target.closest("[data-multimedia-fullscreen]");
+        if (!button) {
+            return;
+        }
+
+        const card = button.closest(".multimedia-card-gma");
+        if (!card) {
+            return;
+        }
+
+        const iframe = card.querySelector("iframe");
+        if (!iframe) {
+            return;
+        }
+
+        const fullscreenTarget = iframe.parentElement || iframe;
+        const enteredFullscreen = requestElementFullscreen(fullscreenTarget);
+        if (enteredFullscreen) {
+            return;
+        }
+
+        const fallbackUrl = iframe.getAttribute("src") || "";
+        if (fallbackUrl) {
+            window.open(fallbackUrl, "_blank", "noopener,noreferrer");
+        }
+    });
 }
 
 function createIssueCard(issue, isFeatured = false) {
@@ -2236,6 +2303,7 @@ renderHomePage();
 renderSectionPage();
 renderArticlePage();
 renderMultimedia();
+setupMultimediaFullscreenControls();
 renderIssues();
 
 const hamburger = document.querySelector(".hamburger");
