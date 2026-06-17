@@ -50,6 +50,25 @@ function injectVercelAnalytics() {
 
 injectVercelAnalytics();
 
+function injectVercelSpeedInsights() {
+    if (document.getElementById("vercel-speed-insights-script")) {
+        return;
+    }
+
+    // Vercel Speed Insights bootstrap for this static HTML site.
+    window.si = window.si || function () {
+        (window.siq = window.siq || []).push(arguments);
+    };
+
+    const script = document.createElement("script");
+    script.id = "vercel-speed-insights-script";
+    script.defer = true;
+    script.src = "https://va.vercel-scripts.com/v1/speed-insights/script.js";
+    document.head.appendChild(script);
+}
+
+injectVercelSpeedInsights();
+
 function getPreferredTheme() {
     try {
         const savedTheme = window.localStorage.getItem(themeStorageKey);
