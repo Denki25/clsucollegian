@@ -31,6 +31,25 @@ const siteData = {
 const themeStorageKey = "clsu-theme";
 let themeSwitchTimerId = null;
 
+function injectVercelAnalytics() {
+    if (document.getElementById("vercel-analytics-script")) {
+        return;
+    }
+
+    // Vercel Web Analytics bootstrap for this static HTML site.
+    window.va = window.va || function () {
+        (window.vaq = window.vaq || []).push(arguments);
+    };
+
+    const script = document.createElement("script");
+    script.id = "vercel-analytics-script";
+    script.defer = true;
+    script.src = "https://va.vercel-scripts.com/v1/script.js";
+    document.head.appendChild(script);
+}
+
+injectVercelAnalytics();
+
 function getPreferredTheme() {
     try {
         const savedTheme = window.localStorage.getItem(themeStorageKey);
@@ -876,7 +895,7 @@ function normalizeEmbedUrl(embedUrl) {
 
 function createArticlePlaceholder(article, className = "article-thumb-placeholder") {
     const isVideo = isVideoMediaArticle(article);
-    const placeholderClass = isVideo ? `${className} literary-video-placeholder` : className;
+    const placeholderClass = className;
     const displayCategory = getArticleDisplayCategory(article);
     const placeholderLabel = isVideo ? `${displayCategory} Animation` : displayCategory;
 
@@ -932,6 +951,31 @@ function createEmbeddedVideoMarkup(embedUrl, title, containerClass = "video-cont
                 mozallowfullscreen="true"
                 allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share; fullscreen">
             </iframe>
+        </div>
+    `;
+}
+
+function createStandaloneVideoMarkup(embedUrl, title, containerClass = "video-container landscape") {
+    const normalizedEmbedUrl = normalizeEmbedUrl(embedUrl);
+
+    return `
+        <div class="featured-video-shell">
+            <div class="${containerClass}">
+                <button type="button" class="multimedia-fullscreen-button" data-multimedia-fullscreen aria-label="Open video fullscreen">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path d="M7 3H3v4h2V5h2V3Zm12 0h-4v2h2v2h2V3ZM5 17H3v4h4v-2H5v-2Zm14 0v2h-2v2h4v-4h-2Z"/>
+                    </svg>
+                </button>
+                <iframe
+                    src="${normalizedEmbedUrl}"
+                    title="${title}"
+                    scrolling="no"
+                    allowfullscreen="true"
+                    webkitallowfullscreen="true"
+                    mozallowfullscreen="true"
+                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share; fullscreen">
+                </iframe>
+            </div>
         </div>
     `;
 }
@@ -1488,6 +1532,11 @@ function createMultimediaCard(item, variant = "default") {
         return `
             <article class="multimedia-card multimedia-card-home">
                 <div class="multimedia-frame multimedia-frame-home">
+                    <button type="button" class="multimedia-fullscreen-button" data-multimedia-fullscreen aria-label="Open video fullscreen">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <path d="M7 3H3v4h2V5h2V3Zm12 0h-4v2h2v2h2V3ZM5 17H3v4h4v-2H5v-2Zm14 0v2h-2v2h4v-4h-2Z"/>
+                        </svg>
+                    </button>
                     <div class="${aspectRatioClass}">
                         <iframe
                             src="${item.embedUrl}"
@@ -1518,6 +1567,11 @@ function createMultimediaCard(item, variant = "default") {
     return `
         <article class="${cardClass}">
             <div class="multimedia-frame">
+                <button type="button" class="multimedia-fullscreen-button" data-multimedia-fullscreen aria-label="Open video fullscreen">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path d="M7 3H3v4h2V5h2V3Zm12 0h-4v2h2v2h2V3ZM5 17H3v4h4v-2H5v-2Zm14 0v2h-2v2h4v-4h-2Z"/>
+                    </svg>
+                </button>
                 <div class="${aspectRatioClass}">
                     <iframe
                         src="${item.embedUrl}"
@@ -1683,18 +1737,17 @@ function setupMultimediaFullscreenControls() {
             return;
         }
 
-        const card = button.closest(".multimedia-card-gma");
-        if (!card) {
+        const frame = button.closest(".multimedia-frame, .video-container");
+        if (!frame) {
             return;
         }
 
-        const iframe = card.querySelector("iframe");
+        const iframe = frame.querySelector("iframe");
         if (!iframe) {
             return;
         }
 
-        const fullscreenTarget = iframe.parentElement || iframe;
-        const enteredFullscreen = requestElementFullscreen(fullscreenTarget);
+        const enteredFullscreen = requestElementFullscreen(iframe);
         if (enteredFullscreen) {
             return;
         }
@@ -2134,12 +2187,7 @@ function renderArticlePage() {
         ? (article.imageCaption || article.caption || "")
         : "";
     articleFigure.innerHTML = articleMedia
-        ? `
-            <div class="featured-video-shell">
-                ${createEmbeddedVideoMarkup(articleMedia.embedUrl, article.title, "video-container landscape literary-article-video")}
-            </div>
-            <figcaption id="articleCaption"></figcaption>
-        `
+        ? `${createStandaloneVideoMarkup(articleMedia.embedUrl, article.title, "video-container landscape literary-article-video")}<figcaption id="articleCaption"></figcaption>`
         : (articleImages.length > 1
             ? `${createArticleImageCarouselMarkup(articleImages, article.title)}<figcaption id="articleCaption"></figcaption>`
             : (articleImages.length === 1
