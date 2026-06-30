@@ -634,7 +634,7 @@ body[data-section-category="Opinion"] .page-intro p {
     --header-bg: #ffffff;
     --nav-bg: #ffffff;
     --card-bg: #ffffff;
-    --footer-bg: #4444;
+    --footer-bg: #000000;
     --footer-text: #ffffff;
     --theme-toggle-bg: #ffffff;
     --theme-toggle-fg: #1a1a1a;
@@ -652,7 +652,7 @@ html[data-theme="dark"] {
     --header-bg: #0f0f0f;
     --nav-bg: #0f0f0f;
     --card-bg: #1d1d1d;
-    --footer-bg: #4444;
+    --footer-bg: #000000;
     --footer-text: #f2f2f2;
     --theme-toggle-bg: #ffffff;
     --theme-toggle-fg: #121212;
@@ -2240,7 +2240,7 @@ body.home-page .multimedia-fullscreen-button {
     top: 0.7rem;
     right: 0.7rem;
     z-index: 2;
-    display: inline-flex;
+    display: none;
     align-items: center;
     justify-content: center;
     width: 2rem;
@@ -2997,7 +2997,7 @@ footer {
 .featured-image img {
     width: 100%;
     height: auto;
-    max-height: none;
+    max-height: 68vh;
     object-fit: contain;
     border-radius: 8px;
     display: block;
@@ -3098,6 +3098,9 @@ footer {
 
 .article-body img {
     display: block;
+    width: 100%;
+    max-height: 60vh;
+    object-fit: contain;
     height: auto;
     margin: 1.5rem auto;
 }
@@ -4367,7 +4370,7 @@ footer {
 .featured-image img {
     width: 100%;
     height: auto;
-    max-height: none;
+    max-height: 68vh;
     object-fit: contain;
     border-radius: 12px;
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
@@ -4403,6 +4406,8 @@ footer {
 
 .article-image-slide img {
     width: 100%;
+    max-height: 68vh;
+    object-fit: contain;
     height: auto;
     display: block;
     background: #fff8ef;
@@ -4647,6 +4652,20 @@ body .section-news h1,
 body .article-card h3,
 body .article-header h1 {
     color: var(--headline-color);
+}
+
+body .section-page h1,
+body .section-page h2,
+body .section-page h3,
+body .section-page h4,
+body .article-header h1,
+body .article-body h2,
+body .article-body h3,
+body .news-heading,
+body .news-content h2,
+body .featured-archive-content h2,
+body .section-news h1 {
+    font-family: Helvetica, Arial, sans-serif;
 }
 
 body[data-section-category="News"] .news-content h2,
@@ -5157,6 +5176,7 @@ html[data-theme="dark"] body.home-page .multimedia-fullscreen-button {
 @media (max-width: 768px) {
     body.multimedia-page .multimedia-fullscreen-button,
     body.home-page .multimedia-fullscreen-button {
+        display: inline-flex;
         top: 0.55rem;
         right: 0.55rem;
         width: 2.15rem;
