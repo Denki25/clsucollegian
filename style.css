@@ -2997,8 +2997,8 @@ footer {
 .featured-image img {
     width: 100%;
     height: auto;
-    max-height: 68vh;
-    object-fit: contain;
+    max-height: none;
+    object-fit: cover;
     border-radius: 8px;
     display: block;
     background: #fff8ef;
@@ -3098,9 +3098,6 @@ footer {
 
 .article-body img {
     display: block;
-    width: 100%;
-    max-height: 60vh;
-    object-fit: contain;
     height: auto;
     margin: 1.5rem auto;
 }
@@ -4370,8 +4367,8 @@ footer {
 .featured-image img {
     width: 100%;
     height: auto;
-    max-height: 68vh;
-    object-fit: contain;
+    max-height: none;
+    object-fit: cover;
     border-radius: 12px;
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease;
@@ -4406,8 +4403,6 @@ footer {
 
 .article-image-slide img {
     width: 100%;
-    max-height: 68vh;
-    object-fit: contain;
     height: auto;
     display: block;
     background: #fff8ef;
