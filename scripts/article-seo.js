@@ -96,7 +96,7 @@ function getArticleCanonicalUrl(article) {
 
 function getSocialImage(article) {
     const primaryImage = getPrimaryArticleImage(article);
-    return toAbsoluteUrl(article && (article.socialImage || primaryImage?.src || "logo.png"));
+    return toAbsoluteUrl(article && (article.socialImage || primaryImage?.src || "PHOTOS/NEWS/news3.jpg"));
 }
 
 function getSocialImageAlt(article) {

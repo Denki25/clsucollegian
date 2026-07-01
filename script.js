@@ -544,7 +544,7 @@ function updateArticleSocialMeta(article) {
     const canonicalUrl = toAbsoluteUrl(getArticleUrl(article.slug));
     const shareUrl = toAbsoluteUrl(getArticleShareUrl(article.slug));
     const primaryImage = getPrimaryArticleImage(article);
-    const articleImage = primaryImage ? toAbsoluteUrl(primaryImage.src) : toAbsoluteUrl("logo.png");
+    const articleImage = primaryImage ? toAbsoluteUrl(primaryImage.src) : toAbsoluteUrl("PHOTOS/NEWS/news3.jpg");
     const articleTitle = `${article.title} | CLSU Collegian`;
     const articleDescription = (article.summary || "Campus stories from CLSU Collegian.").trim();
     const articleImageAlt = (primaryImage?.alt || article.title || "CLSU Collegian article image").trim();
