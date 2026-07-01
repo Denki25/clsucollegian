@@ -2173,6 +2173,7 @@ function renderSectionPage() {
 
 function renderArticlePage() {
     const articleBody = document.getElementById("articleBody");
+    const root = document.documentElement;
     if (!articleBody) {
         return;
     }
@@ -2186,6 +2187,7 @@ function renderArticlePage() {
         articleBody.innerHTML = selectedSlug
             ? "<p>The requested article could not be found.</p>"
             : "<p>No articles are available yet.</p>";
+        root.classList.remove("article-loading");
         return;
     }
 
@@ -2241,6 +2243,7 @@ function renderArticlePage() {
     `).join("");
 
     setupArticleReadingProgress();
+    root.classList.remove("article-loading");
 }
 
 function observeAnimatedElements() {

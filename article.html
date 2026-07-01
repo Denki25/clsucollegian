@@ -20,6 +20,19 @@
     <meta name="twitter:description" id="twitterDescription" content="Campus stories, features, and multimedia from the official student publication of Central Luzon State University.">
     <meta name="twitter:image" id="twitterImage" content="https://clsucollegian.vercel.app/logo.png">
     <meta name="twitter:image:alt" id="twitterImageAlt" content="CLSU Collegian logo">
+    <script>
+        (function () {
+            var connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+            if (!connection) {
+                return;
+            }
+
+            var effectiveType = String(connection.effectiveType || "").toLowerCase();
+            if (connection.saveData || effectiveType === "slow-2g" || effectiveType === "2g") {
+                document.documentElement.classList.add("article-loading");
+            }
+        })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700;800&family=Noto+Serif:wght@400;500;700&display=swap" rel="stylesheet">
@@ -78,6 +91,26 @@
 
     <main class="article-main">
         <article class="article-content">
+            <div class="article-skeleton" aria-hidden="true">
+                <div class="article-skeleton-category skeleton-block"></div>
+                <div class="article-skeleton-title skeleton-block skeleton-title"></div>
+                <div class="article-skeleton-meta">
+                    <span class="skeleton-block skeleton-pill"></span>
+                    <span class="skeleton-block skeleton-pill"></span>
+                </div>
+                <div class="article-skeleton-credits">
+                    <span class="skeleton-block skeleton-line"></span>
+                    <span class="skeleton-block skeleton-line"></span>
+                </div>
+                <div class="article-skeleton-image skeleton-block"></div>
+                <div class="article-skeleton-body">
+                    <span class="skeleton-block skeleton-line"></span>
+                    <span class="skeleton-block skeleton-line"></span>
+                    <span class="skeleton-block skeleton-line"></span>
+                    <span class="skeleton-block skeleton-line"></span>
+                    <span class="skeleton-block skeleton-line short"></span>
+                </div>
+            </div>
             <header class="article-header">
                 <span class="article-category feature-category" id="articleCategory">Article</span>
                 <h1 id="articleTitle">CLSU Collegian Article</h1>
@@ -131,6 +164,25 @@
         </article>
 
         <aside class="article-sidebar">
+            <div class="article-sidebar-skeleton article-skeleton" aria-hidden="true">
+                <div class="article-sidebar-skeleton-title skeleton-block"></div>
+                <div class="article-sidebar-skeleton-card">
+                    <span class="skeleton-block skeleton-thumb"></span>
+                    <div class="article-sidebar-skeleton-lines">
+                        <span class="skeleton-block skeleton-line"></span>
+                        <span class="skeleton-block skeleton-line short"></span>
+                        <span class="skeleton-block skeleton-line shorter"></span>
+                    </div>
+                </div>
+                <div class="article-sidebar-skeleton-card">
+                    <span class="skeleton-block skeleton-thumb"></span>
+                    <div class="article-sidebar-skeleton-lines">
+                        <span class="skeleton-block skeleton-line"></span>
+                        <span class="skeleton-block skeleton-line short"></span>
+                        <span class="skeleton-block skeleton-line shorter"></span>
+                    </div>
+                </div>
+            </div>
             <section class="related-articles">
                 <h3>Other Articles</h3>
                 <div class="related-list" id="relatedList"></div>
