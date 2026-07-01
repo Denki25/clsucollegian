@@ -1,6 +1,6 @@
 .news-heading {
     font-size: 3rem;
-    font-family: 'Chronica Pro Black', serif;
+    font-family: 'Helvetica Black';
     font-weight: 700;
     margin-bottom: 2rem;
     margin-top: 1.5rem;
@@ -2946,44 +2946,40 @@ footer {
 }
 
 .article-header h1 {
-    max-width: 24ch;
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: clamp(2.15rem, 3.6vw, 3.35rem);
-    line-height: 1.04;
-    letter-spacing: -0.035em;
+    max-width: 31ch;
+    font-family: "Helvetica Black", "Helvetica Neue Black", "Arial Black", Helvetica, Arial, sans-serif;
+    font-size: clamp(2.2rem, 3.9vw, 3.55rem);
+    line-height: 1.02;
+    letter-spacing: -0.04em;
     margin-bottom: 1rem;
-    color: #1a1a1a;
-    font-weight: 700;
+    padding-bottom: 0.08em;
+    color: #000000;
+    font-weight: 900;
+    font-synthesis: none;
+    text-rendering: geometricPrecision;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
 }
 
-body .section-page h1,
-body .section-page h2,
-body .section-page h3,
-body .section-page h4,
-body .article-header h1,
-body .article-body h2,
-body .article-body h3,
-body .news-heading,
-body .hero-text h2,
-body .featured-text h2,
-body .page-intro h1,
-body .section-heading h2,
-body .search-result-content h3,
-body .story-card h2,
-body .board-header h2,
-body .values h2,
-body .mission h2,
-body .vision h2,
-body .value-card h3,
-body .member-info h3,
-body .trending-title,
-body .trending-item h4 a,
-body .search-results-header h2,
-body .news-content h2,
-body .featured-archive-content h2,
-body .section-news h1 {
-    font-family: Helvetica, Arial, sans-serif;
-    font-weight: 700;
+.hero-text h2,
+.featured-text h2,
+.news-content h2,
+.article-card h3,
+.read-more {
+    font-family: "Helvetica Black", "Helvetica Neue Black", "Arial Black", Helvetica, Arial, sans-serif;
+    font-weight: 900;
+    font-synthesis: none;
+    text-rendering: geometricPrecision;
+}
+
+.featured-text h2 {
+    line-height: 1.05;
+}
+
+.read-more {
+    letter-spacing: 0.04em;
 }
 
 html.article-loading .article-content > :not(.article-skeleton),
@@ -4840,15 +4836,14 @@ body .section-page h1,
 body .section-page h2,
 body .section-page h3,
 body .section-page h4,
-body .article-header h1,
 body .article-body h2,
 body .article-body h3,
 body .news-heading,
 body .news-content h2,
 body .featured-archive-content h2,
 body .section-news h1 {
-    font-family: Helvetica, Arial, sans-serif;
-    font-weight: 700;
+    font-family: inherit;
+    font-weight: inherit;
 }
 
 body[data-section-category="News"] .news-content h2,
@@ -4874,6 +4869,28 @@ body[data-article-category="News"] .featured-image figcaption {
     overflow-wrap: anywhere;
     word-break: break-word;
     hyphens: auto;
+}
+
+body .article-header h1,
+body .news-content h2,
+body .article-card h3,
+body .featured-text h2,
+body .related-articles h3,
+body .related-content h4,
+body .section-news h1,
+body .read-more {
+    font-family: "Helvetica Black", "Helvetica Neue Black", "Arial Black", Helvetica, Arial, sans-serif;
+    font-weight: 900;
+    font-synthesis: none;
+    text-rendering: geometricPrecision;
+}
+
+body[data-section-category="News"] .section-news h1,
+body[data-section-category="Opinion"] .page-intro h1 {
+    font-family: "Helvetica Black", "Helvetica Neue Black", "Arial Black", Helvetica, Arial, sans-serif;
+    font-weight: 900;
+    font-synthesis: none;
+    text-rendering: geometricPrecision;
 }
 
 html[data-theme="dark"] body {
@@ -5621,5 +5638,4 @@ html[data-theme="dark"] footer {
     color: var(--footer-text);
     border-top-color: #fe5d13;
 }
-
 
