@@ -82,7 +82,7 @@ function getArticlePreviewUrl(article) {
         return `${SITE_BASE_URL}/article.html`;
     }
 
-    return encodeURI(`${SITE_BASE_URL}/share/${slug}.html`);
+    return encodeURI(`${SITE_BASE_URL}/share/${slug}.html?v=2`);
 }
 
 function getArticleCanonicalUrl(article) {

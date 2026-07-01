@@ -409,9 +409,11 @@ function getArticleShareUrl(slug) {
         const baseUrl = window.location.origin && window.location.origin !== "null"
             ? window.location.origin
             : window.location.href;
-        return new URL(`share/${slug}.html`, baseUrl).toString();
+        const url = new URL(`share/${slug}.html`, baseUrl);
+        url.searchParams.set("v", "2");
+        return url.toString();
     } catch (error) {
-        return `share/${slug}.html`;
+        return `share/${slug}.html?v=2`;
     }
 }
 
