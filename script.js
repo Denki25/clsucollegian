@@ -2609,7 +2609,7 @@ shareButtons.forEach((button) => {
         }
 
         if (platform === "facebook") {
-            const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}&quote=${encodeURIComponent(shareCaption)}`;
+            const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
             openShareUrl(facebookShareUrl);
             return;
         }
