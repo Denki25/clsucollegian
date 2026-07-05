@@ -2608,18 +2608,6 @@ shareButtons.forEach((button) => {
             return;
         }
 
-        if (isLikelyMobileDevice()) {
-            try {
-                const shared = await shareViaNativeSheet(shareUrl, title, articleUrl);
-                if (shared) {
-                    setShareFeedback("Share sheet opened.");
-                    return;
-                }
-            } catch (error) {
-                
-            }
-        }
-
         if (platform === "facebook") {
             const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}&quote=${encodeURIComponent(shareCaption)}`;
             openShareUrl(facebookShareUrl);
